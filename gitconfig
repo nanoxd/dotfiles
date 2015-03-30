@@ -1,0 +1,38 @@
+[user]
+  name = Fernando Paredes
+  email = nano@fdp.io
+[push]
+  default = simple
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+  ui = true
+[alias]
+  aa = add --all
+  ai = add --interactive
+  ap = add --patch
+  br = branch
+  browse = "!hub browse"
+  ca = commit --amend
+  ci = commit -v
+  cl = clone
+  co = checkout
+  create-branch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
+  dc = diff --cached
+  delete-merged-branches="git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+  delete-branch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -g
+  f = "!git ls-files | grep -i"
+  filelog = log -u
+  issues = !hub browse -- issues
+  merge-branch = !git checkout master && git merge @{-1} --ff-only
+  pn = push --set-upstream origin master
+  pr = !hub pull-request
+  rebase-origin = !git fetch origin && git rebase origin/master
+  reset-hard = reset --hard HEAD
+  st = status -s
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+[core]
+  excludesfile = ~/.gitignore
+  editor = vim
