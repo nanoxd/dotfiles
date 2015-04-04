@@ -25,4 +25,4 @@ if test -f $HOME/.fish
 end
 
 # Use nvm
-test -s ~/.nvm-fish/nvm.fish; and source ~/.nvm-fish/nvm.fish
+. $HOME/.config/fish/wrappers/nvm.fish
