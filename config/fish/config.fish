@@ -17,8 +17,11 @@ set -x HOMEBREW_CASK_OPTS "--appdir=/Applications" # Install location
 fish_user_abbreviations
 set fish_key_bindings fish_vi_key_bindings
 
-# Source Fry
-. /usr/local/share/fry/fry.fish
+# Source Chruby
+if test -f /usr/local/share/chruby
+  . /usr/local/share/chruby/chruby.fish
+  . /usr/local/share/chruby/auto.fish
+end
 
 if test -f $HOME/.fish
   . $HOME/.fish
