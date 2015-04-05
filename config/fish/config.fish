@@ -18,7 +18,7 @@ fish_user_abbreviations
 set fish_key_bindings fish_vi_key_bindings
 
 # Source Chruby
-if test -f /usr/local/share/chruby
+if test -d /usr/local/share/chruby
   . /usr/local/share/chruby/chruby.fish
   . /usr/local/share/chruby/auto.fish
 end
