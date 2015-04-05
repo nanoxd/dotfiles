@@ -1,5 +1,5 @@
 # Set paths
-set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/local/share/npm/bin /usr/local/share/python $HOME/bin $GOPATH/bin /Applications/Postgres.app/Contents/Versions/9.3/bin
+set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/local/share/npm/bin $HOME/.bin $GOPATH/bin /Applications/Postgres.app/Contents/Versions/9.3/bin
 
 # Load Solarized for colors
 . $HOME/.config/fish/solarized.fish
