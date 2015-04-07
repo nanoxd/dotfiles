@@ -19,7 +19,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'itspriddle/vim-jquery'
 Plug 'leshill/vim-json'
-Plug 'groenewege/vim-less'
+Plug 'groenewege/vim-less', { 'for': 'less' }
 Plug 'tpope/vim-markdown'
 Plug 'jtratner/vim-flavored-markdown'
 Plug 'b4winckler/vim-objc'
@@ -27,18 +27,16 @@ Plug 'rodjek/vim-puppet'
 Plug 'wlangstroth/vim-racket', { 'for': 'racket' }
 Plug 'aaronjensen/vim-sass-status'
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'amdt/vim-niji'
 Plug 'tpope/vim-jdaddy'
 Plug 'jby/tmux.vim'
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'Keithbsmiley/swift.vim'
+Plug 'Keithbsmiley/swift.vim', { 'for': 'swift' }
 
 " Ruby
 Plug 'vim-ruby/vim-ruby'
 Plug 'sunaku/vim-ruby-minitest'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
-Plug 'tpope/vim-cucumber'
 Plug 'Keithbsmiley/rspec.vim'
 Plug 'tpope/vim-bundler'
 
