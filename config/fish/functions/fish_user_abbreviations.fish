@@ -10,6 +10,7 @@ function fish_user_abbreviations
     'g=git' \
     'ga=git add' \
     'gaa=git add --all' \
+    'gaap=git add --all --patch' \
     'gc=git commit -v' \
     'gca=git commit -v --amend' \
     'gcb=git create-branch' \
@@ -23,8 +24,10 @@ function fish_user_abbreviations
     'gs=git status -s' \
     'git-pr=git am -3' \
     'gi=gem install' \
-    'gt=gittower' \
+    'gt=gittower .' \
     'gu=gem update' \
+    'pi=bundle exec pod install' \
+    'pu=bundle exec pod update' \
     'tma=tmux -2 attach -t' \
     'tmk=tmux kill-session -t' \
     'tml=tmux list-sessions' \
