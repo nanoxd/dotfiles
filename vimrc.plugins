@@ -11,6 +11,7 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'tpope/vim-git'
 Plug 'fatih/vim-go'
+Plug 'nsf/gocode', {'rtp': 'vim/'}
 Plug 'tpope/vim-haml'
 Plug 'wlangstroth/vim-haskell', { 'for': 'haskell' }
 Plug 'xenoterracide/html.vim'
@@ -99,6 +100,11 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " CtrlP
 let g:ctrlp_match_window = 'max:20'
+
+" Go
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
+let g:go_fmt_command = "goimports"
 
 " Tagbar for Go
 let g:tagbar_type_go = {
