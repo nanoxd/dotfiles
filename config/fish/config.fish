@@ -10,7 +10,7 @@ set -U VISUAL vim
 set -U PAGER less
 
 # ENVs
-set -x GOPATH "$HOME/Dev/Code/go"
+set -x GOPATH "$HOME/Dev/go"
 set -x HOMEBREW_CASK_OPTS "--appdir=/Applications" # Install location
 
 # Custom behavior
