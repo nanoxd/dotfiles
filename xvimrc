@@ -1,3 +1,6 @@
+set ignorecase
+
+" Window movement
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
