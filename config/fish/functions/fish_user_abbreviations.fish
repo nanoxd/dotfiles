@@ -1,6 +1,7 @@
 function fish_user_abbreviations
   set -U fish_user_abbreviations \
     'be=bundle exec' \
+    'bu=bundle update' \
     'bi=brew install' \
     'bch=brew cask home' \
     'bci=brew cask install' \
