@@ -3,3 +3,5 @@ if uname -s | grep Darwin
 then
   export PATH="/usr/local/bin:$PATH"
 fi
+
+export PATH="$HOME/.bin:$PATH"
