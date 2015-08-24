@@ -17,10 +17,15 @@ set -x HOMEBREW_CASK_OPTS "--appdir=/Applications" # Install location
 fish_user_abbreviations
 set fish_key_bindings fish_vi_key_bindings
 
-# Source Chruby
-if test -d /usr/local/share/chruby
-  source /usr/local/share/chruby/chruby.fish
-  source /usr/local/share/chruby/auto.fish
+# Source rbenv
+if test -d "$HOME/.rbenv/bin"
+  set -U fish_user_paths $HOME/.rbenv/bin $fish_user_paths
+end
+
+status --is-interactive; and . (rbenv init -|psub)
+
+if test -d "$HOME/Library/Android/sdk/platform-tools"
+  set --universal fish_user_paths "$HOME/Library/Android/sdk/platform-tools" $fish_user_paths
 end
 
 if test -f $HOME/.fish
