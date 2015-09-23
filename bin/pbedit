@@ -1,0 +1,10 @@
+#!/bin/bash
+
+FILE=/tmp/$$.pbedit
+
+pbpaste > $FILE
+vi $FILE
+pbcopy < $FILE
+rm $FILE
+
+exit;
