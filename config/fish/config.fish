@@ -32,9 +32,6 @@ if test -f $HOME/.fish
   source $HOME/.fish
 end
 
-# Use nvm
-source $HOME/.config/fish/wrappers/nvm.fish
-
 # SSH nonsense, mac specific
 if status --is-login
   set PPID (echo (ps -p %self -o 'ppid=') | xargs)
