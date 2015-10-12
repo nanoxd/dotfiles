@@ -80,6 +80,8 @@ map <leader>w :w<cr>
 " Remove whitespace
 nnoremap <Leader>rtw :%s/\s\+$//e<CR>
 
+" highlight last inserted text
+nnoremap gV `[v`]
 
 " Plugins "
 source ~/.vimrc.plugins
