@@ -13,6 +13,7 @@ set relativenumber
 set number
 set autoread " Reload files changed outside vim
 set hidden " The current buffer can be put to the background without writing to disk;
+set cursorline " Highlight current line
 
 " Search
 set incsearch  " Highlight while searching
