@@ -14,6 +14,7 @@ set number
 set autoread " Reload files changed outside vim
 set hidden " The current buffer can be put to the background without writing to disk;
 set cursorline " Highlight current line
+set wildmenu " Autocomplete for command mode
 
 " Search
 set incsearch  " Highlight while searching
