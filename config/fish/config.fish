@@ -1,5 +1,5 @@
 # Set paths
-set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/local/share/npm/bin $HOME/.bin $GOPATH/bin /Applications/Postgres.app/Contents/Versions/9.3/bin
+set -U fish_user_paths /usr/local/sbin /usr/local/bin $HOME/.bin $GOPATH/bin /Applications/Postgres.app/Contents/Versions/9.3/bin
 
 # Load Solarized for colors
 source $HOME/.config/fish/solarized.fish
@@ -30,13 +30,4 @@ end
 
 if test -f $HOME/.fish
   source $HOME/.fish
-end
-
-# SSH nonsense, mac specific
-if status --is-login
-  set PPID (echo (ps -p %self -o 'ppid=') | xargs)
-  if ps -p $PPID | grep ssh
-    tmux has-session -t remote; and tmux attach-session -t remote; or tmux new-session -s remote; and kill %self
-    echo "tmux failed to start; using plain fish shell"
-  end
 end
