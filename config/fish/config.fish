@@ -12,6 +12,7 @@ set -U PAGER less
 # ENVs
 set -x GOPATH "$HOME/Dev/go"
 set -x HOMEBREW_CASK_OPTS "--appdir=/Applications" # Install location
+set -x SLACK_URL "https://hooks.slack.com/services/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"
 
 # Custom behavior
 fish_user_abbreviations
