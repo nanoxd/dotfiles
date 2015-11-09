@@ -18,3 +18,5 @@ DerivedData
 *.ipa
 *.xcuserstate
 .DS_Store
+
+.idea/
