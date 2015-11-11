@@ -32,3 +32,9 @@ end
 if test -f $HOME/.fish
   source $HOME/.fish
 end
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+
