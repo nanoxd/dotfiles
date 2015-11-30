@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>tvrc</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>    didSet {
+      &lt;#tableView#&gt;.estimatedRowHeight = &lt;#size#&gt;
+      &lt;#tableView#&gt;.rowHeight = UITableViewAutomaticDimension
+    }
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>0F766420-AEF2-4749-9F17-726150A0866D</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>Autosize UITableViewCell's</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>UITableView - Autosizing Cells</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>
