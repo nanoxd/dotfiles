@@ -1,7 +1,6 @@
 function install-xcode-snippets -d "Install Xcode snippets in ~/dev/xcode-snippets"
-  set snippets "$HOME/dev/xcode-snippets"
-  for snippet in $snippets/*.swift
-    xcodesnippet install $snippet
-    echo "Installing $snippet"
-  end
+  echo "Removing CodeSnippet directory"
+  rm -rf ~/Library/Developer/Xcode/UserData/CodeSnippets
+  echo "Linking synced code snippets"
+  ln -s ~/.dotfiles/apps/Xcode/CodeSnippets ~/Library/Developer/Xcode/UserData/CodeSnippets
 end
