@@ -33,6 +33,10 @@ if test -f $HOME/.fish
   source $HOME/.fish
 end
 
+if test -d "$HOME/.cabal/bin"
+  set -U fish_user_paths $HOME/.cabal/bin $fish_user_paths
+end
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
