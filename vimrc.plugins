@@ -47,7 +47,7 @@ Plug 'rking/ag.vim'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'tpope/vim-abolish'
 Plug 'vim-scripts/ctags.vim'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-speeddating'
 " Adds automatic closing of quotes
 Plug 'Raimondi/delimitMate'
