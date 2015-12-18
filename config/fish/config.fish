@@ -5,8 +5,8 @@ set -U fish_user_paths /usr/local/sbin /usr/local/bin $HOME/.bin $GOPATH/bin /Ap
 source $HOME/.config/fish/solarized.fish
 
 # Editors
-set -U EDITOR vim
-set -U VISUAL vim
+set -U EDITOR nvim
+set -U VISUAL nvim
 set -U PAGER less
 
 # ENVs

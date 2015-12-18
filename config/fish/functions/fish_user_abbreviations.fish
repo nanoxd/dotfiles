@@ -1,6 +1,5 @@
 function fish_user_abbreviations
   set -U fish_user_abbreviations \
-    'b2d=boot2docker' \
     'be=bundle exec' \
     'bu=bundle update' \
     'bi=brew install' \
@@ -8,7 +7,7 @@ function fish_user_abbreviations
     'bci=brew cask install' \
     'bcs=brew cask search' \
     'bcu=brew cask uninstall' \
-    'e=vim' \
+    'e=nvim' \
     'g=git' \
     'ga=git add' \
     'gaa=git add --all' \
@@ -24,7 +23,6 @@ function fish_user_abbreviations
     'gpr=git pull-request --browse' \
     'gpu=git pull --rebase' \
     'gs=git status -s' \
-    'git-pr=git am -3' \
     'gi=gem install' \
     'gt=gittower .' \
     'gu=gem update' \
@@ -33,6 +31,5 @@ function fish_user_abbreviations
     'tma=tmux -2 attach -t' \
     'tmk=tmux kill-session -t' \
     'tml=tmux list-sessions' \
-    'vag=vagrant' \
     'ytd=youtube-dl'
 end
