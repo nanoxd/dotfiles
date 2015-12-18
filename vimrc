@@ -3,22 +3,27 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = " "
 
-set nocompatible " No reason to limit ourselves to vi compatibility
-set ruler
-set history=3000
-set showcmd       " display incomplete commands
+" Neovim defaults
+set autoindent
+set autoread " Reload files changed outside vim
+set backspace=indent,eol,start " allow backspacing over everything in insert mode
+set encoding=utf-8
+set history=10000
+set hlsearch   " Highlight all matches after entering search pattern
+set incsearch  " Highlight while searching
 set laststatus=2
+set nocompatible " No reason to limit ourselves to vi compatibility
+set wildmenu " Autocomplete for command mode
+
+set ruler
+set showcmd       " display incomplete commands
 set noshowmode " Hide the default mode text
 set relativenumber
 set number
-set autoread " Reload files changed outside vim
 set hidden " The current buffer can be put to the background without writing to disk;
 set cursorline " Highlight current line
-set wildmenu " Autocomplete for command mode
 
 " Search
-set incsearch  " Highlight while searching
-set hlsearch   " Highlight all matches after entering search pattern
 set ignorecase " Case insensitve pattern matching
 set smartcase  " Override ignorecase if pattern contains upcase
 
@@ -43,8 +48,6 @@ if has('persistent_undo')
   set undofile
 endif
 
-" Set encoding
-set encoding=utf-8
 
 " When vimrc is edited, reload it
 autocmd! bufwritepost .vimrc source ~/.vimrc
@@ -129,7 +132,6 @@ let g:airline#extensions#tabline#enabled = 1
 set guifont=Ubuntu\ Mono\ derivative\ Powerline:h18
 
 " Whitespace defaults
-set autoindent
 set smartindent
 set nowrap
 set tabstop=2
@@ -138,7 +140,7 @@ set softtabstop=2
 set expandtab
 " Show “invisible” characters
 set list
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_
 
 function! s:setupWrapping()
   set wrap
@@ -155,7 +157,7 @@ call matchadd('ColorColumn', '\%81v', 100)
 autocmd FileType make set noexpandtab
 
 " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
-autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Procfile,Thorfile,config.ru}  set ft=ruby
+autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Procfile,Podfile,config.ru}  set ft=ruby
 
 " Set Sass files as sass
 autocmd BufRead,BufNewFile *.scss set filetype=scss
@@ -176,9 +178,6 @@ autocmd FileType gitcommit setlocal spell
 
 " Set syntax for Go
 autocmd BufRead,BufNewFile *.go set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
 
 " % to bounce from do to end etc.
 runtime! macros/matchit.vim
