@@ -42,3 +42,5 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
+# Disable Cocoapods Deterministic UUIDs
+export COCOAPODS_DISABLE_DETERMINISTIC_UUIDS=YES
