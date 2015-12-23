@@ -23,7 +23,7 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-set shell=/bin/zsh
+set shell=/usr/local/bin/zsh
 
 " Persistent Undo
 " Keep undo history across sessions, by storing in file.
@@ -163,3 +163,8 @@ endif
 
 " Source custom Solarized settings
 source ~/.vim/settings/solarized.vim
+
+" Vim-tmux issue: https://github.com/neovim/neovim/issues/2048
+if has('nvim')
+  nmap <bs> :<c-u>TmuxNavigateLeft<cr>
+endif
