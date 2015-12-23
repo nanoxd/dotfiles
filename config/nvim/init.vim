@@ -148,12 +148,6 @@ if has("autocmd")
     \| exe "normal g'\"" | endif
 endif
 
-" easier navigation between split windows
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files and backups
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -166,9 +160,6 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
-
-" Generate ctags for Ruby
-nmap <silent> <leader>rt :!ctags -R --languages=ruby --exclude=.git --exclude=log . (bundle list --paths)<cr>
 
 " Source custom Solarized settings
 source ~/.vim/settings/solarized.vim
