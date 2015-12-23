@@ -14,7 +14,6 @@ Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'docunext/closetag.vim', { 'for': 'html' }
 Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim' " JS Frameworks
-Plug 'tpope/vim-markdown'
 Plug 'jtratner/vim-flavored-markdown'
 Plug 'b4winckler/vim-objc'
 Plug 'rodjek/vim-puppet'
