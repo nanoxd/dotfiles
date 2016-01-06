@@ -41,3 +41,5 @@
   helper = osxkeychain
 [rebase]
 	autostash = true
+[stash]
+	showPatch = true
