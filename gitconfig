@@ -39,3 +39,5 @@
   editor = vim
 [credential]
   helper = osxkeychain
+[rebase]
+	autostash = true
