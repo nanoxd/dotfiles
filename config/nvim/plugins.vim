@@ -76,7 +76,8 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 " Colors
 Plug 'skwp/vim-colors-solarized'
-Plug 'bling/vim-airline'
+" Plug 'bling/vim-airline'
+Plug 'itchyny/lightline.vim'
 
 " Linters
 Plug 'marijnh/tern_for_vim'
@@ -111,3 +112,8 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
+" LightLine
+let g:lightline = {
+  \ 
+  \ }
+let g:Powerline_symbols = 'fancy'
