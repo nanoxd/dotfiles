@@ -79,7 +79,6 @@ Plug 'skwp/vim-colors-solarized'
 Plug 'itchyny/lightline.vim'
 
 " Linters
-Plug 'marijnh/tern_for_vim'
 Plug 'scrooloose/syntastic'
 
 call plug#end()
