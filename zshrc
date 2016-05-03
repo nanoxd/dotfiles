@@ -1,7 +1,7 @@
 export ZSH="$HOME/.zsh"
 
 # Add homebrew to path
-if uname -s | grep Darwin; then
+if uname -s | grep -q Darwin; then
   export PATH="/usr/local/bin:$PATH"
 fi
 
@@ -16,6 +16,7 @@ antibody bundle < ~/.zshrc.plugins
 
 # Load ZSH Modules
 autoload -U promptinit && promptinit
+autoload -U colors && colors
 
 # load everything but the path and completion files
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}; do
