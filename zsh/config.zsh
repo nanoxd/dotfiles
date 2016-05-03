@@ -1,5 +1,8 @@
 #!/usr/local/bin/zsh
 export LSCOLORS='exfxcxdxbxegedabagacad'
+setopt NO_BG_NICE
+setopt NO_HUP
+setopt NO_LIST_BEEP
 
 # History
 HISTFILE=~/.zsh_history
