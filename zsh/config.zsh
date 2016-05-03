@@ -24,3 +24,17 @@ setopt LOCAL_OPTIONS
 
 # Set vim bindings
 bindkey -v
+
+bindkey '^r' history-incremental-search-backward
+
+zmodload zsh/terminfo
+if uname -s | grep -q Darwin; then
+  bindkey "$terminfo[cuu1]" history-substring-search-up
+  bindkey "$terminfo[cud1]" history-substring-search-down
+else
+  bindkey "$terminfo[kcuu1]" history-substring-search-up
+  bindkey "$terminfo[kcud1]" history-substring-search-down
+fi
+
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
