@@ -28,6 +28,7 @@ if which brew >/dev/null 2>&1; then
   alias podu='bundle exec pod update'
 fi
 
+alias e='nvim'
 alias be='bundle exec'
 alias bu='bundle update'
 alias gemi='gem install'
