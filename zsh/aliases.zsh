@@ -1,5 +1,12 @@
 #!/bin/sh
 
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+
+alias ll='ls -alhG'
+
 if which brew >/dev/null 2>&1; then
   brew() {
     case "$1" in
