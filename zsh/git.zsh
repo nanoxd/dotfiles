@@ -16,3 +16,7 @@ alias gp='git push'
 alias gpr='git pull-request --browse'
 alias gpu='git pull --rebase'
 alias gs='git status -sb'
+
+gpc() {
+  git push --set-upstream origin $(git-branch-current 2> /dev/null)
+}

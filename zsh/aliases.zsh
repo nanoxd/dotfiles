@@ -1,5 +1,17 @@
 #!/bin/sh
 
+base64d() {
+  echo "$@" | base64 -D - | jq .
+}
+
+mkdir() {
+  mkdir -p "$@"
+}
+
+mkcd() {
+  mkdir $@ && cd $@
+}
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -42,14 +54,6 @@ alias gemi='gem install'
 alias gemu='gem update'
 alias rm-mac-metadata='find . -name ".DS_Store" -or -name "._*" -delete'
 
-base64d() {
-  echo "$@" | base64 -D - | jq .
-}
-
-mkdir() {
-  mkdir -p "$@"
-}
-
-mkcd() {
-  mkdir $@ && cd $@
-}
+if [ "$(uname -s)" = "Darwin" ]; then
+  alias gt='gittower .'
+fi
