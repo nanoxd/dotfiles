@@ -5,7 +5,7 @@ base64d() {
 }
 
 mkdir() {
-  mkdir -p "$@"
+  command mkdir -p "$@"
 }
 
 mkcd() {
