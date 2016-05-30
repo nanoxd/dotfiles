@@ -72,3 +72,5 @@ if [ "$(uname -s)" = "Darwin" ]; then
   alias gt='gittower .'
 fi
 
+alias mkwaffles='mktorrent -l 19 -p -a "http://tracker.waffles.fm/announce.php?passkey=04b023d4a6970a2c912e56061115deee144b8f97&uid=42556"'
+alias mkwhat='mktorrent -l 18 -p -a "http://tracker.what.cd:34000/a7c1e76b73bd5d48be845b3abfe5f966/announce"'
