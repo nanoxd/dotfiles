@@ -23,7 +23,7 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'tpope/vim-jdaddy'
 Plug 'jby/tmux.vim'
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'Keithbsmiley/swift.vim', { 'for': 'swift' }
+Plug 'keith/swift.vim', { 'for': 'swift' }
 Plug 'cfdrake/vim-carthage'
 
 " Ruby
