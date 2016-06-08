@@ -48,8 +48,8 @@
 
 [core]
   excludesfile = ~/.gitignore
-  editor = vim
-  pager = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+  editor = nvim
+  pager = diff-highlight | less -r
 [credential]
   helper = osxkeychain
 [rebase]
