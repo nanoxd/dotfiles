@@ -80,8 +80,7 @@ syntax enable
 colorscheme solarized
 set background=dark
 call togglebg#map("<F5>")
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'base16'
 let g:airline#extensions#tabline#enabled = 1
 
 " Whitespace defaults
@@ -100,7 +99,11 @@ function! s:setupWrapping()
   set textwidth=78
 endfunction
 
-highlight ColorColumn ctermbg=red
+function! s:disableWhiteSpaceChecking()
+  let b:airline_whitespace_disabled = 1
+endfunction
+
+highlight ColorColumn ctermbg=green
 call matchadd('ColorColumn', '\%81v', 100)
 
 """"Language specific whitespace
@@ -130,6 +133,8 @@ autocmd FileType gitcommit setlocal spell
 
 " Set syntax for Go
 autocmd BufRead,BufNewFile *.go set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+autocmd BufRead,BufNewFile *.{pl,cgi} call s:disableWhiteSpaceChecking()
+autocmd BufRead,BufNewFile *.{pl,cgi} set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 " % to bounce from do to end etc.
 runtime! macros/matchit.vim
