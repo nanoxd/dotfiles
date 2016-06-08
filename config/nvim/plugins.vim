@@ -25,6 +25,7 @@ Plug 'jby/tmux.vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'keith/swift.vim', { 'for': 'swift' }
 Plug 'cfdrake/vim-carthage'
+Plug 'vim-perl/vim-perl'
 
 " Ruby
 Plug 'vim-ruby/vim-ruby'
@@ -75,8 +76,8 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 " Colors
 Plug 'skwp/vim-colors-solarized'
-" Plug 'bling/vim-airline'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Linters
 Plug 'scrooloose/syntastic'
