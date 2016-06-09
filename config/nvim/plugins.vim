@@ -55,6 +55,7 @@ Plug 'danro/rename.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'editorconfig/editorconfig-vim'
 
 " Text Objects
 Plug 'kana/vim-textobj-user'
