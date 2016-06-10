@@ -1,4 +1,3 @@
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-plug && Plug Specific Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -111,9 +110,3 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
-" LightLine
-let g:lightline = {
-  \ 
-  \ }
-let g:Powerline_symbols = 'fancy'
