@@ -18,6 +18,7 @@ Plug 'b4winckler/vim-objc'
 Plug 'rodjek/vim-puppet'
 Plug 'wlangstroth/vim-racket', { 'for': 'racket' }
 Plug 'aaronjensen/vim-sass-status'
+Plug 'JulesWang/css.vim'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'tpope/vim-jdaddy'
 Plug 'jby/tmux.vim'
@@ -25,6 +26,7 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'keith/swift.vim', { 'for': 'swift' }
 Plug 'cfdrake/vim-carthage'
 Plug 'vim-perl/vim-perl'
+Plug 'rust-lang/rust.vim'
 
 " Ruby
 Plug 'vim-ruby/vim-ruby'
