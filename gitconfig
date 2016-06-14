@@ -53,10 +53,12 @@
 [credential]
   helper = osxkeychain
 [rebase]
-	autostash = true
+  autostash = true
 [stash]
-	showPatch = true
+  showPatch = true
 [submodule]
   fetchJobs = 0
 [diff]
   compactionHeuristic = true
+[interactive]
+  diffFilter = diff-highlight
