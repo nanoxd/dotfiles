@@ -56,3 +56,7 @@
 	autostash = true
 [stash]
 	showPatch = true
+[submodule]
+  fetchJobs = 0
+[diff]
+  compactionHeuristic = true
