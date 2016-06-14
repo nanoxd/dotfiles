@@ -24,7 +24,7 @@
   aa = add --all
   ai = add --interactive
   ap = add --patch
-  br = branch
+  br = branch -vv
   browse = "!hub browse"
   ca = commit --amend
   ci = commit -v
@@ -45,6 +45,11 @@
   st = status -s
   timespan = "!f() { one=$(git log -n 1 --format=%ai $1); two=$(git log -n 1 --format=%ai ${2:-HEAD}); ddiff -f ${3:-%mm%dd} \"$one\" \"$two\"; }; f"
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+  tagage = !sh -c 'git for-each-ref --sort=taggerdate refs/tags --format=\"%(refname:short)\"'
+  m = checkout master
+  amend = commit --amend
+  branch = branch -vv
 
 [core]
   excludesfile = ~/.gitignore
