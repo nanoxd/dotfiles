@@ -50,6 +50,8 @@
   m = checkout master
   amend = commit --amend
   branch = branch -vv
+  ls-ignored = ls-files --exclude-standard --ignored --others
+  purge = !git branch -d $(git branch --merged master | grep -v -e '*' -e 'master')
 
 [core]
   excludesfile = ~/.gitignore
