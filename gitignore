@@ -1,6 +1,3 @@
-### Objective-C ###
-# Xcode
-#
 build/
 *.pbxuser
 !default.pbxuser
