@@ -7,7 +7,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'kchmck/vim-coffee-script'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'dag/vim-fish', { 'for': 'fish' }
-Plug 'tpope/vim-haml'
+Plug 'tpope/vim-haml', { 'for': 'haml' }
 Plug 'othree/html5.vim'
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'docunext/closetag.vim', { 'for': 'html' }
