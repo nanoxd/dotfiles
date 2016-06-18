@@ -64,7 +64,7 @@ Plug 'bootleq/vim-textobj-rubysymbol'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'coderifous/textobj-word-column.vim'
 
-Plug 'godlygeek/tabular'
+Plug 'junegunn/vim-easy-align'
 Plug 'tomtom/tcomment_vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tolecnal/vim-matchit'
