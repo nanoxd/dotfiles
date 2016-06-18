@@ -15,14 +15,11 @@ Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim' " JS Frameworks
 Plug 'jtratner/vim-flavored-markdown'
 Plug 'b4winckler/vim-objc'
-Plug 'rodjek/vim-puppet'
-Plug 'wlangstroth/vim-racket', { 'for': 'racket' }
 Plug 'aaronjensen/vim-sass-status'
 Plug 'JulesWang/css.vim'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'tpope/vim-jdaddy'
 Plug 'jby/tmux.vim'
-Plug 'mustache/vim-mustache-handlebars'
 Plug 'keith/swift.vim', { 'for': 'swift' }
 Plug 'cfdrake/vim-carthage'
 Plug 'vim-perl/vim-perl'
@@ -30,7 +27,6 @@ Plug 'rust-lang/rust.vim'
 
 " Ruby
 Plug 'vim-ruby/vim-ruby'
-Plug 'sunaku/vim-ruby-minitest'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'Keithbsmiley/rspec.vim'
@@ -42,7 +38,6 @@ Plug 'nelstrom/vim-visual-star-search'
 Plug 'tpope/vim-abolish'
 Plug 'vim-scripts/ctags.vim'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tpope/vim-speeddating'
 " Adds automatic closing of quotes
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-endwise'
