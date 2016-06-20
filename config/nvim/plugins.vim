@@ -93,6 +93,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 let g:ctrlp_match_window = 'max:20'
 " Adds ; as the Ctrl+P fuzzy search
 nmap ; :CtrlPBuffer<CR>
+nmap <Leader>t :CtrlPTag<CR>
 " Show the damn dotfiles
 let g:ctrlp_show_hidden = 1
 
