@@ -49,3 +49,9 @@ unset config_files updated_at
 # Ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# Android
+ANDROID_DIR="$HOME/Library/Android/sdk/platform-tools"
+if [[ -d $ANDROID_DIR ]]; then
+  export PATH="$ANDROID_DIR:$PATH"
+fi
