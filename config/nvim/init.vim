@@ -173,3 +173,10 @@ source ~/.vim/settings/solarized.vim
 if has('nvim')
   nmap <bs> :<c-u>TmuxNavigateLeft<cr>
 endif
+
+" hide banner
+let g:netrw_banner = 0
+" hide swp, DS_Store files
+let g:netrw_list_hide='.*\.swp$,\.DS_Store'
+" set tree style listing
+let g:netrw_liststyle=3
