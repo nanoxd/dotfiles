@@ -70,6 +70,7 @@ Plug 'majutsushi/tagbar'
 Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'airblade/vim-gitgutter'
 
 " Colors
 Plug 'skwp/vim-colors-solarized'
@@ -114,3 +115,6 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" Increase update time to call gitgutter more often
+set updatetime=250
