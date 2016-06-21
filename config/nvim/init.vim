@@ -77,10 +77,11 @@ source ~/.config/nvim/plugins.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 syntax enable
-colorscheme solarized
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1
+colorscheme hybrid
 set background=dark
-call togglebg#map("<F5>")
-let g:airline_theme = 'base16'
+let g:airline_theme = 'hybridline'
 let g:airline#extensions#tabline#enabled = 1
 
 " Whitespace defaults
