@@ -4,26 +4,29 @@
 call plug#begin('~/.vim/plugged')
 
 " Languages
-Plug 'kchmck/vim-coffee-script'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'tpope/vim-haml', { 'for': 'haml' }
 Plug 'othree/html5.vim'
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'docunext/closetag.vim', { 'for': 'html' }
-Plug 'pangloss/vim-javascript'
-Plug 'othree/javascript-libraries-syntax.vim' " JS Frameworks
 Plug 'jtratner/vim-flavored-markdown'
 Plug 'b4winckler/vim-objc'
 Plug 'aaronjensen/vim-sass-status'
 Plug 'JulesWang/css.vim'
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'tpope/vim-jdaddy'
 Plug 'jby/tmux.vim'
 Plug 'keith/swift.vim', { 'for': 'swift' }
 Plug 'cfdrake/vim-carthage'
 Plug 'vim-perl/vim-perl'
 Plug 'rust-lang/rust.vim'
+
+" Javascript
+Plug 'pangloss/vim-javascript'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'tpope/vim-jdaddy'
+Plug 'mxw/vim-jsx'
+Plug 'kchmck/vim-coffee-script'
 
 " Ruby
 Plug 'vim-ruby/vim-ruby'
