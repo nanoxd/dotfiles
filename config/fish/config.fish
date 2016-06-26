@@ -18,13 +18,6 @@ set -x SLACK_URL "https://hooks.slack.com/services/T03LDKDST/B044UL3CF/BCb9NINte
 fish_user_abbreviations
 set fish_key_bindings fish_vi_key_bindings
 
-# Source rbenv
-if test -d "$HOME/.rbenv/bin"
-  set -U fish_user_paths $HOME/.rbenv/bin $fish_user_paths
-end
-
-status --is-interactive; and . (rbenv init -|psub)
-
 if test -d "$HOME/Library/Android/sdk/platform-tools"
   set --universal fish_user_paths "$HOME/Library/Android/sdk/platform-tools" $fish_user_paths
 end
