@@ -69,3 +69,5 @@
   compactionHeuristic = true
 [interactive]
   diffFilter = diff-highlight
+[include]
+  path = ~/.gitconfig.local
