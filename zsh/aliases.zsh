@@ -74,3 +74,5 @@ fi
 
 ***REMOVED***
 ***REMOVED***
+
+alias sync='rsync -az --progress'
