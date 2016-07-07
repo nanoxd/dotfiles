@@ -110,7 +110,7 @@ call matchadd('ColorColumn', '\%81v', 100)
 autocmd FileType make set noexpandtab
 
 " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
-autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Procfile,Thorfile,config.ru}  set ft=ruby
+autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Procfile,Thorfile,Brewfile,config.ru}  set ft=ruby
 
 " Set Sass files as sass
 autocmd BufRead,BufNewFile *.scss set filetype=scss
