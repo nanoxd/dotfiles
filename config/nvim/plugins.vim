@@ -84,13 +84,6 @@ Plug 'scrooloose/syntastic'
 
 call plug#end()
 
-" YouCompleteMe settings
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
 " CtrlP
 let g:ctrlp_match_window = 'max:20'
 " Adds ; as the Ctrl+P fuzzy search
