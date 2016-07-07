@@ -70,7 +70,6 @@ Plug 'rizzatti/funcoo.vim'
 Plug 'tpope/vim-repeat'
 Plug 'majutsushi/tagbar'
 Plug 'ervandew/supertab'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine'
