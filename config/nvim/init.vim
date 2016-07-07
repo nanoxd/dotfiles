@@ -76,12 +76,9 @@ source ~/.config/nvim/plugins.vim
 " => Look, Style, and Feel
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1
-"set termguicolors=1
-colorscheme hybrid
-set background=dark
-let g:airline_theme = 'hybridline'
+set termguicolors
+colorscheme deep-space
+let g:airline_theme = 'deep_space'
 let g:airline#extensions#tabline#enabled = 1
 
 " Whitespace defaults
