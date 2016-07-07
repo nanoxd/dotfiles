@@ -76,9 +76,9 @@ source ~/.config/nvim/plugins.vim
 " => Look, Style, and Feel
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-syntax enable
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
+set termguicolors
 colorscheme hybrid
 set background=dark
 let g:airline_theme = 'hybridline'

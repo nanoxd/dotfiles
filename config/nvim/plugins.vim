@@ -84,7 +84,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/syntastic'
 
 call plug#end()
-filetype plugin indent on
 
 " YouCompleteMe settings
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
