@@ -62,7 +62,7 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'coderifous/textobj-word-column.vim'
 
 Plug 'junegunn/vim-easy-align'
-Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-commentary'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tolecnal/vim-matchit'
 Plug 'mattboehm/vim-unstack'
@@ -73,6 +73,7 @@ Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'Yggdroot/indentLine'
 
 " Colors
 Plug 'tyrannicaltoucan/vim-deep-space'
