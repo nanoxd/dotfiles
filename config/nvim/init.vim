@@ -76,7 +76,13 @@ source ~/.config/nvim/plugins.vim
 " => Look, Style, and Feel
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set termguicolors
+" Adds 24bit color support
+if has('termguicolors')
+  set termguicolors
+elseif has('nvim')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+
 colorscheme deep-space
 let g:airline_theme = 'deep_space'
 let g:airline#extensions#tabline#enabled = 1
