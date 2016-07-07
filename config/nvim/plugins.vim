@@ -75,8 +75,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'airblade/vim-gitgutter'
 
 " Colors
-Plug 'skwp/vim-colors-solarized'
-Plug 'w0ng/vim-hybrid'
+Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
