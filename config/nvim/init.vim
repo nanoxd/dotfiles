@@ -2,10 +2,10 @@ let mapleader = " "
 
 set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_
 set ruler
-set showcmd       " display incomplete commands
+set showcmd    " display incomplete commands
 set relativenumber
 set number
-set hidden " The current buffer can be put to the background without writing to disk
+set hidden     " The current buffer can be backgrounded without saving
 set cursorline " Highlight current line
 
 " Search
@@ -34,7 +34,7 @@ if has('persistent_undo')
 endif
 
 " When vimrc is edited, reload it
-autocmd! bufwritepost .vimrc source ~/.vimrc
+autocmd! bufwritepost init.vim source ~/.config/nvim/init.vim
 
 " make `-` and `_` work like `o` and `O` without leaving you stuck in insert
 nnoremap - o<esc>
@@ -94,8 +94,7 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
-" Show “invisible” characters
-set list
+set list " Show “invisible” characters
 
 function! s:setupWrapping()
   set wrap
@@ -112,8 +111,7 @@ call matchadd('ColorColumn', '\%81v', 100)
 
 """"Language specific whitespace
 
-" make uses real tabs
-autocmd FileType make set noexpandtab
+autocmd FileType make set noexpandtab " make uses real tabs
 
 " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
 autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Procfile,Thorfile,Brewfile,config.ru}  set ft=ruby
@@ -140,16 +138,10 @@ autocmd BufRead,BufNewFile *.go set tabstop=4 softtabstop=4 shiftwidth=4 expandt
 autocmd BufRead,BufNewFile *.{pl,cgi} call s:disableWhiteSpaceChecking()
 autocmd BufRead,BufNewFile *.{pl,cgi} set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
-" % to bounce from do to end etc.
-runtime! macros/matchit.vim
-
-set ffs=unix,dos,mac "Default file types
-
-" Disable beeps and flashes
-set noeb vb t_vb=
-
-" Enable syntastic syntax checking
-let g:syntastic_enable_signs=1
+runtime! macros/matchit.vim    " % to bounce from do to end etc.
+set ffs=unix,dos,mac           " Default file types
+set noeb vb t_vb=              " Disable beeps and flashes
+let g:syntastic_enable_signs=1 " Enable syntastic syntax checking
 
 " Remember last location in file
 if has("autocmd")
@@ -166,21 +158,14 @@ if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l -g "" --ignore "\.git$\|\.hg$\|\.svn$"'
 
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
+  let g:ctrlp_use_caching = 0 " ag is fast enough that CtrlP doesn't need to cache
 endif
-
-" Source custom Solarized settings
-source ~/.vim/settings/solarized.vim
 
 " Vim-tmux issue: https://github.com/neovim/neovim/issues/2048
 if has('nvim')
   nmap <bs> :<c-u>TmuxNavigateLeft<cr>
 endif
 
-" hide banner
-let g:netrw_banner = 0
-" hide swp, DS_Store files
-let g:netrw_list_hide='.*\.swp$,\.DS_Store'
-" set tree style listing
-let g:netrw_liststyle=3
+let g:netrw_banner = 0                      " hide banner
+let g:netrw_list_hide='.*\.swp$,\.DS_Store' " hide swp, DS_Store files
+let g:netrw_liststyle=3                     " set tree style listing

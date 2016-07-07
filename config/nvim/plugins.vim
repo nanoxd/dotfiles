@@ -84,7 +84,7 @@ Plug 'scrooloose/syntastic'
 
 call plug#end()
 
-" CtrlP
+" CtrlP "
 let g:ctrlp_match_window = 'max:20'
 " Adds ; as the Ctrl+P fuzzy search
 nmap ; :CtrlPBuffer<CR>
@@ -92,6 +92,7 @@ nmap <Leader>t :CtrlPTag<CR>
 " Show the damn dotfiles
 let g:ctrlp_show_hidden = 1
 
+" Tagbar
 nmap <F8> :TagbarToggle<CR>
 
 " make YCM compatible with UltiSnips (using supertab)
@@ -110,5 +111,4 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" Increase update time to call gitgutter more often
-set updatetime=250
+set updatetime=250 " Increase to call gitgutter more often
