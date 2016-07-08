@@ -21,11 +21,15 @@
   "exception-reporting":
     userId: "ec2062ef-1da8-c968-02d8-8039af46975a"
   "file-types":
-    cgi: "perl"
+    "*.cgi": "source.perl"
+  linter: {}
   minimap:
     plugins:
       "git-diff": true
       "git-diffDecorationsZIndex": 0
+      pigments: true
+      pigmentsDecorationsZIndex: 0
+  "symbol-gen": {}
   "vim-mode":
     useSmartcaseForSearch: true
   welcome:
