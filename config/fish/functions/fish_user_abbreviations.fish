@@ -22,14 +22,12 @@ function fish_user_abbreviations
     'gp=git push' \
     'gpr=git pull-request --browse' \
     'gpu=git pull --rebase' \
-    'gs=git status -s' \
+    'gs=git status -sb' \
     'gi=gem install' \
     'gt=gittower .' \
     'gu=gem update' \
     'pi=bundle exec pod install' \
     'pu=bundle exec pod update' \
     'tma=tmux -2 attach -t' \
-    'tmk=tmux kill-session -t' \
-    'tml=tmux list-sessions' \
     'ytd=youtube-dl'
 end

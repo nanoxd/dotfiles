@@ -2,6 +2,7 @@
 
 eval "$(hub alias -s)"
 
+alias g='git'
 alias ga='git add'
 alias gaa='git add --all'
 alias gaap='git add --all --patch'
