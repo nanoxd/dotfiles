@@ -1,4 +1,6 @@
 "*":
+  "autocomplete-plus":
+    minimumWordLength: 2
   core:
     openEmptyEditorOnStart: false
     packagesWithKeymapsDisabled: []
