@@ -33,3 +33,7 @@
 
 'atom-text-editor.vim-mode:not(.insert-mode)':
   'g a': 'align-regexp:align-selection'
+
+'atom-text-editor.vim-mode.normal-mode':
+  'space t': 'symbols-view:toggle-project-symbols'
+  ';': 'fuzzy-finder:toggle-buffer-finder'
