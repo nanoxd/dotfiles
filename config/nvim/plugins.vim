@@ -84,8 +84,6 @@ Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" Linters
-Plug 'scrooloose/syntastic'
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': function('UpdateRemote') }
 
