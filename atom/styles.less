@@ -1,0 +1,23 @@
+// style the background color of the tree view
+.tree-view {
+}
+
+// style the background and foreground colors on the atom-text-editor-element itself
+atom-text-editor {
+  font-family: "OperatorMono-Book";
+  font-size: 14px;
+}
+
+// To style other content in the text editor's shadow DOM, use the ::shadow expression
+atom-text-editor::shadow {
+  .type,
+  .keyword,
+  .modifier,
+  .property-name {
+    font-style: italic;
+  }
+
+  .modifier {
+    font-weight: lighter;
+  }
+}

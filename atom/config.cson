@@ -1,0 +1,16 @@
+"*":
+  editor:
+    fontFamily: "Operator Mono"
+    preferredLineLength: 120
+    showIndentGuide: true
+    showInvisibles: true
+    softWrap: true
+    softWrapAtPreferredLineLength: true
+  "exception-reporting":
+    userId: "ec2062ef-1da8-c968-02d8-8039af46975a"
+  minimap:
+    plugins:
+      "git-diff": true
+      "git-diffDecorationsZIndex": 0
+  welcome:
+    showOnStartup: false
