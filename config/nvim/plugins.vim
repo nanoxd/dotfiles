@@ -27,6 +27,8 @@ Plug 'keith/swift.vim', { 'for': 'swift' }
 Plug 'cfdrake/vim-carthage'
 Plug 'vim-perl/vim-perl'
 Plug 'rust-lang/rust.vim'
+Plug 'hsanson/vim-android'
+Plug 'udalov/kotlin-vim'
 
 " Javascript
 Plug 'pangloss/vim-javascript'
@@ -115,4 +117,6 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+" Gitgutter
 set updatetime=250 " Increase to call gitgutter more often
+let g:gitgutter_map_keys = 0
