@@ -5,7 +5,7 @@
     openEmptyEditorOnStart: false
     packagesWithKeymapsDisabled: []
     themes: [
-      "one-dark-ui"
+      "seti-ui"
       "deep-space-syntax"
     ]
   editor:
@@ -29,6 +29,10 @@
       "git-diffDecorationsZIndex": 0
       pigments: true
       pigmentsDecorationsZIndex: 0
+  "seti-ui":
+    compactView: true
+    displayIgnored: false
+    font: "Default Atom Font"
   "symbol-gen": {}
   "vim-mode":
     useSmartcaseForSearch: true
