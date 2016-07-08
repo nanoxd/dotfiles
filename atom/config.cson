@@ -1,6 +1,10 @@
 "*":
   core:
     openEmptyEditorOnStart: false
+    themes: [
+      "one-dark-ui"
+      "deep-space-syntax"
+    ]
   editor:
     fontFamily: "Operator Mono"
     invisibles:
