@@ -31,5 +31,5 @@
 # Atom Flight Manual:
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
 
-'atom-text-editor':
+'atom-text-editor.vim-mode:not(.insert-mode)':
   'g a': 'align-regexp:align-selection'
