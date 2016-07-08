@@ -1,4 +1,11 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! UpdateRemote(arg)
+  UpdateRemotePlugins
+endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-plug && Plug Specific Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
@@ -70,7 +77,6 @@ Plug 'rizzatti/funcoo.vim'
 Plug 'tpope/vim-repeat'
 Plug 'majutsushi/tagbar'
 Plug 'ervandew/supertab'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine'
@@ -83,16 +89,12 @@ Plug 'vim-airline/vim-airline-themes'
 " Linters
 Plug 'scrooloose/syntastic'
 
+" Completion
+Plug 'Shougo/deoplete.nvim', { 'do': function('UpdateRemote') }
+
 call plug#end()
 
-" YouCompleteMe settings
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" CtrlP
+" CtrlP "
 let g:ctrlp_match_window = 'max:20'
 " Adds ; as the Ctrl+P fuzzy search
 nmap ; :CtrlPBuffer<CR>
@@ -100,12 +102,11 @@ nmap <Leader>t :CtrlPTag<CR>
 " Show the damn dotfiles
 let g:ctrlp_show_hidden = 1
 
+" Tagbar
 nmap <F8> :TagbarToggle<CR>
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
+" Deoplete
+let g:deoplete#enable_at_startup = 1
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
@@ -118,5 +119,4 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" Increase update time to call gitgutter more often
-set updatetime=250
+set updatetime=250 " Increase to call gitgutter more often
