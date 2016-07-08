@@ -20,6 +20,8 @@
     softWrapAtPreferredLineLength: true
   "exception-reporting":
     userId: "ec2062ef-1da8-c968-02d8-8039af46975a"
+  "file-types":
+    cgi: "perl"
   minimap:
     plugins:
       "git-diff": true
@@ -32,6 +34,9 @@
   editor:
     preferredLineLength: 120
 ".fish.source":
+  editor:
+    preferredLineLength: 120
+".hyperlink.text":
   editor:
     preferredLineLength: 120
 ".js.jsx.source":
