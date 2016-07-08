@@ -86,6 +86,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': function('UpdateRemote') }
+Plug 'ludovicchabant/vim-gutentags' " Autogenerate ctags
 
 call plug#end()
 
