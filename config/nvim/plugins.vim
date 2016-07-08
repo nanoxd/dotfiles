@@ -1,4 +1,11 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! UpdateRemote(arg)
+  UpdateRemotePlugins
+endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-plug && Plug Specific Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
@@ -82,6 +89,9 @@ Plug 'vim-airline/vim-airline-themes'
 " Linters
 Plug 'scrooloose/syntastic'
 
+" Completion
+Plug 'Shougo/deoplete.nvim', { 'do': function('UpdateRemote') }
+
 call plug#end()
 
 " CtrlP "
@@ -95,8 +105,8 @@ let g:ctrlp_show_hidden = 1
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:SuperTabDefaultCompletionType = '<C-n>'
+" Deoplete
+let g:deoplete#enable_at_startup = 1
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
