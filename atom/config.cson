@@ -1,6 +1,7 @@
 "*":
   core:
     openEmptyEditorOnStart: false
+    packagesWithKeymapsDisabled: []
     themes: [
       "one-dark-ui"
       "deep-space-syntax"
@@ -25,3 +26,15 @@
     useSmartcaseForSearch: true
   welcome:
     showOnStartup: false
+".babel.regexp.source":
+  editor:
+    preferredLineLength: 120
+".fish.source":
+  editor:
+    preferredLineLength: 120
+".js.jsx.source":
+  editor:
+    preferredLineLength: 120
+".source.viml":
+  editor:
+    preferredLineLength: 120
