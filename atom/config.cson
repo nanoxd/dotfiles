@@ -1,6 +1,11 @@
 "*":
+  core:
+    openEmptyEditorOnStart: false
   editor:
     fontFamily: "Operator Mono"
+    invisibles:
+      cr: "_"
+      tab: "▸"
     preferredLineLength: 120
     showIndentGuide: true
     showInvisibles: true
