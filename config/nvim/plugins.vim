@@ -43,7 +43,7 @@ Plug 'Keithbsmiley/rspec.vim'
 Plug 'tpope/vim-bundler'
 
 " Tools
-Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'tpope/vim-abolish'
 Plug 'vim-scripts/ctags.vim'
@@ -86,7 +86,6 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Linters
 Plug 'scrooloose/syntastic'
-
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': function('UpdateRemote') }
 
