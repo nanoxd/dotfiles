@@ -5,7 +5,7 @@
     openEmptyEditorOnStart: false
     packagesWithKeymapsDisabled: []
     themes: [
-      "seti-ui"
+      "native-ui"
       "deep-space-syntax"
     ]
   editor:
