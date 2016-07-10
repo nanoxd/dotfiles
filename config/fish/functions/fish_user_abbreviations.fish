@@ -1,5 +1,6 @@
 function fish_user_abbreviations
   set -U fish_user_abbreviations \
+    'a=atom' \
     'be=bundle exec' \
     'bu=bundle update' \
     'bi=brew install' \
