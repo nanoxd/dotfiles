@@ -2,6 +2,22 @@
   "autocomplete-plus":
     minimumWordLength: 2
   core:
+    customFileTypes:
+      "source.ini": [
+        ".buckconfig"
+        ".flowconfig"
+      ]
+      "source.json": [
+        ".arcconfig"
+        "BUCK.autodeps"
+      ]
+      "source.python": [
+        "BUCK"
+      ]
+    disabledPackages: [
+      "tree-view"
+      "nuclide"
+    ]
     openEmptyEditorOnStart: false
     packagesWithKeymapsDisabled: []
     themes: [
@@ -22,6 +38,8 @@
     userId: "ec2062ef-1da8-c968-02d8-8039af46975a"
   "file-types":
     "*.cgi": "source.perl"
+  "file-watcher":
+    promptWhenFileHasChangedOnDisk: false
   linter: {}
   minimap:
     plugins:
@@ -38,7 +56,11 @@
     useSmartcaseForSearch: true
   welcome:
     showOnStartup: false
+  whitespace: {}
 ".babel.regexp.source":
+  editor:
+    preferredLineLength: 120
+".css.scss.source":
   editor:
     preferredLineLength: 120
 ".fish.source":
@@ -50,6 +72,10 @@
 ".js.jsx.source":
   editor:
     preferredLineLength: 120
+".sass.source":
+  editor:
+    preferredLineLength: 120
+    tabLength: 4
 ".source.viml":
   editor:
     preferredLineLength: 120
