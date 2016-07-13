@@ -45,9 +45,10 @@
   purge = !git branch -d $(git branch --merged master | grep -v -e '*' -e 'master')
   rebase-origin = !git fetch origin && git rebase origin/master
   reset-hard = reset --hard HEAD
-  st = status -s
+  st = status --short --branch
   tagage = !sh -c 'git for-each-ref --sort=taggerdate refs/tags --format=\"%(refname:short)\"'
   timespan = "!f() { one=$(git log -n 1 --format=%ai $1); two=$(git log -n 1 --format=%ai ${2:-HEAD}); ddiff -f ${3:-%mm%dd} \"$one\" \"$two\"; }; f"
+  unpushed = cherry --verbose
 
 [core]
   excludesfile = ~/.gitignore
@@ -69,3 +70,5 @@
   rebase = true
 [include]
   path = ~/.gitconfig.local
+[rerere]
+	enabled = true
