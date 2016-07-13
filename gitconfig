@@ -4,10 +4,7 @@
 [push]
   default = simple
 [color]
-  branch = auto
-  diff = auto
-  status = auto
-  ui = always
+  ui = auto
 [color "diff-highlight"]
   oldNormal = red bold
   oldHighlight = red bold 52
