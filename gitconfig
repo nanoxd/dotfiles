@@ -20,8 +20,9 @@
 [alias]
   aa = add --all
   ai = add --interactive
+  amend = commit --amend
   ap = add --patch
-  br = branch -vv
+  branch = branch -vv
   browse = "!hub browse"
   ca = commit --amend
   ci = commit -v
@@ -29,26 +30,23 @@
   co = checkout
   create-branch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
   dc = diff --cached
-  delete-merged-branches="git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -g
+  delete-merged-branches="git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
   f = "!git ls-files | grep -i"
   filelog = log -u
   issues = !hub browse -- issues
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  ls-ignored = ls-files --exclude-standard --ignored --others
+  m = checkout master
   merge-branch = !git checkout master && git merge @{-1} --ff-only
   pn = push --set-upstream origin master
   pr = !hub pull-request
+  purge = !git branch -d $(git branch --merged master | grep -v -e '*' -e 'master')
   rebase-origin = !git fetch origin && git rebase origin/master
   reset-hard = reset --hard HEAD
   st = status -s
-  timespan = "!f() { one=$(git log -n 1 --format=%ai $1); two=$(git log -n 1 --format=%ai ${2:-HEAD}); ddiff -f ${3:-%mm%dd} \"$one\" \"$two\"; }; f"
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-
   tagage = !sh -c 'git for-each-ref --sort=taggerdate refs/tags --format=\"%(refname:short)\"'
-  m = checkout master
-  amend = commit --amend
-  branch = branch -vv
-  ls-ignored = ls-files --exclude-standard --ignored --others
-  purge = !git branch -d $(git branch --merged master | grep -v -e '*' -e 'master')
+  timespan = "!f() { one=$(git log -n 1 --format=%ai $1); two=$(git log -n 1 --format=%ai ${2:-HEAD}); ddiff -f ${3:-%mm%dd} \"$one\" \"$two\"; }; f"
 
 [core]
   excludesfile = ~/.gitignore
