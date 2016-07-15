@@ -72,8 +72,17 @@
 ".js.jsx.source":
   editor:
     preferredLineLength: 120
+".perl.source":
+  editor:
+    preferredLineLength: 120
+  whitespace:
+    removeTrailingWhitespace: false
+".perl6.source":
+  editor:
+    preferredLineLength: 120
 ".sass.source":
   editor:
+    autoIndentOnPaste: true
     preferredLineLength: 120
     tabLength: 4
 ".source.viml":
