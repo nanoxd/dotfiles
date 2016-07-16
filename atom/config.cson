@@ -15,7 +15,6 @@
         "BUCK"
       ]
     disabledPackages: [
-      "tree-view"
       "nuclide"
     ]
     openEmptyEditorOnStart: false
