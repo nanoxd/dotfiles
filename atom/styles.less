@@ -27,4 +27,18 @@ atom-text-editor::shadow {
   .invisible-character {
     color: darken(@light-gray, 15%);
   }
+
+  // Italicize HTML attributes
+  .entity.other.attribute-name.html {
+     font-style: italic;
+   }
+
+  .lines .keyword.operator {
+    font-family: "FiraCode-Light";
+    text-rendering: optimizeLegibility;
+  }
+
+  .lines .cursor-line .keyword.operator {
+    text-rendering: auto;
+  }
 }
