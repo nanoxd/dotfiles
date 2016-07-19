@@ -14,8 +14,12 @@
       "source.python": [
         "BUCK"
       ]
+      "source.perl": [
+        "cgi"
+      ]
     disabledPackages: [
       "nuclide"
+      "emmet"
     ]
     openEmptyEditorOnStart: false
     packagesWithKeymapsDisabled: []
@@ -50,6 +54,12 @@
     compactView: true
     displayIgnored: false
     font: "Default Atom Font"
+  "split-diff":
+    diffWords: true
+    ignoreWhitespace: true
+    leftEditorColor: "red"
+    rightEditorColor: "green"
+    syncHorizontalScroll: true
   "symbol-gen": {}
   "vim-mode":
     useSmartcaseForSearch: true
