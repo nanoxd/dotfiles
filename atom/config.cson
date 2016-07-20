@@ -11,11 +11,14 @@
         ".arcconfig"
         "BUCK.autodeps"
       ]
+      "source.perl": [
+        "cgi"
+      ]
       "source.python": [
         "BUCK"
       ]
-      "source.perl": [
-        "cgi"
+      "source.ruby": [
+        "Dangerfile"
       ]
     disabledPackages: [
       "nuclide"
