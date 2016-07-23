@@ -64,6 +64,93 @@
     rightEditorColor: "green"
     syncHorizontalScroll: true
   "symbol-gen": {}
+  "terminal-plus":
+    ansiColors:
+      normal:
+        black:
+          red: 65
+          green: 77
+          blue: 96
+          alpha: 1
+        blue:
+          red: 96
+          green: 140
+          blue: 195
+          alpha: 1
+        cyan:
+          red: 86
+          green: 173
+          blue: 183
+          alpha: 1
+        green:
+          red: 112
+          green: 157
+          blue: 108
+          alpha: 1
+        magenta:
+          red: 143
+          green: 114
+          blue: 191
+          alpha: 1
+        red:
+          red: 177
+          green: 94
+          blue: 124
+          alpha: 1
+        white:
+          red: 117
+          green: 135
+          blue: 166
+          alpha: 1
+        yellow:
+          red: 181
+          green: 162
+          blue: 98
+          alpha: 1
+      zBright:
+        brightBlack:
+          red: 81
+          green: 97
+          blue: 125
+          alpha: 1
+        brightBlue:
+          red: 127
+          green: 164
+          blue: 209
+          alpha: 1
+        brightCyan:
+          red: 122
+          green: 190
+          blue: 198
+          alpha: 1
+        brightGreen:
+          red: 142
+          green: 177
+          blue: 139
+          alpha: 1
+        brightMagenta:
+          red: 171
+          green: 149
+          blue: 207
+          alpha: 1
+        brightRed:
+          red: 194
+          green: 128
+          blue: 152
+          alpha: 1
+        brightWhite:
+          red: 154
+          green: 167
+          blue: 189
+          alpha: 1
+        brightYellow:
+          red: 197
+          green: 181
+          blue: 125
+          alpha: 1
+    style: {}
+    toggles:
+      autoClose: true
   "vim-mode":
     useSmartcaseForSearch: true
   welcome:
@@ -75,7 +162,16 @@
 ".css.scss.source":
   editor:
     preferredLineLength: 120
+".erb.html.text":
+  editor:
+    preferredLineLength: 120
 ".fish.source":
+  editor:
+    preferredLineLength: 120
+".gfm.source":
+  editor:
+    preferredLineLength: 120
+".html.liquid.text":
   editor:
     preferredLineLength: 120
 ".hyperlink.text":
@@ -90,6 +186,9 @@
   whitespace:
     removeTrailingWhitespace: false
 ".perl6.source":
+  editor:
+    preferredLineLength: 120
+".ruby.source":
   editor:
     preferredLineLength: 120
 ".sass.source":
