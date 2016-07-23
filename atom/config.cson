@@ -47,6 +47,8 @@
   "file-watcher":
     promptWhenFileHasChangedOnDisk: false
   linter: {}
+  "markdown-writer":
+    siteEngine: "jekyll"
   minimap:
     plugins:
       "git-diff": true
