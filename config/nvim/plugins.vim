@@ -87,7 +87,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Completion
-Plug 'Shougo/deoplete.nvim', { 'do': function('UpdateRemote') }
 Plug 'ludovicchabant/vim-gutentags' " Autogenerate ctags
 
 call plug#end()
@@ -103,8 +102,6 @@ let g:ctrlp_show_hidden = 1
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
 
-" Deoplete
-let g:deoplete#enable_at_startup = 1
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
