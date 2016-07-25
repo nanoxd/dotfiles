@@ -54,6 +54,7 @@
   excludesfile = ~/.gitignore
   editor = nvim
   pager = diff-highlight | less -r
+  whitespace = fix
 [credential]
   helper = osxkeychain
 [rebase]
@@ -72,3 +73,5 @@
   path = ~/.gitconfig.local
 [rerere]
 	enabled = true
+[apply]
+	whitespace = nowarn
