@@ -87,6 +87,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Completion
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 Plug 'ludovicchabant/vim-gutentags' " Autogenerate ctags
 
 call plug#end()
