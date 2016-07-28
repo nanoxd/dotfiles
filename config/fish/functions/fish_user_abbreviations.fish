@@ -20,6 +20,7 @@ function fish_user_abbreviations
     'gco=git checkout' \
     'gd=git diff' \
     'gdc=git diff --cached' \
+    'gdw=git diff --word-diff' \
     'gp=git push' \
     'gpr=git pull-request --browse' \
     'gpu=git pull --rebase' \
