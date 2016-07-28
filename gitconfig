@@ -72,6 +72,8 @@
 [include]
   path = ~/.gitconfig.local
 [rerere]
-	enabled = true
+  enabled = true
 [apply]
-	whitespace = nowarn
+  whitespace = nowarn
+[commit]
+  template = ~/.gitmessage
