@@ -66,7 +66,6 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-    // 'hyperterm-snazzy',
     'hyperterm-deep-space',
     "hyperterm-subpixel-antialiased",
     'hyperterm-1password'
