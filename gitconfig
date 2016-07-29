@@ -77,3 +77,4 @@
   whitespace = nowarn
 [commit]
   template = ~/.gitmessage
+	gpgsign = true
