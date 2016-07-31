@@ -1,9 +1,1 @@
-complete -c carthage -a 'archive' -d 'Archives a built framework into a zip that Carthage can use'
-complete -c carthage -a 'bootstrap' -d 'Check out and build the project\'s dependencies'
-complete -c carthage -a 'build' -d 'Build the project\'s dependencies'
-complete -c carthage -a 'checkout' -d 'Check out the project\'s dependencies'
-complete -c carthage -a 'copy-frameworks' -d 'In a Run Script build phase, copies each framework'
-complete -c carthage -a 'fetch' -d 'Clones or fetches a Git repository ahead of time'
-complete -c carthage -a 'help' -d 'Display general or command-specific help'
-complete -c carthage -a 'update' -d 'Update and rebuild the project\'s dependencies'
-complete -c carthage -a 'version' -d 'Display the current version of Carthage'
+/Library/Frameworks/CarthageKit.framework/Versions/A/Scripts/carthage-fish-completion
