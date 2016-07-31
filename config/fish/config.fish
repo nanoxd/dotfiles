@@ -1,5 +1,5 @@
 # Set paths
-set -U fish_user_paths /usr/local/sbin /usr/local/bin $HOME/.bin $GOPATH/bin 
+set -U fish_user_paths /usr/local/sbin /usr/local/bin $HOME/.bin $GOPATH/bin
 
 # Editors
 set -U EDITOR nvim
@@ -12,7 +12,7 @@ set -x SLACK_URL "https://hooks.slack.com/services/T03LDKDST/B044UL3CF/BCb9NINte
 
 # Custom behavior
 fish_user_abbreviations
-set fish_key_bindings fish_vi_key_bindings
+set -u fish_key_bindings fish_vi_key_bindings
 
 if test -d "$HOME/Library/Android/sdk/platform-tools"
   set --universal fish_user_paths "$HOME/Library/Android/sdk/platform-tools" $fish_user_paths
