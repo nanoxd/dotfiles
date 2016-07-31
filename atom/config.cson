@@ -164,6 +164,9 @@
 ".css.scss.source":
   editor:
     preferredLineLength: 120
+".elm.source":
+  editor:
+    preferredLineLength: 120
 ".erb.html.text":
   editor:
     preferredLineLength: 120

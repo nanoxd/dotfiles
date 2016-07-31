@@ -36,6 +36,7 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'tpope/vim-jdaddy'
 Plug 'mxw/vim-jsx'
 Plug 'kchmck/vim-coffee-script'
+Plug 'elmcast/elm-vim'
 
 " Ruby
 Plug 'vim-ruby/vim-ruby'
