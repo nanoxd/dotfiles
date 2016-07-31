@@ -61,3 +61,9 @@
 --exclude=bower_components
 --exclude=node_modules
 --exclude=vendor
+
+--langdef=Elm
+--langmap=Elm:.elm
+--regex-Elm=/^module[ \t]*([A-Z][a-zA-Z0-9'_.]*)/\1/m,module/
+--regex-Elm=/^type[ \t]*([A-Z][a-zA-Z0-9'_]*)./\1/t,type/
+--regex-Elm=/^([a-z_][a-zA-Z0-9'_]*).*=/\1/v,function/
