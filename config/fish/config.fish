@@ -1,8 +1,5 @@
 # Set paths
-set -U fish_user_paths /usr/local/sbin /usr/local/bin $HOME/.bin $GOPATH/bin /Applications/Postgres.app/Contents/Versions/9.3/bin
-
-# Load Solarized for colors
-source $HOME/.config/fish/solarized.fish
+set -U fish_user_paths /usr/local/sbin /usr/local/bin $HOME/.bin $GOPATH/bin 
 
 # Editors
 set -U EDITOR nvim
@@ -11,7 +8,6 @@ set -U PAGER less
 
 # ENVs
 set -x GOPATH "$HOME/Dev/go"
-set -x HOMEBREW_CASK_OPTS "--appdir=/Applications" # Install location
 set -x SLACK_URL "https://hooks.slack.com/services/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"
 
 # Custom behavior
@@ -30,6 +26,3 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
-
-# Disable Cocoapods Deterministic UUIDs
-export COCOAPODS_DISABLE_DETERMINISTIC_UUIDS=YES
