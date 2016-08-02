@@ -1,5 +1,6 @@
 "*":
   "autocomplete-plus":
+    backspaceTriggersAutocomplete: true
     minimumWordLength: 2
   core:
     customFileTypes:
@@ -46,6 +47,9 @@
     "*.cgi": "source.perl"
   "file-watcher":
     promptWhenFileHasChangedOnDisk: false
+  "find-and-replace":
+    closeFindPanelAfterSearch: true
+    openProjectFindResultsInRightPane: true
   linter: {}
   "markdown-writer":
     siteEngine: "jekyll"
@@ -161,7 +165,16 @@
 ".babel.regexp.source":
   editor:
     preferredLineLength: 120
+".basic.html.text":
+  editor:
+    preferredLineLength: 120
+".coffee.source":
+  editor:
+    preferredLineLength: 120
 ".css.scss.source":
+  editor:
+    preferredLineLength: 120
+".css.source":
   editor:
     preferredLineLength: 120
 ".elm.source":
@@ -183,6 +196,9 @@
   editor:
     preferredLineLength: 120
 ".js.jsx.source":
+  editor:
+    preferredLineLength: 120
+".litcoffee.source":
   editor:
     preferredLineLength: 120
 ".perl.source":
