@@ -110,6 +110,11 @@ let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
+" ELm
+let g:ycm_semantic_triggers = {
+     \ 'elm' : ['.'],
+     \}
+
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -128,5 +133,5 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " Gitgutter
-set updatetime=250 " Increase to call gitgutter more often
+set updatetime=500 " Increase to call gitgutter more often
 let g:gitgutter_map_keys = 0
