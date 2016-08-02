@@ -47,6 +47,7 @@
     softWrapAtPreferredLineLength: true
   "exception-reporting":
     userId: "ec2062ef-1da8-c968-02d8-8039af46975a"
+  "file-icons": {}
   "file-types":
     "*.cgi": "source.perl"
   "file-watcher":
@@ -54,6 +55,8 @@
   "find-and-replace":
     closeFindPanelAfterSearch: true
     openProjectFindResultsInRightPane: true
+  "git-plus":
+    pullBeforePush: "pull --rebase"
   linter: {}
   "markdown-writer":
     siteEngine: "jekyll"
@@ -181,6 +184,9 @@
 ".css.source":
   editor:
     preferredLineLength: 120
+".diff.source":
+  editor:
+    preferredLineLength: 120
 ".elm.source":
   editor:
     preferredLineLength: 120
@@ -191,6 +197,9 @@
   editor:
     preferredLineLength: 120
 ".gfm.source":
+  editor:
+    preferredLineLength: 120
+".graphql.source":
   editor:
     preferredLineLength: 120
 ".html.liquid.text":
@@ -221,6 +230,12 @@
     autoIndentOnPaste: true
     preferredLineLength: 120
     tabLength: 4
+".source.swift":
+  editor:
+    preferredLineLength: 120
+".source.tmux":
+  editor:
+    preferredLineLength: 120
 ".source.viml":
   editor:
     preferredLineLength: 120
