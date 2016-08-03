@@ -20,3 +20,4 @@ DerivedData
 *.bts
 tags
 .tags
+*.swp
