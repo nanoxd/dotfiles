@@ -16,7 +16,8 @@ atom-text-editor::shadow {
   .keyword,
   .modifier,
   .property-name,
-  .type {
+  .type,
+  .support.type.object.module.js {
     font-style: italic;
   }
 
@@ -33,9 +34,14 @@ atom-text-editor::shadow {
      font-style: italic;
    }
 
-  .lines .keyword.operator {
+  .lines .keyword.operator  {
     font-family: "FiraCode-Light";
     text-rendering: optimizeLegibility;
+  }
+
+  .support.type.object.module.js,
+  .keyword.operator.accessor.js {
+    font-family: "OperatorMono-Book"
   }
 
   .lines .cursor-line .keyword.operator {
