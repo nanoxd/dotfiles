@@ -58,6 +58,9 @@
   "git-plus":
     pullBeforePush: "pull --rebase"
   linter: {}
+  "linter-js-standard":
+    checkStyleDevDependencies: true
+    showEslintRules: true
   "markdown-writer":
     siteEngine: "jekyll"
   minimap:
@@ -76,6 +79,8 @@
     leftEditorColor: "red"
     rightEditorColor: "green"
     syncHorizontalScroll: true
+  "standard-formatter":
+    checkStyleDevDependencies: true
   "symbol-gen": {}
   "terminal-plus":
     ansiColors:
