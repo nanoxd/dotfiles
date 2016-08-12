@@ -55,6 +55,7 @@
   editor = nvim
   pager = diff-highlight | less -r
   whitespace = fix
+  untrackedCache = true
 [credential]
   helper = osxkeychain
 [rebase]
