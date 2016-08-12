@@ -1,4 +1,7 @@
 "*":
+  "atom-beautify":
+    general:
+      _analyticsUserId: "b08122a8-4340-4b85-9725-bf9cd618bf68"
   "autocomplete-plus":
     backspaceTriggersAutocomplete: true
     minimumWordLength: 2
@@ -222,6 +225,7 @@
 ".perl.source":
   editor:
     preferredLineLength: 120
+    tabLength: 4
   whitespace:
     removeTrailingWhitespace: false
 ".perl6.source":
