@@ -55,3 +55,5 @@ ANDROID_DIR="$HOME/Library/Android/sdk/platform-tools"
 if [[ -d $ANDROID_DIR ]]; then
   export PATH="$ANDROID_DIR:$PATH"
 fi
+
+export PATH="/usr/local/opt/gnupg/libexec/gpgbin:$PATH"
