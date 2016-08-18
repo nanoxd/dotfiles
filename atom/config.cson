@@ -5,10 +5,7 @@
   "autocomplete-plus":
     backspaceTriggersAutocomplete: true
     minimumWordLength: 2
-  autoprefixer:
-    browsers: [
-      "last 2 versions"
-    ]
+  autoprefixer: {}
   core:
     customFileTypes:
       "source.ini": [
