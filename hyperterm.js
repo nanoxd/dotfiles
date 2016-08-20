@@ -54,9 +54,10 @@ module.exports = {
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
     // if left empty, your system's login shell will be used by default
-    shell: ''
+    shell: '',
 
     // for advanced config flags please refer to https://hyperterm.org/#cfg
+    summonShortcut: 'Cmd+Ctrl+Option+Shift+R'
   },
 
   // a list of plugins to fetch and install from npm
@@ -68,7 +69,8 @@ module.exports = {
   plugins: [
     'hyperterm-deep-space',
     "hyperterm-subpixel-antialiased",
-    'hyperterm-1password'
+    'hyperterm-1password',
+    'hyperterm-summon'
   ],
 
   // in development, you can create a directory under

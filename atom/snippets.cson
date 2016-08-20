@@ -19,22 +19,3 @@
 # If you are unfamiliar with CSON, you can read more about it in the
 # Atom Flight Manual:
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
-
-'.source.perl':
-  'Page Output Body':
-    'prefix': 'pbody'
-    'body': """
-    use SB::HTML::PageOutput;
-    my $page_output_body = SB::HTML::PageOutput::totals({
-        count          => $count,
-        singular_label => $1,
-        plural_label   => $2,
-    });
-    """
-  'Page Output Bar':
-    'prefix': 'pbar'
-    'body': """
-    my $page_output_bar = SB::HTML::PageOutput::page_output_bar({
-        body => $page_output_body,
-    });
-    """
