@@ -169,6 +169,8 @@
     style: {}
     toggles:
       autoClose: true
+  "tree-view":
+    hideVcsIgnoredFiles: true
   "vim-mode":
     useSmartcaseForSearch: true
   welcome:
