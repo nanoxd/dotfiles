@@ -28,6 +28,7 @@ function fish_user_abbreviations
     'gi=gem install' \
     'gt=gittower .' \
     'gu=gem update' \
+    'ni=npm install' \
     'pi=bundle exec pod install' \
     'pu=bundle exec pod update' \
     'tma=tmux -2 attach -t' \

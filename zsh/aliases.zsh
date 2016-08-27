@@ -76,3 +76,6 @@ fi
 ***REMOVED***
 
 alias sync='rsync -az --progress'
+
+# NPM
+alias ni='npm i'
