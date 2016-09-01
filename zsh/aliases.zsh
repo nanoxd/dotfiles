@@ -31,6 +31,8 @@ alias .....='cd ../../../..'
 
 alias ls='ls -G'
 alias ll='ls -alhG'
+alias sbgit='git config user.email fernando.paredes@shiftboard.com'
+
 
 if which brew >/dev/null 2>&1; then
   brew() {

@@ -31,6 +31,7 @@ function fish_user_abbreviations
     'ni=npm install' \
     'pi=bundle exec pod install' \
     'pu=bundle exec pod update' \
+    'sbgit=git config user.email fernando.paredes@shiftboard.com' \
     'tma=tmux -2 attach -t' \
     'ytd=youtube-dl'
 end
