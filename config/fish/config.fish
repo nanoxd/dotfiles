@@ -2,9 +2,9 @@
 set -U fish_user_paths /usr/local/sbin /usr/local/bin $HOME/.bin $GOPATH/bin /usr/local/opt/gnupg/libexec/gpgbin
 
 # Editors
-set -U EDITOR nvim
-set -U VISUAL nvim
-set -U PAGER less
+set -gx EDITOR nvim
+set -gx VISUAL nvim
+set -gx PAGER less
 
 # ENVs
 set -x GOPATH "$HOME/Dev/go"
@@ -20,8 +20,6 @@ end
 if test -f $HOME/.fish
   source $HOME/.fish
 end
-
-
 
 alias ..='cd ..'
 alias ...='cd ../..'
