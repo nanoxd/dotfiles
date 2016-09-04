@@ -11,7 +11,6 @@ set -x GOPATH "$HOME/Dev/go"
 set -x SLACK_URL "https://hooks.slack.com/services/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"
 
 # Custom behavior
-fish_user_abbreviations
 set -u fish_key_bindings fish_vi_key_bindings
 
 if test -d "$HOME/Library/Android/sdk/platform-tools"
