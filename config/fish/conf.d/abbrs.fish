@@ -39,6 +39,7 @@ if not set -q fish_initialized
   abbr -a nis npm install --save
   abbr -a nisd npm install --save-dev
   abbr -a npmu npm-check -u
+  abbr -a nr npm run
 
   abbr -a pi bundle exec pod install
   abbr -a pu bundle exec pod update
