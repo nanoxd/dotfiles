@@ -57,6 +57,7 @@
   "find-and-replace":
     closeFindPanelAfterSearch: true
     openProjectFindResultsInRightPane: true
+  "flow-ide": {}
   "git-plus":
     pullBeforePush: "pull --rebase"
   linter: {}
