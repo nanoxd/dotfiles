@@ -85,3 +85,7 @@ alias sync='rsync -az --progress'
 
 # NPM
 alias ni='npm i'
+alias nis='npm i --save'
+alias nisd='npm i --save-dev'
+alias npmu='npm-check -u'
+alias nr='npm run'
