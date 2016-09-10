@@ -52,6 +52,7 @@
   undo = "!f() { \\\n    git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; \\\n}; f"
 
 [core]
+  attributesfile = ~/.gitattributes
   excludesfile = ~/.gitignore
   editor = nvim
   pager = diff-highlight | less -r
@@ -80,3 +81,7 @@
 [commit]
   template = ~/.gitmessage
 	gpgsign = true
+[diff "plist"]
+  textconv = plutil -convert xml1 -o -
+[diff "provision"]
+  textconv = openssl smime -inform der -verify -in
