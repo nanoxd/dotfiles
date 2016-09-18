@@ -57,3 +57,5 @@ if [[ -d $ANDROID_DIR ]]; then
 fi
 
 export PATH="/usr/local/opt/gnupg/libexec/gpgbin:$PATH"
+
+source `brew --prefix`/etc/profile.d/z.sh
