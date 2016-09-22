@@ -46,7 +46,7 @@ Plug 'Keithbsmiley/rspec.vim'
 Plug 'tpope/vim-bundler'
 
 " Tools
-Plug 'mileszs/ack.vim'
+Plug 'mhinz/vim-grepper'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'tpope/vim-abolish'
 Plug 'vim-scripts/ctags.vim'
