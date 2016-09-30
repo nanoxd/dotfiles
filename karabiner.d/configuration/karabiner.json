@@ -4,8 +4,7 @@
             "name": "Default profile",
             "selected": true,
             "simple_modifications": {
-                "caps_lock": "escape",
-                "escape": "f19"
+                "caps_lock": "f18",
             }
         }
     ]
