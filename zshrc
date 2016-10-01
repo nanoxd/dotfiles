@@ -56,6 +56,8 @@ if [[ -d $ANDROID_DIR ]]; then
   export PATH="$ANDROID_DIR:$PATH"
 fi
 
-export PATH="/usr/local/opt/gnupg/libexec/gpgbin:$PATH"
-
 source `brew --prefix`/etc/profile.d/z.sh
+
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -1,5 +1,5 @@
 # Set paths
-set -U fish_user_paths /usr/local/sbin /usr/local/bin $HOME/.bin $GOPATH/bin /usr/local/opt/gnupg/libexec/gpgbin
+set -U fish_user_paths /usr/local/sbin /usr/local/bin $HOME/.bin $GOPATH/bin
 
 # Editors
 set -gx EDITOR nvim
@@ -8,6 +8,7 @@ set -gx PAGER less
 
 # ENVs
 set -x GOPATH "$HOME/Dev/go"
+set -x FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 set -x SLACK_URL "https://hooks.slack.com/services/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"
 
 # Custom behavior
