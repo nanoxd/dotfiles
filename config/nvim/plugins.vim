@@ -50,7 +50,11 @@ Plug 'mhinz/vim-grepper'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'tpope/vim-abolish'
 Plug 'vim-scripts/ctags.vim'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
 " Adds automatic closing of quotes
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-endwise'
