@@ -1,6 +1,6 @@
 local M = {}
 
-function M.init()
+function M.load()
   -- A global variable for the Hyper Mode
   k = hs.hotkey.modal.new({}, "F17")
 

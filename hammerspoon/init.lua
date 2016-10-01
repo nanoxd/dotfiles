@@ -1,6 +1,6 @@
 local hyper = require "hyper"
 
-hyper.init()
+hyper.load()
 
 -- Reload config when any lua file in config directory changes
 function reloadConfig(files)
