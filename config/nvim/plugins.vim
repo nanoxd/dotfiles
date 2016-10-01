@@ -98,14 +98,6 @@ Plug 'ludovicchabant/vim-gutentags' " Autogenerate ctags
 
 call plug#end()
 
-" CtrlP "
-let g:ctrlp_match_window = 'max:20'
-" Adds ; as the Ctrl+P fuzzy search
-nmap ; :CtrlPBuffer<CR>
-nmap <Leader>t :CtrlPTag<CR>
-" Show the damn dotfiles
-let g:ctrlp_show_hidden = 1
-
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
 
@@ -139,3 +131,21 @@ nmap ga <Plug>(EasyAlign)
 " Gitgutter
 set updatetime=500 " Increase to call gitgutter more often
 let g:gitgutter_map_keys = 0
+
+" Fzf
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+nmap <C-p> :Files<CR>
+nmap ; :Buffers<CR>
+nmap <Leader>t :Tags<CR>
+nmap <Leader>s :Find<CR>
