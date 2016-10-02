@@ -1,5 +1,7 @@
 local M = {}
 
+local hyper = {"⌘", "⌥", "⌃", "⇧"}
+
 function M.load()
   -- A global variable for the Hyper Mode
   k = hs.hotkey.modal.new({}, "F17")
@@ -8,7 +10,6 @@ function M.load()
   -- The handler already exists, usually in Keyboard Maestro
   -- we just have to get the right keystroke sent
   hyperBindings = {'s','t','SPACE'}
-  hyper = {'cmd','alt','shift','ctrl'}
 
   for i,key in ipairs(hyperBindings) do
     k:bind({}, key, nil, function() hs.eventtap.keyStroke(hyper, key)
