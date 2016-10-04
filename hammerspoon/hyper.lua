@@ -9,7 +9,7 @@ function M.load()
   -- Hyper+key for all the below are setup somewhere
   -- The handler already exists, usually in Keyboard Maestro
   -- we just have to get the right keystroke sent
-  hyperBindings = {'s','t','SPACE'}
+  hyperBindings = {'s', 't', 'w', 'SPACE'}
 
   for i,key in ipairs(hyperBindings) do
     k:bind({}, key, nil, function() hs.eventtap.keyStroke(hyper, key)
