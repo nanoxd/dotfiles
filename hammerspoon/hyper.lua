@@ -11,6 +11,8 @@ function M.load()
   -- we just have to get the right keystroke sent
   hyperBindings = {'s', 't', 'w', 'SPACE'}
 
+  k:bind({}, 'Q', 'Lock System', function() hs.caffeinate.lockScreen() end)
+
   for i,key in ipairs(hyperBindings) do
     k:bind({}, key, nil, function() hs.eventtap.keyStroke(hyper, key)
       k.triggered = true
