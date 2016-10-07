@@ -153,16 +153,6 @@ endif
 " => Files and backups
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" The Silver Searcher
-if executable('ag')
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l -g "" --ignore "\.git$\|\.hg$\|\.svn$"'
-  let g:ctrlp_use_caching = 0 " ag is fast enough that CtrlP doesn't need to cache
-
-  let g:ackprg = 'ag --vimgrep'
-  command! Ag Ack
-endif
-
 " Vim-tmux issue: https://github.com/neovim/neovim/issues/2048
 if has('nvim')
   nmap <bs> :<c-u>TmuxNavigateLeft<cr>
