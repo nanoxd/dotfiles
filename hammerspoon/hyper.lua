@@ -3,8 +3,8 @@
 -- we just have to get the right keystroke sent
 hyperBindings = {'s', 't', 'w', 'SPACE'}
 
-for i,key in ipairs(hyperBindings) do
-  hyperMode:bind({}, key, nil, function() 
+for i, key in ipairs(hyperBindings) do
+  hyperMode:bind({}, key, nil, function()
     hs.eventtap.keyStroke(hyper, key)
     hyperMode.triggered = true
   end)
