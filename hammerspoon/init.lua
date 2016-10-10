@@ -1,19 +1,11 @@
 hyper = {"⌘", "⌥", "⌃", "⇧"}
 
+  -- A global variable for the Hyper Mode
+hyperMode = hs.hotkey.modal.new({}, "F17")
+
 require "hyper"
+require "reload_config"
 
--- Reload config when any lua file in config directory changes
-function reloadConfig(files)
-    doReload = false
-    for _,file in pairs(files) do
-        if file:sub(-4) == '.lua' then
-            doReload = true
-        end
-    end
-    if doReload then
-        hs.reload()
-    end
-end
+-- Lock System
+hyperMode:bind({}, 'Q', 'Lock System', function() hs.caffeinate.lockScreen() end)
 
-local myWatcher = hs.pathwatcher.new(os.getenv('HOME') .. '/.hammerspoon/', reloadConfig):start()
-hs.alert.show('Config loaded')
