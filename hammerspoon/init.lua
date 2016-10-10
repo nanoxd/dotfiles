@@ -1,6 +1,6 @@
-local hyper = require "hyper"
+hyper = {"⌘", "⌥", "⌃", "⇧"}
 
-hyper.load()
+require "hyper"
 
 -- Reload config when any lua file in config directory changes
 function reloadConfig(files)
