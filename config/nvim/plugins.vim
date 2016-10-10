@@ -29,6 +29,7 @@ Plug 'vim-perl/vim-perl'
 Plug 'rust-lang/rust.vim'
 Plug 'hsanson/vim-android'
 Plug 'udalov/kotlin-vim'
+Plug 'tbastos/vim-lua'
 
 " Javascript
 Plug 'pangloss/vim-javascript'
