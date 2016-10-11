@@ -226,9 +226,6 @@
 ".litcoffee.source":
   editor:
     preferredLineLength: 120
-".lua.source":
-  editor:
-    preferredLineLength: 120
 ".perl.source":
   editor:
     preferredLineLength: 120
