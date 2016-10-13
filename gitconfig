@@ -85,3 +85,7 @@
   textconv = plutil -convert xml1 -o -
 [diff "provision"]
   textconv = openssl smime -inform der -verify -in
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	required = true
+	clean = git-lfs clean -- %f
