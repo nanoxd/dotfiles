@@ -96,7 +96,7 @@
   "standard-formatter":
     checkStyleDevDependencies: true
   "symbol-gen": {}
-  "terminal-plus":
+  "terminal-fusion":
     ansiColors:
       normal:
         black: "#414d60"
