@@ -1,7 +1,12 @@
-'atom-text-editor.vim-mode:not(.insert-mode)':
+'atom-text-editor.vim-mode-plus:not(.insert-mode)':
   'g a': 'align-regexp:align-selection'
   'space b': 'atom-beautify:beautify-editor'
 
-'atom-text-editor.vim-mode.normal-mode':
+'atom-text-editor.vim-mode-plus.normal-mode':
   'space t': 'symbols-view:toggle-project-symbols'
   ';':       'fuzzy-finder:toggle-buffer-finder'
+
+'atom-text-editor.vim-mode-plus.normal-mode, atom-text-editor.vim-mode-plus.visual-mode':
+  'space m': 'quick-highlight:toggle'
+  'space M': 'quick-highlight:clear'
+  'g m': 'vim-mode-plus-user:quick-highlight'
