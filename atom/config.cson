@@ -118,6 +118,8 @@
         brightRed: "#c28098"
         brightWhite: "#9aa7bd"
         brightYellow: "#c5b57d"
+    core:
+      workingDirectory: "Project"
     style: {}
     toggles:
       autoClose: true
