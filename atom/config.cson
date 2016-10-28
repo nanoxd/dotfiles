@@ -7,6 +7,13 @@
   "autocomplete-plus":
     backspaceTriggersAutocomplete: true
     minimumWordLength: 2
+    suppressActivationForEditorClasses: [
+      "vim-mode-plus.normal-mode"
+      "vim-mode-plus.visual-mode"
+      "vim-mode-plus.operator-pending-mode"
+      "vim-mode-plus.insert-mode.replace"
+      "narrow"
+    ]
   autoprefixer: {}
   core:
     customFileTypes:
