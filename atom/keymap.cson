@@ -1,6 +1,8 @@
 'atom-text-editor.vim-mode-plus:not(.insert-mode)':
   'g a': 'align-regexp:align-selection'
   'space b': 'atom-beautify:beautify-editor'
+  '-': 'choose-pane:start'
+  'm m': 'choose-pane:focus-last-focused'
 
 'atom-text-editor.vim-mode-plus.normal-mode':
   'space t': 'symbols-view:toggle-project-symbols'
