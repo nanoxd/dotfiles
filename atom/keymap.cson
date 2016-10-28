@@ -12,3 +12,10 @@
   'space m': 'quick-highlight:toggle'
   'space M': 'quick-highlight:clear'
   'g m': 'vim-mode-plus-user:quick-highlight'
+
+'atom-text-editor#choose-pane-editor':
+  '-': 'choose-pane:last-focused'
+
+'.tree-view':
+  '-': 'choose-pane:start'
+  'm m': 'choose-pane:focus-last-focused'
