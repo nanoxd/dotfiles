@@ -123,6 +123,11 @@
     hideVcsIgnoredFiles: true
   "vim-mode":
     useSmartcaseForSearch: true
+  "vim-mode-plus":
+    highlightSearch: true
+    incrementalSearch: true
+    stayOnYank: true
+    useSmartcaseForSearch: true
   welcome:
     showOnStartup: false
   whitespace: {}
