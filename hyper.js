@@ -4,7 +4,8 @@ module.exports = {
     fontSize: 14,
 
     // font family with optional fallbacks
-    fontFamily: "OperatorMono-Book",
+    // fontFamily: "OperatorMono-Book",
+    fontFamily: `"Fira Code", "OperatorMono-Book"`,
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
     cursorColor: 'rgba(248,28,229,0.75)',
@@ -22,10 +23,18 @@ module.exports = {
     borderColor: '#333',
 
     // custom css to embed in the main window
-    css: '',
+    css: `
+      x-screen x-row {
+         font-variant-ligatures: initial;
+      }
+    `,
 
     // custom css to embed in the terminal window
-    termCSS: '',
+    termCSS: `
+      x-screen x-row {
+         font-variant-ligatures: initial;
+      }
+    `,
 
     // custom padding (css format, i.e.: `top right bottom left`)
     padding: '12px 14px',
@@ -57,7 +66,7 @@ module.exports = {
     shell: '',
 
     // for advanced config flags please refer to https://hyperterm.org/#cfg
-    summonShortcut: 'Cmd+Ctrl+Option+Shift+t'
+    summonShortcut: 'Cmd+Ctrl+Option+Shift+t',
   },
 
   // a list of plugins to fetch and install from npm
