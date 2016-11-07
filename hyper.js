@@ -57,7 +57,7 @@ module.exports = {
     shell: '',
 
     // for advanced config flags please refer to https://hyperterm.org/#cfg
-    summonShortcut: 'Cmd+Ctrl+Option+Shift+R'
+    summonShortcut: 'Cmd+Ctrl+Option+Shift+t'
   },
 
   // a list of plugins to fetch and install from npm
