@@ -1,4 +1,6 @@
 @light-gray: #7587a6;
+@font-fira-code: 'FiraCode-Light';
+@font-operator-mono: 'OperatorMono-Book';
 
 // style the background color of the tree view
 .tree-view {
@@ -6,12 +8,12 @@
 
 // style the background and foreground colors on the atom-text-editor-element itself
 atom-text-editor {
-  font-family: "OperatorMono-Book";
+  font-family: @font-operator-mono;
   font-size: 14px;
 }
 
 // To style other content in the text editor's shadow DOM, use the ::shadow expression
-atom-text-editor::shadow {
+atom-text-editor.shadow {
   .builtin,
   .keyword,
   .modifier,
@@ -38,14 +40,14 @@ atom-text-editor::shadow {
   .storage.type.function.arrow.js,
   .keyword.operator.logical.js,
   .keyword.operator.comparison.js  {
-    font-family: "FiraCode-Light";
+    font-family: @font-fira-code;
     text-rendering: optimizeLegibility;
   }
 
   .support.type.object.module.js,
   .keyword.operator.accessor.js,
   .keyword.operator.js {
-    font-family: "OperatorMono-Book"
+    font-family: @font-operator-mono
   }
 
   .lines .cursor-line .keyword.operator {
