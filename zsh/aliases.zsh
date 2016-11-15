@@ -66,6 +66,14 @@ if which brew >/dev/null 2>&1; then
   alias podu='bundle exec pod update'
 fi
 
+if which yarn >/dev/null 2>&1; then
+  alias ya='yarn add'
+  alias yad='yarn add --dev'
+  alias yag='yarn global add'
+  alias yr='yarn run'
+  alias yu='yarn update-interactive'
+fi
+
 alias a='atom'
 alias e='nvim'
 alias be='bundle exec'
