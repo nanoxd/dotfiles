@@ -35,11 +35,11 @@ if not set -q fish_initialized
   abbr -a gu gem update
 
   # Node
-  abbr -a ni npm install
-  abbr -a nis npm install --save
-  abbr -a nisd npm install --save-dev
-  abbr -a npmu npm-check -u
-  abbr -a nr npm run
+  abbr -a ya yarn add
+  abbr -a yad yarn add --dev
+  abbr -a yag yarn global add
+  abbr -a yr yarn run
+  abbr -a yu yarn update-interactive
 
   abbr -a pi bundle exec pod install
   abbr -a pu bundle exec pod update
