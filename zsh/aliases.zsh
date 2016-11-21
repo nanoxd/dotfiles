@@ -28,6 +28,8 @@ pbssh() {
   cat ~/.ssh/id_rsa.pub | pbcopy
 }
 
+alias rm='trash'
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
