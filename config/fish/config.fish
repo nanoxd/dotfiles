@@ -10,7 +10,7 @@ set -x FZF_TMUX 1
 set -x SLACK_URL "https://hooks.slack.com/services/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"
 
 # Set paths
-set -U fish_user_paths /usr/local/bin $HOME/.bin $GOPATH/bin $HOME/.yarn/bin
+set -U fish_user_paths /usr/local/bin $HOME/.bin $GOPATH/bin (yarn global bin)
 
 # Custom behavior
 set -U fish_key_bindings fish_vi_key_bindings
