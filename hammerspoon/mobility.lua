@@ -1,5 +1,5 @@
 -- Home SSID
-local homeSSID = 'Mars'
+local homeSSID = 'Hogwarts'
 local lastSSID = hs.wifi.currentNetwork()
 
 local connectVPN = [[

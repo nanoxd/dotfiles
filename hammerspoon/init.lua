@@ -6,7 +6,7 @@ hyperMode = hs.hotkey.modal.new({}, "F17")
 require 'util'
 require "hyper"
 require "reload_config"
-require "mobility"
+-- require "mobility"
 
 -- Lock System
 hyperMode:bind({}, 'Q', 'Lock System', function() hs.caffeinate.lockScreen() end)
