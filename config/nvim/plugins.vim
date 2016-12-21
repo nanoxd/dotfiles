@@ -94,7 +94,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Completion
 Plug 'ervandew/supertab'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --racer-completer --tern-completer' }
 Plug 'ludovicchabant/vim-gutentags' " Autogenerate ctags
 
 call plug#end()
