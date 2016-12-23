@@ -1,3 +1,3 @@
 function rm --description "A safer remove"
-  trash
+  trash $argv 
 end
