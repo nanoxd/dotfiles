@@ -56,6 +56,12 @@ if [[ -d $ANDROID_DIR ]]; then
   export PATH="$ANDROID_DIR:$PATH"
 fi
 
+# Haskell
+STACK_DIR="$HOME/.local/bin"
+if [[ -d $STACK_DIR ]]; then
+  export PATH="$STACK_DIR:$PATH"
+fi
+
 source `brew --prefix`/etc/profile.d/z.sh
 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
