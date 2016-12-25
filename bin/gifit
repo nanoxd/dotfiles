@@ -1,0 +1,20 @@
+#!/bin/bash
+# Converts videos (screencasts, mostly) to gifs scaling to 800:-1.
+# Dependencies: gifsicle, imagemagick, ffmpeg
+
+set -eo pipefail
+
+TEMP_DIR=`mktemp -d ./frames.XXXX`
+CURRENT_DIR=`pwd`
+
+movie="$1"
+
+cd "$TEMP_DIR"
+
+ffmpeg -nostats -loglevel quiet -i "../$movie" -r 24 frame-%03d.png
+convert frame-001.png pallete.gif
+convert -dither none -remap pallete.gif frame-*.png recording-uncompressed.gif
+
+gifsicle --optimize=3 --delay=3 < recording-uncompressed.gif > ../"$movie".gif
+cd "$CURRENT_DIR"
+rm -r "$TEMP_DIR"
