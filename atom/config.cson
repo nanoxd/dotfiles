@@ -58,6 +58,9 @@
     showInvisibles: true
     softWrap: true
     softWrapAtPreferredLineLength: true
+  elmjutsu:
+    autocompleteEnabled: true
+    cacheDirectory: "/var/folders/qq/sd2n2_ds16z4qh8mq0nj5mqh0000gn/T/elmjutsu88446eVSXirGkkE37"
   "exception-reporting":
     userId: "ec2062ef-1da8-c968-02d8-8039af46975a"
   "file-icons": {}
@@ -69,9 +72,10 @@
     closeFindPanelAfterSearch: true
     openProjectFindResultsInRightPane: true
   "flow-ide": {}
-  "git-plus":
-    pullBeforePush: "pull --rebase"
+  "git-plus": {}
   linter: {}
+  "linter-elm-make":
+    lintOnTheFly: true
   "linter-js-standard":
     checkStyleDevDependencies: true
     showEslintRules: true
