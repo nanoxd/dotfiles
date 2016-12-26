@@ -30,6 +30,8 @@ Plug 'rust-lang/rust.vim'
 Plug 'hsanson/vim-android'
 Plug 'udalov/kotlin-vim'
 Plug 'tbastos/vim-lua'
+Plug 'slashmili/alchemist.vim'
+Plug 'elixir-lang/vim-elixir'
 
 " Javascript
 Plug 'pangloss/vim-javascript'
