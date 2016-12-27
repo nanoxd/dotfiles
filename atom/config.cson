@@ -75,11 +75,10 @@
     closeFindPanelAfterSearch: true
     openProjectFindResultsInRightPane: true
   "flow-ide": {}
+  "git-plus": {}
+  "haskell-ghc-mod": {}
   "language-elm":
     autocompleteEnabled: false
-  "git-plus":
-    pullBeforePush: "pull --rebase"
-  "haskell-ghc-mod": {}
   linter: {}
   "linter-elm-make":
     lintOnTheFly: true
