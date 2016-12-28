@@ -5,7 +5,7 @@ if uname -s | grep -q Darwin; then
   export PATH="/usr/local/bin:$PATH"
 fi
 
-export PATH="$HOME/.bin:`yarn global bin`:$PATH"
+export PATH="$HOME/.bin:$HOME/.cargo/bin:`yarn global bin`:$PATH"
 export EDITOR='nvim'
 export VISUAL='nvim'
 export PAGER='less'

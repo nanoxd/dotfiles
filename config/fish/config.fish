@@ -19,8 +19,14 @@ if test -d "$HOME/Library/Android/sdk/platform-tools"
   set -U fish_user_paths "$HOME/Library/Android/sdk/platform-tools" $fish_user_paths
 end
 
+# Stack
 if test -d "$HOME/.local/bin"
   set -U fish_user_paths "$HOME/.local/bin" $fish_user_paths
+end
+
+# Rust
+if test -d "$HOME/.cargo/bin"
+  set -U fish_user_paths "$HOME/.cargo/bin" $fish_user_paths
 end
 
 if test -f $HOME/.fish
