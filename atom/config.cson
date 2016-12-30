@@ -96,6 +96,9 @@
       "git-diffDecorationsZIndex": 0
       pigments: true
       pigmentsDecorationsZIndex: 0
+  racer:
+    racerBinPath: "/Users/nano/.cargo/bin/racer"
+    rustSrcPath: "/Users/nano/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
   "seti-ui":
     compactView: true
     displayIgnored: false
