@@ -33,6 +33,8 @@ if test -f $HOME/.fish
   source $HOME/.fish
 end
 
+export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
