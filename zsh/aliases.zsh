@@ -99,3 +99,8 @@ alias nis='npm i --save'
 alias nisd='npm i --save-dev'
 alias npmu='npm-check -u'
 alias nr='npm run'
+
+# Rust
+alias c='cargo'
+alias cr='cargo run'
+alias ct='cargo test'
