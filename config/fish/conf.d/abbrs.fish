@@ -44,5 +44,10 @@ if not set -q fish_initialized
   abbr -a pi bundle exec pod install
   abbr -a pu bundle exec pod update
 
+  # Rust
+  abbr -a c cargo
+  abbr -a cr cargo run
+  abbr -a ct cargo test
+
   set -U fish_initialized
 end
