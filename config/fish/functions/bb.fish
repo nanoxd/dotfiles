@@ -1,5 +1,5 @@
 function bb -d "Update and upgrade brew packages"
   brew update
-  and brew upgrade --all
+  and brew upgrade
   and bclean
 end
