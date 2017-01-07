@@ -71,7 +71,8 @@ module.exports = {
     'hyperterm-deep-space',
     "hyperterm-subpixel-antialiased",
     'hyperterm-1password',
-    'hyperterm-summon'
+    'hyperterm-summon',
+    'hyper-statusline'
   ],
 
   // in development, you can create a directory under
