@@ -76,7 +76,9 @@
     closeFindPanelAfterSearch: true
     openProjectFindResultsInRightPane: true
   "flow-ide": {}
-  "git-plus": {}
+  "git-plus":
+    general:
+      _analyticsUserId: "a6812a63-2645-4c13-a37b-6785716451fc"
   "haskell-ghc-mod": {}
   "language-elm":
     autocompleteEnabled: false
