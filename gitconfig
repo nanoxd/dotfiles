@@ -68,6 +68,7 @@
   fetchJobs = 0
 [diff]
   compactionHeuristic = true
+	indentHeuristic = true
 [interactive]
   diffFilter = diff-highlight
 [pull]
