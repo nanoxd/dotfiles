@@ -26,7 +26,6 @@ Plug 'jby/tmux.vim'
 Plug 'keith/swift.vim', { 'for': 'swift' }
 Plug 'cfdrake/vim-carthage'
 Plug 'vim-perl/vim-perl'
-Plug 'rust-lang/rust.vim'
 Plug 'hsanson/vim-android'
 Plug 'udalov/kotlin-vim'
 Plug 'tbastos/vim-lua'
@@ -47,6 +46,10 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'Keithbsmiley/rspec.vim'
 Plug 'tpope/vim-bundler'
+
+" Rust
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
 
 " Tools
 Plug 'mhinz/vim-grepper'
