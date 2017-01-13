@@ -14,8 +14,8 @@ if not set -q fish_initialized
   abbr -a ga git add
   abbr -a gaa git add --all
   abbr -a gaap git add --all --patch
-  abbr -a gc git commit -v
-  abbr -a gca git commit -v --amend
+  abbr -a gc git commit
+  abbr -a gca git commit --amend
   abbr -a gcb git create-branch
   abbr -a gcl git clone
   abbr -a gco git checkout

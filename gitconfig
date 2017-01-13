@@ -81,6 +81,7 @@
 [commit]
   template = ~/.gitmessage
 	gpgsign = true
+	verbose = true
 [diff "plist"]
   textconv = plutil -convert xml1 -o -
 [diff "provision"]
