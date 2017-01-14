@@ -14,39 +14,39 @@ atom-text-editor {
 
 // To style other content in the text editor's shadow DOM, use the ::shadow expression
 atom-text-editor {
-  .builtin,
-  .keyword,
-  .modifier,
-  .property-name,
-  .type,
+  .syntax--builtin,
+  .syntax--keyword,
+  .syntax--modifier,
+  .syntax--property-name,
+  .syntax--type,
   .support.type.object.module.js {
     font-style: italic;
   }
 
-  .modifier {
+  .syntax--modifier {
     font-weight: lighter;
   }
 
-  .invisible-character {
+  .syntax--invisible-character {
     color: darken(@light-gray, 15%);
   }
 
   // Italicize HTML attributes
-  .entity.other.attribute-name.html {
+  .syntax--entity.syntax--other.syntax--attribute-name.syntax--html {
      font-style: italic;
    }
 
-  .lines .keyword.operator,
-  .storage.type.function.arrow.js,
-  .keyword.operator.logical.js,
-  .keyword.operator.comparison.js  {
+  .lines .syntax--keyword.syntax--operator,
+  .syntax--storage.syntax--type.syntax--function.syntax--arrow.syntax--js,
+  .syntax--keyword.syntax--operator.syntax--logical.syntax--js,
+  .syntax--keyword.syntax--operator.syntax--comparison.syntax--js  {
     font-family: @font-fira-code;
     text-rendering: optimizeLegibility;
   }
 
-  .support.type.object.module.js,
-  .keyword.operator.accessor.js,
-  .keyword.operator.js {
+  .syntax--support.syntax--type.syntax--object.syntax--module.syntax--js,
+  .syntax--keyword.syntax--operator.syntax--accessor.syntax--js,
+  .syntax--keyword.syntax--operator.syntax--js {
     font-family: @font-operator-mono;
   }
 
