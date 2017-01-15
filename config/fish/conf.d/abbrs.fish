@@ -31,7 +31,6 @@ if not set -q fish_initialized
   # Ruby
   abbr -a be bundle exec
   abbr -a bu bundle update
-  abbr -a gi gem install
   abbr -a gu gem update
 
   # Node
