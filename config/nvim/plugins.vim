@@ -31,6 +31,7 @@ Plug 'udalov/kotlin-vim'
 Plug 'tbastos/vim-lua'
 Plug 'slashmili/alchemist.vim'
 Plug 'elixir-lang/vim-elixir'
+Plug 'Shougo/vinarise.vim'
 
 " Javascript
 Plug 'pangloss/vim-javascript'
