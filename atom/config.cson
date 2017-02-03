@@ -76,8 +76,12 @@
     openProjectFindResultsInRightPane: true
   "flow-ide": {}
   "git-plus":
+    commits:
+      verboseCommits: true
     general:
-      _analyticsUserId: "a6812a63-2645-4c13-a37b-6785716451fc"
+      analytics: false
+    remoteInteractions:
+      pullRebase: true
   "haskell-ghc-mod": {}
   "language-elm":
     autocompleteEnabled: false
