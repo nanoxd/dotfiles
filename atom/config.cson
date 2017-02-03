@@ -44,7 +44,7 @@
     ]
     openEmptyEditorOnStart: false
     packagesWithKeymapsDisabled: []
-    projectHome: "/Users/nano/Dropbox/Dev/"
+    projectHome: "/Users/nano/dev/"
     telemetryConsent: "limited"
     themes: [
       "native-ui"
