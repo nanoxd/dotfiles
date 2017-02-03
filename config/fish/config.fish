@@ -4,7 +4,7 @@ set -gx VISUAL nvim
 set -gx PAGER less
 
 # ENVs
-set -x GOPATH "$HOME/Dev/go"
+set -x GOPATH "$HOME/dev/go"
 set -x FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 set -x FZF_TMUX 1
 set -x SLACK_URL "https://hooks.slack.com/services/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"
