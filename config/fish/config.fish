@@ -35,6 +35,10 @@ end
 
 export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
 
+if -test -d "/Applications/Postgres.app/Contents/Versions/latest/bin"
+  set -U fish_user_paths "/Applications/Postgres.app/Contents/Versions/latest/bin" $fish_user_paths
+end
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
