@@ -73,7 +73,7 @@
   "file-watcher":
     promptWhenFileHasChangedOnDisk: false
   "find-and-replace":
-    openProjectFindResultsInRightPane: true
+    projectSearchResultsPaneSplitDirection: "right"
   "flow-ide": {}
   "git-plus":
     commits:
