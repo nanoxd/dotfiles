@@ -1,4 +1,7 @@
 "*":
+  "advanced-open-file":
+    createDirectories: true
+    fuzzyMatch: true
   "atom-beautify":
     general:
       _analyticsUserId: "b08122a8-4340-4b85-9725-bf9cd618bf68"
