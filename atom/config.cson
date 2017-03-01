@@ -7,6 +7,7 @@
       _analyticsUserId: "b08122a8-4340-4b85-9725-bf9cd618bf68"
   "atom-easy-jsdoc":
     beta: true
+  "atom-typescript": {}
   "autocomplete-haskell":
     useBackend: "haskell-ghc-mod"
   "autocomplete-plus":
@@ -88,7 +89,8 @@
   "haskell-ghc-mod": {}
   "language-elm":
     autocompleteEnabled: false
-  linter: {}
+  linter:
+    showErrorPanel: false
   "linter-elm-make":
     lintOnTheFly: true
   "linter-js-standard":
