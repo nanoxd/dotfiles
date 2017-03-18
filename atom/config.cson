@@ -95,6 +95,8 @@
   "linter-js-standard":
     checkStyleDevDependencies: true
     showEslintRules: true
+  "linter-ui-default":
+    showPanel: true
   "markdown-writer":
     siteEngine: "jekyll"
   minimap:
@@ -158,7 +160,6 @@
     highlightSearch: true
     incrementalSearch: true
     stayOnYank: true
-    useClipboardAsDefaultRegister: true
     useSmartcaseForSearch: true
   welcome:
     showOnStartup: false
