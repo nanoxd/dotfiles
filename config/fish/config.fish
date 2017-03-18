@@ -29,6 +29,12 @@ if test -d "$HOME/.cargo/bin"
   set -U fish_user_paths "$HOME/.cargo/bin" $fish_user_paths
 end
 
+# Yarn
+if test -d (yarn global bin)
+  set -U fish_user_paths (yarn global bin) $fish_user_paths
+  set -x PATH $PATH $HOME"/.config/yarn/global/node_modules/.bin"
+end
+
 if test -f $HOME/.fish
   source $HOME/.fish
 end
