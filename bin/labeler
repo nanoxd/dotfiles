@@ -1,0 +1,102 @@
+#!/usr/bin/env bash
+
+# Colours picked from https://robinpowered.com/blog/best-practice-system-for-organizing-and-tagging-github-issues/
+
+###
+# Label definitions
+###
+declare -A LABELS
+
+# Platform
+LABELS["web"]="BFD4F2"
+LABELS["mobile"]="BFD4F2"
+
+# Problems
+LABELS["bug"]="EE3F46"
+LABELS["security"]="EE3F46"
+LABELS["production"]="F45D43"
+
+# Mindless
+LABELS["chore"]="FEF2C0"
+LABELS["refactoring"]="FEF2C0"
+
+# Experience
+LABELS["copy"]="FFC274"
+LABELS["design"]="FFC274"
+LABELS["ux"]="FFC274"
+
+# Environment
+LABELS["staging"]="FAD8C7"
+LABELS["test"]="FAD8C7"
+
+# Feedback
+LABELS["discussion"]="CC317C"
+LABELS["rfc"]="CC317C"
+LABELS["question"]="CC317C"
+LABELS["help-wanted"]="CC317C"
+LABELS["needs-repro"]="CC317C"
+
+# Improvements
+LABELS["enhancement"]="5EBEFF"
+LABELS["optimization"]="5EBEFF"
+
+# Additions
+LABELS["feature"]="91CA55"
+
+# Pending
+LABELS["in-progress"]="FBCA04"
+LABELS["watchlist"]="FBCA04"
+
+# Inactive
+LABELS["invalid"]="D2DAE1"
+LABELS["wontfix"]="D2DAE1"
+LABELS["duplicate"]="D2DAE1"
+LABELS["on hold"]="D2DAE1"
+
+# Experience
+LABELS["infrastructure"]="000000"
+LABELS["api"]="000000"
+
+###
+# Get a token from Github
+###
+if [ ! -f ~/.token ]; then
+  read -p "Please enter your Github username: " user
+  read -p "Please enter your 6 digit two-factor-authentication code: " otp_code
+
+  curl -u "$user" -H "X-Github-OTP: $otp_code" -d '{"scopes":["repo", "public_repo"], "note":"Creating Labels"}' "https://api.github.com/authorizations" | jq -r '.token' > ~/.token
+fi
+
+TOKEN=$(cat ~/.token)
+
+if [[ ! -s ~/.token ]] || [[ $TOKEN == 'null' ]]; then
+    echo "Auth fail"
+    rm ~/.token
+    exit;
+fi
+
+read -p "Who owns the repo you want labels on?: " owner
+read -p "What repo do you want labels on?: " repo
+
+for K in "${!LABELS[@]}"; do
+  CURL_OUTPUT=$(curl -s -H "Authorization: token $TOKEN" -X POST "https://api.github.com/repos/$owner/$repo/labels" -d "{\"name\":\"$K\", \"color\":\"${LABELS[$K]}\"}")
+  HAS_ERROR=$(echo "$CURL_OUTPUT" | jq 'has("errors")')
+
+  if [ "$HAS_ERROR" = true ]; then
+    ERROR=$(echo "$CURL_OUTPUT" | jq -r '.errors[0].code')
+
+    if [ "$ERROR" == "already_exists" ]; then
+      # We update
+      echo "'$K' already exists. Updating..."
+      CURL_OUTPUT=$(curl -s -H "Authorization: token $TOKEN" -X PATCH "https://api.github.com/repos/$owner/$repo/labels/${K/ /%20}" -d "{\"name\":\"$K\", \"color\":\"${LABELS[$K]}\"}")
+    else
+      echo "Unknown error: $ERROR"
+      echo "Output from curl: "
+      echo "$CURL_OUTPUT"
+      echo "Exiting..."
+      exit;
+    fi
+  else
+    echo "Created '$K'."
+  fi
+done
