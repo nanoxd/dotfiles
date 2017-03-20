@@ -152,6 +152,9 @@
     style: {}
     toggles:
       autoClose: true
+  termination:
+    style:
+      theme: "github"
   "tree-view":
     hideVcsIgnoredFiles: true
   "vim-mode":
