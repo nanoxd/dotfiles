@@ -111,6 +111,7 @@
     style: {}
     toggles:
       autoClose: true
+      cursorBlink: false
   racer:
     racerBinPath: "/Users/nano/.cargo/bin/racer"
     rustSrcPath: "/Users/nano/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
