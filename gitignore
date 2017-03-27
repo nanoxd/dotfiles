@@ -21,3 +21,4 @@ DerivedData
 tags
 .tags
 *.swp
+.tern-project
