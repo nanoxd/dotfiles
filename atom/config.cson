@@ -88,8 +88,7 @@
   "haskell-ghc-mod": {}
   "language-elm":
     autocompleteEnabled: false
-  linter:
-    showErrorPanel: false
+  linter: {}
   "linter-elm-make":
     lintOnTheFly: true
   "linter-js-standard":
