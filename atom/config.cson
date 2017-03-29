@@ -125,7 +125,6 @@
     ignoreWhitespace: true
     leftEditorColor: "red"
     rightEditorColor: "green"
-    scrollSyncType: "Vertical + Horizontal"
     syncHorizontalScroll: true
   "standard-formatter":
     checkStyleDevDependencies: true
