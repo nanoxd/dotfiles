@@ -21,6 +21,8 @@
   "choose-pane":
     labelChars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   core:
+    allowPendingPaneItems: false
+    closeDeletedFileTabs: true
     customFileTypes:
       "source.ini": [
         ".buckconfig"
