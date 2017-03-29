@@ -33,7 +33,7 @@ LABELS["test"]="FAD8C7"
 LABELS["discussion"]="CC317C"
 LABELS["rfc"]="CC317C"
 LABELS["question"]="CC317C"
-LABELS["help-wanted"]="CC317C"
+LABELS["help wanted"]="CC317C"
 LABELS["needs-repro"]="CC317C"
 
 # Improvements
