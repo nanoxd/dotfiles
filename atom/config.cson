@@ -55,7 +55,7 @@
     ]
     useCustomTitleBar: true
   editor:
-    fontFamily: "Operator Mono"
+    fontFamily: "Iosevka"
     invisibles:
       cr: "_"
       tab: "▸"
