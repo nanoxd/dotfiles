@@ -1,57 +1,22 @@
 @light-gray: #7587a6;
-@font-fira-code: 'FiraCode-Light';
-@font-operator-mono: 'OperatorMono-Book';
 
 // style the background color of the tree view
 .tree-view {
-}
-
-// style the background and foreground colors on the atom-text-editor-element itself
-atom-text-editor {
-  font-family: @font-operator-mono;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 // To style other content in the text editor's shadow DOM, use the ::shadow expression
 atom-text-editor {
-  .syntax--builtin,
-  .syntax--keyword,
-  .syntax--modifier,
-  .syntax--property-name,
-  .syntax--type,
-  .support.type.object.module.js {
-    font-style: italic;
-  }
-
   .syntax--modifier {
     font-weight: lighter;
   }
 
+  .syntax--string.syntax--quoted,
+  .syntax--string.syntax--regexp {
+    -webkit-font-feature-settings: "liga" off, "calt" off;
+  }
+
   .syntax--invisible-character {
     color: darken(@light-gray, 15%);
-  }
-
-  // Italicize HTML attributes
-  .syntax--entity.syntax--other.syntax--attribute-name.syntax--html {
-     font-style: italic;
-   }
-
-  .lines .syntax--keyword.syntax--operator,
-  .syntax--storage.syntax--type.syntax--function.syntax--arrow.syntax--js,
-  .syntax--keyword.syntax--operator.syntax--logical.syntax--js,
-  .syntax--keyword.syntax--operator.syntax--comparison.syntax--js,
-  .syntax--function.syntax--arrow.syntax--ts
-  {
-    font-family: @font-fira-code;
-    text-rendering: optimizeLegibility;
-  }
-
-  .syntax--support.syntax--type.syntax--object.syntax--module.syntax--js,
-  .syntax--keyword.syntax--operator.syntax--accessor.syntax--js,
-  .syntax--keyword.syntax--operator.syntax--js {
-    font-family: @font-operator-mono;
-  }
-
-  .lines .cursor-line .keyword.operator {
-    text-rendering: auto;
   }
 }
