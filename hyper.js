@@ -3,32 +3,14 @@ module.exports = {
     // default font size in pixels for all tabs
     fontSize: 14,
 
-    // font family with optional fallbacks
-    // fontFamily: "OperatorMono-Book",
-    fontFamily: `"OperatorMono-Book", "Fira Code"`,
-
-    // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
+    fontFamily: `"Iosevka"`,
     cursorColor: 'rgba(248,28,229,0.75)',
-
-    // `BEAM` for |, `UNDERLINE` for _, `BLOCK` for █
     cursorShape: 'BLOCK',
-
-    // color of the text
     foregroundColor: '#fff',
-
-    // terminal background color
     backgroundColor: '#000',
-
-    // border color (window, tabs)
     borderColor: '#333',
-
-    // custom css to embed in the main window
     css: '',
-
-    // custom css to embed in the terminal window
     termCSS: '',
-
-    // custom padding (css format, i.e.: `top right bottom left`)
     padding: '12px 14px',
 
     // the full list. if you're going to provide the full color palette,
@@ -61,22 +43,12 @@ module.exports = {
     // summonShortcut: 'Cmd+Ctrl+Option+Shift+t',
   },
 
-  // a list of plugins to fetch and install from npm
-  // format: [@org/]project[#version]
-  // examples:
-  //   `hyperpower`
-  //   `@company/project`
-  //   `project#1.0.1`
   plugins: [
     'hyperterm-deep-space',
     "hyperterm-subpixel-antialiased",
     'hyperterm-1password',
     'hyperterm-summon',
-    'hyper-statusline'
   ],
 
-  // in development, you can create a directory under
-  // `~/.hyperterm_plugins/local/` and include it here
-  // to load it and avoid it being `npm install`ed
   localPlugins: []
 };
