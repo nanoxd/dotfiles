@@ -53,7 +53,7 @@
       "native-ui"
       "deep-space-syntax"
     ]
-    useCustomTitleBar: true
+    titleBar: "custom"
   editor:
     fontFamily: "Iosevka"
     invisibles:
