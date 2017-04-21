@@ -77,7 +77,6 @@ if which yarn >/dev/null 2>&1; then
 fi
 
 alias a='atom'
-alias e='nvim'
 alias be='bundle exec'
 alias bu='bundle update'
 alias gemi='gem install'

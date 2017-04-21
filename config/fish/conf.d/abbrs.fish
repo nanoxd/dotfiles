@@ -1,7 +1,6 @@
 if not set -q fish_initialized
   # Editors
   abbr -a a atom
-  abbr -a e nvim
 
   # Homebrew | Cask
   abbr -a bi brew install
