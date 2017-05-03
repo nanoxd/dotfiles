@@ -28,3 +28,9 @@
         \t${4:unimplemented!()}
         }
       '''
+'.source.javascript':
+    'AsyncRoute':
+      'prefix': 'asr'
+      'body': '''
+        const $1 = asyncRoute(() => System.import($2))
+      '''
