@@ -28,9 +28,12 @@
         \t${4:unimplemented!()}
         }
       '''
-'.source.javascript':
+'.source.js':
     'AsyncRoute':
       'prefix': 'asr'
       'body': '''
         const $1 = asyncRoute(() => System.import($2))
       '''
+    'WebpackChunk Name':
+      'prefix': 'wcn'
+      'body': '/* webpackChunkName: "$1" */'
