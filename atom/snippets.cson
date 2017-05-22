@@ -37,3 +37,6 @@
     'WebpackChunk Name':
       'prefix': 'wcn'
       'body': '/* webpackChunkName: "$1" */'
+    'Log':
+      'prefix': 'log'
+      'body': 'console.log($1)'
