@@ -35,10 +35,10 @@ if not set -q fish_initialized
   abbr -a gu gem update
 
   # Node
+  abbr -a y yarn
   abbr -a ya yarn add
   abbr -a yad yarn add --dev
   abbr -a yag yarn global add
-  abbr -a yr yarn run
   abbr -a yu yarn update-interactive
 
   abbr -a pi bundle exec pod install
