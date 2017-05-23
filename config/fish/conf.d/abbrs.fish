@@ -41,7 +41,7 @@ if not set -q fish_initialized
   abbr -a yag yarn global add
   abbr -a yu yarn update-interactive
 
-  abbr -a pi bundle exec pod install
+  abbr -a pi bundle exec pod install --repo-update
   abbr -a pu bundle exec pod update
 
   # Rust
