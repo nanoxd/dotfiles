@@ -12,6 +12,7 @@ if not set -q fish_initialized
   # Git Abbreviations
   abbr -a g git
   abbr -a ga git add
+  abbr -a gb git browse
   abbr -a gaa git add --all
   abbr -a gaap git add --all --patch
   abbr -a gc git commit
