@@ -5,6 +5,7 @@ if not set -q fish_initialized
   # Homebrew | Cask
   abbr -a bi brew install
   abbr -a bci brew cask install
+  abbr -a bcr brew cask reinstall
   abbr -a bcs brew cask search
   abbr -a bcu brew cask uninstall
 
