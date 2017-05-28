@@ -10,6 +10,7 @@ set -x FZF_TMUX 1
 set -x SLACK_URL "https://hooks.slack.com/services/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"
 set -x DYLD_LIBRARY_PATH "$HOME/.rustup/toolchains/nightly-x86_64-apple-darwin"
 set -x RLS_ROOT "$HOME/dev/tools/rls"
+set -x GITHUB_ACCESS_TOKEN (cat ~/.token)
 
 # Set paths
 set -U fish_user_paths /usr/local/bin $HOME/.bin $GOPATH/bin (yarn global bin)
