@@ -97,6 +97,7 @@
     checkStyleDevDependencies: true
     showEslintRules: true
   "linter-ui-default":
+    panelHeight: 72
     showPanel: true
   "markdown-writer":
     siteEngine: "jekyll"
