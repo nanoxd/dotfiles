@@ -19,3 +19,9 @@
 '.tree-view':
   '-': 'choose-pane:start'
   'm m': 'choose-pane:focus-last-focused'
+
+'atom-text-editor, body':
+  'ctrl-k': 'window:focus-pane-above'
+  'ctrl-j': 'window:focus-pane-below'
+  'ctrl-h': 'window:focus-pane-on-left'
+  'ctrl-l': 'window:focus-pane-on-right'
