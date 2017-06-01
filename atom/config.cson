@@ -96,6 +96,9 @@
   "linter-js-standard":
     checkStyleDevDependencies: true
     showEslintRules: true
+  "linter-rust":
+    cargoCommand: "check"
+    jobsNumber: 4
   "linter-ui-default":
     panelHeight: 72
     showPanel: true
