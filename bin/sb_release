@@ -1,0 +1,149 @@
+#!/bin/bash
+# modified from codon's code
+
+# usage: sb_release [-n name] [-l label] [-N] [-P] [-L] [BRANCHES]
+
+# this will:
+# * fetch the latest code and tags from origin
+# * check out the QA_APPROVED tag
+# * merge the branches in (current branch, if none provided)
+# * create a new tag, derived from $name (default: "release"), date,
+#   and count of existing tags
+# * optionally push tag (will prompt, or do automatically with -P)
+# * optionally update open pull requests with $label (default: "staging")
+#   (will prompt, or do automatically with -L)
+
+set -e
+
+tag=''
+name='release'
+label='staging'
+repo=$( git config --get remote.origin.url | perl -pe 's|^(?:ssh://)?git\@github\.com[:/](.+?)(?:\.git)?$|$1|' )
+do_label=''
+do_push=''
+notificate=1
+
+while getopts ":n:l:PLN" opt; do
+    case $opt in
+        n)
+            name=$OPTARG
+            ;;
+        l)
+            label=$OPTARG
+            ;;
+        L)
+            do_label=1
+            ;;
+        P)
+            do_push=1
+            ;;
+        N)
+            notificate=0
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            exit 1
+          ;;
+    esac
+done
+shift $((OPTIND-1))
+branches=${@}
+
+if [[ -z "$branches" ]]; then
+    branches=`git rev-parse --abbrev-ref HEAD`
+fi
+if [[ "$branches" = 'master' ]]; then
+    echo "I don't think you want to do this to master"
+    exit 1
+fi
+
+function merge_branches() {
+    for i in $branches
+    do
+        echo "# merging origin/$i"
+        git merge --no-ff --no-edit origin/$i
+    done
+}
+
+function sb_tag() {
+    local tier=$1
+    local basetag=$(date +"$tier-%Y%m%d")
+    local count=$((1 + $( git tag | grep -c $basetag ) ))
+    tag="${basetag}-${count}"
+}
+
+function push_tag() {
+    if [[ -z "$do_push" ]]; then
+        echo -n "Push tag $tag? "
+        read resp
+        if [[ "${resp}" =~ ^[Yy] ]]; then
+            do_push=1
+        fi
+    fi
+
+    if [[ ! -z "$do_push" ]]; then
+        git push origin $tag
+    else
+        echo ""
+        echo "## When ready, run \`git push origin $tag\` ##"
+        echo ""
+    fi
+}
+
+function github_label() {
+    local branch=$1
+    local method="repos/$repo/pulls"
+    local head="shiftboard:$branch"
+    github_api $method -d state=open -d head=$head | jq .[0]._links.issue.href | \
+        xargs github_api | jq .labels_url | perl -pe 's|\{/name\}||' | \
+        xargs github_api -j "[\"${label}\"]" > /dev/null
+}
+
+function add_label() {
+    if [[ -x `which github_api` && ! -z "${GITHUB_TOKEN}" ]]; then
+        if [[ -z "$do_label" ]]; then
+            echo -n "Add '$label' label to pull requests? "
+            read resp
+            if [[ "${resp}" =~ ^[Yy] ]]; then
+                do_label=1
+            fi
+        fi
+
+        if [[ ! -z "${do_label}" ]]; then
+            for i in $branches
+            do
+                echo "# Updating $i to '$label'"
+                github_label $i
+            done
+        fi
+    fi
+}
+
+function notify_qa() {
+    if [[ $notificate -eq 1 ]]; then
+        url=`cat $HOME/.sb_release_slack_url`
+        if [[ ! -z "$url" ]]; then
+            cat > /tmp/slack.$$ <<PAYLOAD || true
+payload={
+    "channel": "#qa",
+    "username": "$USER",
+    "text": "@deb ${repo#*/} $tag",
+    "icon_emoji": ":shiftboard:"
+}
+PAYLOAD
+            ( cat /tmp/slack.$$ | curl -s -m 5 --data-binary @- $url ) > /dev/null
+            rm /tmp/slack.$$
+        fi
+    fi
+}
+
+git fetch origin
+git fetch --tags origin
+git checkout QA_APPROVED
+merge_branches
+sb_tag $name
+git tag $tag
+push_tag
+echo "# ${repo#*/} $tag"
+add_label
+notify_qa
