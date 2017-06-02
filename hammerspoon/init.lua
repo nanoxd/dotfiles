@@ -6,6 +6,7 @@ hyperMode = hs.hotkey.modal.new({}, "F17")
 require 'util'
 require "hyper"
 require "reload_config"
+require 'window_management'
 -- require "mobility"
 
 -- Lock System
