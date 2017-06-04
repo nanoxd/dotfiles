@@ -1,6 +1,6 @@
 -- Reload config when any lua file in config directory changes
 function reloadConfig(files)
-    doReload = false
+    local doReload = false
 
     for _, file in pairs(files) do
         if file:sub(-4) == '.lua' then
@@ -10,8 +10,9 @@ function reloadConfig(files)
 
     if doReload then
         hs.reload()
+        hs.alert.show('Config Reloaded')
     end
 end
 
-local myWatcher = hs.pathwatcher.new(os.getenv('HOME') .. '/.hammerspoon/', reloadConfig):start()
+hs.pathwatcher.new(os.getenv('HOME') .. '/.hammerspoon/', reloadConfig):start()
 hs.alert.show('Config Reloaded')
