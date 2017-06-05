@@ -1,7 +1,7 @@
 -- Hyper+key for all the below are setup somewhere
 -- The handler already exists, usually in app
 -- we just have to get the right keystroke sent
-hyperBindings = {'s', 't', 'w', 'a', 'SPACE'}
+hyperBindings = {'s', 't', 'w', 'a', 'g', 'SPACE'}
 
 for i, key in ipairs(hyperBindings) do
   hyperMode:bind({}, key, nil, function()
