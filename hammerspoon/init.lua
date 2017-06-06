@@ -23,30 +23,30 @@ spoon.SpoonInstall.repos.zzspoons = {
 
 spoon.SpoonInstall.use_syncinstall = true
 
-spoon.SpoonInstall:andUse("WiFiTransitions",
-  {
-    repo = 'zzspoons',
-    config = {
-        actions = {
-          { -- Test action just to see the SSID transitions
-             fn = function(_, _, prev_ssid, new_ssid)
-                hs.notify.show("SSID change", string.format("From '%s' to '%s'", prev_ssid, new_ssid), "")
-             end
-          },
-          -- { -- Enable proxy in Spotify and Adium config when joining corp network
-          --     to = "corpnet01",
-          --     fn = {hs.fnutils.partial(reconfigSpotifyProxy, true),
-          --           hs.fnutils.partial(reconfigAdiumProxy, true),
-          --     }
-          -- },
-          -- { -- Disable proxy in Spotify and Adium config when leaving corp network
-          --     from = "corpnet01",
-          --     fn = {hs.fnutils.partial(reconfigSpotifyProxy, false),
-          --           hs.fnutils.partial(reconfigAdiumProxy, false),
-          --     }
-          -- },
-        }
-    },
-    start = true,
-    }
-)
+-- spoon.SpoonInstall:andUse("WiFiTransitions",
+--   {
+--     repo = 'zzspoons',
+--     config = {
+--         actions = {
+--           { -- Test action just to see the SSID transitions
+--              fn = function(_, _, prev_ssid, new_ssid)
+--                 hs.notify.show("SSID change", string.format("From '%s' to '%s'", prev_ssid, new_ssid), "")
+--              end
+--           },
+--           -- { -- Enable proxy in Spotify and Adium config when joining corp network
+--           --     to = "corpnet01",
+--           --     fn = {hs.fnutils.partial(reconfigSpotifyProxy, true),
+--           --           hs.fnutils.partial(reconfigAdiumProxy, true),
+--           --     }
+--           -- },
+--           -- { -- Disable proxy in Spotify and Adium config when leaving corp network
+--           --     from = "corpnet01",
+--           --     fn = {hs.fnutils.partial(reconfigSpotifyProxy, false),
+--           --           hs.fnutils.partial(reconfigAdiumProxy, false),
+--           --     }
+--           -- },
+--         }
+--     },
+--     start = true,
+--     }
+-- )
