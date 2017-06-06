@@ -7,6 +7,7 @@ require 'util'
 require "hyper"
 require "reload_config"
 require 'window_management'
+require 'vim'
 -- require "mobility"
 
 -- Lock System
