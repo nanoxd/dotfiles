@@ -47,6 +47,7 @@ module.exports = {
     'hyperterm-1password',
     'hyperterm-summon',
     "hyper-pane",
+    'hyperlinks',
   ],
 
   localPlugins: []
