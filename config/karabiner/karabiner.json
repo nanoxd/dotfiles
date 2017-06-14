@@ -23,8 +23,45 @@
             },
             "name": "Default profile",
             "selected": true,
-            "simple_modifications": {
-                "caps_lock": "f18"
+            "complex_modifications": {
+              "rules": [
+                {
+                  "manipulators": [
+                    {
+                      "description": "Change caps_lock to command+control+option+shift. Escape if no other key used.",
+                      "from": {
+                        "key_code": "caps_lock",
+                        "modifiers": {
+                          "optional": [
+                            "any"
+                          ]
+                        }
+                      },
+                      "to": [
+                        {
+                          "key_code": "left_shift",
+                          "modifiers": [
+                            "left_command",
+                            "left_control",
+                            "left_option"
+                          ]
+                        }
+                      ],
+                      "to_if_alone": [
+                        {
+                          "key_code": "escape",
+                          "modifiers": {
+                            "optional": [
+                              "any"
+                            ]
+                          }
+                        }
+                      ],
+                      "type": "basic"
+                    }
+                  ]
+                }
+              ]
             },
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
