@@ -17,6 +17,8 @@
       "vim-mode-plus.insert-mode.replace"
       "narrow"
     ]
+  "autocomplete-ruby":
+    rsensePath: "/Users/nano/.rbenv/shims/rsense"
   autoprefixer: {}
   "choose-pane":
     labelChars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -100,7 +102,7 @@
     cargoCommand: "check"
     jobsNumber: 4
   "linter-ui-default":
-    panelHeight: 72
+    panelHeight: 69
     showPanel: true
   "markdown-writer":
     siteEngine: "jekyll"
