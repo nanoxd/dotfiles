@@ -90,6 +90,10 @@
     remoteInteractions:
       pullRebase: true
   "haskell-ghc-mod": {}
+  "language-babel":
+    taggedTemplateGrammar: [
+      "\"(?<=<style jsx>{)|(?<=<style jsx global>{)\":source.css.styled"
+    ]
   "language-elm":
     autocompleteEnabled: false
   linter: {}
