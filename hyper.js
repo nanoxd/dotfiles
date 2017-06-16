@@ -37,17 +37,17 @@ module.exports = {
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
     // if left empty, your system's login shell will be used by default
-    shell: '',
+    shell: '/usr/local/bin/fish',
     summonShortcut: 'Cmd+Ctrl+Option+Shift+t',
   },
 
   plugins: [
     'hyperterm-deep-space',
-    "hyperterm-subpixel-antialiased",
+    'hyper-font-smoothing',
     'hyperterm-1password',
     'hyperterm-summon',
     "hyper-pane",
-    'hyperlinks',
+    'hyperlinks'
   ],
 
   localPlugins: []
