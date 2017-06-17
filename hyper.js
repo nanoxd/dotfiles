@@ -9,7 +9,11 @@ module.exports = {
     foregroundColor: '#fff',
     backgroundColor: '#000',
     borderColor: '#333',
-    css: '',
+    css: `
+      xscreen a {
+        color: rgb(86, 173, 183);
+      }
+    `,
     termCSS: '',
     padding: '12px 14px',
 
