@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# This script switches between the App Store version of Xcode and the beta
+# Install it by copying it to /usr/local/bin/xcode-switch and running 'chmod +x' on it (to make it executable)
+# Then run it using 'sudo xcode-switch'
+# Credit: https://gist.github.com/JohnSundell/620c3d12aca69fbe259f69391cc532f8
+
+if [ "$EUID" -ne 0 ]; then
+    echo "xcode-select requires you to run this script as root; 'sudo xcode-switch'"
+    exit
+fi
+
+currentPath=$(xcode-select -p)
+
+if [ "$currentPath" == "/Applications/Xcode.app/Contents/Developer" ]; then
+    xcode-select -s "/Applications/Xcode-beta.app/Contents/Developer"
+else
+    xcode-select -s "/Applications/Xcode.app/Contents/Developer"
+fi
+
+newPath=$(xcode-select -p)
+echo "Xcode path is now $newPath"
