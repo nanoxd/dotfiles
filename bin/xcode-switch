@@ -13,9 +13,9 @@ fi
 currentPath=$(xcode-select -p)
 
 if [ "$currentPath" == "/Applications/Xcode.app/Contents/Developer" ]; then
-    xcode-select -s "/Applications/Xcode-beta.app/Contents/Developer"
+    xcode-select -s "/Applications/Xcode-beta.app"
 else
-    xcode-select -s "/Applications/Xcode.app/Contents/Developer"
+    xcode-select -s "/Applications/Xcode.app"
 fi
 
 newPath=$(xcode-select -p)
