@@ -43,6 +43,9 @@ module.exports = {
     // if left empty, your system's login shell will be used by default
     shell: '/usr/local/bin/fish',
     summonShortcut: 'Cmd+Ctrl+Option+Shift+t',
+    hyperlinks: {
+      clickAction: 'ignore',
+    },
   },
 
   plugins: [
