@@ -124,6 +124,10 @@
       autoClose: true
       cursorBlink: false
   "prettier-atom":
+    formatOnSaveOptions:
+      enabled: true
+      isDisabledIfNotInPackageJson: true
+      showInStatusBar: true
     prettierOptions:
       semi: false
       singleQuote: true
