@@ -6,7 +6,78 @@
     },
     "profiles": [
         {
-            "devices": [],
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "manipulators": [
+                            {
+                                "description": "Change caps_lock to command+control+option+shift. Escape if no other key used.",
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": [
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
+                                        ]
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "escape",
+                                        "modifiers": {
+                                            "optional": [
+                                                "any"
+                                            ]
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "devices": [
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 34304,
+                        "vendor_id": 1452
+                    },
+                    "ignore": false
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 16449,
+                        "vendor_id": 1133
+                    },
+                    "ignore": false
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 50475,
+                        "vendor_id": 1133
+                    },
+                    "ignore": false
+                }
+            ],
             "fn_function_keys": {
                 "f1": "vk_consumer_brightness_down",
                 "f10": "mute",
@@ -23,46 +94,7 @@
             },
             "name": "Default profile",
             "selected": true,
-            "complex_modifications": {
-              "rules": [
-                {
-                  "manipulators": [
-                    {
-                      "description": "Change caps_lock to command+control+option+shift. Escape if no other key used.",
-                      "from": {
-                        "key_code": "caps_lock",
-                        "modifiers": {
-                          "optional": [
-                            "any"
-                          ]
-                        }
-                      },
-                      "to": [
-                        {
-                          "key_code": "left_shift",
-                          "modifiers": [
-                            "left_command",
-                            "left_control",
-                            "left_option"
-                          ]
-                        }
-                      ],
-                      "to_if_alone": [
-                        {
-                          "key_code": "escape",
-                          "modifiers": {
-                            "optional": [
-                              "any"
-                            ]
-                          }
-                        }
-                      ],
-                      "type": "basic"
-                    }
-                  ]
-                }
-              ]
-            },
+            "simple_modifications": {},
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
                 "keyboard_type": "ansi"
