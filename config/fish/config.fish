@@ -11,6 +11,7 @@ set -x SLACK_URL "https://hooks.slack.com/services/T03LDKDST/B044UL3CF/BCb9NINte
 set -x DYLD_LIBRARY_PATH "$HOME/.rustup/toolchains/nightly-x86_64-apple-darwin"
 set -x RLS_ROOT "$HOME/dev/tools/rls"
 set -x GITHUB_ACCESS_TOKEN (cat ~/.token)
+set -x TEMPLATES "$HOME/dev/templates"
 
 # Set paths
 set -U fish_user_paths /usr/local/bin $HOME/.bin $GOPATH/bin (yarn global bin)
@@ -55,3 +56,10 @@ alias .....='cd ../../../..'
 alias ls='exa'
 alias ll='exa -l'
 alias la='exa -la'
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[ -f /Users/nano/.config/yarn/global/node_modules/serverless/node_modules/tabtab/.completions/serverless.fish ]; and . /Users/nano/.config/yarn/global/node_modules/serverless/node_modules/tabtab/.completions/serverless.fish
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[ -f /Users/nano/.config/yarn/global/node_modules/serverless/node_modules/tabtab/.completions/sls.fish ]; and . /Users/nano/.config/yarn/global/node_modules/serverless/node_modules/tabtab/.completions/sls.fish
