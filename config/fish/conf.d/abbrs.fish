@@ -1,4 +1,4 @@
-if not set -q fish_initialized
+# if not set -q fish_initialized
   # Editors
   abbr -a a atom
 
@@ -49,5 +49,5 @@ if not set -q fish_initialized
   abbr -a cr cargo run
   abbr -a ct cargo test
 
-  set -U fish_initialized
-end
+  # set -U fish_initialized
+# end
