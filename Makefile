@@ -1,5 +1,5 @@
 dotfiles:
-	rcup -x apps -x Makefile -x vscode-extensions
+	rcup -x apps -x Makefile
 
 nuke:
 	rcdn
