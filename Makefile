@@ -1,5 +1,5 @@
 dotfiles:
-	rcup -x apps -x Makefile
+	rcup -x Makefile
 
 nuke:
 	rcdn
