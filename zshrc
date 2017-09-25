@@ -68,7 +68,7 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# export PATH="$HOME/.yarn/bin:$PATH"
+# export PATH="$(yarn global bin):$PATH"
 
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
