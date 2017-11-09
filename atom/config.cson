@@ -184,6 +184,7 @@
   "vim-mode-plus":
     highlightSearch: true
     incrementalSearch: true
+    notifiedCoffeeScriptNoLongerSupportedToExtendVMP: true
     stayOnYank: true
     useSmartcaseForSearch: true
   "vim-mode-plus-ex-mode":
