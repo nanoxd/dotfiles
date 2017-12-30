@@ -69,6 +69,7 @@
 [diff]
   compactionHeuristic = true
 	indentHeuristic = true
+	colorMoved = zebra
 [interactive]
   diffFilter = diff-highlight
 [pull]
