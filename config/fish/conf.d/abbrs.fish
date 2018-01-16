@@ -39,7 +39,7 @@
   abbr -a ya yarn add
   abbr -a yad yarn add --dev
   abbr -a yag yarn global add
-  abbr -a yu yarn upgrade-interactive
+  abbr -a yu yarn upgrade-interactive --latest
 
   abbr -a pi bundle exec pod install --repo-update
   abbr -a pu bundle exec pod update
