@@ -36,6 +36,7 @@
   files = "!git ls-files | grep -i"
   filelog = log -u
   issues = !hub browse -- issues
+  laf = fsck --lost-found
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   ls-ignored = ls-files --exclude-standard --ignored --others
   m = checkout master
