@@ -1,5 +1,9 @@
+oh-my-fish/plugin-argu
 fisherman/await
+oh-my-fish/plugin-balias
+oh-my-fish/plugin-bang-bang
 nyarly/fish-cache-file
+oh-my-fish/plugin-expand
 fisherman/fzf
 fisherman/get
 fisherman/getopts
