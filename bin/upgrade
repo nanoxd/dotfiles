@@ -1,0 +1,48 @@
+#!/usr/bin/env fish
+
+function color_echo
+  echo -n -s (set_color $argv[1]) $argv[2..-1] (set_color normal)
+end
+
+function pretty_print
+  echo
+  color_echo green "🔈 " $argv
+  echo
+end
+
+switch (uname)
+case Darwin
+case '*'
+  echo 'You must use this on macOS'
+  exit 1
+end
+
+# Update Brew
+if command -v brew >/dev/null
+  pretty_print "Updating Homebrew"
+  bb
+
+  pretty_print "Updating Casks"
+  brew cask upgrade
+end
+
+# Update MAS
+if command -v mas >/dev/null
+  pretty_print "Updating MAS"
+  mas upgrade
+end
+
+if command -v rustup >/dev/null
+  pretty_print "Updating Rust"
+  rustup update
+end
+
+if command -v cargo-install-update >/dev/null
+  pretty_print "Updating Crates"
+  cargo install-update -a
+end
+
+if command -v gem >/dev/null
+  pretty_print "Updating Gems"
+  gem update
+end
