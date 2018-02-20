@@ -1,2 +1,2 @@
-#!/bin/sh
+#!/usr/bin/env sh
 docker run --restart=always -h redis --name redis --net=party -d redis

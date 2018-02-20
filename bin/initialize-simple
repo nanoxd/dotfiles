@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 usage() {
   printf "%s <project name>\n" "$0"

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 #/ Usage: git-cut-branch <name>
 #/ Create a new branch named <name> pointed at HEAD and reset the current branch
 #/ to the head of its tracking branch. This is useful when working on master and

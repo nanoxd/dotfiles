@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # [shoreman](https://github.com/chrismytton/shoreman) is an
 # implementation of the **Procfile** format. Inspired by the original

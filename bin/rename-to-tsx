@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Print help message:
 # Usage: rename-to-tsx [option]

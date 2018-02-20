@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/usr/bin/env sh
 #
 # Install the latest version of calibre for OS X
 # Replaces any existing version in /Applications or ~/Applications

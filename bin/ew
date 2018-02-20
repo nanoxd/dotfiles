@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 test -z "$TEMPLATES"
 if [ $? -eq 0 ]; then

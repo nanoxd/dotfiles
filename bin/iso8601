@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Usage: iso8601 [<epoch>]
 # Show a date in iso8601 format
 

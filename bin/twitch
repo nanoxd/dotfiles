@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # reference: <https://wiki.archlinux.org/index.php/Streaming_using_twitch.tv>
 # reference: <https://trac.ffmpeg.org/wiki/EncodingForStreamingSites>
 
