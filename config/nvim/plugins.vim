@@ -18,7 +18,6 @@ Plug 'mhinz/vim-grepper'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'tpope/vim-abolish'
 Plug 'vim-scripts/ctags.vim'
-" Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -63,6 +62,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --racer-completer --tern-completer' }
 Plug 'ludovicchabant/vim-gutentags' " Autogenerate ctags
+Plug 'w0rp/ale'
 
 call plug#end()
 
