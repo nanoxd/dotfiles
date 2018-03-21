@@ -2,8 +2,7 @@ module.exports = {
   config: {
     // default font size in pixels for all tabs
     fontSize: 16,
-
-    fontFamily: `"Iosevka"`,
+    fontFamily: `"PragmataPro"`,
     cursorColor: 'rgba(248,28,229,0.75)',
     cursorShape: 'BLOCK',
     foregroundColor: '#fff',
@@ -16,6 +15,7 @@ module.exports = {
     `,
     termCSS: '',
     padding: '12px 14px',
+    updateChannel: 'canary',
 
     // the full list. if you're going to provide the full color palette,
     // including the 6 x 6 color cubes and the grayscale map, just provide
@@ -58,5 +58,4 @@ module.exports = {
   ],
 
   localPlugins: [],
-  updateChannel: 'canary',
 }
