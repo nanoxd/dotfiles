@@ -63,6 +63,7 @@ Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --racer-completer --tern-completer' }
 Plug 'ludovicchabant/vim-gutentags' " Autogenerate ctags
 Plug 'w0rp/ale'
+Plug 'https://github.com/racer-rust/vim-racer'
 
 call plug#end()
 
@@ -100,6 +101,7 @@ nmap ga <Plug>(EasyAlign)
 set updatetime=500 " Increase to call gitgutter more often
 let g:gitgutter_map_keys = 0
 
+" Fuzzy Finder {{{
 " Fzf
 " --column: Show column number
 " --line-number: Show line number
@@ -117,3 +119,14 @@ nmap <C-p> :Files<CR>
 nmap ; :Buffers<CR>
 nmap <Leader>t :Tags<CR>
 nmap <Leader>s :Find<CR>
+
+let g:fzf_action = {
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit' }
+" }}}
+
+" Rust {{{
+let g:racer_cmd = "racer"
+let g:racer_experimental_completer = 1
+"}}}

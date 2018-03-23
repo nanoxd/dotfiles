@@ -1,3 +1,5 @@
+" Basics Settings {{{
+scriptencoding utf-8
 let mapleader = " "
 
 set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_
@@ -7,6 +9,10 @@ set relativenumber
 set number
 set hidden     " The current buffer can be backgrounded without saving
 set cursorline " Highlight current line
+
+set noerrorbells visualbell t_vb= " turn off bell on ESC
+set synmaxcol=1000 " Don't try to highlight lines longer than X
+set lazyredraw    " reduced screen flicker
 
 " Search
 set ignorecase " Case insensitve pattern matching
@@ -22,6 +28,11 @@ set winheight=999
 set nobackup
 set nowritebackup
 set noswapfile
+
+" Sensible side scrolling, makes it like other editors.
+" Reduce scroll jump with cursor goes off the screen.
+set sidescroll=1
+set sidescrolloff=3
 
 set shell=/usr/local/bin/zsh
 
