@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+#
+# Open current folder or something
+#
+# USAGE:
+#
+#   $ o
+#   # => opens the current directory
+#
+#   $ o .
+#   $ o /usr/local
+#   # => opens the specified directory
+
+if test "$1" == ""
+then
+  open .
+else
+  open "$1"
+fi
