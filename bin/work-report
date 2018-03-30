@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Show my closed PRs between monday last week and monday this week.
+# Depends on:
+# - coreutils for gnu date
+# - jq for url encoding
+
+previous_monday=$(gdate --date "monday last week" +"%Y-%m-%d")
+this_monday=$(gdate --date "monday this week" +"%Y-%m-%d")
+
+urlencode() {
+  printf %s "$1" | jq -s -R -r @uri
+}
+
+query="author:nanoxd type:Issues is:pr created:\">=$previous_monday <$this_monday\""
+
+open "https://github.com/search?q=$query"
