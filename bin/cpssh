@@ -1,0 +1,11 @@
+#!/bin/sh
+# Copy SSH key to your clipboard
+
+KEY="$@"
+
+if [ -z $KEY ]; then
+  KEY="id_ed25519"
+fi
+
+pbcopy < ~/.ssh/$KEY.pub
+
