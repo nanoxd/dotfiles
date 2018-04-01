@@ -36,7 +36,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
 alias ls='ls -G'
-alias ll='ls -alhG'
+alias ll='ls -l'
 alias sbgit='git config user.email fernando.paredes@shiftboard.com'
 
 
@@ -103,3 +103,5 @@ alias nr='npm run'
 alias c='cargo'
 alias cr='cargo run'
 alias ct='cargo test'
+
+alias ls="exa"
