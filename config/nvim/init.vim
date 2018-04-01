@@ -122,32 +122,40 @@ call matchadd('ColorColumn', '\%81v', 100)
 
 """"Language specific whitespace
 
-autocmd FileType make set noexpandtab " make uses real tabs
+" Make {{{
+autocmd FileType make set noexpandtab " Use Tabs
+" }}}
 
-" Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
-autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Procfile,Thorfile,Brewfile,Dangerfile,config.ru}  set ft=ruby
+" Ruby {{{
+autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Procfile,Thorfile,Brewfile,Dangerfile,config.ru,Fastfile}  set ft=ruby
+" }}}
 
 " Set Sass files as sass
 autocmd BufRead,BufNewFile *.scss set filetype=scss
 
 autocmd BufRead,BufNewFile *.txt call s:setupWrapping()
 
-" make Python follow PEP8
+" Python {{{
 autocmd FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
+" }}}
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
-" Markdown files end in .md
+" Markdown {{{
 autocmd BufRead,BufNewFile *.md set filetype=markdown
-" Enable spellchecking for Markdown
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd FileType gitcommit setlocal spell
+" }}}
 
-" Set syntax for Go
+" Go {{{
 autocmd BufRead,BufNewFile *.go set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+" }}}
+
+" Python {{{
 autocmd BufRead,BufNewFile *.{pl,cgi} call s:disableWhiteSpaceChecking()
 autocmd BufRead,BufNewFile *.{pl,cgi} set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+" }}}
 
 runtime! macros/matchit.vim    " % to bounce from do to end etc.
 set ffs=unix,dos,mac           " Default file types
