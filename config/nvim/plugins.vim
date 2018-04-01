@@ -117,7 +117,8 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 
 nmap <C-p> :Files<CR>
 nmap ; :Buffers<CR>
-nmap <Leader>t :Tags<CR>
+nmap <C-t> :Tags<CR>
+nmap <C-m> :Marks<CR>
 nmap <Leader>s :Find<CR>
 
 let g:fzf_action = {
