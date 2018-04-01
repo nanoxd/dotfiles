@@ -47,6 +47,10 @@ if test -d "/Applications/Postgres.app/Contents/Versions/latest/bin"
   set -U fish_user_paths "/Applications/Postgres.app/Contents/Versions/latest/bin" $fish_user_paths
 end
 
+if test -d "/usr/local/share/fish/vendor_completions.d/"
+  set -gx fish_complete_path $fish_complete_path "/usr/local/share/fish/vendor_completions.d/"
+end
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
