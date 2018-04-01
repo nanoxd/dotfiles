@@ -61,6 +61,15 @@ alias la='exa -la'
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [ -f /Users/nano/.config/yarn/global/node_modules/serverless/node_modules/tabtab/.completions/sls.fish ]; and . /Users/nano/.config/yarn/global/node_modules/serverless/node_modules/tabtab/.completions/sls.fish
-# tabtab source for electron-forge package
-# uninstall by removing these lines or running `tabtab uninstall electron-forge`
-[ -f /Users/fernando.paredes/.config/yarn/global/node_modules/tabtab/.completions/electron-forge.fish ]; and . /Users/fernando.paredes/.config/yarn/global/node_modules/tabtab/.completions/electron-forge.fish
+
+function ep -d "Open Editor with FZF file search"
+  if test (count $argv) -gt 0
+    command $EDITOR $argv
+  else
+    fzf -m | xargs $EDITOR
+  end
+end
+
+function reload-fish -d "Reloads fish config"
+  source ~/.config/fish/config.fish
+end
