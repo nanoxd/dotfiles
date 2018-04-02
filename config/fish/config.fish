@@ -17,15 +17,6 @@ set -U fish_user_paths /usr/local/bin $HOME/.bin $GOPATH/bin (yarn global bin)
 # Custom behavior
 set -U fish_key_bindings fish_vi_key_bindings
 
-if test -d "$HOME/Library/Android/sdk/platform-tools"
-  set -U fish_user_paths "$HOME/Library/Android/sdk/platform-tools" $fish_user_paths
-end
-
-# Stack
-if test -d "$HOME/.local/bin"
-  set -U fish_user_paths "$HOME/.local/bin" $fish_user_paths
-end
-
 # Rust
 if test -d "$HOME/.cargo/bin"
   set -U fish_user_paths "$HOME/.cargo/bin" $fish_user_paths
