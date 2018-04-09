@@ -50,6 +50,8 @@ alias ls='exa'
 alias ll='exa -l'
 alias la='exa -la'
 
+bind \ca sudope
+
 function ep -d "Open Editor with FZF file search"
   if test (count $argv) -gt 0
     command $EDITOR $argv
