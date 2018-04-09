@@ -1,4 +1,4 @@
-# if not set -q fish_initialized
+if status --is-interactive
   # Editors
   abbr -a a atom
 
@@ -50,4 +50,4 @@
   abbr -a ct cargo test
 
   # set -U fish_initialized
-# end
+end
