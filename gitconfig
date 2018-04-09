@@ -35,6 +35,7 @@
   f = files
   files = "!git ls-files | grep -i"
   filelog = log -u
+  fza = "!git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o git add"
   issues = !hub browse -- issues
   laf = fsck --lost-found
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
