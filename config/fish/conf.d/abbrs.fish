@@ -48,6 +48,4 @@ if status --is-interactive
   abbr -a c cargo
   abbr -a cr cargo run
   abbr -a ct cargo test
-
-  # set -U fish_initialized
 end
