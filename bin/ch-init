@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+#/ Usage: ch-init 123
+# Initializes the current branch to a ticket
+
+TICKET="$@"
+
+git commit --allow-empty -m "🎉 Initial Commit [branch ch$TICKET]"
