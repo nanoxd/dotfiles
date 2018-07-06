@@ -18,11 +18,13 @@
   new = green
   whitespace = red reverse
 [alias]
+  a = add
   aa = add --all
   ai = add --interactive
   amend = commit --amend
   ap = add --patch
   branch = branch -vv
+  branches = branch -a
   browse = "!hub browse"
   ca = commit --amend
   ci = commit --verbose
@@ -43,6 +45,7 @@
   m = checkout master
   merge-branch = !git checkout master && git merge @{-1} --ff-only
   pn = push --set-upstream origin master
+  pf = push --force-with-lease
   pr = !hub pull-request
   purge = !git branch -d $(git branch --merged master | grep -v -e '*' -e 'master')
   rebase-origin = !git fetch origin && git rebase origin/master
