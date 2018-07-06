@@ -24,6 +24,7 @@ if status --is-interactive
   abbr -a gdc git diff --cached
   abbr -a gdw git diff --word-diff
   abbr -a gp git push
+  abbr -a gpf git push --force-with-lease
   abbr -a gpr git pull-request --browse
   abbr -a gpu git pull --rebase
   abbr -a gs git status -sb
