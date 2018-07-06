@@ -2,7 +2,7 @@
   name = Fernando Paredes
   email = nano@fdp.io
 [push]
-  default = simple
+  default = current
 [color]
   ui = auto
 [color "diff-highlight"]
