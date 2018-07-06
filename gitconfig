@@ -33,8 +33,8 @@
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -g
   delete-merged-branches = !sh -c "git checkout master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d" -
   f = files
-  files = "!git ls-files | grep -i"
   filelog = log -u
+  files = "!git ls-files | grep -i"
   fza = "!git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o git add"
   issues = !hub browse -- issues
   laf = fsck --lost-found
@@ -50,8 +50,8 @@
   st = status --short --branch
   tagage = !sh -c 'git for-each-ref --sort=taggerdate refs/tags --format=\"%(refname:short)\"'
   timespan = "!f() { one=$(git log -n 1 --format=%ai $1); two=$(git log -n 1 --format=%ai ${2:-HEAD}); ddiff -f ${3:-%mm%dd} \"$one\" \"$two\"; }; f"
-  unpushed = cherry --verbose
   undo = "!f() { \\\n    git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; \\\n}; f"
+  unpushed = cherry --verbose
 
 [core]
   attributesfile = ~/.gitattributes
