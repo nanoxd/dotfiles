@@ -2,7 +2,7 @@ module.exports = {
   config: {
     // default font size in pixels for all tabs
     fontSize: 16,
-    fontFamily: `"PragmataPro"`,
+    fontFamily: `"Iosevka"`,
     cursorColor: 'rgba(248,28,229,0.75)',
     cursorShape: 'BLOCK',
     foregroundColor: '#fff',
@@ -54,7 +54,6 @@ module.exports = {
     'hyperterm-1password',
     'hyperterm-summon',
     'hyper-pane',
-    'hyperlinks',
   ],
 
   localPlugins: [],
