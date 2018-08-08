@@ -3,12 +3,12 @@ export ZSH="$HOME/.zsh"
 # Add homebrew to path
 if uname -s | grep -q Darwin; then
   export PATH="/usr/local/bin:$PATH"
+  export EDITOR='nvim'
+  export VISUAL='nvim'
+  export PAGER='less'
 fi
 
 export PATH="$HOME/.bin:$HOME/.cargo/bin:`yarn global bin`:$PATH"
-export EDITOR='nvim'
-export VISUAL='nvim'
-export PAGER='less'
 
 typeset -U config_files
 config_files=($ZSH/*.zsh)
