@@ -82,3 +82,12 @@
 --regex-Rust=/^[ \t]*(pub[ \t]+)?trait[ \t]+([a-zA-Z0-9_]+)/\2/t,traits,traits/
 --regex-Rust=/^[ \t]*(pub[ \t]+)?impl([ \t\n]*<[^>]*>)?[ \t]+(([a-zA-Z0-9_:]+)[ \t]*(<[^>]*>)?[ \t]+(for)[ \t]+)?([a-zA-Z0-9_]+)/\4 \6 \7/i,impls,trait implementations/
 --regex-Rust=/^[ \t]*macro_rules![ \t]+([a-zA-Z0-9_]+)/\1/d,macros,macro definitions/
+
+--langdef=swift
+--langmap=swift:.swift
+--regex-swift=/[[:<:]]class[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/c,class/
+--regex-swift=/[[:<:]]enum[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/e,enum/
+--regex-swift=/[[:<:]]func[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/f,function/
+--regex-swift=/[[:<:]]protocol[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/P,protocol/
+--regex-swift=/[[:<:]]struct[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/s,struct/
+--regex-swift=/[[:<:]]typealias[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/t,typealias/
