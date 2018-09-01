@@ -76,6 +76,7 @@
   compactionHeuristic = true
 	indentHeuristic = true
 	colorMoved = zebra
+  algorithm = patience
 [interactive]
   diffFilter = diff-highlight
 [pull]
