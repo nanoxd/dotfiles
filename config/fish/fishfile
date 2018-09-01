@@ -4,16 +4,14 @@ oh-my-fish/plugin-balias
 oh-my-fish/plugin-bang-bang
 nyarly/fish-cache-file
 oh-my-fish/plugin-expand
-fisherman/fnm
 fisherman/fzf
 fisherman/get
-fisherman/get_file_age
 fisherman/getopts
 fisherman/grc
 fisherman/last_job_id
 nyarly/lookup
-fisherman/menu
 rafaelrinaldi/pure
 nyarly/fish-rake-complete
 fisherman/rbenv
+oh-my-fish/plugin-sudope
 fisherman/z
