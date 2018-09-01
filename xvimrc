@@ -1,7 +1,12 @@
 set ignorecase
+set smartcase
 
 " Window movement
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+
+" Comments
+nnoremap gcc :xcmenucmd Comment Selection<CR>
+vnoremap gc :xcmenucmd Comment Selection<CR>
