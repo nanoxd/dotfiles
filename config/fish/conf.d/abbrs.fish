@@ -42,7 +42,6 @@ if status --is-interactive
   abbr -a yag yarn global add
   abbr -a yu yarn upgrade-interactive --latest
 
-  abbr -a pi bundle exec pod install --repo-update
   abbr -a pu bundle exec pod update
 
   # Rust
