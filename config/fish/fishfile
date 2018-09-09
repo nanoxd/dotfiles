@@ -7,7 +7,6 @@ oh-my-fish/plugin-expand
 fisherman/fzf
 fisherman/get
 fisherman/getopts
-fisherman/grc
 fisherman/last_job_id
 nyarly/lookup
 rafaelrinaldi/pure
