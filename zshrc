@@ -2,10 +2,10 @@ export ZSH="$HOME/.zsh"
 
 # Add homebrew to path
 if uname -s | grep -q Darwin; then
-  export PATH="/usr/local/bin:$PATH"
-  export EDITOR='nvim'
-  export VISUAL='nvim'
-  export PAGER='less'
+    export PATH="/usr/local/bin:$PATH"
+    export EDITOR='nvim'
+    export VISUAL='nvim'
+    export PAGER='less'
 fi
 
 export PATH="$HOME/.bin:$HOME/.cargo/bin:`yarn global bin`:$PATH"
@@ -22,7 +22,7 @@ autoload -U colors && colors
 
 # load everything but the path and completion files
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}; do
-  source "$file"
+    source "$file"
 done
 
 # Autocomplete
@@ -30,9 +30,9 @@ fpath=(~/.zsh/completions $fpath)
 autoload -Uz compinit
 typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
 if [ $(date +'%j') != $updated_at ]; then
-  compinit
+    compinit
 else
-  compinit -C
+    compinit -C
 fi
 
 # Pure Prompt
@@ -41,7 +41,7 @@ prompt pure
 
 # Source completion
 for file in ${(M)config_files:#*/completion.zsh}; do
-  source "$file"
+    source "$file"
 done
 
 unset config_files updated_at
@@ -53,13 +53,13 @@ eval "$(rbenv init -)"
 # Android
 ANDROID_DIR="$HOME/Library/Android/sdk/platform-tools"
 if [[ -d $ANDROID_DIR ]]; then
-  export PATH="$ANDROID_DIR:$PATH"
+    export PATH="$ANDROID_DIR:$PATH"
 fi
 
 # Haskell
 STACK_DIR="$HOME/.local/bin"
 if [[ -d $STACK_DIR ]]; then
-  export PATH="$STACK_DIR:$PATH"
+    export PATH="$STACK_DIR:$PATH"
 fi
 
 source `brew --prefix`/etc/profile.d/z.sh
