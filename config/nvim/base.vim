@@ -37,6 +37,7 @@ set winheight=999
 set nobackup
 set nowritebackup
 set noswapfile
+set autoread " When file is written to outside of vim, read again
 
 " Sensible side scrolling, makes it like other editors.
 " Reduce scroll jump with cursor goes off the screen.
@@ -68,6 +69,10 @@ if has('termguicolors')
 elseif has('nvim')
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
+
+" Set ripgrep as grep engine
+set grepprg=rg\ --vimgrep
+set grepformat^=%f:%l:%c:%m
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Language Changes
@@ -106,3 +111,9 @@ autocmd BufRead,BufNewFile *.go set tabstop=4 softtabstop=4 shiftwidth=4 expandt
 autocmd BufRead,BufNewFile *.{pl,cgi} call s:disableWhiteSpaceChecking()
 autocmd BufRead,BufNewFile *.{pl,cgi} set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 " }}}
+
+" Remember last location in file
+if has("autocmd")
+  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal g'\"" | endif
+endif
