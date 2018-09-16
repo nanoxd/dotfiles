@@ -5,4 +5,5 @@ caarlos0/zsh-git-sync
 zsh-users/zsh-completions
 zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-history-substring-search
+zsh-users/zsh-autosuggestions
 djui/alias-tips
