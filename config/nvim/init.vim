@@ -28,12 +28,3 @@ call matchadd('ColorColumn', '\%81v', 100)
 
 runtime! macros/matchit.vim    " % to bounce from do to end etc.
 let g:syntastic_enable_signs=1 " Enable syntastic syntax checking
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files and backups
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:netrw_banner = 0                      " hide banner
-let g:netrw_list_hide='.*\.swp$,\.DS_Store' " hide swp, DS_Store files
-let g:netrw_liststyle=3                     " set tree style listing
-let g:netrw_sort_options='i'                " case insensitive
