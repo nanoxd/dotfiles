@@ -8,6 +8,7 @@ set relativenumber
 set number
 set hidden     " The current buffer can be backgrounded without saving
 set cursorline " Highlight current line
+set mouse=a " Enable mouse support
 
 " Whitespace defaults
 set smartindent
