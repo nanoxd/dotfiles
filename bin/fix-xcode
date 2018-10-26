@@ -9,5 +9,5 @@ osascript -e 'tell app "Xcode" to quit'
 # Remove derived data
 rm -rf ~/Library/Developer/Xcode/DerivedData/*
 
-# Open all Xcode projects in current directory
-open *.xcodeproj
+# Open either Xcode workspace or project
+x
