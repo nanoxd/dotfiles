@@ -1,7 +1,0 @@
-{
-  "cwd": "/Users/nano/dev/fdp",
-  "cmd": "bundle exec jekyll s --port $PORT",
-  "env": {
-    "PATH": "/Applications/Postgres.app/Contents/Versions/latest/bin:/usr/local/Cellar/node/8.0.0/bin:/Users/nano/.cargo/bin:/Users/nano/.local/bin:/Users/nano/Library/Android/sdk/platform-tools:/usr/local/bin:/Users/nano/.bin:/Users/nano/dev/go/bin:/Users/nano/.rbenv/shims:/Users/nano/.rbenv/shims:/usr/bin:/bin:/usr/sbin:/sbin:/Users/nano/.config/yarn/global/node_modules/.bin"
-  }
-}
