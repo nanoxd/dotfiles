@@ -44,18 +44,18 @@
   ls-ignored = ls-files --exclude-standard --ignored --others
   m = checkout master
   merge-branch = !git checkout master && git merge @{-1} --ff-only
-  pn = push --set-upstream origin master
   pf = push --force-with-lease
+  pn = push --set-upstream origin master
   pr = !hub pull-request
   purge = !git branch -d $(git branch --merged master | grep -v -e '*' -e 'master')
   rebase-origin = !git fetch origin && git rebase origin/master
+  releases = log --decorate --oneline --simplify-by-decoration --all
   reset-hard = reset --hard HEAD
   st = status --short --branch
   tagage = !sh -c 'git for-each-ref --sort=taggerdate refs/tags --format=\"%(refname:short)\"'
   timespan = "!f() { one=$(git log -n 1 --format=%ai $1); two=$(git log -n 1 --format=%ai ${2:-HEAD}); ddiff -f ${3:-%mm%dd} \"$one\" \"$two\"; }; f"
   undo = "!f() { \\\n    git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; \\\n}; f"
-  unpushed = cherry --verbose
-	releases = log --decorate --oneline --simplify-by-decoration --all
+  unpushed = log --oneline HEAD..."@{u}"
 
 [core]
   attributesfile = ~/.gitattributes
