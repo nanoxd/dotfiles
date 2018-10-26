@@ -47,5 +47,7 @@ if command -v gem >/dev/null
   gem update
 end
 
-pretty_print "Updating Fisherman"
-fisher update
+if command -v fisher >/dev/null
+  pretty_print "Updating Fisherman"
+  fisher update
+end
