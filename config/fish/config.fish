@@ -8,7 +8,6 @@ set -x GOPATH "$HOME/dev/go"
 set -x FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git'
 set -x FZF_TMUX 1
 set -x DYLD_LIBRARY_PATH "$HOME/.rustup/toolchains/nightly-x86_64-apple-darwin"
-set -x GITHUB_ACCESS_TOKEN (cat ~/.token)
 set -x TEMPLATES "$HOME/dev/templates"
 
 # Set paths
