@@ -22,11 +22,3 @@ alias gs='git status -sb'
 gpc() {
   git push --set-upstream origin $(git-branch-current 2> /dev/null)
 }
-
-git-rename() {
-  git filter-branch -f --env-filter "GIT_AUTHOR_NAME='Fernando Paredes'; GIT_AUTHOR_EMAIL='nano@fdp.io'; GIT_COMMITTER_NAME='Fernando Paredes'; GIT_COMMITTER_EMAIL='nano@fdp.io';" HEAD
-}
-
-git-remove-db-conflicts() {
-  find . -name '*(*conflicted copy*)*' | sed 's/.*/"&"/' | xargs rm 
-}
