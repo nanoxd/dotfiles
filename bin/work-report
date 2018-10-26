@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 # Show my closed PRs between monday last week and monday this week.
 # Depends on:

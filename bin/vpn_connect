@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 SSID=$(networksetup -getairportnetwork en0 | cut -c 24-)
 CONNECTION_NAME="PIA US East"

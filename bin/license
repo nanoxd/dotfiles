@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # Usage: license
 # Prints an MIT license appropriate for totin' around.
 #

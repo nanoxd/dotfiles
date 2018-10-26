@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
 base64d() {
   echo "$@" | base64 -D - | jq .

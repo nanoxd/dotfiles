@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # Copy SSH key to your clipboard
 
 KEY="$@"
