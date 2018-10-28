@@ -85,9 +85,6 @@ if [ "$(uname -s)" = "Darwin" ]; then
   alias gt='gittower .'
 fi
 
-***REMOVED***
-***REMOVED***
-
 alias sync='rsync -az --progress'
 
 # NPM
