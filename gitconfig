@@ -56,6 +56,7 @@
   timespan = "!f() { one=$(git log -n 1 --format=%ai $1); two=$(git log -n 1 --format=%ai ${2:-HEAD}); ddiff -f ${3:-%mm%dd} \"$one\" \"$two\"; }; f"
   undo = "!f() { \\\n    git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; \\\n}; f"
   unpushed = log --oneline HEAD..."@{u}"
+  wip = rebase -i "@{u}"
 
 [core]
   attributesfile = ~/.gitattributes
