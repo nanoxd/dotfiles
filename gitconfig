@@ -78,7 +78,6 @@
 [submodule]
   fetchJobs = 0
 [diff]
-  compactionHeuristic = true
 	colorMoved = zebra
   algorithm = patience
   # Detect copies and renames
