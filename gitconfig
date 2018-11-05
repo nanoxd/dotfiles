@@ -17,6 +17,8 @@
   old = red
   new = green
   whitespace = red reverse
+  newMoved = cyan
+  oldMoved = blue
 [alias]
   a = add
   aa = add --all
