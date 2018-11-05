@@ -78,6 +78,8 @@
 	indentHeuristic = true
 	colorMoved = zebra
   algorithm = patience
+  # Detect copies and renames
+  renames = copies
 [interactive]
   diffFilter = diff-highlight
 [pull]
