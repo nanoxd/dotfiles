@@ -34,6 +34,8 @@
   dc = diff --cached
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -g
   delete-merged-branches = !sh -c "git checkout master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d" -
+  # `git di $number` shows the diff between the state `$number` revisions ago and the current state
+  di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
   f = files
   filelog = log -u
   files = "!git ls-files | grep -i"
