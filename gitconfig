@@ -39,6 +39,8 @@
   f = files
   filelog = log -u
   files = "!git ls-files | grep -i"
+  # Find tags containing commit
+  ft = "!f() { git describe --always --contains $1; }; f"
   fza = "!git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o git add"
   issues = !hub browse -- issues
   laf = fsck --lost-found
