@@ -99,6 +99,9 @@
   textconv = plutil -convert xml1 -o -
 [diff "provision"]
   textconv = openssl smime -inform der -verify -in
+[diff "bin"]
+  # Use `hexdump` to diff binary files
+  textconv = hexdump -v -C
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	required = true
