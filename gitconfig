@@ -79,7 +79,6 @@
   fetchJobs = 0
 [diff]
   compactionHeuristic = true
-	indentHeuristic = true
 	colorMoved = zebra
   algorithm = patience
   # Detect copies and renames
