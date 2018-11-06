@@ -19,6 +19,8 @@
   whitespace = red reverse
   newMoved = cyan
   oldMoved = blue
+[color "status"]
+  untracked = cyan
 [alias]
   a = add
   aa = add --all
