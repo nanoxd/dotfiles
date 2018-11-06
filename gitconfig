@@ -1,15 +1,19 @@
 [user]
-	name = Fernando Paredes
-	email = nano@fdp.io
+  name = Fernando Paredes
+  email = nano@fdp.io
+
 [push]
   default = upstream
+
 [color]
   ui = auto
+
 [color "diff-highlight"]
   oldNormal = red bold
   oldHighlight = red bold 52
   newNormal = green bold
   newHighlight = green bold 22
+
 [color "diff"]
   commit = green
   meta = yellow
@@ -19,8 +23,10 @@
   whitespace = red reverse
   newMoved = cyan
   oldMoved = blue
+
 [color "status"]
   untracked = cyan
+
 [alias]
   a = add
   aa = add --all
@@ -73,44 +79,60 @@
   pager = diff-highlight | less -r
   whitespace = fix
   untrackedCache = true
+
 [credential]
   helper = osxkeychain
+
 [rebase]
   autostash = true
+
 [stash]
   showPatch = true
+
 [submodule]
   fetchJobs = 0
+
 [diff]
-	colorMoved = zebra
+  colorMoved = zebra
   algorithm = patience
   # Detect copies and renames
   renames = copies
+
 [interactive]
   diffFilter = diff-highlight
+
 [pull]
   rebase = true
+
 [include]
   path = ~/.gitconfig.local
+
 [rerere]
   enabled = true
   autoupdate = true
+
 [apply]
   whitespace = nowarn
+
 [commit]
   template = ~/.gitmessage
-	gpgsign = true
-	verbose = true
+  gpgsign = true
+  verbose = true
+
 [diff "plist"]
   textconv = plutil -convert xml1 -o -
+
 [diff "provision"]
   textconv = openssl smime -inform der -verify -in
+
 [diff "bin"]
   # Use `hexdump` to diff binary files
   textconv = hexdump -v -C
+
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	required = true
-	clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  required = true
+  clean = git-lfs clean -- %f
+
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+  insteadOf = https://github.com/
