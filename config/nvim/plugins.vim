@@ -61,10 +61,93 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Completion
 Plug 'ervandew/supertab'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --racer-completer --tern-completer' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --racer-completer --tern-completer' }
+
+" deoplete Dark powered asynchronous completion framework for neovim {
+if has("nvim")
+  " ONLY neovim
+  " https://github.com/Shougo/deoplete.nvim
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  " ONLY vim8
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+
+set completeopt=longest,menuone,preview
+" https://github.com/zchee/deoplete-go#sample-initvim
+set completeopt+=noselect
+" https://github.com/zchee/deoplete-jedi
+Plug 'zchee/deoplete-jedi', { 'for': 'python'}
+let g:jedi#completions_enabled = 0
+
+" Tern plugin
+Plug 'ternjs/tern_for_vim'
+", { 'for': ['javascript', 'javascript.jsx'] }
+" Use tern_for_vim.
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
+" " Javascript Parameter Complete  https://github.com/othree/jspc.vim
+Plug 'othree/jspc.vim'
+" , { 'for': ['javascript', 'javascript.jsx'] }
+" https://github.com/carlitux/deoplete-ternjs
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern'}
+" , 'for': ['javascript', 'javascript.jsx'] }
+
+" https://github.com/zchee/deoplete-clang
+Plug 'zchee/deoplete-clang', { 'for': ['cpp', 'c'] }
+" https://github.com/zchee/deoplete-go
+Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go' }
+" https://github.com/sebastianmarkow/deoplete-rust
+Plug 'sebastianmarkow/deoplete-rust', { 'for': 'rust' }
+
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+
+" https://www.gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
+"
+let g:deoplete#omni#functions = {}
+let g:deoplete#omni#functions.javascript = [ 'tern#Complete' , 'jspc#omni']
+let g:deoplete#sources = {}
+let g:deoplete#sources.javascript = ['file', 'tag', 'ternjs', 'ultisnips' ]
+let g:deoplete#sources['javascript.jsx'] = ['file', 'tag', 'ternjs', 'ultisnips' ]
+let g:tern_request_timeout = 1
+"Add extra filetypes
+let g:deoplete#sources#ternjs#filetypes = [
+                \ 'jsx',
+                \ 'javascript.jsx',
+                \ 'html',
+                \ ]
+" Whether to include the types of the completions in the result data.
+" Default: 0
+let g:deoplete#sources#ternjs#types = 1
+" Whether to include documentation strings (if found) in the result data.
+" Default: 0
+let g:deoplete#sources#ternjs#docs = 1
+" Whether to use a case-insensitive compare between the current word and potential completions.
+" Default: 0
+let g:deoplete#sources#ternjs#case_insensitive = 1
+" Whether to include JavaScript keywords when completing something that is not a property.
+" Default: 0
+let g:deoplete#sources#ternjs#include_keywords = 1
+
+
+"https://github.com/zchee/deoplete-clang
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-6.0/lib/libclang.so'
+let g:deoplete#sources#clang#clang_header = '/usr/lib/llvm-6.0/lib/clang'
+
+" https://github.com/sebastianmarkow/deoplete-rust
+let g:deoplete#sources#rust#racer_binary='~/.cargo/bin/racer'
+" $(rustup --print sysroot)/lib/rustlib/src/rust/src
+let g:deoplete#sources#rust#rust_source_path='~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+" }
+
 Plug 'ludovicchabant/vim-gutentags' " Autogenerate ctags
 Plug 'w0rp/ale'
-Plug 'https://github.com/racer-rust/vim-racer'
+" Plug 'https://github.com/racer-rust/vim-racer'
 
 call plug#end()
 
