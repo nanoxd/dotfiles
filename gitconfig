@@ -110,6 +110,8 @@
 
 [rebase]
   autostash = true
+  autosquash = true
+  stat = true
 
 [stash]
   showPatch = true
