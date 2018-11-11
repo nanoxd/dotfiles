@@ -219,7 +219,7 @@ endfunction
 let s:has_rg = executable('rg')
 
 if s:has_rg
-  let s:fzf_files_command     = 'rg --color=never --no-ignore-vcs --hidden --files'
+  let s:fzf_files_command     = 'rg --color=never --no-ignore-vcs --hidden --files --glob "!.git/*"'
   let s:fzf_all_files_command = 'rg --color=never --no-ignore --hidden --files'
 else
   let s:fzf_files_command     = 'fd --color=never --no-ignore-vcs --hidden --type file'
