@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: git-large-files [options]"
+
+  opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
+    options[:verbose] = v
+  end
+
+  opts.separator ""
+  opts.separator "Common options:"
+
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+end.parse!
+
+PACK = ARGV[0]
+
+def files_in_blob(blob)
+  `git rev-list --objects --all | grep #{blob}`
+end
+
+def find_large_blobs(pack)
+  blobs = `git verify-pack -v #{pack} | sort -k 3 -n | tail -10 | awk '{print $1}'`
+
+  blobs.split "\n"
+end
+
+large_blobs = find_large_blobs PACK
+
+large_blobs.each do |large_blob|
+  files = files_in_blob(large_blob)
+  puts files
+end
