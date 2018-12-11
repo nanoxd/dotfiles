@@ -41,13 +41,11 @@
   cl = clone --recursive
   co = checkout
   checkout-pr = !sh -c 'git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1' -
-  create-branch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
 
   # Determines the branch we're on
   current = rev-parse --abbrev-ref HEAD
 
   dc = diff --cached
-  delete-branch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -g
   delete-merged-branches = !sh -c "git checkout master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d" -
 
   # `git di $number` shows the diff between the state `$number` revisions ago and the current state
