@@ -9,5 +9,7 @@ osascript -e 'tell app "Xcode" to quit'
 # Remove derived data
 rm -rf ~/Library/Developer/Xcode/DerivedData/*
 
+rm -rf ~/Library/Caches/{org.carthage.CarthageKit,carthage}
+
 # Open either Xcode workspace or project
 x
