@@ -159,6 +159,3 @@
   smudge = git-lfs smudge -- %f
   required = true
   clean = git-lfs clean -- %f
-
-[url "git@github.com:"]
-  insteadOf = https://github.com/
