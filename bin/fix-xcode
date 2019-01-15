@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # Xcode sometimes gets sad and won't index or other shenanigans. You can easily cheer up Xcode
 # and get things happy again by simply removing some files. This little script does just that.
