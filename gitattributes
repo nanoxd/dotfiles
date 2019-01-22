@@ -1,2 +1,5 @@
 *.mobileprovision diff=provision
 *.plist diff=plist
+
+# Xcode project file
+*.pbxproj merge=union
