@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+echo $#
+
+if [[ $# == 0 ]]; then
+    echo 'Error: search term was not provided.'
+    exit 1
+fi
+
+commits=$(
+  git log --oneline --color=always -S "$@" |
+    fzf --ansi --no-sort --height 100% \
+        --preview "git show --color=always {1}"
+)
+
+if [[ -n $commits ]]; then
+    hashes=$(printf "$commits" | cut -d' ' -f1 | tr '\n' ' ')
+    git show $hashes
+fi
+
