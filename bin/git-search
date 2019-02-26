@@ -14,7 +14,7 @@ commits=$(
 )
 
 if [[ -n $commits ]]; then
-    hashes=$(printf "$commits" | cut -d' ' -f1 | tr '\n' ' ')
-    git show $hashes
+    hashes=$(printf "$commits" | cut -d' ' -f1 | tr '\n' ' ' | xargs)
+    git show "$hashes"
 fi
 
