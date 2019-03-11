@@ -146,7 +146,7 @@ let g:deoplete#sources#rust#rust_source_path='~/.rustup/toolchains/stable-x86_64
 " }
 
 Plug 'ludovicchabant/vim-gutentags' " Autogenerate ctags
-Plug 'w0rp/ale'
+Plug 'desmap/ale-sensible' | Plug 'w0rp/ale'
 " Plug 'https://github.com/racer-rust/vim-racer'
 
 call plug#end()
