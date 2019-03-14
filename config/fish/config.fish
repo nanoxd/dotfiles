@@ -48,6 +48,8 @@ alias .....='cd ../../../..'
 alias ls='exa'
 alias ll='exa -l'
 alias la='exa -la'
+alias vim='nvim'
+alias vimdiff='nvim -d'
 
 bind \ca sudope
 
