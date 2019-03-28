@@ -41,6 +41,12 @@ if test -d "/usr/local/share/fish/vendor_completions.d/"
   set -gx fish_complete_path $fish_complete_path "/usr/local/share/fish/vendor_completions.d/"
 end
 
+if test -d "$HOME/.basher/bin" 
+  set basher ~/.basher/bin
+  set -U fish_user_paths "$basher" $fish_user_paths
+  status --is-interactive; and source (basher init -|psub)
+end
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
