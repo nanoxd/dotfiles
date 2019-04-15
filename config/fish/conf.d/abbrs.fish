@@ -27,6 +27,7 @@ if status --is-interactive
   abbr -a gpr git pull-request --browse
   abbr -a gpu git pull --rebase
   abbr -a gs git status -sb
+  abbr -a gin git introduced
   abbr -a gt gittower .
 
   # Ruby

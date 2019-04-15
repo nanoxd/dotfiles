@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+# Usage message that is displayed when `--help` is given as an argument.
+usage() {
+  echo "Usage: git introduced <SHA>"
+  echo "Determine when a commit was introduced"
+  echo
+}
+
+main() {
+  git tag --contains "$1" | head -1
+}
+
+# If the --help option is given, show the usage message and exit.
+while [ $# -gt 0 ]; do
+  case "$1" in
+      --help)
+        usage
+        exit 1
+          ;;
+      *)
+          main "$@"
+  esac
+  shift
+done
