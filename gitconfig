@@ -33,9 +33,12 @@
   ai = add --interactive
   amend = commit --amend
   ap = add --patch
+
+  biggest = "!git rev-list --objects --all | grep `git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -1 | awk '{ print $1 }'`"
   branch = branch -vv
   branches = branch -a
   browse = "!hub browse"
+
   ca = commit --amend
   ci = commit --verbose
   cl = clone --recursive
