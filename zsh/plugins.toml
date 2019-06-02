@@ -13,6 +13,7 @@ apply = ['PATH', 'source']
 # Custom user defined templates, the `each` field means that these will be
 # applied for all matched files.
 [templates]
+completion = { value = 'ln -sf "{{ filename }}" "{{ root }}/completions/_{{ name }}"', each = true }
 function = { value = 'ln -sf "{{ filename }}" "{{ root }}/functions/{{ name }}"', each = true }
 prompt = { value = 'ln -sf "{{ filename }}" "{{ root }}/functions/prompt_{{ name }}_setup"', each = true }
 
@@ -23,8 +24,26 @@ apply = ['function']
 [plugins.pure]
 github = 'sindresorhus/pure'
 apply = ['prompt']
-# use = ['{{ name }}.zsh']
 
 [plugins.zsh-history-substring-search]
 github = 'zsh-users/zsh-history-substring-search'
+apply = ['function']
+
+[plugins.zsh-mkc]
+github = 'caarlos0/zsh-mkc'
+apply = ['function']
+
+[plugins.zsh-completions]
+github = 'zsh-users/zsh-completions'
+apply = ['completion']
+
+[plugins.zsh-syntax-highlighting]
+github = 'zsh-users/zsh-syntax-highlighting'
+
+[plugins.zsh-autosuggestions]
+github = 'zsh-users/zsh-autosuggestions'
+apply = ['function']
+
+[plugins.alias-tips]
+github = 'djui/alias-tips'
 apply = ['function']
