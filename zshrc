@@ -15,9 +15,6 @@ config_files=($ZSH/*.zsh)
 
 source <(sheldon source)
 
-#source <(antibody init)
-#antibody bundle < ~/.zshrc.plugins
-
 # Load ZSH Modules
 autoload -U promptinit && promptinit
 autoload -U colors && colors
@@ -44,7 +41,6 @@ fi
 
 # Pure Prompt
 PURE_CMD_MAX_EXEC_TIME=5
-prompt pure
 
 # Source completion
 for file in ${(M)config_files:#*/completion.zsh}; do
@@ -74,8 +70,6 @@ source `brew --prefix`/etc/profile.d/z.sh
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# export PATH="$(yarn global bin):$PATH"
 
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
