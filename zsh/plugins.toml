@@ -1,0 +1,30 @@
+# Global matches, if a plugin doesn't provide a `use` field then the first one
+# of the following that matches more than zero files will be used.
+match = [
+  '{{ name }}.zsh',
+  '*.zsh',
+  '*.sh',
+]
+
+# Global templates to apply by default, if a plugin doesn't provide an `apply`
+# field then these will be used.
+apply = ['PATH', 'source']
+
+# Custom user defined templates, the `each` field means that these will be
+# applied for all matched files.
+[templates]
+function = { value = 'ln -sf "{{ filename }}" "{{ root }}/functions/{{ name }}"', each = true }
+prompt = { value = 'ln -sf "{{ filename }}" "{{ root }}/functions/prompt_{{ name }}_setup"', each = true }
+
+[plugins.async]
+github = 'mafredri/zsh-async'
+apply = ['function']
+
+[plugins.pure]
+github = 'sindresorhus/pure'
+apply = ['prompt']
+# use = ['{{ name }}.zsh']
+
+[plugins.zsh-history-substring-search]
+github = 'zsh-users/zsh-history-substring-search'
+apply = ['function']

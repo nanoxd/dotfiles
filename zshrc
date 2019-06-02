@@ -13,12 +13,19 @@ export PATH="$HOME/.bin:$HOME/.cargo/bin:`yarn global bin`:$PATH"
 typeset -U config_files
 config_files=($ZSH/*.zsh)
 
-source <(antibody init)
-antibody bundle < ~/.zshrc.plugins
+source <(sheldon source)
+
+#source <(antibody init)
+#antibody bundle < ~/.zshrc.plugins
 
 # Load ZSH Modules
 autoload -U promptinit && promptinit
 autoload -U colors && colors
+
+function_files=($ZSH/functions/*)
+for file in ${function_files}; do
+    source "$file"
+done
 
 # load everything but the path and completion files
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}; do
