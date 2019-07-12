@@ -18,6 +18,7 @@ Plug 'mhinz/vim-grepper'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'tpope/vim-abolish'
 Plug 'vim-scripts/ctags.vim'
+Plug 'cazador481/fakeclip.neovim'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -38,14 +39,21 @@ Plug 'editorconfig/editorconfig-vim'
 
 " Text Objects
 Plug 'kana/vim-textobj-user'
-Plug 'bootleq/vim-textobj-rubysymbol'
-Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'bootleq/vim-textobj-rubysymbol', { 'for': 'ruby' }
+Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
 Plug 'coderifous/textobj-word-column.vim'
 
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-commentary'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'tolecnal/vim-matchit'
+" Smarter matchit, extends `%`
+" % / g% forward/backwards to next matching open/close word
+" [% / ]% go to prev/next surrounding word
+" z% go into nearest inner contained block
+" a% & i% text objects
+" ds% / cs% to delete/change surrounding
+" Can also do parallel editing of matches on tags
+Plug 'andymass/vim-matchup'
 Plug 'rizzatti/funcoo.vim'
 Plug 'tpope/vim-repeat'
 Plug 'majutsushi/tagbar'
@@ -165,8 +173,10 @@ let g:ycm_semantic_triggers = {
      \}
 
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType elixir setlocal omnifunc=elixircomplete#Complete
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
@@ -258,3 +268,10 @@ let g:fzf_action = {
 let g:racer_cmd = "racer"
 let g:racer_experimental_completer = 1
 "}}}
+
+" Splitjoin {{{
+let g:splitjoin_trailing_comma = 1
+let g:splitjoin_ruby_hanging_args = 0
+" }}}
+
+let g:vim_fakeclip_tmux_plus=1 
