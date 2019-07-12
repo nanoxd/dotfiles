@@ -70,3 +70,10 @@ end
 function reload-fish -d "Reloads fish config"
   source ~/.config/fish/config.fish
 end
+
+if test -f $HOME/.config/fish/config.local.fish
+  source "$HOME/.config/fish/config.local.fish"
+end
+
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
