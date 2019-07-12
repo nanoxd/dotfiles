@@ -32,3 +32,6 @@ nnoremap gV `[v`]
 if has('nvim')
   nmap <bs> :<c-u>TmuxNavigateLeft<cr>
 endif
+
+command! ProjectFiles call fzf#run(fzf#wrap({'source': 'git ls-files -co --exclude-standard'}))
+nnoremap <leader>p :ProjectFiles<CR>
