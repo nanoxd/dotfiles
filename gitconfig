@@ -49,7 +49,6 @@
   current = rev-parse --abbrev-ref HEAD
 
   dc = diff --cached
-  delete-merged-branches = !sh -c "git checkout master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d" -
 
   # `git di $number` shows the diff between the state `$number` revisions ago and the current state
   di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
