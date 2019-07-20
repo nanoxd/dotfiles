@@ -1,17 +1,16 @@
-# Editors
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 set -gx PAGER less
 
 # ENVs
-set -x GOPATH "$HOME/dev/go"
-set -x FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git'
-set -x FZF_TMUX 1
-set -x DYLD_LIBRARY_PATH "$HOME/.rustup/toolchains/nightly-x86_64-apple-darwin"
-set -x TEMPLATES "$HOME/dev/templates"
+set -gx GOPATH "$HOME/dev/go"
+set -gx FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git'
+set -gx FZF_TMUX 1
+set -gx DYLD_LIBRARY_PATH "$HOME/.rustup/toolchains/nightly-x86_64-apple-darwin"
+set -gx TEMPLATES "$HOME/dev/templates"
 
 # Set paths
-set -U fish_user_paths /usr/local/bin $HOME/.bin $GOPATH/bin (yarn global bin)
+set -U fish_user_paths /usr/local/bin $HOME/.bin $GOPATH/bin
 
 # Custom behavior
 set -U fish_key_bindings fish_vi_key_bindings
@@ -30,8 +29,6 @@ end
 if test -f $HOME/.fish
   source $HOME/.fish
 end
-
-export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
 
 if test -d "/Applications/Postgres.app/Contents/Versions/latest/bin"
   set -U fish_user_paths "/Applications/Postgres.app/Contents/Versions/latest/bin" $fish_user_paths
