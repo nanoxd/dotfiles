@@ -10,20 +10,19 @@ set -gx DYLD_LIBRARY_PATH "$HOME/.rustup/toolchains/nightly-x86_64-apple-darwin"
 set -gx TEMPLATES "$HOME/dev/templates"
 
 # Set paths
-set -U fish_user_paths /usr/local/bin $HOME/.bin $GOPATH/bin
+set -Ua fish_user_paths /usr/local/bin $HOME/.bin $GOPATH/bin
 
 # Custom behavior
 set -U fish_key_bindings fish_vi_key_bindings
 
 # Rust
 if test -d "$HOME/.cargo/bin"
-  set -U fish_user_paths "$HOME/.cargo/bin" $fish_user_paths
+  set -Ua fish_user_paths "$HOME/.cargo/bin"
 end
 
 # Yarn
 if test -d (yarn global bin)
-  set -U fish_user_paths (yarn global bin) $fish_user_paths
-  set -x PATH $PATH $HOME"/.config/yarn/global/node_modules/.bin"
+  set -Ua fish_user_paths (yarn global bin)
 end
 
 if test -f $HOME/.fish
@@ -31,7 +30,7 @@ if test -f $HOME/.fish
 end
 
 if test -d "/Applications/Postgres.app/Contents/Versions/latest/bin"
-  set -U fish_user_paths "/Applications/Postgres.app/Contents/Versions/latest/bin" $fish_user_paths
+  set -Ua fish_user_paths "/Applications/Postgres.app/Contents/Versions/latest/bin"
 end
 
 if test -d "/usr/local/share/fish/vendor_completions.d/"
@@ -39,8 +38,8 @@ if test -d "/usr/local/share/fish/vendor_completions.d/"
 end
 
 if test -d "$HOME/.basher/bin" 
-  set basher ~/.basher/bin
-  set -U fish_user_paths "$basher" $fish_user_paths
+  set basher "$HOME/.basher/bin"
+  set -Ua fish_user_paths "$basher"
   status --is-interactive; and source (basher init -|psub)
 end
 

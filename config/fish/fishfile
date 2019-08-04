@@ -1,6 +1,6 @@
 oh-my-fish/plugin-argu
 fishpkg/fish-await
-oh-my-fish/plugin-balias
+rnpatel/fish-balias
 oh-my-fish/plugin-bang-bang
 nyarly/fish-cache-file
 oh-my-fish/plugin-expand
@@ -16,4 +16,3 @@ rafaelrinaldi/pure
 jmaroeder/frakes
 daenney/rbenv
 jethrokuan/z
-lilyball/fzf-git.fish
