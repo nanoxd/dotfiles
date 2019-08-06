@@ -16,6 +16,7 @@ if status --is-interactive
   abbr -a gaap git add --all --patch
   abbr -a gc git commit
   abbr -a gca git commit --amend
+  abbr -a gcan git commit --amend --no-edit
   abbr -a gcb git create-branch
   abbr -a gcl git clone
   abbr -a gco git checkout
@@ -28,7 +29,8 @@ if status --is-interactive
   abbr -a gpu git pull --rebase
   abbr -a gs git status -sb
   abbr -a gin git introduced
-  abbr -a gt gittower .
+
+  abbr -a f fork
 
   # Ruby
   abbr -a be bundle exec
