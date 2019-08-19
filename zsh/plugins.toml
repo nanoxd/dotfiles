@@ -47,3 +47,11 @@ apply = ['function']
 [plugins.alias-tips]
 github = 'djui/alias-tips'
 apply = ['function']
+
+[plugins.fzf-git]
+github = 'hschne/fzf-git'
+apply = ['function']
+
+[plugins.rbenv]
+gist = 'nanoxd/d85577bde47b87323656235c47625f11'
+apply = ['function']
