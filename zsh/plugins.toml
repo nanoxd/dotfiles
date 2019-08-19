@@ -55,3 +55,7 @@ apply = ['function']
 [plugins.rbenv]
 gist = 'nanoxd/d85577bde47b87323656235c47625f11'
 apply = ['function']
+
+[plugins.tsm]
+github = 'RobertAudi/tsm'
+apply = ['function']
