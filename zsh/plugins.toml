@@ -59,3 +59,7 @@ apply = ['function']
 [plugins.tsm]
 github = 'RobertAudi/tsm'
 apply = ['function']
+
+[plugins.rake-completion]
+github = 'unixorn/rake-completion.zshplugin'
+apply = ['completion']
