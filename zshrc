@@ -77,3 +77,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # alias-tips
 export ZSH_PLUGINS_ALIAS_TIPS_EXPAND=0
 export ZSH_PLUGINS_ALIAS_TIPS_REVEAL=1 # Display raw command like in Fish
+
+if [[ -f "$HOME/.zshrc.local" ]]; then
+    source "$HOME/.zshrc.local"
+fi
