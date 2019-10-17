@@ -1,6 +1,7 @@
 if status --is-interactive
-  # Editors
-  abbr -a a atom
+  # Tools
+  abbr -a co code
+  abbr -a f fork
 
   # Homebrew | Cask
   abbr -a bi brew install
@@ -8,7 +9,7 @@ if status --is-interactive
   abbr -a bcr brew cask reinstall
   abbr -a bcu brew cask uninstall
 
-  # Git Abbreviations
+  # Git
   abbr -a g git
   abbr -a ga git add
   abbr -a gb git browse
@@ -17,7 +18,7 @@ if status --is-interactive
   abbr -a gc git commit
   abbr -a gca git commit --amend
   abbr -a gcan git commit --amend --no-edit
-  abbr -a gcb git create-branch
+  abbr -a gcb git switch -c
   abbr -a gcl git clone
   abbr -a gco git checkout
   abbr -a gd git diff
@@ -30,12 +31,11 @@ if status --is-interactive
   abbr -a gs git status -sb
   abbr -a gin git introduced
 
-  abbr -a f fork
-
   # Ruby
   abbr -a be bundle exec
   abbr -a bu bundle update
   abbr -a gu gem update
+  abbr -a pu bundle exec pod update
 
   # Node
   abbr -a y yarn
@@ -43,8 +43,6 @@ if status --is-interactive
   abbr -a yad yarn add --dev
   abbr -a yag yarn global add
   abbr -a yu yarn upgrade-interactive --latest
-
-  abbr -a pu bundle exec pod update
 
   # Rust
   abbr -a c cargo
