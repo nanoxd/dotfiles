@@ -11,30 +11,12 @@ set -gx TEMPLATES "$HOME/dev/templates"
 set -U fish_key_bindings fish_vi_key_bindings
 
 # Set paths
-set -Ua fish_user_paths /usr/local/bin $HOME/.bin $GOPATH/bin
-
-# Rust
-if test -d "$HOME/.cargo/bin"
-  set -Ua fish_user_paths "$HOME/.cargo/bin"
-end
-
-# Yarn
-if test -d (yarn global bin)
-  set -Ua fish_user_paths (yarn global bin)
-end
+set -e fish_user_paths
+set -U fish_user_paths /usr/local/bin $HOME/.bin $GOPATH/bin $HOME/.cargo/bin
+set -gx fish_complete_path $fish_complete_path "/usr/local/share/fish/vendor_completions.d/"
 
 if test -f $HOME/.fish
   source $HOME/.fish
-end
-
-# Custom behavior
-
-if test -d "/Applications/Postgres.app/Contents/Versions/latest/bin"
-  set -Ua fish_user_paths "/Applications/Postgres.app/Contents/Versions/latest/bin"
-end
-
-if test -d "/usr/local/share/fish/vendor_completions.d/"
-  set -gx fish_complete_path $fish_complete_path "/usr/local/share/fish/vendor_completions.d/"
 end
 
 alias ..='cd ..'
