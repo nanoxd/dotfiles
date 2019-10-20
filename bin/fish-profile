@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+# Outputs the sorted output of starting up Fish
+
+fish --profile /tmp/profile -c fish_prompt; sort -nk2 /tmp/profile
