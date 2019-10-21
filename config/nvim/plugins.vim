@@ -70,7 +70,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ervandew/supertab'
 Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --all' }
 
-Plug 'ludovicchabant/vim-gutentags' " Autogenerate ctags
 Plug 'desmap/ale-sensible' | Plug 'w0rp/ale'
 " Plug 'https://github.com/racer-rust/vim-racer'
 
