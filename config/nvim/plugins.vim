@@ -58,7 +58,13 @@ Plug 'rizzatti/funcoo.vim'
 Plug 'tpope/vim-repeat'
 Plug 'majutsushi/tagbar'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'airblade/vim-gitgutter'
+
+if has('nvim') || has('patch-8.0.902')
+  Plug 'mhinz/vim-signify'
+else
+  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+endif
+
 Plug 'Yggdroot/indentLine'
 
 " Colors
