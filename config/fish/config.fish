@@ -9,6 +9,7 @@ set -gx FZF_TMUX 1
 set -gx DYLD_LIBRARY_PATH "$HOME/.rustup/toolchains/nightly-x86_64-apple-darwin"
 set -gx TEMPLATES "$HOME/dev/templates"
 set -U fish_key_bindings fish_vi_key_bindings
+set fish_greeting
 
 # Set paths
 set -e fish_user_paths
