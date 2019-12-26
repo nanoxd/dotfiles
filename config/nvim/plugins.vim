@@ -116,7 +116,6 @@ nmap ga <Plug>(EasyAlign)
 
 " Gitgutter
 set updatetime=500 " Increase to call gitgutter more often
-let g:gitgutter_map_keys = 0
 
 " Fuzzy Finder {{{
 " Fzf
