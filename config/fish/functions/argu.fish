@@ -1,0 +1,1 @@
+/Users/nano/.config/fisherman/argu/functions/argu.fish

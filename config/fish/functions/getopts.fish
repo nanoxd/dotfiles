@@ -1,0 +1,1 @@
+/Users/nano/.config/fisherman/getopts/getopts.fish

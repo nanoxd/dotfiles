@@ -1,0 +1,1 @@
+/Users/nano/.config/fisherman/rbenv/functions/rbenv.fish

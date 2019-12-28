@@ -1,0 +1,1 @@
+/Users/nano/.config/fisherman/get-file-age/get_file_age.fish

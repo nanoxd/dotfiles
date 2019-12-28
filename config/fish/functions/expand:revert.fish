@@ -1,0 +1,1 @@
+/Users/nano/.config/fisherman/expand/functions/expand:revert.fish

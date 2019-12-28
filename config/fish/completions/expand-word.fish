@@ -1,0 +1,1 @@
+/Users/nano/.config/fisherman/expand/completions/expand-word.fish

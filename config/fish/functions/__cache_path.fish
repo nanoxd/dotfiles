@@ -1,0 +1,1 @@
+/Users/nano/.config/fisherman/cache-file/functions/__cache_path.fish

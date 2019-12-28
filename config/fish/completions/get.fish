@@ -1,0 +1,1 @@
+/Users/nano/.config/fisherman/get/completions/get.fish

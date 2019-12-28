@@ -1,0 +1,1 @@
+/Users/nano/.config/fisherman/last-job-id/last_job_id.fish
