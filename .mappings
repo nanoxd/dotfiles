@@ -1,0 +1,30 @@
+# vim: set ft=toml ts=2 sw=2 et :
+
+[general]
+ackrc = "~/.ackrc"
+aws = "~/.aws"
+bin = "~/.bin"
+config = "~/.config"
+ctags = "~/.ctags"
+gemrc = "~/.gemrc"
+gitattributes = "~/.gitattributes"
+gitconfig = "~/.gitconfig"
+gitignore = "~/.gitignore"
+gitmessage = "~/.gitmessage"
+"hyper.js" = "~/.hyper.js"
+irbrc = "~/.irbrc"
+"ruby-version" = "~/.ruby-version"
+stack = "~/.stack"
+"tmux.conf" = "~/.tmux.conf"
+zsh = "~/.zsh"
+zshrc = "~/.zshrc"
+
+[linux]
+
+[macos]
+"swiftformat.yml" = "~/.swiftformat.yml"
+"prefs/com.googlecode.iterm2.plist" = "~/Library/Preferences/com.googlecode.iterm2.plist"
+
+[freebsd]
+
+[windows]
