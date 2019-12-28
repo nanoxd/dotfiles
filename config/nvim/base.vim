@@ -127,3 +127,23 @@ let g:netrw_banner = 0                      " hide banner
 let g:netrw_list_hide='.*\.swp$,\.DS_Store' " hide swp, DS_Store files
 let g:netrw_liststyle=3                     " set tree style listing
 let g:netrw_sort_options='i'                " case insensitive
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Sets only once the value of g:env to the running environment
+" from romainl
+" https://gist.github.com/romainl/4df4cde3498fada91032858d7af213c2
+function! Config_setEnv() abort
+  if exists('g:env')
+    return
+  endif
+
+  if has('win64') || has('win32') || has('win16')
+    let g:env = 'WINDOWS'
+  else
+    let g:env = toupper(substitute(system('uname'), '\n', '', ''))
+  endif
+endfunction
+
