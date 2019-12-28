@@ -2,6 +2,5 @@ config/nvim/autoload/plug.vim.old
 config/nvim/backups
 config/nvim/plugged
 config/nvim/.netrwhist
-config/fisherman
 config/fish/fish_variables
 config/configstore/update-notifier-npm.json
