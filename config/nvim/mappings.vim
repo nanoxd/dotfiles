@@ -49,3 +49,6 @@ endfunction
 
 " Find the alternate file for the current path and open it
 nnoremap <leader>. :w<cr>:call AltCommand(expand('%'), ':e')<cr>
+
+" Generate new vertical split
+nnore map <silent> vv <C-w>v
