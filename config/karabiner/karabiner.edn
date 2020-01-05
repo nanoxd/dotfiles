@@ -1,0 +1,39 @@
+;; !  | means mandatory
+;; #  | means optional
+;; !! | mandatory command + control + optional + shift (hyper)
+;; ## | optional any
+;; to understand better how modifiers work in karabiner
+;; karabiner definition of mandatory and optional
+;; https://pqrs.org/osx/karabiner/json.html#from-event-definition-modifiers
+;; C  | left_command
+;; T  | left_control
+;; O  | left_option
+;; S  | left_shift
+;; F  | fn
+;; Q  | right_command
+;; W  | right_control
+;; E  | right_option
+;; R  | right_shift
+;; need to prefix C T O S F with ! or #
+
+{:profiles
+  {:Default {:default true
+            :sim 50
+            :delay 500
+            :alone 500
+            :held 500}} 
+
+  :devices {:apl-usb-int [{:vendor_id 1452, :product_id 635 }]  ;; Apple Internal & Magic Keyboard (USB)}
+            :drop-ctrl [{:vendor_id 1240, :product_id 613}] ;; Drop CTRL
+            }
+
+  :templates {:launch "osascript -e 'tell application \"Alfred 4\" to run trigger \"launch%s\" in workflow \"yqrashawn.workflow.launcher\" with argument \"\"'"
+              :alf    "open /Applications/Alfred\\ 4.app && osascript -e 'tell application \"Alfred 4\" to run trigger \"%s\" in workflow \"%s\" with argument \"\"'"}
+
+  :main [
+         {:des "Change caps_lock key to Hyper or Esc"
+          :rules [
+            [:##caps_lock :!CTOleft_shift nil {:alone :escape}]
+          ]}
+        ]
+}
