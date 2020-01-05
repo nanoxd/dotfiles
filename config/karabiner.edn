@@ -27,13 +27,31 @@
             :drop-ctrl [{:vendor_id 1240, :product_id 613}] ;; Drop CTRL
             }
 
-  :templates {:launch "osascript -e 'tell application \"Alfred 4\" to run trigger \"launch%s\" in workflow \"yqrashawn.workflow.launcher\" with argument \"\"'"
-              :alf    "open /Applications/Alfred\\ 4.app && osascript -e 'tell application \"Alfred 4\" to run trigger \"%s\" in workflow \"%s\" with argument \"\"'"}
+  :templates {:alf    "open /Applications/Alfred\\ 4.app && osascript -e 'tell application \"Alfred 4\" to run trigger \"%s\" in workflow \"%s\" with argument \"\"'"
+              :open   "open \"%s\""}
+
+  :simlayers {:launch-mode {:key :z}}
 
   :main [
+         ; Hyper
          {:des "Change caps_lock key to Hyper or Esc"
           :rules [
             [:##caps_lock :!CTOleft_shift nil {:alone :escape}]
+          ]}
+
+         {:des "Hyper+Vi Arrows"
+          :rules [
+            [:!!h :left_arrow]
+            [:!!j :down_arrow]
+            [:!!k :up_arrow]
+            [:!!l :right_arrow]
+          ]}
+
+         ; Launch Mode
+         {:des "Launch Mode: Open Quickly"
+          :rules [:launch-mode
+                  [:f [:open "/Applications/Fork.app"]]
+                  [:t [:open "/Applications/Things3.app"]]
           ]}
         ]
 }

@@ -8,7 +8,6 @@ set -gx FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git'
 set -gx FZF_TMUX 1
 set -gx DYLD_LIBRARY_PATH "$HOME/.rustup/toolchains/nightly-x86_64-apple-darwin"
 set -gx TEMPLATES "$HOME/dev/templates"
-set -gx GOKU_EDN_CONFIG_FILE "$HOME/.config/karabiner/karabiner.edn"
 set -U fish_key_bindings fish_vi_key_bindings
 set fish_greeting
 
