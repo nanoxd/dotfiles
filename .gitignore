@@ -9,3 +9,4 @@ config/nvim/plugged
 config/yarn/global
 zsh/plugins.lock
 zsh/repositories
+aws/credentials
