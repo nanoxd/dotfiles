@@ -14,3 +14,5 @@ function fish_user_key_bindings
     bind --mode vi_expand --sets-mode insert '' ''
     ### expand ###
 end
+
+fzf_key_bindings
