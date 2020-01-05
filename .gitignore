@@ -4,3 +4,6 @@ config/nvim/plugged
 config/nvim/.netrwhist
 config/fish/fish_variables
 config/configstore/update-notifier-npm.json
+config/yarn/global
+zsh/plugins.lock
+zsh/repositories
