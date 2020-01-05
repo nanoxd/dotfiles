@@ -1,9 +1,11 @@
+config/configstore/update-notifier-npm.json
+config/fish/fish_variables
+config/hub
+config/karabiner/automatic_backups
+config/nvim/.netrwhist
 config/nvim/autoload/plug.vim.old
 config/nvim/backups
 config/nvim/plugged
-config/nvim/.netrwhist
-config/fish/fish_variables
-config/configstore/update-notifier-npm.json
 config/yarn/global
 zsh/plugins.lock
 zsh/repositories
