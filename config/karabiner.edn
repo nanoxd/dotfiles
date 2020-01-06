@@ -30,6 +30,7 @@
   :templates {:alf    "open /Applications/Alfred\\ 4.app && osascript -e 'tell application \"Alfred 4\" to run trigger \"%s\" in workflow \"%s\" with argument \"\"'"
               :open   "open \"%s\""}
 
+  :layers {:comma-mode {:key :comma}}
   :simlayers {:launch-mode {:key :z}}
 
   :main [
@@ -50,8 +51,21 @@
          ; Launch Mode
          {:des "Launch Mode: Open Quickly"
           :rules [:launch-mode
-                  [:f [:open "/Applications/Fork.app"]]
-                  [:t [:open "/Applications/Things3.app"]]
+            [:f [:open "/Applications/Fork.app"]]
+            [:t [:open "/Applications/Things3.app"]]
+          ]}
+
+         ; Comma Mode
+         {:des "Comma Layer"
+          :rules [:comma-mode
+            [:a :open_bracket]
+            [:s :close_bracket]
+            [:d :!S7]
+            [:f :!S8]
+            [:q :!Shyphen]
+            [:w :!Sequal_sign]
+            [:e :!S5]
+            [:r :!S6]
           ]}
         ]
 }
