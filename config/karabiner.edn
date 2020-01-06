@@ -27,8 +27,8 @@
             :drop-ctrl [{:vendor_id 1240, :product_id 613}] ;; Drop CTRL
             }
 
-  :templates {:alf    "open /Applications/Alfred\\ 4.app && osascript -e 'tell application \"Alfred 4\" to run trigger \"%s\" in workflow \"%s\" with argument \"\"'"
-              :open   "open \"%s\""}
+  :templates {:alf  "open /Applications/Alfred\\ 4.app && osascript -e 'tell application \"Alfred 4\" to run trigger \"%s\" in workflow \"%s\" with argument \"\"'"
+              :open "open \"%s\""}
 
   :layers {:comma-mode {:key :comma}}
   :simlayers {:launch-mode {:key :z}}
@@ -68,4 +68,14 @@
             [:r :!S6]
           ]}
         ]
+
+  :applications {:Alfred    ["^com\\.runningwithcrayons\\.Alfred$"]
+                 :Terminals ["^com\\.apple\\.Terminal$"
+                             "^com\\.googlecode\\.iterm2$"
+                             "^co\\.zeit\\.hyperterm$"
+                             "^co\\.zeit\\.hyper$"
+                             "^io\\.alacritty$"
+                             "^net\\.kovidgoyal\\.kitty$"]
+                 :VSCode    ["^com\\.microsoft\\.VSCode$"]
+                 :Xcode     ["^com\\.apple\\.dt\\.Xcode$"]}
 }
