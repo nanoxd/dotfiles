@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+/usr/libexec/ApplicationFirewall/socketfilterfw --add $(dirname $(xcode-select -p))/MacOS/Xcode
+/usr/libexec/ApplicationFirewall/socketfilterfw --add $(xcode-select -p)/Applications/Simulator.app/Contents/MacOS/Simulator
