@@ -30,8 +30,9 @@
   :templates {:alf  "open /Applications/Alfred\\ 4.app && osascript -e 'tell application \"Alfred 4\" to run trigger \"%s\" in workflow \"%s\" with argument \"\"'"
               :open "open \"%s\""}
 
-  :layers {:comma-mode {:key :comma}}
-  :simlayers {:launch-mode {:key :z}}
+  :layers {}
+  :simlayers {:launch-mode {:key :z}
+              :comma-mode {:key :comma}}
 
   :main [
          ; Hyper
@@ -78,4 +79,7 @@
                              "^net\\.kovidgoyal\\.kitty$"]
                  :VSCode    ["^com\\.microsoft\\.VSCode$"]
                  :Xcode     ["^com\\.apple\\.dt\\.Xcode$"]}
+
+   ; the default value is 250
+ :simlayer-threshold 500
 }
