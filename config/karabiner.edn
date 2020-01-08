@@ -35,7 +35,7 @@
               :comma-mode {:key :comma}}
 
   :main [
-         ; Hyper
+         ;; Hyper
          {:des "Change caps_lock key to Hyper or Esc"
           :rules [
             [:##caps_lock :!CTOleft_shift nil {:alone :escape}]
@@ -49,24 +49,24 @@
             [:!!l :right_arrow]
           ]}
 
-         ; Launch Mode
+         ;; Launch Mode
          {:des "Launch Mode: Open Quickly"
           :rules [:launch-mode
             [:f [:open "/Applications/Fork.app"]]
             [:t [:open "/Applications/Things3.app"]]
           ]}
 
-         ; Comma Mode
-         {:des "Comma Layer"
+         ;; Comma Mode
+         {:des "Comma Layer - Symbols"
           :rules [:comma-mode
-            [:a :open_bracket]
-            [:s :close_bracket]
-            [:d :!S7]
-            [:f :!S8]
-            [:q :!Shyphen]
-            [:w :!Sequal_sign]
-            [:e :!S5]
-            [:r :!S6]
+            [:a :open_bracket] ;; [
+            [:s :close_bracket] ;; ]
+            [:d :!S7] ;; &
+            [:f :!S8] ;; *
+            [:q :!Shyphen] ;; _
+            [:w :!Sequal_sign] ;; +
+            [:e :!S5] ;; %
+            [:r :!S6] ;; ^
           ]}
         ]
 
