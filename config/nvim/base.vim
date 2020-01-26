@@ -128,6 +128,12 @@ let g:netrw_list_hide='.*\.swp$,\.DS_Store' " hide swp, DS_Store files
 let g:netrw_liststyle=3                     " set tree style listing
 let g:netrw_sort_options='i'                " case insensitive
 
+" Autoreload changed files
+set autoread
+au CursorHold,CursorHoldI * checktime
+autocmd FileChangedShellPost *
+      \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -146,4 +152,3 @@ function! Config_setEnv() abort
     let g:env = toupper(substitute(system('uname'), '\n', '', ''))
   endif
 endfunction
-
