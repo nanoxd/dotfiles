@@ -244,5 +244,8 @@ nmap <leader>rn <Plug>(coc-rename)
 " Remap for format selected region
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+set cmdheight=2    " Better cmd height; needed for coc
+set shortmess+=c
+set signcolumn=yes
 
 " }}}
