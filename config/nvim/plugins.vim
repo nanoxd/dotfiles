@@ -73,6 +73,11 @@ Plug 'rakr/vim-one' " One Dark/Light for Vim
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" vim-polyglot
+
+" Remove concealing in vim-markdown
+let g:vim_markdown_conceal = 0
+
 " Completion
 " Plug 'ervandew/supertab'
 " Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --all' }
