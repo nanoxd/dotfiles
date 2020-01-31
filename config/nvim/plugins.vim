@@ -249,3 +249,7 @@ set shortmess+=c
 set signcolumn=yes
 
 " }}}
+
+" airline {{{
+let g:airline#extensions#coc#enabled = 1
+" }}}

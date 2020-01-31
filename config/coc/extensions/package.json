@@ -4,11 +4,11 @@
     "coc-html": ">=1.2.1",
     "coc-json": ">=1.2.4",
     "coc-rls": ">=1.1.4",
-    "coc-snippets": ">=2.1.17",
+    "coc-snippets": ">=2.1.18",
     "coc-solargraph": ">=1.1.5",
     "coc-sourcekit": ">=0.0.1",
     "coc-tsserver": ">=1.4.9",
-    "coc-vimlsp": ">=0.4.4",
+    "coc-vimlsp": ">=0.4.5",
     "coc-yaml": ">=1.0.2"
   }
 }
