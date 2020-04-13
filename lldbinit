@@ -1,0 +1,2 @@
+command alias objc expression -l objc -O --
+command regex swift 's#(.+)#expression -l Swift -O -- defer { CATransaction.flush() }; %1#'

@@ -22,6 +22,7 @@ zshrc = "~/.zshrc"
 [linux]
 
 [macos]
+lldbinit = "~/.lldbinit"
 "swiftformat.yml" = "~/.swiftformat.yml"
 "prefs/com.googlecode.iterm2.plist" = "~/Library/Preferences/com.googlecode.iterm2.plist"
 
