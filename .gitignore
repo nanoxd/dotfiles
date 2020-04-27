@@ -11,3 +11,4 @@ zsh/plugins.lock
 zsh/repositories
 aws/credentials
 node_modules
+.netrwhist
