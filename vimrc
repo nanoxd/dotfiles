@@ -45,13 +45,15 @@ function! PackagerInit() abort
 
   " UI
   call packager#add('itchyny/lightline.vim')
+  call packager#add('josa42/vim-lightline-coc')
   call packager#add('rakr/vim-one')
 endfunction
 
 function! InstallCoc(plugin) abort
   exe '!cd '.a:plugin.dir.' && yarn install'
-  call coc#add_extension('coc-eslint', 'coc-tsserver', 'coc-pyls')
+  call coc#add_extension('coc-eslint', 'coc-tsserver', 'coc-pyls', 'coc-rust-analyzer', 'coc-tsserver', 'coc-html', 'coc-css')
 endfunction 
+
 command! PackagerInstall call PackagerInit() | call packager#install()
 command! -bang PackagerUpdate call PackagerInit() | call packager#update({ 'force_hooks': '<bang>' })
 command! PackagerClean call PackagerInit() | call packager#clean()
@@ -69,7 +71,7 @@ augroup END
 
 """ General
 "
-map <Space> <Leader>
+let mapleader=" "
 set ruler
 set mouse=a " Enable mouse support
 set hidden " The current buffer can be backgrounded without saving
@@ -124,6 +126,9 @@ set cursorline
 colorscheme one
 
 let g:lightline = {
+      \ 'active': {
+      \   'left': [[ 'coc_errors', 'coc_warnings', 'coc_ok' ], [ 'coc_status' ]],
+      \ },
       \ 'colorscheme': 'one',
       \ 'mode_map': {
         \ 'n' : 'N',
@@ -138,8 +143,9 @@ let g:lightline = {
         \ "\<C-s>": 'SB',
         \ 't': 'T',
       \ },
-      \ }
+    \ }
 
+" call lightline#coc#register()
 
 " Adds 24bit color support
 if has('termguicolors')
@@ -193,6 +199,52 @@ nmap ; :Buffers<CR>
 nmap <C-t> :Tags<CR>
 nmap <C-m> :Marks<CR>
 nmap <Leader>s :Find<CR>
+
+
+""" vim-polyglot
+let g:vim_markdown_conceal = 0 " Remove concealing in vim-markdown
+
+""" coc.vim
+
+set updatetime=300
+set shortmess+=c " Don't pass messages to |ins-completion-menu|.
+set signcolumn=yes
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 """ fzf
 
