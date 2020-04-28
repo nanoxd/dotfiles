@@ -18,10 +18,26 @@ function! PackagerInit() abort
   call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
   call packager#add('sheerun/vim-polyglot')
 
+  " Vim Enhancements
+  call packager#add('AndrewRadev/splitjoin.vim')
+  call packager#add('andymass/vim-matchup')
+  call packager#add('danro/rename.vim')
+  call packager#add('jiangmiao/auto-pairs')
+  call packager#add('nelstrom/vim-visual-star-search')
+  call packager#add('tpope/vim-abolish')
+  call packager#add('tpope/vim-commentary')
+  call packager#add('tpope/vim-endwise')
+  call packager#add('tpope/vim-surround')
+  call packager#add('tpope/vim-vinegar')
+
   " Tools
+  call packager#add('christoomey/vim-conflicted')
+  call packager#add('christoomey/vim-tmux-navigator')
   call packager#add('junegunn/fzf', { 'do': './install --all && ln -s $(pwd) ~/.fzf'})
   call packager#add('junegunn/fzf.vim')
-  call packager#add('christoomey/vim-tmux-navigator')
+  call packager#add('rhysd/committia.vim')
+  call packager#add('tpope/vim-fugitive')
+  call packager#add('editorconfig/editorconfig-vim')
 
   "Loaded only for specific filetypes on demand. Requires autocommands below.
   call packager#add('fatih/vim-go', { 'do': ':GoInstallBinaries', 'type': 'opt' })
