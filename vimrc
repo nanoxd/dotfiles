@@ -26,6 +26,9 @@ function! PackagerInit() abort
   "Loaded only for specific filetypes on demand. Requires autocommands below.
   call packager#add('fatih/vim-go', { 'do': ':GoInstallBinaries', 'type': 'opt' })
   call packager#add('neoclide/coc.nvim', { 'do': function('InstallCoc') })
+
+  " UI
+  call packager#add('itchyny/lightline.vim')
   call packager#add('rakr/vim-one')
 endfunction
 
@@ -94,6 +97,7 @@ endif
 
 """ Display
 
+set noshowmode
 set relativenumber
 set number
 set lazyredraw " reduced screen flicker
@@ -102,6 +106,24 @@ syntax on
 set t_Co=256
 set cursorline
 colorscheme one
+
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ 'mode_map': {
+        \ 'n' : 'N',
+        \ 'i' : 'I',
+        \ 'R' : 'R',
+        \ 'v' : 'V',
+        \ 'V' : 'VL',
+        \ "\<C-v>": 'VB',
+        \ 'c' : 'C',
+        \ 's' : 'S',
+        \ 'S' : 'SL',
+        \ "\<C-s>": 'SB',
+        \ 't': 'T',
+      \ },
+      \ }
+
 
 " Adds 24bit color support
 if has('termguicolors')
