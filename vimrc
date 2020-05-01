@@ -29,6 +29,7 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-endwise')
   call packager#add('tpope/vim-surround')
   call packager#add('tpope/vim-vinegar')
+  call packager#add('ap/vim-css-color')
 
   " Tools
   call packager#add('christoomey/vim-conflicted')
@@ -234,6 +235,8 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+nmap <buffer> <leader>gd <Plug>(coc-definition)
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
