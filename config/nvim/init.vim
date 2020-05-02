@@ -75,7 +75,7 @@ set ruler
 set mouse=a " Enable mouse support
 set hidden " The current buffer can be backgrounded without saving
 set cmdheight=2 " More space for displaying messages
-set pumheight=10 " Makes popup menu smaller
+set pumheight=12 " Makes popup menu smaller
 set showcmd " display incomplete commands
 
 " Split settings:
