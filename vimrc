@@ -126,6 +126,10 @@ set t_Co=256
 set cursorline
 colorscheme one
 
+" Allow transparency
+hi! Normal ctermbg=NONE guibg=NONE 
+hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
+
 let g:lightline = {
       \ 'active': {
       \   'left': [[ 'coc_errors', 'coc_warnings', 'coc_ok' ], [ 'coc_status' ]],
