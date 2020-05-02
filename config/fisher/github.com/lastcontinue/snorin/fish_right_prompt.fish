@@ -9,47 +9,43 @@ function fish_right_prompt -d "Snorin - oh-my-zsh sorin inspired prompt - right 
     test $status != 0; and printf (set_color red)"⏎ "
 
 	if git rev-parse ^ /dev/null
-        # symbols
-		set seen  #only needed to be defined here for clearity
-
-		for i in (git status --porcelain | cut -c 1-2 | uniq | tr -d ' ')
-			# duplicates can get in due to the above command, however
-			# keeping them out with various `awk`, `tr`, `sort`, etc can get
-			# really messy so just do some scripting to get around it here.
-			# If you know a clean way of doing this with just basic commands,
-			# please PR!
-			if not contains $i $seen
-				switch $i
-					# there's probably a gazillion cases I'm missing
-					# but I tried to cover all of the ones I come across
-					# in "normal" usage, as well as trying to keep close
-					# to the oh-my-zsh source
-					case "A"
-						print_symbol green ✚
-					case "AD"
-                    case "D"
-						print_symbol red ✖
-                    case "RM"
-					case "M"
-						print_symbol blue ✹
-					case "R"
-						print_symbol magenta ➜
-                    # I can't remember exaclty how to get one of these locally
-                    # to test it, probably wrong
-					case "*U*"
-						print_symbol yellow ═
-					case "??"
-						print_symbol cyan ✭
-				end
-				set seen $seen $i
-			end
+        #take advantage of Fish `String` commands
+		for i in (git status --porcelain |
+                    cut -c 1-2 |
+                    string trim |
+                    string replace "AM" "A" |
+                    string replace "MM" "M" |
+                    sort |
+                    uniq)
+			switch $i
+                # There's quite a few cases missing according to
+                # https://git-scm.com/docs/git-status
+                # but I tried to cover all of the ones I come across
+                # in "normal" usage, as well as trying to keep close
+                # to the oh-my-zsh source
+                # Always double-check your Git status before commiting
+                case "AD"
+                    #this can happen if you add a file, then delete it after staging the change
+                    #IMHO these two just cancel each other out
+                case "A"
+                    print_symbol green ✚
+                case "D"
+                    print_symbol red ✖
+                case "M"
+                    print_symbol blue ✹
+                case "R"
+                    print_symbol magenta ➜
+                case "UU"
+                    print_symbol yellow ═
+                # this is usually a new file... usually
+                case "\?\?"
+                    print_symbol cyan ✭
+                case "*"
+                    print_symbol yellow ◊
+                    #if you start getting this a lot,
+                    #please open an issue or file a PR
+                    #I wanted something generic that didn't really mean "good" or "bad"
+            end
 		end
-		# `seen` can't be defined as local becuase of how the scoping works
-		# so just cleanup here
-		set -e seen
 	end
-
-	# clean up since there's no way to define a local function in FISH
-	# as of Aug 2019
-	functions -e print_symbol
 end
