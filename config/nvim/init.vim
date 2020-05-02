@@ -208,6 +208,7 @@ nmap <C-t> :Tags<CR>
 nmap <C-m> :Marks<CR>
 nmap <Leader>s :Find<CR>
 
+nnoremap <silent> <leader>w :ArgWrap<CR>
 
 """ vim-polyglot
 let g:vim_markdown_conceal = 0 " Remove concealing in vim-markdown
