@@ -47,7 +47,7 @@ function! PackagerInit() abort
   " UI
   call packager#add('itchyny/lightline.vim')
   call packager#add('josa42/vim-lightline-coc')
-  call packager#add('rakr/vim-one')
+  call packager#add('jacoborus/tender.vim')
 endfunction
 
 function! InstallCoc(plugin) abort
@@ -124,7 +124,7 @@ set lazyredraw " reduced screen flicker
 syntax on
 set t_Co=256
 set cursorline
-colorscheme one
+colorscheme tender
 
 " Allow transparency
 hi! Normal ctermbg=NONE guibg=NONE 
@@ -134,7 +134,7 @@ let g:lightline = {
       \ 'active': {
       \   'left': [[ 'coc_errors', 'coc_warnings', 'coc_ok' ], [ 'coc_status' ]],
       \ },
-      \ 'colorscheme': 'one',
+      \ 'colorscheme': 'tender',
       \ 'mode_map': {
         \ 'n' : 'N',
         \ 'i' : 'I',
@@ -155,8 +155,6 @@ let g:lightline = {
 " Adds 24bit color support
 if has('termguicolors')
   set termguicolors
-elseif has('nvim')
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
 " Sensible side scrolling, makes it like other editors.
