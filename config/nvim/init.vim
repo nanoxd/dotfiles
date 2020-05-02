@@ -85,7 +85,7 @@ set winwidth=84
 set winheight=10
 set winminheight=10
 set winheight=999
-autocmd! bufwritepost init.vim source ~/.config/nvim/init.vim " When vimrc is edited, reload it
+autocmd! bufwritepost $MYVIMRC source % " When vimrc is edited, reload it
 
 " Whitespace
 set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_
