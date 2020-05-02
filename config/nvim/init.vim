@@ -30,6 +30,7 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-vinegar')
   call packager#add('ap/vim-css-color')
   call packager#add('FooSoft/vim-argwrap')
+  call packager#add('unblevable/quick-scope')
 
   " Tools
   call packager#add('christoomey/vim-conflicted')
@@ -330,3 +331,6 @@ let g:fzf_action = {
       \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit' }
 
+" quick-scope
+" Trigger a highlight in the appropriate direction when pressing these keys:
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
