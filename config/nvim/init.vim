@@ -182,7 +182,7 @@ let g:netrw_list_hide='.*\.swp$,\.DS_Store' " hide swp, DS_Store files
 let g:netrw_liststyle=3 " set tree style listing
 let g:netrw_sort_options='i' " case insensitive
 
-""" Mapping
+""" Mappings
 
 " make `-` and `_` work like `o` and `O` without leaving you stuck in insert
 nnoremap - o<esc>
@@ -203,10 +203,10 @@ nnoremap gV `[v`] " highlight last inserted text
 nnore map <silent> vv <C-w>v
 
 nmap <C-p> :Files<CR>
-nmap ; :Buffers<CR>
+nmap <leader>; :Buffers<CR>
 nmap <C-t> :Tags<CR>
 nmap <C-m> :Marks<CR>
-nmap <Leader>s :Find<CR>
+nmap <Leader>s :Rg<CR>
 
 nnoremap <silent> <leader>w :ArgWrap<CR>
 
