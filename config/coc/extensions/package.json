@@ -7,7 +7,7 @@
     "coc-snippets": ">=2.1.26",
     "coc-solargraph": ">=1.1.6",
     "coc-sourcekit": ">=0.0.2",
-    "coc-tsserver": ">=1.4.13",
+    "coc-tsserver": ">=1.5.1",
     "coc-vimlsp": ">=0.5.2",
     "coc-yaml": ">=1.0.4"
   }
