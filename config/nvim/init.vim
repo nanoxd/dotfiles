@@ -26,10 +26,10 @@ function! PackagerInit() abort
   call packager#add('nelstrom/vim-visual-star-search')
   call packager#add('tpope/vim-abolish')
   call packager#add('tpope/vim-commentary')
-  call packager#add('tpope/vim-endwise')
   call packager#add('tpope/vim-surround')
   call packager#add('tpope/vim-vinegar')
   call packager#add('ap/vim-css-color')
+  call packager#add('FooSoft/vim-argwrap')
 
   " Tools
   call packager#add('christoomey/vim-conflicted')
@@ -46,13 +46,12 @@ function! PackagerInit() abort
 
   " UI
   call packager#add('itchyny/lightline.vim')
-  call packager#add('josa42/vim-lightline-coc')
   call packager#add('jacoborus/tender.vim')
 endfunction
 
 function! InstallCoc(plugin) abort
   exe '!cd '.a:plugin.dir.' && yarn install'
-  call coc#add_extension('coc-eslint', 'coc-tsserver', 'coc-pyls', 'coc-rust-analyzer', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-json', 'coc-snippets')
+  call coc#add_extension('coc-eslint', 'coc-pyls', 'coc-rust-analyzer', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-json', 'coc-snippets')
 endfunction 
 
 command! PackagerInstall call PackagerInit() | call packager#install()
@@ -66,7 +65,6 @@ command! InstallPackager call InstallPackager()
 "More info in :help pack-add
 augroup packager_filetype
   autocmd!
-  " autocmd FileType javascript packadd vim-js-file-import
   autocmd FileType go packadd vim-go
 augroup END
 
@@ -116,6 +114,10 @@ endif
 
 """ Display
 
+" Adds 24bit color support
+if has('termguicolors')
+  set termguicolors
+endif
 set noshowmode
 set relativenumber
 set number
@@ -130,9 +132,15 @@ colorscheme tender
 hi! Normal ctermbg=NONE guibg=NONE 
 hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
 
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
+
+
 let g:lightline = {
       \ 'active': {
-      \   'left': [[ 'coc_errors', 'coc_warnings', 'coc_ok' ], [ 'coc_status' ]],
+      \   'left': [ ['mode', 'paste'],
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ],
       \ },
       \ 'colorscheme': 'tender',
       \ 'mode_map': {
@@ -148,14 +156,11 @@ let g:lightline = {
         \ "\<C-s>": 'SB',
         \ 't': 'T',
       \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction'
+      \ },
     \ }
-
-" call lightline#coc#register()
-
-" Adds 24bit color support
-if has('termguicolors')
-  set termguicolors
-endif
 
 " Sensible side scrolling, makes it like other editors.
 " Reduce scroll jump with cursor goes off the screen.
@@ -217,12 +222,16 @@ inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+" Completion
+inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Use K to show documentation in preview window.
 nnoremap <silent> D :call <SID>show_documentation()<CR>
@@ -242,6 +251,7 @@ nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>gy <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gr <Plug>(coc-references)
+nmap <leader>rn <Plug>(coc-rename)
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -253,6 +263,12 @@ nmap <leader>rn <Plug>(coc-rename)
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+
+" Introduce function text object
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
 
 """ fzf
 
