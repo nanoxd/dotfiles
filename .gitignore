@@ -3,11 +3,14 @@ config/fish/fish_variables
 config/hub
 config/karabiner/automatic_backups
 config/nvim/.netrwhist
-config/nvim/autoload/plug.vim.old
 config/nvim/backups
-config/nvim/plugged
+config/nvim/pack
 config/yarn/global
 zsh/plugins.lock
 zsh/repositories
 aws/credentials
 node_modules
+.netrwhist
+config/coc/history.json
+config/coc/lists
+config/coc/mru
