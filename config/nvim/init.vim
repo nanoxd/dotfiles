@@ -31,6 +31,7 @@ function! PackagerInit() abort
   call packager#add('norcalli/nvim-colorizer.lua', { 'type': 'opt' })
   call packager#add('FooSoft/vim-argwrap')
   call packager#add('unblevable/quick-scope')
+  call packager#add('junegunn/rainbow_parentheses.vim')
 
   " Tools
   call packager#add('christoomey/vim-conflicted')
@@ -339,3 +340,6 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 packadd nvim-colorizer.lua
 lua require 'colorizer'.setup()
 
+" Rainbow-Parentheses
+au VimEnter * RainbowParentheses
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
