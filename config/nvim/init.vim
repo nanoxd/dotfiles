@@ -28,7 +28,7 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-commentary')
   call packager#add('tpope/vim-surround')
   call packager#add('tpope/vim-vinegar')
-  call packager#add('ap/vim-css-color')
+  call packager#add('norcalli/nvim-colorizer.lua', { 'type': 'opt' })
   call packager#add('FooSoft/vim-argwrap')
   call packager#add('unblevable/quick-scope')
 
@@ -334,3 +334,8 @@ let g:fzf_action = {
 " quick-scope
 " Trigger a highlight in the appropriate direction when pressing these keys:
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" nvim-colorizer.lua
+packadd nvim-colorizer.lua
+lua require 'colorizer'.setup()
+
