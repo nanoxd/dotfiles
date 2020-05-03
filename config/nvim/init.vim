@@ -32,6 +32,8 @@ function! PackagerInit() abort
   call packager#add('FooSoft/vim-argwrap')
   call packager#add('unblevable/quick-scope')
   call packager#add('junegunn/rainbow_parentheses.vim')
+  call packager#add('tpope/vim-repeat')
+  call packager#add('justinmk/vim-sneak')
 
   " Tools
   call packager#add('christoomey/vim-conflicted')
@@ -343,3 +345,6 @@ lua require 'colorizer'.setup()
 " Rainbow-Parentheses
 au VimEnter * RainbowParentheses
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+
+" vim-sneak
+let g:sneak#label = 1
