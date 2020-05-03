@@ -89,7 +89,7 @@ set winwidth=84
 set winheight=10
 set winminheight=10
 set winheight=999
-autocmd! bufwritepost $MYVIMRC source % " When vimrc is edited, reload it
+autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
 
 " Whitespace
 set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_
