@@ -1,1 +1,1 @@
-/Users/nano/.fzf/shell/key-bindings.fish
+/Users/nano/.dotfiles/config/nvim/pack/packager/start/fzf/shell/key-bindings.fish

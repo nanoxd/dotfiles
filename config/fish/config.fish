@@ -31,3 +31,8 @@ alias vim='nvim'
 alias vimdiff='nvim -d'
 
 bind \ca sudope
+
+if command -v zoxide &> /dev/null
+  zoxide init fish | source
+end
+
