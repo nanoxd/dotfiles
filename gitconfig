@@ -1,6 +1,6 @@
 [user]
-	name = Fernando Paredes
-	email = nano@fdp.io
+  name = Fernando Paredes
+  email = nano@fdp.io
 
 [push]
   default = upstream
@@ -162,5 +162,9 @@
   smudge = git-lfs smudge -- %f
   required = true
   clean = git-lfs clean -- %f
+
 [gc]
-	writeCommitGraph = true
+  writeCommitGraph = true
+
+[fetch]
+  prune = true
