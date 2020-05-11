@@ -81,6 +81,7 @@ set hidden " The current buffer can be backgrounded without saving
 set cmdheight=2 " More space for displaying messages
 set pumheight=12 " Makes popup menu smaller
 set showcmd " display incomplete commands
+set iskeyword+=- " Set Hyphen as part of a text object
 
 " Split settings:
 set splitbelow " Horizontal splits will automatically be below
