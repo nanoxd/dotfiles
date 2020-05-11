@@ -206,6 +206,11 @@ nnoremap gV `[v`] " highlight last inserted text
 " Generate new vertical split
 nnore map <silent> vv <C-w>v
 
+" Smart `0`
+" `0` goes to the beginning of the text on first press and to the beginning
+" of the line on second press. It alternates afterwards.
+nnoremap <expr> 0 virtcol('.') - 1 <= indent('.') && col('.') > 1 ? '0' : '_'
+
 nmap <C-p> :Files<CR>
 nmap <leader>; :Buffers<CR>
 nmap <C-t> :Tags<CR>
