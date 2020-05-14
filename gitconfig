@@ -8,7 +8,7 @@
 [color]
   ui = auto
 
-[color "diff-highlight"]
+[color "diffr"]
   oldNormal = red bold
   oldHighlight = red bold 52
   newNormal = green bold
@@ -102,7 +102,9 @@
   attributesfile = ~/.gitattributes
   excludesfile = ~/.gitignore
   editor = nvim
-  pager = diff-highlight | less -r
+  log = diffr | less -R
+  show = diffr | less -R
+  pager = diffr | less -R
   whitespace = fix
   untrackedCache = true
 	commitGraph = true
@@ -128,7 +130,7 @@
   renames = copies
 
 [interactive]
-  diffFilter = diff-highlight
+  diffFilter = diffr
 
 [pull]
   rebase = true
@@ -145,7 +147,6 @@
 
 [commit]
   template = ~/.gitmessage
-  gpgsign = true
   verbose = true
 
 [diff "plist"]
