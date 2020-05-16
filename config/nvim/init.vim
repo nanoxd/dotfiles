@@ -34,6 +34,7 @@ function! PackagerInit() abort
   call packager#add('junegunn/rainbow_parentheses.vim')
   call packager#add('tpope/vim-repeat')
   call packager#add('justinmk/vim-sneak')
+  call packager#add('mhinz/vim-signify')
 
   " Tools
   call packager#add('christoomey/vim-conflicted')
@@ -226,7 +227,7 @@ let g:vim_markdown_conceal = 0 " Remove concealing in vim-markdown
 
 """ coc.vim
 
-set updatetime=300
+set updatetime=100
 set shortmess+=c " Don't pass messages to |ins-completion-menu|.
 set signcolumn=yes
 
