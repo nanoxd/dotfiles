@@ -1,3 +1,4 @@
+require('windows')
 local utils = require('utils')
 
 -- Load spoons
@@ -70,3 +71,4 @@ hs.hotkey.bind(utils.hyper, "x", function()
     hs.alert.show("Couldn't connect to AirPods")
   end
 end)
+
