@@ -213,6 +213,7 @@ nnore map <silent> vv <C-w>v
 nnoremap <expr> 0 virtcol('.') - 1 <= indent('.') && col('.') > 1 ? '0' : '_'
 
 nmap <C-p> :Files<CR>
+nmap <C-g> :GFiles<CR>
 nmap <leader>; :Buffers<CR>
 nmap <C-t> :Tags<CR>
 nmap <C-m> :Marks<CR>
