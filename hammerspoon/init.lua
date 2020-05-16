@@ -1,8 +1,8 @@
+local utils = require('utils')
+
 -- Load spoons
 hs.loadSpoon("ReloadConfiguration")
 spoon.ReloadConfiguration:start()
-
-local hyper = {"⌘", "⌥", "⌃", "⇧"}
 
 -- Change alert style
 hs.alert.defaultStyle.textFont = "Iosevka"
@@ -48,7 +48,7 @@ end
 -- App Keybindings --
 
 -- Alacritty
-hs.hotkey.bind(hyper, "t", function()
+hs.hotkey.bind(utils.hyper, "t", function()
   local alacritty = hs.application.find('alacritty')
 
   if alacritty and alacritty:isFrontmost() then 
@@ -61,7 +61,7 @@ end)
 -- Other Keybindings --
 
 -- Toggle AirPods
-hs.hotkey.bind(hyper, "x", function()
+hs.hotkey.bind(utils.hyper, "x", function()
   local ok, output = toggleAirpods('Nano’s AirPods Pro')
 
   if ok then
