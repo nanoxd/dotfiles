@@ -4,6 +4,15 @@ spoon.ReloadConfiguration:start()
 
 local hyper = {"⌘", "⌥", "⌃", "⇧"}
 
+-- Change alert style
+hs.alert.defaultStyle.textFont = "Iosevka"
+hs.alert.defaultStyle.textSize = 24
+hs.alert.defaultStyle.strokeWidth = 0
+hs.alert.defaultStyle.radius = 0
+hs.alert.defaultStyle.fadeInDuration = 0.10
+hs.alert.defaultStyle.fadeOutDuration = 1
+hs.alert.defaultStyle.fillColor = { white = 0, alpha = 0.95 }
+
 -- Functions
 
 local function toggleAirpods(deviceName)
