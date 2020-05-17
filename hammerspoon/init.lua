@@ -1,5 +1,5 @@
-require('windows')
 local utils = require('utils')
+require('windows')
 
 -- Load spoons
 hs.loadSpoon("ReloadConfiguration")
@@ -46,17 +46,21 @@ local function toggleAirpods(deviceName)
   return hs.osascript.applescript(s)
 end
 
+local function launchOrHide(bundleID)
+  local app = hs.application.find(bundleID)
+
+  if app and app:isFrontmost() then 
+    app:hide()
+  else
+    hs.application.launchOrFocusByBundleID(bundleID)
+  end
+end
+
 -- App Keybindings --
 
 -- Alacritty
 hs.hotkey.bind(utils.hyper, "t", function()
-  local alacritty = hs.application.find('alacritty')
-
-  if alacritty and alacritty:isFrontmost() then 
-    alacritty:hide()
-  else
-    hs.application.launchOrFocus("/Applications/Alacritty.app")
-  end
+  launchOrHide("io.alacritty")
 end)
 
 -- Other Keybindings --
