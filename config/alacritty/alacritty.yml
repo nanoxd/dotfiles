@@ -63,11 +63,11 @@ cursor:
 
 live_config_reload: true
 
-# Send ESC (\x1b) before characters when alt is pressed.
-#alt_send_esc: true
-
 mouse:
   hide_when_typing: true
+
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }
 
 key_bindings:
   - { key: Equals,    mods: Command,          action: ResetFontSize           }
