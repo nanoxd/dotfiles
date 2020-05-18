@@ -221,6 +221,7 @@ nmap <C-m> :Marks<CR>
 nmap <Leader>s :Rg<CR>
 
 nnoremap <silent> <leader>w :ArgWrap<CR>
+autocmd FileType rust nmap <leader>t :RustTest<CR>
 
 """ vim-polyglot
 let g:vim_markdown_conceal = 0 " Remove concealing in vim-markdown
