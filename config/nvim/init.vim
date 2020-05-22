@@ -231,7 +231,7 @@ let g:vim_markdown_conceal = 0 " Remove concealing in vim-markdown
 
 set updatetime=100
 set shortmess+=c " Don't pass messages to |ins-completion-menu|.
-set signcolumn=yes
+set signcolumn=auto:1
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
