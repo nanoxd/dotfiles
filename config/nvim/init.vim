@@ -35,6 +35,7 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-repeat')
   call packager#add('justinmk/vim-sneak')
   call packager#add('mhinz/vim-signify')
+  call packager#add('romainl/vim-qf')
 
   " Tools
   call packager#add('christoomey/vim-conflicted')
