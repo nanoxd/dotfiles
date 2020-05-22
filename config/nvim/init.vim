@@ -91,7 +91,7 @@ set splitright " Vertical splits will automatically be to the right
 set winwidth=84
 set winheight=10
 set winminheight=10
-set winheight=999
+" set winheight=999 " Increases the height of coc's popup window
 autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
 
 " Whitespace
