@@ -180,8 +180,8 @@ set smartcase " Override ignorecase if pattern contains upcase
 
 """ 
 " Set ripgrep as grep engine
-set grepprg=rg\ --vimgrep
-set grepformat^=%f:%l:%c:%m
+set grepprg=rg\ --column\ --no-heading\ --smart-case\ --follow\ --vimgrep
+set grepformat=%f:%l:%c:%m,%f:%l:%m
 
 " Netrw
 let g:netrw_banner = 0 " hide banner
