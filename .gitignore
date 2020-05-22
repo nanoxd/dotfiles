@@ -14,3 +14,7 @@ node_modules
 config/coc/history.json
 config/coc/lists
 config/coc/mru
+config/coc/extensions/coc-rust-analyzer-data/rust-analyzer
+config/coc/extensions/db.json
+config/coc/commands
+config/coc/memos.json
