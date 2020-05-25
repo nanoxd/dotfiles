@@ -4,7 +4,7 @@
     "coc-elixir": ">=0.4.0",
     "coc-html": ">=1.2.4",
     "coc-json": ">=1.2.6",
-    "coc-rust-analyzer": ">=0.6.6",
+    "coc-rust-analyzer": ">=0.7.0",
     "coc-snippets": ">=2.1.26",
     "coc-solargraph": ">=1.1.6",
     "coc-sourcekit": ">=0.0.2",
