@@ -45,6 +45,7 @@ function! PackagerInit() abort
   call packager#add('rhysd/committia.vim')
   call packager#add('tpope/vim-fugitive')
   call packager#add('editorconfig/editorconfig-vim')
+  call packager#add('honza/vim-snippets')
 
   "Loaded only for specific filetypes on demand. Requires autocommands below.
   call packager#add('fatih/vim-go', { 'do': ':GoInstallBinaries', 'type': 'opt' })
