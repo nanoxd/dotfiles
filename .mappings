@@ -17,7 +17,7 @@ irbrc = "~/.irbrc"
 "ruby-version" = "~/.ruby-version"
 stack = "~/.stack"
 "tmux.conf" = "~/.tmux.conf"
-zsh = "~/.zsh"
+zsh = "~/.sheldon"
 zshrc = "~/.zshrc"
 
 [linux]
