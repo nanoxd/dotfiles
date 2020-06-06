@@ -146,7 +146,6 @@
   whitespace = nowarn
 
 [commit]
-  template = ~/.gitmessage
   verbose = true
 
 [diff "plist"]
