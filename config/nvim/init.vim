@@ -5,13 +5,13 @@ endif
 function! InstallPackager() abort
   if has('nvim')
     silent !git clone https://github.com/kristijanhusak/vim-packager
-      \ ~/.config/nvim/pack/packager/opt/vim-packager
+          \ ~/.config/nvim/pack/packager/opt/vim-packager
   else
     silent !git clone https://github.com/kristijanhusak/vim-packager ~/.vim/pack/packager/opt/vim-packager
   endif
 endfunction
 
-" Load packager only when needed 
+" Load packager only when needed
 function! PackagerInit() abort
   packadd vim-packager
   call packager#init()
@@ -36,7 +36,6 @@ function! PackagerInit() abort
   call packager#add('justinmk/vim-sneak')
   call packager#add('mhinz/vim-signify')
   call packager#add('romainl/vim-qf')
-
   " Tools
   call packager#add('christoomey/vim-conflicted')
   call packager#add('christoomey/vim-tmux-navigator')
@@ -50,6 +49,7 @@ function! PackagerInit() abort
   "Loaded only for specific filetypes on demand. Requires autocommands below.
   call packager#add('fatih/vim-go', { 'do': ':GoInstallBinaries', 'type': 'opt' })
   call packager#add('neoclide/coc.nvim', { 'do': function('InstallCoc') })
+  call packager#add('Chiel92/vim-autoformat')
 
   " UI
   call packager#add('itchyny/lightline.vim')
@@ -59,7 +59,7 @@ endfunction
 function! InstallCoc(plugin) abort
   exe '!cd '.a:plugin.dir.' && yarn install'
   call coc#add_extension('coc-eslint', 'coc-pyls', 'coc-rust-analyzer', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-json', 'coc-snippets', 'coc-elixir')
-endfunction 
+endfunction
 
 command! PackagerInstall call PackagerInit() | call packager#install()
 command! -bang PackagerUpdate call PackagerInit() | call packager#update({ 'force_hooks': '<bang>' })
@@ -68,7 +68,7 @@ command! PackagerStatus call PackagerInit() | call packager#status()
 command! InstallPackager call InstallPackager()
 
 "Load plugins only for specific filetype
-"Note that this should not be done for plugins that handle their loading using ftplugin file. 
+"Note that this should not be done for plugins that handle their loading using ftplugin file.
 "More info in :help pack-add
 augroup packager_filetype
   autocmd!
@@ -137,11 +137,11 @@ set cursorline
 colorscheme tender
 
 " Allow transparency
-hi! Normal ctermbg=NONE guibg=NONE 
+hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
 
 function! CocCurrentFunction()
-    return get(b:, 'coc_current_function', '')
+  return get(b:, 'coc_current_function', '')
 endfunction
 
 
@@ -152,23 +152,23 @@ let g:lightline = {
       \ },
       \ 'colorscheme': 'tender',
       \ 'mode_map': {
-        \ 'n' : 'N',
-        \ 'i' : 'I',
-        \ 'R' : 'R',
-        \ 'v' : 'V',
-        \ 'V' : 'VL',
-        \ "\<C-v>": 'VB',
-        \ 'c' : 'C',
-        \ 's' : 'S',
-        \ 'S' : 'SL',
-        \ "\<C-s>": 'SB',
-        \ 't': 'T',
+      \ 'n' : 'N',
+      \ 'i' : 'I',
+      \ 'R' : 'R',
+      \ 'v' : 'V',
+      \ 'V' : 'VL',
+      \ "\<C-v>": 'VB',
+      \ 'c' : 'C',
+      \ 's' : 'S',
+      \ 'S' : 'SL',
+      \ "\<C-s>": 'SB',
+      \ 't': 'T',
       \ },
       \ 'component_function': {
       \   'cocstatus': 'coc#status',
       \   'currentfunction': 'CocCurrentFunction'
       \ },
-    \ }
+      \ }
 
 " Sensible side scrolling, makes it like other editors.
 " Reduce scroll jump with cursor goes off the screen.
@@ -179,7 +179,7 @@ set sidescrolloff=3
 set ignorecase " Case insensitve pattern matching
 set smartcase " Override ignorecase if pattern contains upcase
 
-""" 
+"""
 " Set ripgrep as grep engine
 set grepprg=rg\ --column\ --no-heading\ --smart-case\ --follow\ --vimgrep
 set grepformat=%f:%l:%c:%m,%f:%l:%m
@@ -344,18 +344,18 @@ vnoremap <silent><expr> <up> coc#util#has_float() ? <SID>coc_float_scroll(0) : "
 " --follow: Follow symlinks
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
-command! -bang -nargs=* Find 
+command! -bang -nargs=* Find
       \ call fzf#vim#grep(
       \ 'rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color=always --max-filesize=3M --threads 4 '.shellescape(<q-args>), 1,
       \ <bang>0)
-  " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
 
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+      \   <bang>0 ? fzf#vim#with_preview('up:60%')
+      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+      \   <bang>0)
 
 let g:fzf_follow_symlinks = get(g:, 'fzf_follow_symlinks', 0)
 
@@ -376,8 +376,8 @@ endif
 
 
 function! s:build_fzf_options(command, bang) abort
-    let cmd = g:fzf_follow_symlinks ? a:command . ' --follow' : a:command
-    return extend(s:fzf_file_preview_options(a:bang), { 'source': cmd })
+  let cmd = g:fzf_follow_symlinks ? a:command . ' --follow' : a:command
+  return extend(s:fzf_file_preview_options(a:bang), { 'source': cmd })
 endfunction
 
 command! -bang -nargs=? -complete=dir Files
@@ -405,3 +405,9 @@ let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
 " vim-sneak
 let g:sneak#label = 1
+
+" vim-autoformat
+autocmd BufWrite * :Autoformat
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
