@@ -18,3 +18,4 @@ config/coc/extensions/coc-rust-analyzer-data/rust-analyzer
 config/coc/extensions/db.json
 config/coc/commands
 config/coc/memos.json
+config/coc/extensions/coc-go-data
