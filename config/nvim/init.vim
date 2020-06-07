@@ -234,8 +234,15 @@ set updatetime=100
 set shortmess+=c " Don't pass messages to |ins-completion-menu|.
 set signcolumn=auto:1
 
+" Older version that would move through items in list
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 
@@ -246,8 +253,11 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+let g:coc_snippet_next = '<tab>'
+
 " Completion
 inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
 
 " Use K to show documentation in preview window.
 nnoremap <silent> D :call <SID>show_documentation()<CR>
