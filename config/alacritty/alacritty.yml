@@ -7,18 +7,18 @@ scrolling:
 
 font:
   normal:
-    family: Iosevka
+    family: &font-family Victor Mono
     style: Regular
   bold:
-    family: Iosevka
+    family: *font-family
     style: Bold
   italic:
-    family: Iosevka
+    family: *font-family
     style: Italic
   bold_italic:
-    family: Iosevka
+    family: *font-family
     style: Bold Italic
-  size: 16.0
+  size: 15.0
   use_thin_strokes: true
 
 draw_bold_text_with_bright_colors: false
