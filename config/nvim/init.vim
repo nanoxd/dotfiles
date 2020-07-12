@@ -36,6 +36,12 @@ function! PackagerInit() abort
   call packager#add('justinmk/vim-sneak')
   call packager#add('mhinz/vim-signify')
   call packager#add('romainl/vim-qf')
+
+  " Text Objects
+  call packager#add('kana/vim-textobj-user')
+  call packager#add('beloglazov/vim-textobj-quotes')
+  call packager#add('Julian/vim-textobj-variable-segment')
+
   " Tools
   call packager#add('christoomey/vim-conflicted')
   call packager#add('christoomey/vim-tmux-navigator')
@@ -298,6 +304,10 @@ xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
 xmap <leader>a  <Plug>(coc-codeaction-selected)
@@ -344,6 +354,11 @@ inoremap <silent><expr> <down> coc#util#has_float() ? <SID>coc_float_scroll(1) :
 inoremap <silent><expr> <up> coc#util#has_float() ? <SID>coc_float_scroll(0) : "\<up>"
 vnoremap <silent><expr> <down> coc#util#has_float() ? <SID>coc_float_scroll(1) : "\<down>"
 vnoremap <silent><expr> <up> coc#util#has_float() ? <SID>coc_float_scroll(0) : "\<up>"
+
+" Search workspace symbols.
+nnoremap <silent><nowait> <leader>s  :<C-u>CocList -I symbols<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <leader>o  :<C-u>CocList outline<cr>
 
 """ fzf
 
