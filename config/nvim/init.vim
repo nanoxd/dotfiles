@@ -223,10 +223,13 @@ nmap <C-m> :Marks<CR>
 nmap <Leader>s :Rg<CR>
 
 nnoremap <silent> <leader>w :ArgWrap<CR>
+
+autocmd FileType rust set expandtab tabstop=4 softtabstop=4 shiftwidth=4
 autocmd FileType rust nmap <leader>t :RustTest<CR>
 
 """ vim-polyglot
 let g:vim_markdown_conceal = 0 " Remove concealing in vim-markdown
+
 
 """ coc.vim
 
