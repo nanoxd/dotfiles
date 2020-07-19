@@ -226,7 +226,7 @@ nmap <C-g> :GFiles<CR>
 nmap <leader>; :Buffers<CR>
 nmap <C-t> :Tags<CR>
 nmap <C-m> :Marks<CR>
-nmap <Leader>s :Rg<CR>
+nnoremap \ :Rg<space>
 
 nnoremap <silent> <leader>w :ArgWrap<CR>
 
