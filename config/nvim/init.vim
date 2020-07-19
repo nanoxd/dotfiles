@@ -441,3 +441,18 @@ autocmd BufWrite * :Autoformat
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
+
+" auto-pairs
+let g:AutoPairsMapCh = 0
+
+" Arglists
+function! s:ThankYouNext() abort
+  update
+  argdelete %
+  bdelete
+  if !empty(argv())
+    argument
+  endif
+endfunction
+
+command! ThankYouNext call <sid>ThankYouNext()
