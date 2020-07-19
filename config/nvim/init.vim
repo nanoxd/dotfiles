@@ -355,6 +355,8 @@ inoremap <silent><expr> <up> coc#util#has_float() ? <SID>coc_float_scroll(0) : "
 vnoremap <silent><expr> <down> coc#util#has_float() ? <SID>coc_float_scroll(1) : "\<down>"
 vnoremap <silent><expr> <up> coc#util#has_float() ? <SID>coc_float_scroll(0) : "\<up>"
 
+" " Show all diagnostics.
+nnoremap <silent><nowait> <leader>d  :<C-u>CocList diagnostics<cr>
 " Search workspace symbols.
 nnoremap <silent><nowait> <leader>s  :<C-u>CocList -I symbols<cr>
 " Find symbol of current document.
