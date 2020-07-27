@@ -1,5 +1,6 @@
 config/configstore/update-notifier-npm.json
 config/fish/fish_variables
+config/fish/fisher
 config/hub
 config/karabiner/automatic_backups
 config/nvim/.netrwhist

@@ -1,3 +1,12 @@
+set -g fisher_path $HOME/.config/fish/fisher
+set fish_function_path $fish_function_path[1] $fisher_path/functions $fish_function_path[2..-1]
+set fish_complete_path $fish_complete_path[1] $fisher_path/completions $fish_complete_path[2..-1]
+
+for file in $fisher_path/conf.d/*.fish
+    builtin source $file 2> /dev/null
+end
+
+
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 set -gx PAGER less
@@ -14,7 +23,6 @@ set fish_greeting
 # Set paths
 set -e fish_user_paths
 set -U fish_user_paths /usr/local/bin $HOME/.bin $GOPATH/bin $HOME/.cargo/bin
-set -gx fish_complete_path $fish_complete_path "/usr/local/share/fish/vendor_completions.d/"
 
 if test -f $HOME/.fish
   source $HOME/.fish
