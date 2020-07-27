@@ -22,3 +22,5 @@ tags
 .tags
 *.swp
 .tern-project
+.simudid
+.vscode
