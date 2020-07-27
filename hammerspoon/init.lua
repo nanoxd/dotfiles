@@ -14,6 +14,13 @@ hs.alert.defaultStyle.fadeInDuration = 0.10
 hs.alert.defaultStyle.fadeOutDuration = 1
 hs.alert.defaultStyle.fillColor = { white = 0, alpha = 0.95 }
 
+local osVersion = hs.host.operatingSystemVersionString()
+
+if string.find(osVersion, "10.16") then
+  hyperMode = hs.hotkey.modal.new({}, "F17")
+  require('hyper')
+end
+
 -- Functions
 
 local function toggleAirpods(deviceName)
