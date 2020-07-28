@@ -51,6 +51,7 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-fugitive')
   call packager#add('editorconfig/editorconfig-vim')
   call packager#add('honza/vim-snippets')
+  call packager#add('vim-test/vim-test')
 
   "Loaded only for specific filetypes on demand. Requires autocommands below.
   call packager#add('fatih/vim-go', { 'do': ':GoInstallBinaries', 'type': 'opt' })
@@ -231,7 +232,7 @@ nnoremap \ :Rg<space>
 nnoremap <silent> <leader>w :ArgWrap<CR>
 
 autocmd FileType rust set expandtab tabstop=4 softtabstop=4 shiftwidth=4
-autocmd FileType rust nmap <leader>t :RustTest<CR>
+" autocmd FileType rust nmap <leader>t :RustTest<CR>
 
 """ vim-polyglot
 let g:vim_markdown_conceal = 0 " Remove concealing in vim-markdown
@@ -456,3 +457,8 @@ function! s:ThankYouNext() abort
 endfunction
 
 command! ThankYouNext call <sid>ThankYouNext()
+
+" vim-test
+nmap <silent> <leader>tn :TestNearest<CR>
+nmap <silent> <leader>tf :TestFile<CR>
+nmap <silent> <leader>ta :TestSuite<CR>
