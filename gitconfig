@@ -102,9 +102,9 @@
   attributesfile = ~/.gitattributes
   excludesfile = ~/.gitignore
   editor = nvim
-  log = diffr | less -R
-  show = diffr | less -R
-  pager = diffr | less -R
+  log = delta
+  show = delta
+  pager = delta
   whitespace = fix
   untrackedCache = true
 	commitGraph = true
@@ -124,13 +124,13 @@
   fetchJobs = 0
 
 [diff]
-  colorMoved = zebra
+  colorMoved = default
   algorithm = patience
   # Detect copies and renames
   renames = copies
 
 [interactive]
-  diffFilter = diffr
+  diffFilter = delta --color-only
 
 [pull]
   rebase = true
@@ -170,3 +170,13 @@
   prune = true
 [init]
 	defaultBranch = main
+
+[delta]
+  side-by-side = true
+  features = decorations
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-decoration-style = yellow box
