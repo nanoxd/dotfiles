@@ -7,9 +7,32 @@
 # Matches are the substitution rules, when you type the "trigger" string
 # it gets replaced by the "replace" string.
 matches:
-  # Simple text replacement
-  - trigger: ":espanso"
-    replace: "Hi there!"
+  - trigger: ":ui:"
+    replace: "💄 "
+  - trigger: ":refactor:"
+    replace: "♻️ "
+  - trigger: ":perf:"
+    replace: "⚡️ "
+  - trigger: ":test:"
+    replace: "✅ "
+  - trigger: ":seed:"
+    replace: "🌱 "
+  - trigger: ":asset:"
+    replace: "🍱 "
+  - trigger: ":arch:"
+    replace: "🏗 "
+  - trigger: ":ci:"
+    replace: "👷🏽‍♂️ "
+  - trigger: ":update:"
+    replace: "📍 "
+  - trigger: ":box:"
+    replace: "📦 "
+  - trigger: ":rm:"
+    replace: "🔥 "
+  - trigger: ":wip:"
+    replace: "🚧 "
+  - trigger: ":lint:"
+    replace: "🚨 "
 
   # Dates
   - trigger: ":date"
