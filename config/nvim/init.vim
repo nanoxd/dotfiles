@@ -30,7 +30,6 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-vinegar')
   call packager#add('norcalli/nvim-colorizer.lua', { 'type': 'opt' })
   call packager#add('FooSoft/vim-argwrap')
-  call packager#add('unblevable/quick-scope')
   call packager#add('junegunn/rainbow_parentheses.vim')
   call packager#add('tpope/vim-repeat')
   call packager#add('justinmk/vim-sneak')
@@ -52,11 +51,13 @@ function! PackagerInit() abort
   call packager#add('editorconfig/editorconfig-vim')
   call packager#add('honza/vim-snippets')
   call packager#add('vim-test/vim-test')
+  call packager#add('rhysd/clever-f.vim')
 
   "Loaded only for specific filetypes on demand. Requires autocommands below.
   call packager#add('fatih/vim-go', { 'do': ':GoInstallBinaries', 'type': 'opt' })
   call packager#add('neoclide/coc.nvim', { 'do': function('InstallCoc') })
   call packager#add('Chiel92/vim-autoformat')
+  call packager#add('pest-parser/pest.vim')
 
   " UI
   call packager#add('itchyny/lightline.vim')
@@ -462,3 +463,6 @@ command! ThankYouNext call <sid>ThankYouNext()
 nmap <silent> <leader>tn :TestNearest<CR>
 nmap <silent> <leader>tf :TestFile<CR>
 nmap <silent> <leader>ta :TestSuite<CR>
+
+" Remap explore
+command! E Explore
