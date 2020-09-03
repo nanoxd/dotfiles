@@ -223,7 +223,7 @@ nnore map <silent> vv <C-w>v
 " of the line on second press. It alternates afterwards.
 nnoremap <expr> 0 virtcol('.') - 1 <= indent('.') && col('.') > 1 ? '0' : '_'
 
-nmap <C-p> :Files<CR>
+" nmap <C-p> :Files<CR>
 nmap <C-g> :GFiles<CR>
 nmap <leader>; :Buffers<CR>
 nmap <C-t> :Tags<CR>
@@ -422,6 +422,26 @@ let g:fzf_action = {
       \ 'ctrl-t': 'tab split',
       \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit' }
+
+
+
+function! g:FzfFilesSource()
+  let l:base = fnamemodify(expand('%'), ':h:.:S')
+  let l:proximity_sort_path = $HOME . '/.cargo/bin/proximity-sort'
+
+  if base == '.'
+    return 'rg --files'
+  else
+    return printf('rg --files | %s %s', l:proximity_sort_path, expand('%'))
+  endif
+endfunction
+
+
+
+" ctrl p brings up the file finder
+noremap <C-p> :call fzf#vim#files('', {
+      \ 'source': g:FzfFilesSource(),
+      \ 'options': '--tiebreak=index'})<CR>
 
 " quick-scope
 " Trigger a highlight in the appropriate direction when pressing these keys:
