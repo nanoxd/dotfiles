@@ -66,7 +66,7 @@ endfunction
 
 function! InstallCoc(plugin) abort
   exe '!cd '.a:plugin.dir.' && yarn install'
-  call coc#add_extension('coc-eslint', 'coc-pyls', 'coc-rust-analyzer', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-json', 'coc-snippets', 'coc-elixir')
+  call coc#add_extension('coc-eslint', 'coc-pyls', 'coc-rust-analyzer', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-json', 'coc-snippets', 'coc-elixir', 'coc-explorer')
 endfunction
 
 command! PackagerInstall call PackagerInit() | call packager#install()
@@ -363,6 +363,9 @@ nnoremap <silent><nowait> <leader>d  :<C-u>CocList diagnostics<cr>
 nnoremap <silent><nowait> <leader>s  :<C-u>CocList -I symbols<cr>
 " Find symbol of current document.
 nnoremap <silent><nowait> <leader>o  :<C-u>CocList outline<cr>
+
+" Display Explorer
+:nmap <space>e :CocCommand explorer<CR>
 
 """ fzf
 
