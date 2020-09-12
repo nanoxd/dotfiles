@@ -6,5 +6,6 @@
       "filetypes": ["lua"]
     }
   },
-  "rust-analyzer.checkOnSave.command": "clippy"
+  "rust-analyzer.checkOnSave.command": "clippy",
+  "explorer.file.showHiddenFiles": true
 }

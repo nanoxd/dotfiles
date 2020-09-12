@@ -84,7 +84,6 @@ augroup packager_filetype
 augroup END
 
 """ General
-"
 let mapleader=" "
 set ruler
 set mouse=a " Enable mouse support
