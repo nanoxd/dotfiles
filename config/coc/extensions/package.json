@@ -2,15 +2,15 @@
   "dependencies": {
     "coc-css": ">=1.2.4",
     "coc-elixir": ">=0.5.0",
-    "coc-go": ">=0.9.1",
+    "coc-go": ">=0.10.0",
     "coc-html": ">=1.2.4",
     "coc-json": ">=1.2.6",
-    "coc-rust-analyzer": ">=0.7.11",
+    "coc-rust-analyzer": ">=0.7.15",
     "coc-snippets": ">=2.1.28",
     "coc-solargraph": ">=1.1.6",
     "coc-sourcekit": ">=0.0.2",
-    "coc-tsserver": ">=1.5.2",
-    "coc-vimlsp": ">=0.9.1",
-    "coc-yaml": ">=1.0.4"
+    "coc-tsserver": ">=1.5.5",
+    "coc-vimlsp": ">=0.10.1",
+    "coc-yaml": ">=1.0.5"
   }
 }
