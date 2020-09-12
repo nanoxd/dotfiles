@@ -23,7 +23,7 @@ if command -v brew >/dev/null
   bb
 
   pretty_print "Updating Casks"
-  brew cask upgrade
+  brew upgrade --cask
 end
 
 # Update MAS
