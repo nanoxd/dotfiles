@@ -419,10 +419,6 @@ noremap <C-p> :call fzf#vim#files('', {
       \ 'source': g:FzfFilesSource(),
       \ 'options': '--tiebreak=index'})<CR>
 
-" quick-scope
-" Trigger a highlight in the appropriate direction when pressing these keys:
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-
 " nvim-colorizer.lua
 packadd nvim-colorizer.lua
 lua require 'colorizer'.setup()
