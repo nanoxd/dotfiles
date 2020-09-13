@@ -484,7 +484,9 @@ nmap <silent> <leader>ta :TestSuite<CR>
 " Remap explore
 command! E Explore
 
+" Setup and enclose all changes
 if exists('g:vscode')
+  source $HOME/.config/nvim/vscode.vim
   " Simulate same TAB behavior in VSCode
   nmap <Tab> :Tabnext<CR>
   nmap <S-Tab> :Tabprev<CR>
