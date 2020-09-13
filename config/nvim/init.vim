@@ -233,6 +233,10 @@ nmap <leader>; :Buffers<CR>
 nmap <C-t> :Tags<CR>
 nnoremap \ :Rg<space>
 
+" Ignore mappings
+nmap Q <silent>
+nmap q: <silent>
+
 nnoremap <silent> <leader>w :ArgWrap<CR>
 
 autocmd FileType rust set expandtab tabstop=4 softtabstop=4 shiftwidth=4
