@@ -99,7 +99,6 @@ set splitright " Vertical splits will automatically be to the right
 set winwidth=84
 set winheight=10
 set winminheight=10
-" set winheight=999 " Increases the height of coc's popup window
 autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
 
 " Whitespace
@@ -150,7 +149,6 @@ hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
 function! CocCurrentFunction()
   return get(b:, 'coc_current_function', '')
 endfunction
-
 
 let g:lightline = {
       \ 'active': {
@@ -236,7 +234,6 @@ autocmd FileType rust set expandtab tabstop=4 softtabstop=4 shiftwidth=4
 """ vim-polyglot
 let g:vim_markdown_conceal = 0 " Remove concealing in vim-markdown
 
-
 """ coc.vim
 
 set updatetime=100
@@ -266,7 +263,6 @@ let g:coc_snippet_next = '<tab>'
 
 " Completion
 inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
