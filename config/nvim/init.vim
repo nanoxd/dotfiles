@@ -146,6 +146,13 @@ colorscheme tender
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
 
+if has('nvim')
+  augroup term
+    autocmd!
+    autocmd TermOpen * setlocal nonumber norelativenumber
+  augroup END
+endif
+
 function! CocCurrentFunction()
   return get(b:, 'coc_current_function', '')
 endfunction
