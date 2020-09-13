@@ -145,6 +145,7 @@ colorscheme tender
 " Allow transparency
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
+highlight link EndOfBuffer Comment
 
 if has('nvim')
   augroup term
