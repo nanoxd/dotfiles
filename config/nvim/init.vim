@@ -226,7 +226,6 @@ nnoremap <expr> 0 virtcol('.') - 1 <= indent('.') && col('.') > 1 ? '0' : '_'
 nmap <C-g> :GFiles<CR>
 nmap <leader>; :Buffers<CR>
 nmap <C-t> :Tags<CR>
-nmap <C-m> :Marks<CR>
 nnoremap \ :Rg<space>
 
 nnoremap <silent> <leader>w :ArgWrap<CR>
@@ -425,8 +424,6 @@ let g:fzf_action = {
       \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit' }
 
-
-
 function! g:FzfFilesSource()
   let l:base = fnamemodify(expand('%'), ':h:.:S')
   let l:proximity_sort_path = $HOME . '/.cargo/bin/proximity-sort'
@@ -437,8 +434,6 @@ function! g:FzfFilesSource()
     return printf('rg --files | %s %s', l:proximity_sort_path, expand('%'))
   endif
 endfunction
-
-
 
 " ctrl p brings up the file finder
 noremap <C-p> :call fzf#vim#files('', {
