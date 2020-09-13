@@ -367,21 +367,19 @@ nnoremap <silent><nowait> <leader>o  :<C-u>CocList outline<cr>
 
 """ fzf
 
-" --column: Show column number
-" --line-number: Show line number
-" --no-heading: Do not show file headings in results
-" --fixed-strings: Search term as a literal string
-" --ignore-case: Case insensitive search
-" --no-ignore: Do not respect .gitignore, etc...
-" --hidden: Search hidden files and folders
-" --follow: Follow symlinks
-" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-" --color: Search color options
-command! -bang -nargs=* Find
-      \ call fzf#vim#grep(
-      \ 'rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color=always --max-filesize=3M --threads 4 '.shellescape(<q-args>), 1,
-      \ <bang>0)
-" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+let g:fzf_buffers_jump = 1
+let g:fzf_follow_symlinks = get(g:, 'fzf_follow_symlinks', 0)
+let s:fzf_files_command     = 'rg --color=never --hidden --files --glob "!.git/*"'
+let s:fzf_all_files_command = 'rg --color=never --no-ignore --hidden --files'
+let g:fzf_action = {
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit' }
 
 command! -bang -nargs=* Rg
       \ call fzf#vim#grep(
@@ -390,23 +388,9 @@ command! -bang -nargs=* Rg
       \           : fzf#vim#with_preview('right:50%:hidden', '?'),
       \   <bang>0)
 
-let g:fzf_follow_symlinks = get(g:, 'fzf_follow_symlinks', 0)
-
 function! s:fzf_file_preview_options(bang) abort
   return fzf#vim#with_preview('right:60%:hidden', '?')
 endfunction
-
-
-let s:has_rg = executable('rg')
-
-if s:has_rg
-  let s:fzf_files_command     = 'rg --color=never --hidden --files --glob "!.git/*"'
-  let s:fzf_all_files_command = 'rg --color=never --no-ignore --hidden --files'
-else
-  let s:fzf_files_command     = 'fd --color=never --hidden --type file'
-  let s:fzf_all_files_command = 'fd --color=never --no-ignore --hidden --type file'
-endif
-
 
 function! s:build_fzf_options(command, bang) abort
   let cmd = g:fzf_follow_symlinks ? a:command . ' --follow' : a:command
@@ -418,11 +402,6 @@ command! -bang -nargs=? -complete=dir Files
 
 command! -bang -nargs=? -complete=dir AFiles
       \ call fzf#vim#files(<q-args>, s:build_fzf_options(s:fzf_all_files_command, <bang>0), <bang>0)
-
-let g:fzf_action = {
-      \ 'ctrl-t': 'tab split',
-      \ 'ctrl-s': 'split',
-      \ 'ctrl-v': 'vsplit' }
 
 function! g:FzfFilesSource()
   let l:base = fnamemodify(expand('%'), ':h:.:S')
