@@ -92,6 +92,7 @@ set cmdheight=2 " More space for displaying messages
 set pumheight=12 " Makes popup menu smaller
 set showcmd " display incomplete commands
 set iskeyword+=- " Set Hyphen as part of a text object
+set inccommand=split
 
 " Split settings:
 set splitbelow " Horizontal splits will automatically be below
@@ -194,8 +195,8 @@ set smartcase " Override ignorecase if pattern contains upcase
 
 """
 " Set ripgrep as grep engine
-set grepprg=rg\ --column\ --no-heading\ --smart-case\ --follow\ --vimgrep
-set grepformat=%f:%l:%c:%m,%f:%l:%m
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+set grepformat=%f:%l:%c:%m
 
 " Netrw
 let g:netrw_banner = 0 " hide banner
