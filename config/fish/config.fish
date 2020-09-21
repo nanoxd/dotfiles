@@ -13,10 +13,12 @@ set -gx PAGER less
 
 # ENVs
 set -gx GOPATH "$HOME/dev/go"
-set -gx FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git'
+set -gx FZF_FIND_FILE_COMMAND 'rg --files'
+set -U FZF_LEGACY_KEYBINDINGS 0
+set -gx FZF_DEFAULT_COMMAND 'rg --files'
 set -gx FZF_TMUX 1
-set -gx DYLD_LIBRARY_PATH "$HOME/.rustup/toolchains/nightly-x86_64-apple-darwin"
 set -gx TEMPLATES "$HOME/dev/templates"
+set -gx FZF_CTRL_T_COMMAND 'rg --files'
 set -U fish_key_bindings fish_vi_key_bindings
 set fish_greeting
 
