@@ -24,7 +24,6 @@ zshrc = "~/.zshrc"
 [darwin]
 lldbinit = "~/.lldbinit"
 "swiftformat.yml" = "~/.swiftformat.yml"
-"prefs/com.googlecode.iterm2.plist" = "~/Library/Preferences/com.googlecode.iterm2.plist"
 espanso = "~/Library/Preferences/espanso"
 
 [freebsd]
