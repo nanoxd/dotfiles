@@ -1,12 +1,14 @@
 local utils = require('utils')
 hs.window.animationDuration = 0
 
+local windowMT = hs.getObjectMetatable("hs.window")
+
 -- +-----------------+
 -- |        |        |
 -- |  HERE  |        |
 -- |        |        |
 -- +-----------------+
-function hs.window.left(win)
+function windowMT.left(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
@@ -23,7 +25,7 @@ end
 -- |    HERE   |     |
 -- |           |     |
 -- +-----------------+
-function hs.window.threeQuarterLeft(win)
+function windowMT.threeQuarterLeft(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
@@ -46,7 +48,7 @@ end
 -- | E  |            |
 -- | RE |            |
 -- +-----------------+
-function hs.window.oneQuarterLeft(win)
+function windowMT.oneQuarterLeft(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
@@ -69,7 +71,7 @@ end
 -- |        |  HERE  |
 -- |        |        |
 -- +-----------------+
-function hs.window.right(win)
+function windowMT.right(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
@@ -86,7 +88,7 @@ end
 -- |    |    HERE    |
 -- |    |            |
 -- +-----------------+
-function hs.window.threeQuarterRight(win)
+function windowMT.threeQuarterRight(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
@@ -108,7 +110,7 @@ end
 -- |           |  E  |
 -- |           |  RE |
 -- +-----------------+
-function hs.window.oneQuarterRight(win)
+function windowMT.oneQuarterRight(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
@@ -130,7 +132,7 @@ end
 -- +-----------------+
 -- |                 |
 -- +-----------------+
-function hs.window.up(win)
+function windowMT.up(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
@@ -147,7 +149,7 @@ end
 -- +-----------------+
 -- |      HERE       |
 -- +-----------------+
-function hs.window.down(win)
+function windowMT.down(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
@@ -164,7 +166,7 @@ end
 -- +--------+        |
 -- |                 |
 -- +-----------------+
-function hs.window.upLeft(win)
+function windowMT.upLeft(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:fullFrame()
@@ -181,7 +183,7 @@ end
 -- +--------+        |
 -- |  HERE  |        |
 -- +-----------------+
-function hs.window.downLeft(win)
+function windowMT.downLeft(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:fullFrame()
@@ -198,7 +200,7 @@ end
 -- |        +--------|
 -- |        |  HERE  |
 -- +-----------------+
-function hs.window.downRight(win)
+function windowMT.downRight(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:fullFrame()
@@ -216,7 +218,7 @@ end
 -- |        +--------|
 -- |                 |
 -- +-----------------+
-function hs.window.upRight(win)
+function windowMT.upRight(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:fullFrame()
@@ -233,7 +235,7 @@ end
 -- |  |  HERE  |  |
 -- |  |        |  |
 -- +---------------+
-function hs.window.centerWithFullHeight(win)
+function windowMT.centerWithFullHeight(win)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:fullFrame()
@@ -245,7 +247,7 @@ function hs.window.centerWithFullHeight(win)
   win:setFrame(f)
 end
 
-function hs.window.nextScreen(win)
+function windowMT.nextScreen(win)
   local currentScreen = win:screen()
   local allScreens = hs.screen.allScreens()
   currentScreenIndex = hs.fnutils.indexOf(allScreens, currentScreen)
@@ -261,35 +263,35 @@ end
 local hMovement = 40
 local vMovement = 30
 
-function hs.window.moveUp(win)
+function windowMT.moveUp(win)
   local f = win:frame()
 
   f.y = f.y-vMovement
   win:setFrame(f)
 end
 
-function hs.window.moveDown(win)
+function windowMT.moveDown(win)
   local f = win:frame()
 
   f.y = f.y+vMovement
   win:setFrame(f)
 end
 
-function hs.window.moveLeft(win)
+function windowMT.moveLeft(win)
   local f = win:frame()
 
   f.x = f.x-hMovement
   win:setFrame(f)
 end
 
-function hs.window.moveRight(win)
+function windowMT.moveRight(win)
   local f = win:frame()
 
   f.x = f.x+hMovement
   win:setFrame(f)
 end
 
-function hs.window.enlargeUp(win)
+function windowMT.enlargeUp(win)
   local f = win:frame()
 
   f.h = f.h+vMovement
@@ -297,14 +299,14 @@ function hs.window.enlargeUp(win)
   win:setFrame(f)
 end
 
-function hs.window.enlargeDown(win)
+function windowMT.enlargeDown(win)
   local f = win:frame()
 
   f.h = f.h+vMovement
   win:setFrame(f)
 end
 
-function hs.window.enlargeLeft(win)
+function windowMT.enlargeLeft(win)
   local f = win:frame()
 
   f.w = f.w+hMovement
@@ -312,21 +314,21 @@ function hs.window.enlargeLeft(win)
   win:setFrame(f)
 end
 
-function hs.window.enlargeRight(win)
+function windowMT.enlargeRight(win)
   local f = win:frame()
 
   f.w = f.w+hMovement
   win:setFrame(f)
 end
 
-function hs.window.shrinkUp(win)
+function windowMT.shrinkUp(win)
   local f = win:frame()
 
   f.h = f.h - vMovement
   win:setFrame(f)
 end
 
-function hs.window.shrinkDown(win)
+function windowMT.shrinkDown(win)
   local f = win:frame()
 
   f.h = f.h - vMovement
@@ -334,14 +336,14 @@ function hs.window.shrinkDown(win)
   win:setFrame(f)
 end
 
-function hs.window.shrinkLeft(win)
+function windowMT.shrinkLeft(win)
   local f = win:frame()
 
   f.w = f.w - hMovement
   win:setFrame(f)
 end
 
-function hs.window.shrinkRight(win)
+function windowMT.shrinkRight(win)
   local f = win:frame()
 
   f.w = f.w - hMovement
