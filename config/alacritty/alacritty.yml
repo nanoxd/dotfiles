@@ -71,7 +71,7 @@ mouse_bindings:
 
 key_bindings:
   - { key: Equals,    mods: Command,          action: ResetFontSize           }
-  - { key: Add,       mods: Command,          action: IncreaseFontSize        }
+  - { key: Plus,      mods: Command,          action: IncreaseFontSize        }
   - { key: Minus,     mods: Command,          action: DecreaseFontSize        }
   - { key: K,         mods: Command,          action: ClearHistory            }
   - { key: K,         mods: Command,          chars: "\x0c"                   }
