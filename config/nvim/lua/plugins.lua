@@ -33,11 +33,14 @@ return require('packer').startup(function()
     'glepnir/galaxyline.nvim', -- Status line written in Lua
     branch = 'main',
     requires = {
-        'kyazdani42/nvim-web-devicons',
-        opt = true
+      'kyazdani42/nvim-web-devicons',
+      opt = true
     },
     config = function()
-        require('statusline')
+      require('statusline')
     end
-}
+  }
+
+  -- Tools
+  use { 'ojroques/vim-oscyank' } -- Copy to Clipboard using ANSI OCS52
 end)

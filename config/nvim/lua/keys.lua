@@ -23,3 +23,6 @@ utils.map('n', '0', "virtcol('.') - 1 <= indent('.') && col('.') > 1 ? '0' : '_'
 utils.map('n', '<C-p>', '<cmd>Telescope find_files<cr>')
 utils.map('n', '<leader>;', '<cmd>Telescope buffers<cr>')
 utils.map('n', '\\', '<cmd>Telescope live_grep<cr>')
+
+-- Copy to Clipboard
+utils.map('v', '<leader>y', '<cmd>OSCYank<cr>')
