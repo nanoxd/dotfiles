@@ -2,14 +2,16 @@ if &compatible
   set nocompatible
 endif
 
-function! InstallPackager() abort
-  if has('nvim')
-    silent !git clone https://github.com/kristijanhusak/vim-packager
-          \ ~/.config/nvim/pack/packager/opt/vim-packager
-  else
-    silent !git clone https://github.com/kristijanhusak/vim-packager ~/.vim/pack/packager/opt/vim-packager
-  endif
-endfunction
+" function! InstallPackager() abort
+"   if has('nvim')
+"     silent !git clone https://github.com/kristijanhusak/vim-packager
+"           \ ~/.config/nvim/pack/packager/opt/vim-packager
+"   else
+"     silent !git clone https://github.com/kristijanhusak/vim-packager ~/.vim/pack/packager/opt/vim-packager
+"   endif
+" endfunction
+
+lua require('plugins')
 
 " Load packager only when needed
 function! PackagerInit() abort
