@@ -27,6 +27,8 @@ return require('packer').startup(function()
   use { 'nvim-lua/completion-nvim' }
   use { 'onsails/lspkind-nvim' }
 
+  -- UI
+  use { 'jacoborus/tender.vim' }
   use {
     'glepnir/galaxyline.nvim', -- Status line written in Lua
     branch = 'main',
