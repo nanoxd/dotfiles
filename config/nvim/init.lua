@@ -9,6 +9,5 @@ g.mapleader = " "
 require('plugins')
 require('keys')
 require('statusline')
+require('settings')
 
-utils.opt('o', 'background', 'dark')
-g.colors_name = 'tender'
