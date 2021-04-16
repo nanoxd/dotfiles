@@ -23,12 +23,12 @@ return require('packer').startup(function()
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   -- LSP and completion
-  use { 'neovim/nvim-lspconfig' }
-  use { 'nvim-lua/completion-nvim' }
-  use { 'onsails/lspkind-nvim' }
+  use 'neovim/nvim-lspconfig'
+  use 'nvim-lua/completion-nvim'
+  use 'onsails/lspkind-nvim'
 
   -- UI
-  use { 'jacoborus/tender.vim' }
+  use 'jacoborus/tender.vim'
   use {
     'glepnir/galaxyline.nvim', -- Status line written in Lua
     branch = 'main',
@@ -42,5 +42,5 @@ return require('packer').startup(function()
   }
 
   -- Tools
-  use { 'ojroques/vim-oscyank' } -- Copy to Clipboard using ANSI OCS52
+  use 'ojroques/vim-oscyank' -- Copy to Clipboard using ANSI OCS52
 end)
