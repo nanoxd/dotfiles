@@ -46,4 +46,5 @@ return require('packer').startup(function()
 
   -- Tools
   use 'ojroques/vim-oscyank' -- Copy to Clipboard using ANSI OCS52
+  use { 'norcalli/nvim-colorizer.lua' }
 end)
