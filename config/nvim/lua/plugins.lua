@@ -27,6 +27,7 @@ return require('packer').startup(function()
 
   -- LSP and completion
   use 'neovim/nvim-lspconfig'
+  use 'hrsh7th/nvim-compe'
   use 'nvim-lua/completion-nvim'
   use 'onsails/lspkind-nvim'
 
@@ -41,6 +42,16 @@ return require('packer').startup(function()
     },
     config = function()
       require('statusline')
+    end
+  }
+
+  use {
+    'lewis6991/gitsigns.nvim', -- Adds Git highlighting
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+    config = function()
+      require('gitsigns').setup()
     end
   }
 
