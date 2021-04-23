@@ -19,6 +19,8 @@ utils.map('n', 'q:', '')
 --" of the line on second press. It alternates afterwards.
 utils.map('n', '0', "virtcol('.') - 1 <= indent('.') && col('.') > 1 ? '0' : '_'", { expr = true })
 
+utils.map('n', '<leader>e', '<cmd>NvimTreeToggle<cr>', { silent = true })
+
 -- Telescope Bindings
 utils.map('n', '<C-p>', '<cmd>Telescope find_files<cr>')
 utils.map('n', '<leader>;', '<cmd>Telescope buffers<cr>')
