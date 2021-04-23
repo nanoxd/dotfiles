@@ -10,5 +10,7 @@ require('plugins')
 require('keys')
 require('statusline')
 require('settings')
+require('formatting')
+require('ls')
 require('plugin_config')
 
