@@ -30,6 +30,11 @@ return require('packer').startup(function()
   use 'hrsh7th/nvim-compe'
   use 'nvim-lua/completion-nvim'
   use 'onsails/lspkind-nvim'
+  use { 'wantyapps/nlua.nvim', branch = 'wanty' } -- Add Lua LSP. Use unmerged PR for now
+
+  -- Snippets
+  use { 'hrsh7th/vim-vsnip', requires = { "rafamadriz/friendly-snippets" } }
+  use 'hrsh7th/vim-vsnip-integ'
 
   -- UI
   use 'jacoborus/tender.vim'
