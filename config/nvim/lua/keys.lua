@@ -28,3 +28,9 @@ utils.map('n', '\\', '<cmd>Telescope live_grep<cr>')
 
 -- Copy to Clipboard
 utils.map('v', '<leader>y', '<cmd>OSCYank<cr>')
+
+-- Navigator Bindings
+utils.map('n', '<C-h>', '<cmd>lua require("Navigator").left()<cr>', { silent = true })
+utils.map('n', '<C-j>', '<cmd>lua require("Navigator").down()<cr>', { silent = true })
+utils.map('n', '<C-k>', '<cmd>lua require("Navigator").up()<cr>', { silent = true })
+utils.map('n', '<C-l>', '<cmd>lua require("Navigator").right()<cr>', { silent = true })

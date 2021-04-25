@@ -38,6 +38,17 @@ return require('packer').startup(function()
 
   -- UI
   use 'jacoborus/tender.vim'
+
+  use { 
+    'Th3Whit3Wolf/onebuddy', 
+    requires = {
+      'tjdevries/colorbuddy.vim'
+    },
+    config = function()
+      require('colorbuddy').colorscheme('onebuddy')
+    end
+  }
+
   use {
     'glepnir/galaxyline.nvim', -- Status line written in Lua
     branch = 'main',
@@ -63,5 +74,20 @@ return require('packer').startup(function()
   -- Tools
   use 'ojroques/vim-oscyank' -- Copy to Clipboard using ANSI OCS52
   use { 'norcalli/nvim-colorizer.lua' }
-  use 'b3nj5m1n/kommentary'
+  use 'b3nj5m1n/kommentary' -- Comment mapings
+  use 'kevinhwang91/nvim-bqf' -- Make QuickFix better
+  use {
+    'numToStr/Navigator.nvim',
+    config = function()
+      require('Navigator').setup({
+        disable_on_zoom = true
+      })
+    end
+  }
+  use {
+    "blackCauldron7/surround.nvim",
+    config = function()
+      require "surround".setup {}
+    end
+  }
 end)
