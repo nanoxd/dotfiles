@@ -23,7 +23,13 @@ return require('packer').startup(function()
   -- Better syntax highlighting
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
-  use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
+  use { 
+    'kyazdani42/nvim-tree.lua', 
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    config = function() 
+      vim.g.nvim_tree_width = 25
+    end
+  }
 
   -- LSP and completion
   use 'neovim/nvim-lspconfig'
@@ -73,9 +79,15 @@ return require('packer').startup(function()
 
   -- Tools
   use 'ojroques/vim-oscyank' -- Copy to Clipboard using ANSI OCS52
-  use { 'norcalli/nvim-colorizer.lua' }
+  use { 
+    'norcalli/nvim-colorizer.lua', 
+    config =  function()
+      require('colorizer').setup()
+    end
+  }
   use 'b3nj5m1n/kommentary' -- Comment mapings
   use 'kevinhwang91/nvim-bqf' -- Make QuickFix better
+
   use {
     'numToStr/Navigator.nvim',
     config = function()
@@ -84,10 +96,18 @@ return require('packer').startup(function()
       })
     end
   }
+
   use {
     "blackCauldron7/surround.nvim",
     config = function()
       require "surround".setup {}
     end
   }
-end)
+
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup()
+    end
+  }
+  end)
