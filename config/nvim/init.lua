@@ -12,5 +12,7 @@ require('statusline')
 require('settings')
 require('formatting')
 require('ls')
-require('plugin_config')
+require('plugin_config.compe')
 
+local ts = require 'nvim-treesitter.configs'
+ts.setup {ensure_installed = 'maintained', highlight = {enable = true}}
