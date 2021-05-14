@@ -87,6 +87,8 @@ return require('packer').startup(function()
   }
   use 'b3nj5m1n/kommentary' -- Comment mapings
   use 'kevinhwang91/nvim-bqf' -- Make QuickFix better
+  use 'p00f/nvim-ts-rainbow' -- Enable multiple parentheses
+  use 'rhysd/committia.vim' -- More Pleasant Editing on Commit Message
 
   use {
     'numToStr/Navigator.nvim',
