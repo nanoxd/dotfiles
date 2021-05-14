@@ -15,4 +15,13 @@ require('ls')
 require('plugin_config.compe')
 
 local ts = require 'nvim-treesitter.configs'
-ts.setup {ensure_installed = 'maintained', highlight = {enable = true}}
+ts.setup {
+  ensure_installed = 'maintained', 
+  highlight = {enable = true},
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+    max_file_lines = 1000
+  }
+}
+
