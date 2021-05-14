@@ -1,3 +1,5 @@
+local lspconfig = require('lspconfig')
+
 local on_attach = function(client, bufnr)
   require('completion').on_attach()
 
@@ -8,8 +10,10 @@ local on_attach = function(client, bufnr)
 
   -- Mappings
   local opts = { noremap=true, silent=true }
+  buf_set_keymap('n', 'ga', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gW', '<Cmd>lua vim.lsp.buf.workspace_symbol()<CR>', opts)
   buf_set_keymap('n', 'gy', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
@@ -23,14 +27,17 @@ local on_attach = function(client, bufnr)
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
-    buf_set_keymap('n', "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    buf_set_keymap('n', "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   elseif client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap('n', "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+    buf_set_keymap('n', "<leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   end
 end
 
-require('nlua.lsp.nvim').setup(require('lspconfig'), {
+require('nlua.lsp.nvim').setup(lspconfig, {
   globals = { 'vim', 'use' },
   on_attach = on_attach,
 })
 
+lspconfig.rust_analyzer.setup({
+  on_attach = on_attach,
+})
