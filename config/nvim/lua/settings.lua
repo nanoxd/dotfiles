@@ -1,5 +1,6 @@
 local u = require('utils')
 local cmd = vim.cmd
+local fn = vim.fn
 
 local function flag(key, scope)
   local s = 'o'
@@ -37,8 +38,14 @@ u.opt('o', 'swapfile', false)
 flag('autoread') -- When file is written to outside of vim, read again
 
 -- Persistent Undo
-cmd('silent !mkdir backups > /dev/null 2>&1')
-u.opt('o', 'undodir', 'backups')
+
+local undodir = fn.expand(fn.stdpath("cache") .. "/undo")
+
+if fn.isdirectory(undodir) == 0 then
+  fn.mkdir(undodir, 'p')
+end
+
+u.opt('o', 'undodir', undodir)
 flag('undofile')
 
 -- Display
