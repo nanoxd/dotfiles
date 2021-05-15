@@ -11,8 +11,6 @@ endif
 "   endif
 " endfunction
 
-lua require('plugins')
-
 " Load packager only when needed
 function! PackagerInit() abort
   packadd vim-packager
