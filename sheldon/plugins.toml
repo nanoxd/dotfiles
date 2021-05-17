@@ -30,10 +30,13 @@ github = 'zsh-users/zsh-history-substring-search'
 # Deferred
 # -------
 
+[plugins.config]
+local = "~/.zsh/plugins"
+use = ["*.plugin.zsh"]
+
 [plugins.zsh-mkc]
 github = 'caarlos0/zsh-mkc'
 apply = ["defer"]
-
 
 [plugins.zsh-syntax-highlighting]
 github = 'zsh-users/zsh-syntax-highlighting'

@@ -38,6 +38,12 @@ files = ["/Users/nano/.sheldon/repos/github.com/zsh-users/zsh-history-substring-
 apply = ["PATH", "source"]
 
 [[plugins]]
+name = "config"
+source_dir = "/Users/nano/.zsh/plugins"
+files = ["/Users/nano/.zsh/plugins/aliases.plugin.zsh", "/Users/nano/.zsh/plugins/completion.plugin.zsh", "/Users/nano/.zsh/plugins/config.plugin.zsh"]
+apply = ["PATH", "source"]
+
+[[plugins]]
 name = "zsh-mkc"
 source_dir = "/Users/nano/.sheldon/repos/github.com/caarlos0/zsh-mkc"
 files = ["/Users/nano/.sheldon/repos/github.com/caarlos0/zsh-mkc/mkc.plugin.zsh"]

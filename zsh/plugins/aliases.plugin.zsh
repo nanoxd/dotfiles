@@ -35,15 +35,15 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
-alias ls='ls -G'
+alias ls="exa"
 alias ll='ls -l'
+alias la="ls -al"
 
 if which brew >/dev/null 2>&1; then
   brew() {
     case "$1" in
       cleanup)
         command brew cleanup
-        command brew cask cleanup
         command brew prune
         ;;
       bump)
@@ -74,7 +74,6 @@ if which yarn >/dev/null 2>&1; then
   alias yu='yarn update-interactive'
 fi
 
-alias a='atom'
 alias be='bundle exec'
 alias bu='bundle update'
 alias gemi='gem install'
@@ -99,4 +98,25 @@ alias c='cargo'
 alias cr='cargo run'
 alias ct='cargo test'
 
-alias ls="exa"
+# Git
+alias g='git'
+alias ga='git add'
+alias gaa='git add --all'
+alias gaap='git add --all --patch'
+alias gc='git commit'
+alias gca='git commit --amend'
+alias gcan='git commit --amend --no-edit'
+alias gcb='git create-branch'
+alias gcl='git clone'
+alias gco='git checkout'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gdw='git diff --word-diff'
+alias gp='git push'
+alias gpr='git pull-request --browse'
+alias gpu='git pull --rebase'
+alias gs='git status -sb'
+
+gpc() {
+  git push --set-upstream origin $(git-branch-current 2> /dev/null)
+}
