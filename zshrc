@@ -27,7 +27,7 @@ if [[ -d $STACK_DIR ]]; then
     export PATH="$STACK_DIR:$PATH"
 fi
 
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --files'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
