@@ -2,6 +2,7 @@
 export LSCOLORS='exfxcxdxbxegedabagacad'
 setopt NO_BG_NICE
 setopt NO_HUP
+setopt NO_HIST_BEEP
 setopt NO_LIST_BEEP
 
 # History
@@ -13,6 +14,7 @@ setopt EXTENDED_HISTORY
 setopt PROMPT_SUBST
 setopt CORRECT
 setopt COMPLETE_IN_WORD
+setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
