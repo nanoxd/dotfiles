@@ -22,3 +22,4 @@ config/coc/commands
 config/coc/memos.json
 config/coc/extensions/coc-go-data
 config/nvim/plugin
+sheldon/repos

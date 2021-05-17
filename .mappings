@@ -14,9 +14,10 @@ hammerspoon = "~/.hammerspoon"
 "hyper.js" = "~/.hyper.js"
 irbrc = "~/.irbrc"
 "ruby-version" = "~/.ruby-version"
+sheldon = "~/.sheldon"
 stack = "~/.stack"
 "tmux.conf" = "~/.tmux.conf"
-zsh = "~/.sheldon"
+zsh = "~/.zsh"
 zshrc = "~/.zshrc"
 
 [linux]

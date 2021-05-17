@@ -1,0 +1,105 @@
+version = "0.6.3"
+home = "/Users/nano"
+config_dir = "/Users/nano/.sheldon"
+data_dir = "/Users/nano/.sheldon"
+config_file = "/Users/nano/.sheldon/plugins.toml"
+lock_file = "/Users/nano/.sheldon/plugins.lock"
+clone_dir = "/Users/nano/.sheldon/repos"
+download_dir = "/Users/nano/.sheldon/downloads"
+
+[[plugins]]
+name = "rust-zsh-completions"
+source_dir = "/Users/nano/.sheldon/repos/github.com/ryutok/rust-zsh-completions"
+files = ["/Users/nano/.sheldon/repos/github.com/ryutok/rust-zsh-completions/rust.plugin.zsh"]
+apply = ["PATH", "source"]
+
+[[plugins]]
+name = "zsh-completions"
+source_dir = "/Users/nano/.sheldon/repos/github.com/zsh-users/zsh-completions"
+files = ["/Users/nano/.sheldon/repos/github.com/zsh-users/zsh-completions/zsh-completions.plugin.zsh"]
+apply = ["PATH", "source"]
+
+[[plugins]]
+name = "zsh-defer"
+source_dir = "/Users/nano/.sheldon/repos/github.com/romkatv/zsh-defer"
+files = ["/Users/nano/.sheldon/repos/github.com/romkatv/zsh-defer/zsh-defer.plugin.zsh"]
+apply = ["PATH", "source"]
+
+[[plugins]]
+name = "pure"
+source_dir = "/Users/nano/.sheldon/repos/github.com/sindresorhus/pure"
+files = ["/Users/nano/.sheldon/repos/github.com/sindresorhus/pure/async.zsh", "/Users/nano/.sheldon/repos/github.com/sindresorhus/pure/pure.zsh"]
+apply = ["PATH", "source"]
+
+[[plugins]]
+name = "zsh-history-substring-search"
+source_dir = "/Users/nano/.sheldon/repos/github.com/zsh-users/zsh-history-substring-search"
+files = ["/Users/nano/.sheldon/repos/github.com/zsh-users/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh"]
+apply = ["PATH", "source"]
+
+[[plugins]]
+name = "zsh-mkc"
+source_dir = "/Users/nano/.sheldon/repos/github.com/caarlos0/zsh-mkc"
+files = ["/Users/nano/.sheldon/repos/github.com/caarlos0/zsh-mkc/mkc.plugin.zsh"]
+apply = ["defer"]
+
+[[plugins]]
+name = "zsh-syntax-highlighting"
+source_dir = "/Users/nano/.sheldon/repos/github.com/zsh-users/zsh-syntax-highlighting"
+files = ["/Users/nano/.sheldon/repos/github.com/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"]
+apply = ["defer"]
+
+[[plugins]]
+name = "zsh-autosuggestions"
+source_dir = "/Users/nano/.sheldon/repos/github.com/zsh-users/zsh-autosuggestions"
+files = ["/Users/nano/.sheldon/repos/github.com/zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh"]
+apply = ["defer"]
+
+[[plugins]]
+name = "alias-tips"
+source_dir = "/Users/nano/.sheldon/repos/github.com/djui/alias-tips"
+files = ["/Users/nano/.sheldon/repos/github.com/djui/alias-tips/alias-tips.plugin.zsh"]
+apply = ["defer"]
+
+[[plugins]]
+name = "z-lua"
+source_dir = "/Users/nano/.sheldon/repos/github.com/skywind3000/z.lua"
+files = ["/Users/nano/.sheldon/repos/github.com/skywind3000/z.lua/z.lua.plugin.zsh"]
+apply = ["defer"]
+
+[[plugins]]
+name = "fzf-git"
+source_dir = "/Users/nano/.sheldon/repos/github.com/hschne/fzf-git"
+files = ["/Users/nano/.sheldon/repos/github.com/hschne/fzf-git/fzf-git.plugin.zsh"]
+apply = ["defer"]
+
+[[plugins]]
+name = "rbenv"
+source_dir = "/Users/nano/.sheldon/repos/gist.github.com/d85577bde47b87323656235c47625f11"
+files = ["/Users/nano/.sheldon/repos/gist.github.com/d85577bde47b87323656235c47625f11/rbenv.plugin.zsh"]
+apply = ["defer"]
+
+[[plugins]]
+name = "tsm"
+source_dir = "/Users/nano/.sheldon/repos/github.com/RobertAudi/tsm"
+files = ["/Users/nano/.sheldon/repos/github.com/RobertAudi/tsm/tsm.plugin.zsh"]
+apply = ["defer"]
+[templates.PATH]
+value = "export PATH=\"{{ dir }}:$PATH\""
+each = false
+
+[templates.path]
+value = "path=( \"{{ dir }}\" $path )"
+each = false
+
+[templates.fpath]
+value = "fpath=( \"{{ dir }}\" $fpath )"
+each = false
+
+[templates.source]
+value = "source \"{{ file }}\""
+each = true
+
+[templates.defer]
+value = "zsh-defer source \"{{ file }}\""
+each = true

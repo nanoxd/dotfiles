@@ -8,12 +8,12 @@ if uname -s | grep -q Darwin; then
     export PAGER='less'
 fi
 
-export PATH="$HOME/.bin:$HOME/.cargo/bin:`yarn global bin`:$PATH"
+export PATH="$HOME/.bin:$HOME/.cargo/bin:$PATH"
 
 typeset -U config_files
 config_files=($ZSH/*.zsh)
 
-source <(sheldon source)
+eval "$(sheldon source)"
 
 # Load ZSH Modules
 autoload -U promptinit && promptinit
@@ -49,10 +49,6 @@ done
 
 unset config_files updated_at
 
-# Ruby
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
 # Android
 ANDROID_DIR="$HOME/Library/Android/sdk/platform-tools"
 if [[ -d $ANDROID_DIR ]]; then
@@ -65,14 +61,9 @@ if [[ -d $STACK_DIR ]]; then
     export PATH="$STACK_DIR:$PATH"
 fi
 
-source `brew --prefix`/etc/profile.d/z.sh
-
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export PATH="$HOME/.bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
 
 # alias-tips
 export ZSH_PLUGINS_ALIAS_TIPS_EXPAND=0
