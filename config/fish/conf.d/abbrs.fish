@@ -3,16 +3,12 @@ if status --is-interactive
   abbr -a co code
   abbr -a f fork
 
-  # Homebrew | Cask
+  # Homebrew
   abbr -a bi brew install
-  abbr -a bci brew cask install
-  abbr -a bcr brew cask reinstall
-  abbr -a bcu brew cask uninstall
 
   # Git
   abbr -a g git
   abbr -a ga git add
-  abbr -a gb git browse
   abbr -a gaa git add --all
   abbr -a gaap git add --all --patch
   abbr -a gc git commit
@@ -34,8 +30,6 @@ if status --is-interactive
   # Ruby
   abbr -a be bundle exec
   abbr -a bu bundle update
-  abbr -a gu gem update
-  abbr -a pu bundle exec pod update
 
   # Node
   abbr -a y yarn

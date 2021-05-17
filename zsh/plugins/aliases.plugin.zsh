@@ -8,14 +8,6 @@ mkdir() {
   command mkdir -p "$@"
 }
 
-mkcd() {
-  mkdir $@ && cd $@
-}
-
-android-method-count() {
-  unzip -p "$@" classes.dex | head -c 92 | tail -c 4 | hexdump -e '1/4 "%d\n"'
-}
-
 ip() {
   ifconfig lo0 | grep 'inet '  | sed -e 's/:/ /' | awk '{print "lo0       : " $2}'
   ifconfig en0 | grep 'inet '  | sed -e 's/:/ /' | awk '{print "en0 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
@@ -24,8 +16,12 @@ ip() {
   ifconfig en1 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en1 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
 }
 
-pbssh() {
-  cat ~/.ssh/id_rsa.pub | pbcopy
+p() {
+  if [ -n "$1" ] && [ -f "$1" ]; then
+    bat "$@"
+  else
+    exa -lh "$@"
+  fi
 }
 
 alias rm='trash'
@@ -43,8 +39,7 @@ if which brew >/dev/null 2>&1; then
   brew() {
     case "$1" in
       cleanup)
-        command brew cleanup
-        command brew prune
+        command brew cleanup --prune-prefix
         ;;
       bump)
         command brew update
@@ -58,12 +53,6 @@ if which brew >/dev/null 2>&1; then
   }
 
   alias bi='brew install'
-  alias bci='brew cask install'
-  alias bcs='brew cask search'
-  alias bcu='brew cask uninstall'
-
-  alias podi='bundle exec pod install'
-  alias podu='bundle exec pod update'
 fi
 
 if which yarn >/dev/null 2>&1; then
@@ -71,17 +60,20 @@ if which yarn >/dev/null 2>&1; then
   alias yad='yarn add --dev'
   alias yag='yarn global add'
   alias yr='yarn run'
-  alias yu='yarn update-interactive'
+  alias yu='yarn upgrade-interactive --latest'
 fi
 
 alias be='bundle exec'
 alias bu='bundle update'
-alias gemi='gem install'
-alias gemu='gem update'
 alias rm-mac-metadata='find . -name ".DS_Store" -or -name "._*" -delete'
 
+# Editors
+alias co='code'
+alias vim="nvim"
+alias vimdiff="nvim -d"
+
 if [ "$(uname -s)" = "Darwin" ]; then
-  alias gt='gittower .'
+  alias f='fork'
 fi
 
 alias sync='rsync -az --progress'
@@ -106,13 +98,15 @@ alias gaap='git add --all --patch'
 alias gc='git commit'
 alias gca='git commit --amend'
 alias gcan='git commit --amend --no-edit'
-alias gcb='git create-branch'
+alias gcb='git switch -c'
 alias gcl='git clone'
 alias gco='git checkout'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gdw='git diff --word-diff'
+alias gin="git introduced"
 alias gp='git push'
+alias gpf='git push --force-with-lease'
 alias gpr='git pull-request --browse'
 alias gpu='git pull --rebase'
 alias gs='git status -sb'
