@@ -112,4 +112,11 @@ return require('packer').startup(function()
       require('nvim-autopairs').setup()
     end
   }
+
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup {}
+    end
+  }
   end)
