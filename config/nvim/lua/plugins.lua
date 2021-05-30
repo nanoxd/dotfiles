@@ -89,6 +89,7 @@ return require('packer').startup(function()
   use 'kevinhwang91/nvim-bqf' -- Make QuickFix better
   use 'p00f/nvim-ts-rainbow' -- Enable multiple parentheses
   use 'rhysd/committia.vim' -- More Pleasant Editing on Commit Message
+  use 'tpope/vim-unimpaired' -- Add elegant mappings
 
   use {
     'numToStr/Navigator.nvim',
