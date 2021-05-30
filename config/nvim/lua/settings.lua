@@ -1,41 +1,36 @@
-local u = require('utils')
 local cmd = vim.cmd
 local fn = vim.fn
+local opt = vim.opt
 
-local function flag(key, scope)
-  local s = 'o'
-  if scope then s = scope end
-  u.opt(s, key, true)
-end
+opt.ruler = true
+opt.hidden = true
+opt.showcmd = true
+opt.mouse = 'a' -- Enable mouse support
+opt.iskeyword:append { '-' } -- Set Hyphen as part of a text object
 
-flag('ruler')
-flag('hidden')
-flag('showcmd')
-u.opt('o', 'mouse', 'a') -- Enable mouse support
-
-flag('splitbelow') -- Horizontal splits will automatically be below
-flag('splitright') -- Vertical splits will be to the right
-u.opt('o', 'winwidth', 84)
-u.opt('o', 'winheight', 10)
-u.opt('o', 'winminheight', 10)
+opt.splitbelow = true -- Horizontal splits will automatically be below
+opt.splitright = true -- Vertical splits will be to the right
+opt.winwidth = 84
+opt.winheight = 10
+opt.winminheight = 10
 
 -- Whitespace
-u.opt('w', 'listchars', [[tab:▸\ ,trail:·,eol:¬,nbsp:_]])
-flag('smartindent', 'b')
-u.opt('w', 'wrap', false)
+opt.list = true -- Show invisible characters
+opt.listchars = { tab = ">~", trail = '·', eol = '¬', nbsp = '_' }
+opt.smartindent = true
+opt.wrap = false
 
 -- Spacing
-u.opt('o', 'tabstop', 2)
-u.opt('o', 'shiftwidth', 2)
-u.opt('o', 'softtabstop', 2)
-flag('expandtab')
-flag('list') -- Show invisible characters
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.softtabstop = 2
+opt.expandtab = true
 
 -- Turn off swap files
-u.opt('o', 'backup', false)
-u.opt('o', 'writebackup', false)
-u.opt('o', 'swapfile', false)
-flag('autoread') -- When file is written to outside of vim, read again
+opt.backup = false
+opt.writebackup = false
+opt.swapfile = false
+opt.autoread = true -- When file is written to outside of vim, read again
 
 -- Persistent Undo
 
@@ -45,19 +40,19 @@ if fn.isdirectory(undodir) == 0 then
   fn.mkdir(undodir, 'p')
 end
 
-u.opt('o', 'undodir', undodir)
-flag('undofile')
+opt.undodir = undodir
+opt.undofile = true
 
 -- Display
-u.opt('o', 'background', 'dark')
+opt.background = 'dark'
 vim.g.colors_name = 'tender'
 
-flag('termguicolors') -- Add 24 bit color support
-u.opt('o', 'showmode', false)
-flag('relativenumber')
-flag('number')
-flag('lazyredraw')
-flag('cursorline')
+opt.termguicolors = true -- Add 24 bit color support
+opt.showmode = false
+opt.relativenumber = true
+opt.number = true
+opt.lazyredraw = true
+opt.cursorline = true
 
 -- Allow Transparency
 cmd('hi! Normal ctermbg=NONE guibg=NONE')
@@ -65,12 +60,12 @@ cmd('hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE')
 cmd('highlight link EndOfBuffer Comment')
 
 -- Sensible side scrolling 
-u.opt('o', 'sidescroll', 1)
-u.opt('w', 'sidescrolloff', 3)
+opt.sidescroll = 1
+opt.sidescrolloff = 3
 
 -- Search
-flag('ignorecase')
-flag('smartcase')
+opt.ignorecase = true
+opt.smartcase = true
 
 -- Highlight on Yank
 cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
