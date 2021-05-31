@@ -93,6 +93,7 @@ return require('packer').startup(function()
   use 'rhysd/committia.vim' -- More Pleasant Editing on Commit Message
   use 'tpope/vim-unimpaired' -- Add elegant mappings
   use 'lambdalisue/suda.vim' -- Sudo support in nvim
+  use 'tpope/vim-fugitive' -- Git for Vim
 
   use {
     'numToStr/Navigator.nvim',
