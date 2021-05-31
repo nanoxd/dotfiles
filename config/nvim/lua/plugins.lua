@@ -92,6 +92,7 @@ return require('packer').startup(function()
   use 'p00f/nvim-ts-rainbow' -- Enable multiple parentheses
   use 'rhysd/committia.vim' -- More Pleasant Editing on Commit Message
   use 'tpope/vim-unimpaired' -- Add elegant mappings
+  use 'lambdalisue/suda.vim' -- Sudo support in nvim
 
   use {
     'numToStr/Navigator.nvim',
