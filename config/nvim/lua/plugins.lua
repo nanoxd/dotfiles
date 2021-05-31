@@ -31,13 +31,13 @@ return require('packer').startup(function()
     end
   }
 
-  use 'simrat39/symbols-outline.nvim'
 
   -- LSP and completion
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/nvim-compe'
   use 'nvim-lua/completion-nvim'
   use 'onsails/lspkind-nvim'
+  use 'simrat39/symbols-outline.nvim'
   use { 'wantyapps/nlua.nvim', branch = 'wanty' } -- Add Lua LSP. Use unmerged PR for now
 
   -- Snippets
@@ -121,5 +121,12 @@ return require('packer').startup(function()
     config = function()
       require("which-key").setup {}
     end
+  }
+  use {
+    'windwp/nvim-spectre',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-lua/popup.nvim'
+    }
   }
   end)

@@ -35,3 +35,4 @@ utils.map('n', '<C-k>', '<cmd>lua require("Navigator").up()<cr>', { silent = tru
 utils.map('n', '<C-l>', '<cmd>lua require("Navigator").right()<cr>', { silent = true })
 
 utils.map('n', '<leader>s', '<cmd>SymbolsOutline<cr>', { silent = true }) -- Symbols Outline
+utils.map('n', '<leader>S', '<cmd>lua require("spectre").open()<cr>') -- Open Spectre
