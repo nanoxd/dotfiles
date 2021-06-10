@@ -27,7 +27,11 @@ return require('packer').startup(function()
     'kyazdani42/nvim-tree.lua', 
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     config = function() 
-      vim.g.nvim_tree_width = 25
+      require'nvim-tree.view'.View.width = 20
+      vim.g.nvim_tree_auto_open = 1
+      vim.g.nvim_tree_auto_close = 1
+      vim.g.nvim_tree_quit_on_open = 1
+      vim.g.nvim_tree_follow = 1
     end
   }
 
