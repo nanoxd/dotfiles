@@ -4,8 +4,7 @@ local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
-  cmd('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
-  cmd 'packadd packer.nvim'
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
 cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
@@ -141,4 +140,9 @@ return require('packer').startup(function()
       'nvim-lua/popup.nvim'
     }
   }
+
+    -- Automatically set up your configuration after cloning packer.nvim
+  if packer_bootstrap then
+    require('packer').sync()
+  end
   end)
