@@ -134,6 +134,7 @@
 
 [pull]
   rebase = true
+  twohead = ort
 
 [include]
   path = ~/.gitconfig.local
