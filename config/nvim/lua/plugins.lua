@@ -48,6 +48,17 @@ return require('packer').startup(function()
   use 'onsails/lspkind-nvim'
   use 'simrat39/symbols-outline.nvim'
   use { 'wantyapps/nlua.nvim', branch = 'wanty' } -- Add Lua LSP. Use unmerged PR for now
+  use {
+    'simrat39/rust-tools.nvim',
+    requires = {
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim'
+    },
+    config = function()
+      require('rust-tools').setup({})
+    end
+  }
 
   -- Snippets
   use { 'hrsh7th/vim-vsnip', requires = { "rafamadriz/friendly-snippets" } }
