@@ -24,3 +24,5 @@ config/coc/extensions/coc-go-data
 config/nvim/plugin
 sheldon/repos
 sheldon/plugins.lock
+config/iterm2/AppSupport
+config/Autodesk/FusionFabrication.FusionNesting
