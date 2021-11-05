@@ -34,7 +34,7 @@ return require('packer').startup(function()
           enable = true
         },
         view = {
-          width = 20
+          width = 15
         }
       }
     end
@@ -43,8 +43,12 @@ return require('packer').startup(function()
 
   -- LSP and completion
   use 'neovim/nvim-lspconfig'
-  use 'hrsh7th/nvim-compe'
-  use 'nvim-lua/completion-nvim'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/nvim-cmp'
+
   use 'onsails/lspkind-nvim'
   use 'simrat39/symbols-outline.nvim'
   use { 'wantyapps/nlua.nvim', branch = 'wanty' } -- Add Lua LSP. Use unmerged PR for now
@@ -63,6 +67,7 @@ return require('packer').startup(function()
   -- Snippets
   use { 'hrsh7th/vim-vsnip', requires = { "rafamadriz/friendly-snippets" } }
   use 'hrsh7th/vim-vsnip-integ'
+  use 'hrsh7th/cmp-vsnip'
 
   -- UI
   use 'jacoborus/tender.vim'

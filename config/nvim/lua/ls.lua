@@ -1,8 +1,7 @@
 local lspconfig = require('lspconfig')
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_attach = function(client, bufnr)
-  require('completion').on_attach()
-
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -36,10 +35,12 @@ end
 require('nlua.lsp.nvim').setup(lspconfig, {
   globals = { 'vim', 'use' },
   on_attach = on_attach,
+  capabilities = capabilities,
 })
 
 lspconfig.rust_analyzer.setup({
   on_attach = on_attach,
+  capabilities = capabilities,
 })
 
 lspconfig.gopls.setup {
@@ -52,7 +53,10 @@ lspconfig.gopls.setup {
       staticcheck = true,
     },
   },
+  capabilities = capabilities,
 }
 
-lspconfig.tsserver.setup({})
+lspconfig.tsserver.setup({
+  capabilities = capabilities,
+})
 

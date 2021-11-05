@@ -12,7 +12,7 @@ require('statusline')
 require('settings')
 require('formatting')
 require('ls')
-require('plugin_config.compe')
+require('plugin_config.cmp')
 
 local ts = require 'nvim-treesitter.configs'
 ts.setup {
