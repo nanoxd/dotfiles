@@ -26,6 +26,7 @@ utils.map('n', '<C-p>', '<cmd>Telescope find_files<cr>')
 utils.map('n', '<leader>;', '<cmd>Telescope buffers<cr>')
 utils.map('n', '\\', '<cmd>Telescope live_grep<cr>')
 
+utils.map('n', '<leader>p', '<cmd>Telescope neoclip<cr>') -- Open Clipboard history
 utils.map('v', '<leader>y', '<cmd>OSCYank<cr>') -- Copy to Clipboard
 
 -- Navigator Bindings

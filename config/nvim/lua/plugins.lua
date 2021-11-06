@@ -166,6 +166,14 @@ return require('packer').startup(function()
     end
   }
 
+  use {
+    "AckslD/nvim-neoclip.lua",
+    requires = {'tami5/sqlite.lua', module = 'sqlite'},
+    config = function()
+      require('neoclip').setup()
+    end,
+  }
+
     -- Automatically set up your configuration after cloning packer.nvim
   if packer_bootstrap then
     require('packer').sync()
