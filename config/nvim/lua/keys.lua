@@ -27,7 +27,8 @@ utils.map('n', '<leader>;', '<cmd>Telescope buffers<cr>')
 utils.map('n', '\\', '<cmd>Telescope live_grep<cr>')
 
 utils.map('n', '<leader>p', '<cmd>Telescope neoclip<cr>') -- Open Clipboard history
-utils.map('v', '<leader>y', '<cmd>OSCYank<cr>') -- Copy to Clipboard
+utils.map('v', '<leader>y', ':OSCYank<cr>', { silent = true }) -- Copy to Clipboard
+vim.cmd[[autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | OSCYankReg + | endif]]
 
 -- Navigator Bindings
 utils.map('n', '<C-h>', '<cmd>lua require("Navigator").left()<cr>', { silent = true })
