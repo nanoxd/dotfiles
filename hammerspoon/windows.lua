@@ -2,23 +2,7 @@ local utils = require('utils')
 hs.window.animationDuration = 0
 
 local windowMT = hs.getObjectMetatable("hs.window")
-
--- +-----------------+
--- |        |        |
--- |  HERE  |        |
--- |        |        |
--- +-----------------+
-function windowMT.left(win)
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  f.x = max.x
-  f.y = max.y
-  f.w = max.w / 2
-  f.h = max.h
-  win:setFrame(f)
-end
+local window = hs.window
 
 -- +-----------------+
 -- |           |     |
@@ -67,23 +51,6 @@ function windowMT.oneQuarterLeft(win)
 end
 
 -- +-----------------+
--- |        |        |
--- |        |  HERE  |
--- |        |        |
--- +-----------------+
-function windowMT.right(win)
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  f.x = max.x + (max.w / 2)
-  f.y = max.y
-  f.w = max.w / 2
-  f.h = max.h
-  win:setFrame(f)
-end
-
--- +-----------------+
 -- |    |            |
 -- |    |    HERE    |
 -- |    |            |
@@ -124,109 +91,6 @@ function windowMT.oneQuarterRight(win)
   f.h = max.h
   f.x = max.x + (max.w - f.w)
   f.y = max.y
-  win:setFrame(f)
-end
-
--- +-----------------+
--- |      HERE       |
--- +-----------------+
--- |                 |
--- +-----------------+
-function windowMT.up(win)
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  f.x = max.x
-  f.w = max.w
-  f.y = max.y
-  f.h = max.h / 2
-  win:setFrame(f)
-end
-
--- +-----------------+
--- |                 |
--- +-----------------+
--- |      HERE       |
--- +-----------------+
-function windowMT.down(win)
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  f.x = max.x
-  f.w = max.w
-  f.y = max.y + (max.h / 2)
-  f.h = max.h / 2
-  win:setFrame(f)
-end
-
--- +-----------------+
--- |  HERE  |        |
--- +--------+        |
--- |                 |
--- +-----------------+
-function windowMT.upLeft(win)
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:fullFrame()
-
-  f.x = max.x
-  f.y = max.y
-  f.w = max.w/2
-  f.h = max.h/2
-  win:setFrame(f)
-end
-
--- +-----------------+
--- |                 |
--- +--------+        |
--- |  HERE  |        |
--- +-----------------+
-function windowMT.downLeft(win)
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:fullFrame()
-
-  f.x = max.x
-  f.y = max.y + (max.h / 2)
-  f.w = max.w/2
-  f.h = max.h/2
-  win:setFrame(f)
-end
-
--- +-----------------+
--- |                 |
--- |        +--------|
--- |        |  HERE  |
--- +-----------------+
-function windowMT.downRight(win)
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:fullFrame()
-
-  f.x = max.x + (max.w / 2)
-  f.y = max.y + (max.h / 2)
-  f.w = max.w/2
-  f.h = max.h/2
-
-  win:setFrame(f)
-end
-
--- +-----------------+
--- |        |  HERE  |
--- |        +--------|
--- |                 |
--- +-----------------+
-function windowMT.upRight(win)
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:fullFrame()
-
-  f.x = max.x + (max.w / 2)
-  f.y = max.y
-  f.w = max.w/2
-  f.h = max.h/2
   win:setFrame(f)
 end
 
@@ -407,35 +271,35 @@ windowLayoutMode:bindWithAutomaticExit('space', function()
 end)
 
 windowLayoutMode:bindWithAutomaticExit('h', function()
-  hs.window.focusedWindow():left()
+  window.focusedWindow():moveToUnit(hs.layout.left50)
 end)
 
 windowLayoutMode:bindWithAutomaticExit('j', function()
-  hs.window.focusedWindow():down()
+  window.focusedWindow():moveToUnit'[0,50,100,100]'
 end)
 
 windowLayoutMode:bindWithAutomaticExit('k', function()
-  hs.window.focusedWindow():up()
+  window.focusedWindow():moveToUnit'[0,0,100,50]'
 end)
 
 windowLayoutMode:bindWithAutomaticExit('l', function()
-  hs.window.focusedWindow():right()
+  window.focusedWindow():moveToUnit(hs.layout.right50)
 end)
 
 windowLayoutMode:bindWithAutomaticExit('i', function()
-  hs.window.focusedWindow():upLeft()
+  window.focusedWindow():moveToUnit'[0,0,50,50]'
 end)
 
 windowLayoutMode:bindWithAutomaticExit('o', function()
-  hs.window.focusedWindow():upRight()
+  window.focusedWindow():moveToUnit'[50,0,100,50]'
 end)
 
 windowLayoutMode:bindWithAutomaticExit(',', function()
-  hs.window.focusedWindow():downLeft()
+  window.focusedWindow():moveToUnit'[0,50,50,100]'
 end)
 
 windowLayoutMode:bindWithAutomaticExit('.', function()
-  hs.window.focusedWindow():downRight()
+  window.focusedWindow():moveToUnit'[50,50,100,100]'
 end)
 
 windowLayoutMode:bindWithAutomaticExit('y', function()
@@ -512,6 +376,15 @@ end)
 
 windowLayoutMode:bind({'shift', 'cmd'}, 'right', function ()
   hs.window.focusedWindow():shrinkRight()
+end)
+
+-- Show keyboard hints for all windows
+windowLayoutMode:bindWithAutomaticExit('/', function() 
+  hs.hints.windowHints()
+end)
+
+windowLayoutMode:bindWithAutomaticExit('H', function() 
+  window.switcher.nextWindow()
 end)
 
 -- Keybindings
