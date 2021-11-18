@@ -33,9 +33,12 @@ local on_attach = function(client, bufnr)
 end
 
 require('nlua.lsp.nvim').setup(lspconfig, {
-  globals = { 'vim', 'use' },
+  globals = { 'vim', 'use', 'hs' },
   on_attach = on_attach,
   capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  }
 })
 
 lspconfig.rust_analyzer.setup({
