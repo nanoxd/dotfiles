@@ -383,7 +383,7 @@ windowLayoutMode:bindWithAutomaticExit('/', function()
   hs.hints.windowHints()
 end)
 
-windowLayoutMode:bindWithAutomaticExit('H', function() 
+windowLayoutMode:bindWithAutomaticExitAndMods({'shift'}, 'H', function() 
   window.switcher.nextWindow()
 end)
 
