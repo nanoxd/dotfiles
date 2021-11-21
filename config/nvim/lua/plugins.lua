@@ -68,9 +68,6 @@ return require('packer').startup(function()
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope.nvim'
     },
-    config = function()
-      require('rust-tools').setup({})
-    end
   }
 
   -- Snippets

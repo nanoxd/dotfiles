@@ -44,7 +44,19 @@ require('nlua.lsp.nvim').setup(lspconfig, {
 lspconfig.rust_analyzer.setup({
   on_attach = on_attach,
   capabilities = capabilities,
+  settings = {
+    ["rust-analyzer"] = {
+      -- enable clippy on save
+      checkOnSave = {
+        command = "clippy"
+      }
+    }
+  }
 })
+
+require('rust-tools').setup()
+
+vim.cmd[[autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)]]
 
 lspconfig.gopls.setup {
   cmd = {"gopls", "serve"},
