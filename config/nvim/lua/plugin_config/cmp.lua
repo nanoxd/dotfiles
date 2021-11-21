@@ -1,5 +1,32 @@
 local cmp = require'cmp'
 
+local lspkind = require "lspkind"
+lspkind.init {
+  with_text = true,
+  symbol_map = {
+    Text = "",
+    Method = "ƒ",
+    Function = "ﬦ",
+    Constructor = "",
+    Variable = "",
+    Class = "",
+    Interface = "ﰮ",
+    Module = "",
+    Property = "",
+    Unit = "",
+    Value = "",
+    Enum = "了",
+    Keyword = "",
+    Snippet = "﬌",
+    Color = "",
+    File = "",
+    Folder = "",
+    EnumMember = "",
+    Constant = "",
+    Struct = "",
+  },
+}
+
 cmp.setup({
     snippet = {
       expand = function(args)
@@ -37,12 +64,33 @@ cmp.setup({
       { name = 'nvim_lsp' },
       { name = 'vsnip' }, 
       { name = 'buffer' },
+      { name = "path" },
     }),
 
     experimental = {
       native_menu = false,
       ghost_text = true,
-    }
+    },
+    documentation = {
+      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    },
+    formatting = {
+      format = function(entry, vim_item)
+        vim_item.kind = string.format("%s %s", lspkind.presets.default[vim_item.kind], vim_item.kind)
+        vim_item.menu = ({
+          nvim_lsp = "ﲳ",
+          nvim_lua = "",
+          treesitter = "",
+          path = "ﱮ",
+          buffer = "﬘",
+          zsh = "",
+          vsnip = "",
+          spell = "暈",
+        })[entry.source.name]
+
+        return vim_item
+      end,
+    },
   })
 
   -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).

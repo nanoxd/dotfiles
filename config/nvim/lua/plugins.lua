@@ -52,11 +52,17 @@ return require('packer').startup(function()
 
   -- LSP and completion
   use 'neovim/nvim-lspconfig'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/nvim-cmp'
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'ray-x/cmp-treesitter',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'hrsh7th/cmp-vsnip',
+    }
+  }
 
   use 'onsails/lspkind-nvim'
   use 'simrat39/symbols-outline.nvim'
