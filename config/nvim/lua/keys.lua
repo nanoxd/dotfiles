@@ -28,7 +28,7 @@ utils.map('n', '<C-p>', '<cmd>Telescope find_files<cr>')
 utils.map('n', '<leader>;', '<cmd>Telescope buffers<cr>')
 utils.map('n', '\\', '<cmd>Telescope live_grep<cr>')
 
-utils.map('n', '<leader>p', '<cmd>Telescope neoclip<cr>') -- Open Clipboard history
+utils.map('n', '<leader>p', '<cmd>lua require("telescope").extensions.neoclip.default()<cr>') -- Open Clipboard history
 utils.map('v', '<leader>y', ':OSCYank<cr>', { silent = true }) -- Copy to Clipboard
 vim.cmd[[autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | OSCYankReg + | endif]]
 
