@@ -7,6 +7,7 @@ opt.hidden = true
 opt.showcmd = true
 opt.mouse = 'a' -- Enable mouse support
 opt.iskeyword:append { '-' } -- Set Hyphen as part of a text object
+opt.updatetime = 100
 
 opt.splitbelow = true -- Horizontal splits will automatically be below
 opt.splitright = true -- Vertical splits will be to the right
