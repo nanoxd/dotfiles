@@ -12,6 +12,7 @@ cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there 
 return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
+  use "nathom/filetype.nvim"
 
   -- Fuzzy finder
   use {
