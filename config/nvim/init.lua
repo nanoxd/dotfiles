@@ -5,6 +5,7 @@ utils = require('utils')
 
 -- Map leader to space
 g.mapleader = " "
+vim.g.termguicolors = true -- Add 24 bit color support
 
 require('plugins')
 require('keys')
