@@ -30,7 +30,13 @@ return require('packer').startup(function()
 
 
   -- Better syntax highlighting
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 
+    'nvim-treesitter/nvim-treesitter', 
+    requires = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
+    run = ':TSUpdate',
+  }
 
   use { 
     'kyazdani42/nvim-tree.lua', 
