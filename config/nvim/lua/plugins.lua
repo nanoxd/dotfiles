@@ -91,6 +91,13 @@ return require('packer').startup(function()
 
   -- UI
   use 'jacoborus/tender.vim'
+  use {
+    'akinsho/bufferline.nvim', 
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    config = function()
+      require('bufferline').setup {}
+    end
+}
 
   use { 
     'Th3Whit3Wolf/onebuddy', 
