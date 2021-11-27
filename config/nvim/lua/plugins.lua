@@ -139,6 +139,14 @@ return require('packer').startup(function()
   use 'tpope/vim-unimpaired' -- Add elegant mappings
   use 'lambdalisue/suda.vim' -- Sudo support in nvim
   use 'tpope/vim-fugitive' -- Git for Vim
+  use {
+    'chentau/marks.nvim', -- Improve marks
+    config = function()
+      require('marks').setup({
+        default_mappings = true,
+      })
+    end
+  }
 
   use {
     'numToStr/Navigator.nvim',
