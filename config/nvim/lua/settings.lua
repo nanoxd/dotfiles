@@ -70,4 +70,4 @@ opt.ignorecase = true
 opt.smartcase = true
 
 -- Highlight on Yank
-cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
+cmd [[au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=150, on_visual=true}]]
