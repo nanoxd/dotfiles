@@ -214,8 +214,8 @@ return require('packer').startup(function()
     end,
   }
 
-    -- Automatically set up your configuration after cloning packer.nvim
+  -- Automatically set up your configuration after cloning packer.nvim
   if packer_bootstrap then
     require('packer').sync()
   end
-  end)
+end)

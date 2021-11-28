@@ -64,15 +64,27 @@ lspconfig.rust_analyzer.setup({
   capabilities = capabilities,
   settings = {
     ["rust-analyzer"] = {
+      cargo = {
+        autoreload = true,
+      },
       -- enable clippy on save
       checkOnSave = {
         command = "clippy"
-      }
+      },
     }
   }
 })
 
-require('rust-tools').setup()
+require('rust-tools').setup({
+  server = {
+    on_attach = on_attach
+  },
+  tools = {
+    hover_actions = {
+      auto_focus = true
+    }
+  }
+})
 
 vim.cmd[[autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)]]
 

@@ -42,6 +42,7 @@ utils.map('n', '<leader>s', '<cmd>SymbolsOutline<cr>', { silent = true }) -- Sym
 utils.map('n', '<leader>S', '<cmd>lua require("spectre").open()<cr>') -- Open Spectre
 
 utils.map('n', '<leader>t', '<cmd>Trouble<cr>', { silent = true }) -- Open Trouble
+utils.map('n', '<leader>r', [[<cmd>lua require('rust-tools.runnables').runnables()<cr>]], { silent = true }) -- Open Trouble
 
 -- Git
 
