@@ -10,7 +10,6 @@ vim.g.did_load_filetypes = 1
 
 require('plugins')
 require('keys')
-require('statusline')
 require('settings')
 require('formatting')
 require('ls')

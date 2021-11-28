@@ -110,14 +110,18 @@ return require('packer').startup(function()
   }
 
   use {
-    'glepnir/galaxyline.nvim', -- Status line written in Lua
-    branch = 'main',
+    'nvim-lualine/lualine.nvim',
     requires = {
-      'kyazdani42/nvim-web-devicons',
-      opt = true
+      'kyazdani42/nvim-web-devicons', opt = true
     },
     config = function()
-      require('statusline')
+      require('lualine').setup {
+        options = {
+          theme = 'onedark',
+          section_separators = { left = '', right = ''},
+          component_separators = { left = '', right = ''}
+        },
+      }
     end
   }
 
