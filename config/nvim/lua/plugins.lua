@@ -116,6 +116,7 @@ return require('packer').startup(function()
     },
     config = function()
       require('lualine').setup {
+        extensions = {'nvim-tree'},
         options = {
           theme = 'onedark',
           section_separators = { left = '', right = ''},
