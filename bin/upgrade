@@ -20,10 +20,9 @@ end
 # Update Brew
 if command -v brew >/dev/null
   pretty_print "Updating Homebrew"
-  bb
-
-  pretty_print "Updating Casks"
-  brew upgrade --cask
+  brew update
+  brew upgrade
+  brew cleanup --prune-prefix
 end
 
 # Update MAS
