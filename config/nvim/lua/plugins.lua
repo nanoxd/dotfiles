@@ -38,23 +38,23 @@ return require('packer').startup(function()
     run = ':TSUpdate',
   }
 
-  use { 
-    'kyazdani42/nvim-tree.lua', 
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-    config = function() 
-      require'nvim-tree'.setup {
-        auto_close = true,
-        disable_netrw = true,
-        hijack_netrw = true,
-        update_focused_file = {
-          enable = true
-        },
-        view = {
-          width = 15
-        }
-      }
-    end
-  }
+  -- use { 
+  --   'kyazdani42/nvim-tree.lua', 
+  --   requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+  --   config = function() 
+  --     require'nvim-tree'.setup {
+  --       auto_close = true,
+  --       disable_netrw = true,
+  --       hijack_netrw = true,
+  --       update_focused_file = {
+  --         enable = true
+  --       },
+  --       view = {
+  --         width = 15
+  --       }
+  --     }
+  --   end
+  -- }
 
 
   -- LSP and completion
@@ -116,7 +116,6 @@ return require('packer').startup(function()
     },
     config = function()
       require('lualine').setup {
-        extensions = {'nvim-tree'},
         options = {
           theme = 'onedark',
           section_separators = { left = '', right = ''},
