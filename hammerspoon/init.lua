@@ -65,7 +65,7 @@ end
 
 -- App Keybindings --
 
--- Alacritty
+--[[ -- Alacritty
 hs.hotkey.bind(utils.hyper, "t", function()
   -- launchOrHide("io.alacritty")
   launchOrHide("net.kovidgoyal.kitty")
@@ -91,7 +91,7 @@ hs.hotkey.bind(utils.hyper, 'y', function()
 
   app:mainWindow():moveToUnit'[100,50,0,0]'
   app:mainWindow().setShadows(false)
-end)
+end) ]]
 
 -- Other Keybindings --
 
