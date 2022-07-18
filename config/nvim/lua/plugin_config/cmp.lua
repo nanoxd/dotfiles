@@ -2,7 +2,7 @@ local cmp = require'cmp'
 
 local lspkind = require "lspkind"
 lspkind.init {
-  with_text = true,
+  mode = 'symbol_text',
   symbol_map = {
     Text = "",
     Method = "ƒ",
@@ -32,6 +32,10 @@ cmp.setup({
       expand = function(args)
         vim.fn["vsnip#anonymous"](args.body)
       end,
+    },
+
+    window = {
+      documentation = cmp.config.window.bordered(),
     },
 
     mapping = {
@@ -70,9 +74,6 @@ cmp.setup({
     experimental = {
       native_menu = false,
       ghost_text = true,
-    },
-    documentation = {
-      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
     },
     formatting = {
       format = function(entry, vim_item)
