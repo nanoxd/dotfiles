@@ -17,7 +17,7 @@ require('plugin_config.cmp')
 
 local ts = require 'nvim-treesitter.configs'
 ts.setup {
-  ensure_installed = 'maintained', 
+  ensure_installed = {'lua', 'rust', 'swift', 'c', 'javascript'},
   highlight = {enable = true},
   rainbow = {
     enable = true,
