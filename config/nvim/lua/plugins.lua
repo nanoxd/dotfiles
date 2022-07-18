@@ -151,7 +151,7 @@ return require('packer').startup(function()
   use 'lambdalisue/suda.vim' -- Sudo support in nvim
   use 'tpope/vim-fugitive' -- Git for Vim
   use {
-    'chentau/marks.nvim', -- Improve marks
+    'chentoast/marks.nvim', -- Improve marks
     config = function()
       require('marks').setup({
         default_mappings = true,
@@ -169,7 +169,7 @@ return require('packer').startup(function()
   }
 
   use {
-    "blackCauldron7/surround.nvim",
+    "ur4ltz/surround.nvim",
     config = function()
       require "surround".setup {}
     end
