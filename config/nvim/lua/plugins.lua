@@ -43,7 +43,6 @@ return require('packer').startup(function()
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     config = function() 
       require'nvim-tree'.setup {
-        adaptive_size = true,
         disable_netrw = true,
         hijack_netrw = true,
         update_focused_file = {

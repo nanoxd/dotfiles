@@ -1,14 +1,14 @@
 #!/usr/bin/env zsh
 
-base64d() {
+function base64d() {
   echo "$@" | base64 -D - | jq .
 }
 
-mkdir() {
+function mkdir() {
   command mkdir -p "$@"
 }
 
-ip() {
+function ip() {
   ifconfig lo0 | grep 'inet '  | sed -e 's/:/ /' | awk '{print "lo0       : " $2}'
   ifconfig en0 | grep 'inet '  | sed -e 's/:/ /' | awk '{print "en0 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
   ifconfig en0 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en0 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
@@ -16,7 +16,7 @@ ip() {
   ifconfig en1 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en1 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
 }
 
-p() {
+function p() {
   if [ -n "$1" ] && [ -f "$1" ]; then
     bat "$@"
   else
@@ -25,7 +25,7 @@ p() {
 }
 
 # tm - creates new tmux session, or switch to existing one.
-tm() {
+function tm() {
     [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
     if [ $1 ]; then
       tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
@@ -45,7 +45,7 @@ alias ll='ls -l'
 alias la="ls -al"
 
 if which brew >/dev/null 2>&1; then
-  brew() {
+  function brew() {
     case "$1" in
       cleanup)
         command brew cleanup --prune-prefix
@@ -120,6 +120,6 @@ alias gpr='git pull-request --browse'
 alias gpu='git pull --rebase'
 alias gs='git status -sb'
 
-gpc() {
+function gpc() {
   git push --set-upstream origin $(git-branch-current 2> /dev/null)
 }
