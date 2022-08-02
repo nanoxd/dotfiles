@@ -2,4 +2,4 @@
 *.plist diff=plist
 
 # Xcode project file
-*.pbxproj merge=union
+*.pbxproj diff merge
