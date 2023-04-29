@@ -1,6 +1,5 @@
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local lsp_installer = require("nvim-lsp-installer")
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -32,23 +31,6 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', "<leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   end
 end
-
--- Register a handler that will be called for all installed servers.
--- Alternatively, you may also register handlers on specific server instances instead (see example below).
-lsp_installer.on_server_ready(function(server)
-    local opts = {}
-    opts.on_attach = on_attach
-    opts.capabilities = capabilities
-
-    -- (optional) Customize the options passed to the server
-    -- if server.name == "tsserver" then
-    --     opts.root_dir = function() ... end
-    -- end
-
-    -- This setup() function is exactly the same as lspconfig's setup function.
-    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-    server:setup(opts)
-end)
 
 require('nlua.lsp.nvim').setup(lspconfig, {
   globals = { 'vim', 'use', 'hs' },

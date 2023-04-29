@@ -55,7 +55,18 @@ return require('packer').startup(function()
 
   -- LSP and completion
   use 'neovim/nvim-lspconfig'
-  use 'williamboman/nvim-lsp-installer'
+  use {
+    "williamboman/mason.nvim",
+    requires = {
+      "williamboman/mason-lspconfig.nvim",
+      "neovim/nvim-lspconfig",
+    },
+    run = ":MasonUpdate", -- :MasonUpdate updates registry contents
+    config = function()
+      require("mason").setup()
+      require("mason-lspconfig").setup()
+    end
+  }
   use {
     'hrsh7th/nvim-cmp',
     requires = {
