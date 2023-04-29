@@ -54,6 +54,12 @@ return require('packer').startup(function()
 
 
   -- LSP and completion
+  use {
+    "folke/neodev.nvim",
+    config = function()
+      require("neodev").setup({})
+    end
+  }
   use 'neovim/nvim-lspconfig'
   use {
     "williamboman/mason.nvim",
@@ -81,7 +87,6 @@ return require('packer').startup(function()
 
   use 'onsails/lspkind-nvim'
   use 'simrat39/symbols-outline.nvim'
-  use { 'wantyapps/nlua.nvim', branch = 'wanty' } -- Add Lua LSP. Use unmerged PR for now
   use {
     'simrat39/rust-tools.nvim',
     requires = {
