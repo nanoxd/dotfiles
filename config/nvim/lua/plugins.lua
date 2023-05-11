@@ -43,8 +43,6 @@ return require('packer').startup(function()
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     config = function() 
       require'nvim-tree'.setup {
-        disable_netrw = true,
-        hijack_netrw = true,
         update_focused_file = {
           enable = true
         },
@@ -85,7 +83,7 @@ return require('packer').startup(function()
     }
   }
 
-  use 'onsails/lspkind-nvim'
+  use 'onsails/lspkind.nvim'
   use 'simrat39/symbols-outline.nvim'
   use {
     'simrat39/rust-tools.nvim',
@@ -222,6 +220,8 @@ return require('packer').startup(function()
       require('neoclip').setup()
     end,
   }
+
+  use 'mrjones2014/smart-splits.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   if packer_bootstrap then
