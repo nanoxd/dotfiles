@@ -10,7 +10,7 @@ fi
 
 export PATH="$HOME/.bin:$HOME/.cargo/bin:$PATH"
 
-eval "$(sheldon source)"
+# eval "$(sheldon source)"
 
 # Pure Prompt
 PURE_CMD_MAX_EXEC_TIME=5
