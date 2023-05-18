@@ -20,11 +20,6 @@ fi
 
 export PATH="$HOME/.bin:$HOME/.cargo/bin:$PATH"
 
-# eval "$(sheldon source)"
-
-# Pure Prompt
-PURE_CMD_MAX_EXEC_TIME=5
-
 # Android
 ANDROID_DIR="$HOME/Library/Android/sdk/platform-tools"
 if [[ -d $ANDROID_DIR ]]; then
@@ -48,7 +43,6 @@ export ZSH_PLUGINS_ALIAS_TIPS_REVEAL=1 # Display raw command like in Fish
 if [[ -f "$HOME/.zshrc.local" ]]; then
     source "$HOME/.zshrc.local"
 fi
-
 
 source "$ZSH/plugins.zsh"
 source_files_in "$ZSH/plugins"
