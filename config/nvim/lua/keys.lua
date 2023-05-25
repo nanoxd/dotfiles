@@ -14,14 +14,11 @@ utils.map('n', 'vv', '<C-w>v', { silent = true }) -- Generate new vertical split
 utils.map('n', 'Q', '')
 utils.map('n', 'q:', '')
 utils.map('n', 'J', 'mjJ`j') -- Join lines and restore cursor location
-utils.map('n', '<leader>ps', [[<cmd>PackerSync<cr>]], { silent = true }) -- Run PackerSync
 
 -- Smart `0`
 -- `0` goes to the beginning of the text on first press and to the beginning
 --" of the line on second press. It alternates afterwards.
 utils.map('n', '0', "virtcol('.') - 1 <= indent('.') && col('.') > 1 ? '0' : '_'", { expr = true })
-
-utils.map('n', '<leader>e', '<cmd>NvimTreeToggle<cr>', { silent = true })
 
 -- Telescope Bindings
 utils.map('n', '<C-p>', '<cmd>Telescope find_files<cr>')

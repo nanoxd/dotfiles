@@ -29,3 +29,4 @@ config/Autodesk/FusionFabrication.FusionNesting
 config/Webull Desktop
 config/raycast
 config/gh/hosts.yml
+config/nvim/lazy-lock.json
