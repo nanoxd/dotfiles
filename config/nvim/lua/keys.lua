@@ -14,7 +14,6 @@ utils.map('n', 'vv', '<C-w>v', { silent = true }) -- Generate new vertical split
 utils.map('n', 'Q', '')
 utils.map('n', 'q:', '')
 utils.map('n', 'J', 'mjJ`j') -- Join lines and restore cursor location
-utils.map('n', '<leader>ps', [[<cmd>PackerSync<cr>]], { silent = true }) -- Run PackerSync
 
 -- Smart `0`
 -- `0` goes to the beginning of the text on first press and to the beginning
