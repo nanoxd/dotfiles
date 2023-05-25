@@ -25,18 +25,6 @@ return {
     build = ':TSUpdate',
   },
 
-  {
-    'kyazdani42/nvim-tree.lua',
-    dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
-    config = function()
-      require'nvim-tree'.setup {
-        update_focused_file = {
-          enable = true
-        },
-      }
-    end
-  },
-
 
   -- LSP and completion
   {
