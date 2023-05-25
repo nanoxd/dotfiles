@@ -1,67 +1,71 @@
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+
 local cmd = vim.api.nvim_command
 local fn = vim.fn
 
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-end
-
-cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
-
-return require('packer').startup(function()
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-  use "nathom/filetype.nvim"
+return require('lazy').setup({
+  'nathom/filetype.nvim',
 
   -- Fuzzy finder
-  use {
+  {
       'nvim-telescope/telescope.nvim',
-      requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
-  }
+      dependencies = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+  },
 
-  use {
-    'nvim-telescope/telescope-fzf-native.nvim', 
-    run = 'make' ,
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'make',
     config = function()
       require('telescope').load_extension('fzf')
     end
-  }
+  },
 
 
   -- Better syntax highlighting
-  use { 
-    'nvim-treesitter/nvim-treesitter', 
-    requires = {
+  {
+    'nvim-treesitter/nvim-treesitter',
+    dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     run = ':TSUpdate',
-  }
+  },
 
-  use { 
-    'kyazdani42/nvim-tree.lua', 
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-    config = function() 
+  {
+    'kyazdani42/nvim-tree.lua',
+    dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
+    config = function()
       require'nvim-tree'.setup {
         update_focused_file = {
           enable = true
         },
       }
     end
-  }
+  },
 
 
   -- LSP and completion
-  use {
+  {
     "folke/neodev.nvim",
     config = function()
       require("neodev").setup({})
     end
-  }
-  use 'neovim/nvim-lspconfig'
-  use {
+  },
+  'neovim/nvim-lspconfig',
+  {
     "williamboman/mason.nvim",
-    requires = {
+    dependencies = {
       "williamboman/mason-lspconfig.nvim",
       "neovim/nvim-lspconfig",
     },
@@ -70,10 +74,10 @@ return require('packer').startup(function()
       require("mason").setup()
       require("mason-lspconfig").setup()
     end
-  }
-  use {
+  },
+  {
     'hrsh7th/nvim-cmp',
-    requires = {
+    dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'ray-x/cmp-treesitter',
       'hrsh7th/cmp-buffer',
@@ -81,47 +85,47 @@ return require('packer').startup(function()
       'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-vsnip',
     }
-  }
+  },
 
-  use 'onsails/lspkind.nvim'
-  use 'simrat39/symbols-outline.nvim'
-  use {
+  'onsails/lspkind.nvim',
+  'simrat39/symbols-outline.nvim',
+  {
     'simrat39/rust-tools.nvim',
-    requires = {
+    dependencies = {
       'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope.nvim'
     },
-  }
+  },
 
   -- Snippets
-  use { 'hrsh7th/vim-vsnip', requires = { "rafamadriz/friendly-snippets" } }
-  use 'hrsh7th/vim-vsnip-integ'
-  use 'hrsh7th/cmp-vsnip'
+  { 'hrsh7th/vim-vsnip', dependencies = { "rafamadriz/friendly-snippets" } },
+  'hrsh7th/vim-vsnip-integ',
+  'hrsh7th/cmp-vsnip',
 
   -- UI
-  use 'jacoborus/tender.vim'
-  use {
-    'akinsho/bufferline.nvim', 
-    requires = { 'kyazdani42/nvim-web-devicons' },
+  'jacoborus/tender.vim',
+  {
+    'akinsho/bufferline.nvim',
+    dependencies = { 'kyazdani42/nvim-web-devicons' },
     config = function()
       require('bufferline').setup {}
     end
-}
+  },
 
-  use { 
-    'Th3Whit3Wolf/onebuddy', 
-    requires = {
+  {
+    'Th3Whit3Wolf/onebuddy',
+    dependencies = {
       'tjdevries/colorbuddy.vim'
     },
     config = function()
       require('colorbuddy').colorscheme('onebuddy')
     end
-  }
+  },
 
-  use {
+  {
     'nvim-lualine/lualine.nvim',
-    requires = {
+    dependencies = {
       'kyazdani42/nvim-web-devicons', opt = true
     },
     config = function()
@@ -131,100 +135,95 @@ return require('packer').startup(function()
         },
       }
     end
-  }
+  },
 
-  use {
+  {
     'lewis6991/gitsigns.nvim', -- Adds Git highlighting
-    requires = {
+    dependencies = {
       'nvim-lua/plenary.nvim'
     },
     config = function()
       require('gitsigns').setup()
     end
-  }
+  },
 
   -- Tools
-  use 'ojroques/vim-oscyank' -- Copy to Clipboard using ANSI OCS52
-  use { 
-    'norcalli/nvim-colorizer.lua', 
+  'ojroques/vim-oscyank', -- Copy to Clipboard using ANSI OCS52
+  {
+    'norcalli/nvim-colorizer.lua',
     config =  function()
       require('colorizer').setup()
     end
-  }
-  use 'b3nj5m1n/kommentary' -- Comment mapings
-  use 'kevinhwang91/nvim-bqf' -- Make QuickFix better
-  use 'p00f/nvim-ts-rainbow' -- Enable multiple parentheses
-  use 'rhysd/committia.vim' -- More Pleasant Editing on Commit Message
-  use 'tpope/vim-unimpaired' -- Add elegant mappings
-  use 'lambdalisue/suda.vim' -- Sudo support in nvim
-  use 'tpope/vim-fugitive' -- Git for Vim
-  use {
+  },
+  'b3nj5m1n/kommentary', -- Comment mapings
+  'kevinhwang91/nvim-bqf', -- Make QuickFix better
+  'p00f/nvim-ts-rainbow', -- Enable multiple parentheses
+  'rhysd/committia.vim', -- More Pleasant Editing on Commit Message
+  'tpope/vim-unimpaired', -- Add elegant mappings
+  'lambdalisue/suda.vim', -- Sudo support in nvim
+  'tpope/vim-fugitive', -- Git for Vim
+  {
     'chentoast/marks.nvim', -- Improve marks
     config = function()
       require('marks').setup({
         default_mappings = true,
       })
     end
-  }
+  },
 
-  use {
+  {
     'numToStr/Navigator.nvim',
     config = function()
       require('Navigator').setup({
         disable_on_zoom = true
       })
     end
-  }
+  },
 
-  use {
+  {
     "ur4ltz/surround.nvim",
     config = function()
       require "surround".setup {}
     end
-  }
+  },
 
-  use {
+  {
     'windwp/nvim-autopairs',
     config = function()
       require('nvim-autopairs').setup()
     end
-  }
+  },
 
-  use {
+  {
     "folke/which-key.nvim",
     config = function()
       require("which-key").setup {}
     end
-  }
-  use {
+  },
+  {
     'windwp/nvim-spectre',
-    requires = {
+    dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-lua/popup.nvim'
     }
-  }
+  },
 
-  use {
+  {
     "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
+    dependencies = "kyazdani42/nvim-web-devicons",
     config = function()
       require("trouble").setup {
       }
     end
-  }
+  },
 
-  use {
+  {
     "AckslD/nvim-neoclip.lua",
-    requires = {'tami5/sqlite.lua', module = 'sqlite'},
+    dependencies = {'tami5/sqlite.lua', module = 'sqlite'},
     config = function()
       require('neoclip').setup()
     end,
-  }
+  },
 
-  use 'mrjones2014/smart-splits.nvim'
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+  'mrjones2014/smart-splits.nvim',
+})
