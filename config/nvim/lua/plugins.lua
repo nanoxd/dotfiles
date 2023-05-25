@@ -11,10 +11,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
-local cmd = vim.api.nvim_command
-local fn = vim.fn
-
 return require('lazy').setup({
   'nathom/filetype.nvim',
 
