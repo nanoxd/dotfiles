@@ -26,7 +26,7 @@ return require('lazy').setup({
 
   {
     'nvim-telescope/telescope-fzf-native.nvim',
-    run = 'make',
+    build = 'make',
     config = function()
       require('telescope').load_extension('fzf')
     end
@@ -39,7 +39,7 @@ return require('lazy').setup({
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
-    run = ':TSUpdate',
+    build = ':TSUpdate',
   },
 
   {
@@ -69,7 +69,7 @@ return require('lazy').setup({
       "williamboman/mason-lspconfig.nvim",
       "neovim/nvim-lspconfig",
     },
-    run = ":MasonUpdate", -- :MasonUpdate updates registry contents
+    build = ":MasonUpdate", -- :MasonUpdate updates registry contents
     config = function()
       require("mason").setup()
       require("mason-lspconfig").setup()
