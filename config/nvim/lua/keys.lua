@@ -21,7 +21,7 @@ utils.map('n', 'J', 'mjJ`j') -- Join lines and restore cursor location
 utils.map('n', '0', "virtcol('.') - 1 <= indent('.') && col('.') > 1 ? '0' : '_'", { expr = true })
 
 utils.map('n', '<leader>p', '<cmd>lua require("telescope").extensions.neoclip.default()<cr>') -- Open Clipboard history
-utils.map('v', '<leader>y', ':OSCYank<cr>', { silent = true }) -- Copy to Clipboard
+vim.keymap.set('v', '<leader>y', require('osc52').copy_visual) -- Copy to clipboard
 vim.cmd[[autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | OSCYankReg + | endif]]
 
 -- Navigator Bindings

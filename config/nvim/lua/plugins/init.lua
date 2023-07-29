@@ -90,7 +90,7 @@ return {
   },
 
   -- Tools
-  'ojroques/vim-oscyank', -- Copy to Clipboard using ANSI OCS52
+  'ojroques/nvim-osc52', -- Copy to Clipboard using ANSI OCS52
   {
     'norcalli/nvim-colorizer.lua',
     config =  function()
