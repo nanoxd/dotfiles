@@ -1,13 +1,8 @@
 return {
   {
     'lukas-reineke/indent-blankline.nvim',
+    main = "ibl",
     event = { "BufReadPost", "BufNewFile" },
-    config = {
-      char = "│",
-      filetype_exclude = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "mason" },
-      show_trailing_blankline_indent = false,
-      show_current_context = false,
-    },
   },
 
     -- active indent guide and indent text objects
