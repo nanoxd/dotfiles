@@ -21,4 +21,4 @@ fi
 
 # Change the preset if you like (see options: "HandBrakeCLI --preset-list")
 # If you want to transcode ALL movie files, remove the -name option.
-find "$TRANSCODEDIR"/* -type f -name "*.webm" -exec bash -c 'HandBrakeCLI -i "$1" -o "${1%\.*}".mp4 --preset="General/Fast 2160p60 4K HEVC"' __ {} \;
+find "$TRANSCODEDIR"/* -type f -name "*.webm" -exec bash -c 'HandBrakeCLI -i "$1" -o "${1%\.*}".mp4 --preset="General/Fast 2160p60 4K HEVC" && rm "$1"' __ {} \;
