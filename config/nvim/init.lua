@@ -10,7 +10,7 @@ g.did_load_filetypes = 1
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 
-require('plugins')
+require("config.lazy")
 require('keys')
 require('settings')
 require('formatting')
