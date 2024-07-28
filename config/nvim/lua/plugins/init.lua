@@ -45,14 +45,6 @@ return {
 
   'onsails/lspkind.nvim',
   'simrat39/symbols-outline.nvim',
-  {
-    'simrat39/rust-tools.nvim',
-    dependencies = {
-      'nvim-lua/popup.nvim',
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim'
-    },
-  },
 
   -- Snippets
   { 'hrsh7th/vim-vsnip', dependencies = { "rafamadriz/friendly-snippets" } },
@@ -168,4 +160,9 @@ return {
   },
 
   'mrjones2014/smart-splits.nvim',
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^5', -- Recommended
+    lazy = false, -- This plugin is already lazy
+  },
 }
