@@ -18,7 +18,7 @@ if uname -s | grep -q Darwin; then
     export PAGER='less'
 fi
 
-export PATH="$HOME/.bin:$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH"
 
 # Android
 ANDROID_DIR="$HOME/Library/Android/sdk/platform-tools"
