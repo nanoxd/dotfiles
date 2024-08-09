@@ -20,7 +20,7 @@ function p() {
   if [ -n "$1" ] && [ -f "$1" ]; then
     bat "$@"
   else
-    exa -lh "$@"
+    eza -lh "$@"
   fi
 }
 
@@ -40,7 +40,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
-alias ls="exa"
+alias ls="eza"
 alias ll='ls -l'
 alias la="ls -al"
 
