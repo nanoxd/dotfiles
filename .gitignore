@@ -31,3 +31,5 @@ config/raycast
 config/gh/hosts.yml
 config/nvim/lazy-lock.json
 config/Epson
+config/zed/embeddings
+config/zed/prompts
