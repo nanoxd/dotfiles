@@ -1,11 +1,11 @@
 return {
   {
-    'lukas-reineke/indent-blankline.nvim',
+    "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     event = { "BufReadPost", "BufNewFile" },
   },
 
-    -- active indent guide and indent text objects
+  -- active indent guide and indent text objects
   {
     "echasnovski/mini.indentscope",
     event = { "BufReadPre", "BufNewFile" },

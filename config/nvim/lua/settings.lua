@@ -5,8 +5,8 @@ local opt = vim.opt
 opt.ruler = true
 opt.hidden = true
 opt.showcmd = true
-opt.mouse = 'a' -- Enable mouse support
-opt.iskeyword:append { '-' } -- Set Hyphen as part of a text object
+opt.mouse = "a" -- Enable mouse support
+opt.iskeyword:append({ "-" }) -- Set Hyphen as part of a text object
 opt.updatetime = 100
 
 opt.splitbelow = true -- Horizontal splits will automatically be below
@@ -17,7 +17,7 @@ opt.winminheight = 10
 
 -- Whitespace
 opt.list = true -- Show invisible characters
-opt.listchars = { tab = ">~", trail = '·', eol = '¬', nbsp = '_' }
+opt.listchars = { tab = ">~", trail = "·", eol = "¬", nbsp = "_" }
 opt.smartindent = true
 opt.wrap = false
 
@@ -38,15 +38,15 @@ opt.autoread = true -- When file is written to outside of vim, read again
 local undodir = fn.expand(fn.stdpath("cache") .. "/undo")
 
 if fn.isdirectory(undodir) == 0 then
-  fn.mkdir(undodir, 'p')
+  fn.mkdir(undodir, "p")
 end
 
 opt.undodir = undodir
 opt.undofile = true
 
 -- Display
-opt.background = 'dark'
-vim.g.colors_name = 'tender'
+opt.background = "dark"
+vim.g.colors_name = "tender"
 opt.updatetime = 100 -- Faster completion
 
 opt.termguicolors = true -- Add 24 bit color support
@@ -57,11 +57,11 @@ opt.lazyredraw = true
 opt.cursorline = true
 
 -- Allow Transparency
-cmd('hi! Normal ctermbg=NONE guibg=NONE')
-cmd('hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE')
-cmd('highlight link EndOfBuffer Comment')
+cmd("hi! Normal ctermbg=NONE guibg=NONE")
+cmd("hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE")
+cmd("highlight link EndOfBuffer Comment")
 
--- Sensible side scrolling 
+-- Sensible side scrolling
 opt.sidescroll = 1
 opt.sidescrolloff = 3
 
@@ -70,4 +70,4 @@ opt.ignorecase = true
 opt.smartcase = true
 
 -- Highlight on Yank
-cmd [[au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=150, on_visual=true}]]
+cmd([[au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=150, on_visual=true}]])
