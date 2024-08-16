@@ -17,7 +17,6 @@ irbrc = "~/.irbrc"
 sheldon = "~/.sheldon"
 stack = "~/.stack"
 "tmux.conf" = "~/.tmux.conf"
-"wezterm.lua" = "~/.wezterm.lua"
 zsh = "~/.zsh"
 zshrc = "~/.zshrc"
 
