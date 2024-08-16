@@ -8,7 +8,7 @@ indent_size = 2
 # if indent_style is tab, this is valid
 tab_width = 2
 # none/single/double
-quote_style = double
+quote_style = single
 
 # only support number
 continuation_indent_size = 2
