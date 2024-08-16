@@ -1,12 +1,12 @@
-local utils = require("utils")
-require("windows")
+local utils = require 'utils'
+require 'windows'
 
 -- Load spoons
-hs.loadSpoon("ReloadConfiguration")
+hs.loadSpoon 'ReloadConfiguration'
 spoon.ReloadConfiguration:start()
 
 -- Change alert style
-hs.alert.defaultStyle.textFont = "Iosevka"
+hs.alert.defaultStyle.textFont = 'Iosevka'
 hs.alert.defaultStyle.textSize = 24
 hs.alert.defaultStyle.strokeWidth = 0
 hs.alert.defaultStyle.radius = 0
@@ -16,9 +16,9 @@ hs.alert.defaultStyle.fillColor = { white = 0, alpha = 0.95 }
 
 local osVersion = hs.host.operatingSystemVersionString()
 
-if string.find(osVersion, "10.16") then
-  hyperMode = hs.hotkey.modal.new({}, "F17")
-  require("hyper")
+if string.find(osVersion, '10.16') then
+  hyperMode = hs.hotkey.modal.new({}, 'F17')
+  require 'hyper'
 end
 
 -- Functions
@@ -59,22 +59,51 @@ local function launchOrHide(bundleID)
   end
 end
 
+local function bindHotkey(appName, key, height)
+  hs.hotkey.bind(utils.hyper, key, function()
+    local app = hs.application.find(appName)
+
+    if app then
+      if app:isFrontmost() then
+        app:hide()
+      else
+        local nowspace = hs.spaces.focusedSpace()
+        local screen = hs.screen.mainScreen()
+        local app_window = app:mainWindow()
+        hs.spaces.moveWindowToSpace(app_window, nowspace)
+        local max = screen:fullFrame()
+        local f = app_window:frame()
+        f.x = max.x
+        f.y = max.y
+        f.w = max.w
+        f.h = max.h * height
+        hs.timer.doAfter(0.2, function() app_window:setFrame(f) end)
+        app_window:focus()
+      end
+    else
+      hs.application.launchOrFocusByBundleID(appName)
+    end
+  end)
+end
+
 -- App Keybindings --
 
 -- Wezterm
-hs.hotkey.bind(utils.hyper, "t", function()
-  launchOrHide("com.github.wez.wezterm")
-end)
+-- Normal
+-- hs.hotkey.bind(utils.hyper, 't', function() launchOrHide 'com.github.wez.wezterm' end)
+local weztermBundleID = 'com.github.wez.wezterm'
+bindHotkey(weztermBundleID, 't', 1) -- full screen
+bindHotkey(weztermBundleID, 'v', 0.55) -- Visor
 
 -- Other Keybindings --
 
 -- Toggle AirPods
-hs.hotkey.bind(utils.hyper, "x", function()
-  local ok, output = toggleAirpods("Nano’s AirPods Pro")
+hs.hotkey.bind(utils.hyper, 'x', function()
+  local ok, output = toggleAirpods 'Nano’s AirPods Pro'
 
   if ok then
     hs.alert.show(output)
   else
-    hs.alert.show("Couldn't connect to AirPods")
+    hs.alert.show "Couldn't connect to AirPods"
   end
 end)
