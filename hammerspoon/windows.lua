@@ -1,4 +1,4 @@
-local utils = require('utils')
+local utils = require("utils")
 hs.window.animationDuration = 0
 
 local windowMT = hs.getObjectMetatable("hs.window")
@@ -105,7 +105,7 @@ function windowMT.centerWithFullHeight(win)
   local max = screen:fullFrame()
 
   f.x = max.x + (max.w / 5)
-  f.w = max.w * 3/5
+  f.w = max.w * 3 / 5
   f.y = max.y
   f.h = max.h
   win:setFrame(f)
@@ -130,58 +130,58 @@ local vMovement = 30
 function windowMT.moveUp(win)
   local f = win:frame()
 
-  f.y = f.y-vMovement
+  f.y = f.y - vMovement
   win:setFrame(f)
 end
 
 function windowMT.moveDown(win)
   local f = win:frame()
 
-  f.y = f.y+vMovement
+  f.y = f.y + vMovement
   win:setFrame(f)
 end
 
 function windowMT.moveLeft(win)
   local f = win:frame()
 
-  f.x = f.x-hMovement
+  f.x = f.x - hMovement
   win:setFrame(f)
 end
 
 function windowMT.moveRight(win)
   local f = win:frame()
 
-  f.x = f.x+hMovement
+  f.x = f.x + hMovement
   win:setFrame(f)
 end
 
 function windowMT.enlargeUp(win)
   local f = win:frame()
 
-  f.h = f.h+vMovement
-  f.y = f.y-vMovement
+  f.h = f.h + vMovement
+  f.y = f.y - vMovement
   win:setFrame(f)
 end
 
 function windowMT.enlargeDown(win)
   local f = win:frame()
 
-  f.h = f.h+vMovement
+  f.h = f.h + vMovement
   win:setFrame(f)
 end
 
 function windowMT.enlargeLeft(win)
   local f = win:frame()
 
-  f.w = f.w+hMovement
-  f.x = f.x-hMovement
+  f.w = f.w + hMovement
+  f.x = f.x - hMovement
   win:setFrame(f)
 end
 
 function windowMT.enlargeRight(win)
   local f = win:frame()
 
-  f.w = f.w+hMovement
+  f.w = f.w + hMovement
   win:setFrame(f)
 end
 
@@ -235,10 +235,10 @@ end
 --   right => send window to the monitor on the right (if there is one)
 --------------------------------------------------------------------------------
 
-windowLayoutMode = hs.hotkey.modal.new({}, 'F16')
+windowLayoutMode = hs.hotkey.modal.new({}, "F16")
 
-local message = require('status-message')
-windowLayoutMode.statusMessage = message.new('Window Layout Mode')
+local message = require("status-message")
+windowLayoutMode.statusMessage = message.new("Window Layout Mode")
 windowLayoutMode.entered = function()
   windowLayoutMode.statusMessage:show()
 end
@@ -262,63 +262,63 @@ function windowLayoutMode.bindWithAutomaticExitAndMods(mode, mods, key, fn)
   end)
 end
 
-windowLayoutMode:bindWithAutomaticExit('return', function()
+windowLayoutMode:bindWithAutomaticExit("return", function()
   hs.window.focusedWindow():maximize()
 end)
 
-windowLayoutMode:bindWithAutomaticExit('space', function()
+windowLayoutMode:bindWithAutomaticExit("space", function()
   hs.window.focusedWindow():centerWithFullHeight()
 end)
 
-windowLayoutMode:bindWithAutomaticExit('h', function()
+windowLayoutMode:bindWithAutomaticExit("h", function()
   window.focusedWindow():moveToUnit(hs.layout.left50)
 end)
 
-windowLayoutMode:bindWithAutomaticExit('j', function()
-  window.focusedWindow():moveToUnit'[0,50,100,100]'
+windowLayoutMode:bindWithAutomaticExit("j", function()
+  window.focusedWindow():moveToUnit("[0,50,100,100]")
 end)
 
-windowLayoutMode:bindWithAutomaticExit('k', function()
-  window.focusedWindow():moveToUnit'[0,0,100,50]'
+windowLayoutMode:bindWithAutomaticExit("k", function()
+  window.focusedWindow():moveToUnit("[0,0,100,50]")
 end)
 
-windowLayoutMode:bindWithAutomaticExit('l', function()
+windowLayoutMode:bindWithAutomaticExit("l", function()
   window.focusedWindow():moveToUnit(hs.layout.right50)
 end)
 
-windowLayoutMode:bindWithAutomaticExit('i', function()
-  window.focusedWindow():moveToUnit'[0,0,50,50]'
+windowLayoutMode:bindWithAutomaticExit("i", function()
+  window.focusedWindow():moveToUnit("[0,0,50,50]")
 end)
 
-windowLayoutMode:bindWithAutomaticExit('o', function()
-  window.focusedWindow():moveToUnit'[50,0,100,50]'
+windowLayoutMode:bindWithAutomaticExit("o", function()
+  window.focusedWindow():moveToUnit("[50,0,100,50]")
 end)
 
-windowLayoutMode:bindWithAutomaticExit(',', function()
-  window.focusedWindow():moveToUnit'[0,50,50,100]'
+windowLayoutMode:bindWithAutomaticExit(",", function()
+  window.focusedWindow():moveToUnit("[0,50,50,100]")
 end)
 
-windowLayoutMode:bindWithAutomaticExit('.', function()
-  window.focusedWindow():moveToUnit'[50,50,100,100]'
+windowLayoutMode:bindWithAutomaticExit(".", function()
+  window.focusedWindow():moveToUnit("[50,50,100,100]")
 end)
 
-windowLayoutMode:bindWithAutomaticExit('y', function()
+windowLayoutMode:bindWithAutomaticExit("y", function()
   hs.window.focusedWindow():threeQuarterLeft()
 end)
 
-windowLayoutMode:bindWithAutomaticExitAndMods({'shift'}, 'y', function()
+windowLayoutMode:bindWithAutomaticExitAndMods({ "shift" }, "y", function()
   hs.window.focusedWindow():oneQuarterLeft()
 end)
 
-windowLayoutMode:bindWithAutomaticExit(';', function()
+windowLayoutMode:bindWithAutomaticExit(";", function()
   hs.window.focusedWindow():threeQuarterRight()
 end)
 
-windowLayoutMode:bindWithAutomaticExitAndMods({'shift'}, ';', function()
+windowLayoutMode:bindWithAutomaticExitAndMods({ "shift" }, ";", function()
   hs.window.focusedWindow():oneQuarterRight()
 end)
 
-windowLayoutMode:bindWithAutomaticExit('n', function()
+windowLayoutMode:bindWithAutomaticExit("n", function()
   hs.window.focusedWindow():nextScreen()
 end)
 
@@ -330,74 +330,73 @@ end)
 --   hs.window.focusedWindow():moveOneScreenWest()
 -- end)
 
-windowLayoutMode:bind({}, 'up', function ()
+windowLayoutMode:bind({}, "up", function()
   hs.window.focusedWindow():moveUp()
 end)
 
-windowLayoutMode:bind({}, 'down', function ()
+windowLayoutMode:bind({}, "down", function()
   hs.window.focusedWindow():moveDown()
 end)
 
-windowLayoutMode:bind({}, 'left', function ()
+windowLayoutMode:bind({}, "left", function()
   hs.window.focusedWindow():moveLeft()
 end)
 
-windowLayoutMode:bind({}, 'right', function ()
+windowLayoutMode:bind({}, "right", function()
   hs.window.focusedWindow():moveRight()
 end)
 
-windowLayoutMode:bind({'shift'}, 'up', function ()
+windowLayoutMode:bind({ "shift" }, "up", function()
   hs.window.focusedWindow():enlargeUp()
 end)
 
-windowLayoutMode:bind({'shift'}, 'down', function ()
+windowLayoutMode:bind({ "shift" }, "down", function()
   hs.window.focusedWindow():enlargeDown()
 end)
 
-windowLayoutMode:bind({'shift'}, 'left', function ()
+windowLayoutMode:bind({ "shift" }, "left", function()
   hs.window.focusedWindow():enlargeLeft()
 end)
 
-windowLayoutMode:bind({'shift'}, 'right', function ()
+windowLayoutMode:bind({ "shift" }, "right", function()
   hs.window.focusedWindow():enlargeRight()
 end)
 
-windowLayoutMode:bind({'shift', 'cmd'}, 'up', function ()
+windowLayoutMode:bind({ "shift", "cmd" }, "up", function()
   hs.window.focusedWindow():shrinkUp()
 end)
 
-windowLayoutMode:bind({'shift', 'cmd'}, 'down', function ()
+windowLayoutMode:bind({ "shift", "cmd" }, "down", function()
   hs.window.focusedWindow():shrinkDown()
 end)
 
-windowLayoutMode:bind({'shift', 'cmd'}, 'left', function ()
+windowLayoutMode:bind({ "shift", "cmd" }, "left", function()
   hs.window.focusedWindow():shrinkLeft()
 end)
 
-windowLayoutMode:bind({'shift', 'cmd'}, 'right', function ()
+windowLayoutMode:bind({ "shift", "cmd" }, "right", function()
   hs.window.focusedWindow():shrinkRight()
 end)
 
 -- Show keyboard hints for all windows
-windowLayoutMode:bindWithAutomaticExit('/', function() 
+windowLayoutMode:bindWithAutomaticExit("/", function()
   hs.hints.windowHints()
 end)
 
-windowLayoutMode:bindWithAutomaticExitAndMods({'shift'}, 'H', function() 
+windowLayoutMode:bindWithAutomaticExitAndMods({ "shift" }, "H", function()
   window.switcher.nextWindow()
 end)
 
 -- Keybindings
 
-hs.hotkey.bind(utils.hyper, 'z', function()
+hs.hotkey.bind(utils.hyper, "z", function()
   windowLayoutMode:enter()
 end)
 
-windowLayoutMode:bind({}, 'escape', function()
+windowLayoutMode:bind({}, "escape", function()
   windowLayoutMode:exit()
 end)
 
-windowLayoutMode:bind(utils.hyper, 'z', function()
+windowLayoutMode:bind(utils.hyper, "z", function()
   windowLayoutMode:exit()
 end)
-
