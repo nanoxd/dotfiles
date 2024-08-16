@@ -37,7 +37,7 @@ align_function_define_params = true
 remove_expression_list_finish_comma = true
 
 # keep/remove/remove_table_only/remove_string_only/unambiguous_remove_string_only
-call_arg_parentheses = keep
+call_arg_parentheses = remove
 
 # [table]
 
