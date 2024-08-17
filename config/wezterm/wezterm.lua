@@ -16,6 +16,7 @@ end
 
 -- This will hold the configuration.
 local config = wezterm.config_builder()
+config.default_cwd = wezterm.home_dir
 
 config.color_scheme = 'Tango (terminal.sexy)'
 
