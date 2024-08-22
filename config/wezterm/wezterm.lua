@@ -103,6 +103,14 @@ config.keys = {
     action = wezterm.action.ActivatePaneDirection 'Right',
   },
   {
+    key = 'w',
+    mods = 'LEADER',
+    action = act.ActivateKeyTable {
+      name = 'resize_pane',
+      one_shot = false,
+    },
+  },
+  {
     key = 'H',
     mods = 'LEADER',
     action = wezterm.action.AdjustPaneSize { 'Left', 5 },
@@ -160,6 +168,17 @@ for i = 1, 8 do
     action = wezterm.action.ActivateTab(i - 1),
   })
 end
+
+config.key_tables = {
+  resize_pane = {
+    { key = 'k',      action = act.AdjustPaneSize { 'Up', 1 } },
+    { key = 'j',      action = act.AdjustPaneSize { 'Down', 1 } },
+    { key = 'h',      action = act.AdjustPaneSize { 'Left', 1 } },
+    { key = 'l',      action = act.AdjustPaneSize { 'Right', 1 } },
+    { key = 'Escape', action = 'PopKeyTable' },
+    { key = 'q',      action = 'PopKeyTable' },
+  },
+}
 
 -- Mouse
 config.mouse_bindings = {
