@@ -49,14 +49,14 @@ config.keys = {
     mods = 'NONE',
     action = act.ShowLauncherArgs { flags = 'FUZZY|WORKSPACES' },
   },
-  { key = 'F11', mods = 'NONE', action = act.ToggleFullScreen },
-  { key = 'f', mods = mod.SUPER, action = act.Search { CaseInSensitiveString = '' } },
+  { key = 'F11', mods = 'NONE',        action = act.ToggleFullScreen },
+  { key = 'f',   mods = mod.SUPER,     action = act.Search { CaseInSensitiveString = '' } },
 
   -- tabs: navigation
-  { key = '[', mods = mod.SUPER, action = act.ActivateTabRelative(-1) },
-  { key = ']', mods = mod.SUPER, action = act.ActivateTabRelative(1) },
-  { key = '[', mods = mod.SUPER_REV, action = act.MoveTabRelative(-1) },
-  { key = ']', mods = mod.SUPER_REV, action = act.MoveTabRelative(1) },
+  { key = '[',   mods = mod.SUPER,     action = act.ActivateTabRelative(-1) },
+  { key = ']',   mods = mod.SUPER,     action = act.ActivateTabRelative(1) },
+  { key = '[',   mods = mod.SUPER_REV, action = act.MoveTabRelative(-1) },
+  { key = ']',   mods = mod.SUPER_REV, action = act.MoveTabRelative(1) },
 
   -- panes --
   -- panes: split panes
@@ -210,6 +210,7 @@ wezterm.on('update-right-status', function(window, _)
   local SOLID_LEFT_ARROW = ''
   local ARROW_FOREGROUND = { Foreground = { Color = '#c6a0f6' } }
   local prefix = ''
+  local name = window:active_key_table()
 
   if window:leader_is_active() then
     prefix = ' ' .. utf8.char(0x1f30a) -- ocean wave
@@ -221,6 +222,16 @@ wezterm.on('update-right-status', function(window, _)
   window:set_left_status(wezterm.format {
     { Background = { Color = '#b7bdf8' } },
     { Text = prefix },
+    ARROW_FOREGROUND,
+    { Text = SOLID_LEFT_ARROW },
+  })
+
+  if name then
+    name = 'TABLE: ' .. name
+  end
+  window:set_right_status(wezterm.format {
+    { Background = { Color = '#b7bdf8' } },
+    { Text = name or '' },
     ARROW_FOREGROUND,
     { Text = SOLID_LEFT_ARROW },
   })
