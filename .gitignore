@@ -33,3 +33,4 @@ config/nvim/lazy-lock.json
 config/Epson
 config/zed/embeddings
 config/zed/prompts
+config/configstore/update-notifier-npm-check-updates.json
