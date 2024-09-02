@@ -183,3 +183,6 @@
     hunk-header-decoration-style = yellow box
 [checkout]
 	workers = 0
+[diff "lockb"]
+	textconv = bun
+	binary = true

@@ -3,3 +3,6 @@
 
 # Xcode project file
 *.pbxproj diff merge
+
+# Bun lock files
+*.lockb binary diff=lockb
