@@ -34,3 +34,4 @@ config/Epson
 config/zed/embeddings
 config/zed/prompts
 config/configstore/update-notifier-npm-check-updates.json
+config/fish/old_*
