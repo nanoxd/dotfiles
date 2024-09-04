@@ -62,3 +62,7 @@ end
 if type -q trash
   abbr -a rm trash
 end
+
+abbr -a ".."   "cd .."
+abbr -a "..."  "cd ../.."
+abbr -a "...." "cd ../../.."
