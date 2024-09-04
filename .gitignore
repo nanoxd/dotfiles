@@ -46,3 +46,4 @@ config/fish/conf.d/fzf.fish
 !config/fish/functions/ll.fish
 !config/fish/functions/ls.fish
 !config/fish/functions/lt.fish
+!config/fish/functions/mkc.fish
