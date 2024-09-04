@@ -35,3 +35,14 @@ config/zed/embeddings
 config/zed/prompts
 config/configstore/update-notifier-npm-check-updates.json
 config/fish/old_*
+
+config/fish/functions/*
+config/fish/completions/*
+config/fish/conf.d/fzf.fish
+!config/fish/functions/_warn_no_command.fish
+!config/fish/functions/e.fish
+!config/fish/functions/gpc.fish
+!config/fish/functions/la.fish
+!config/fish/functions/ll.fish
+!config/fish/functions/ls.fish
+!config/fish/functions/lt.fish
