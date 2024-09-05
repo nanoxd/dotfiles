@@ -36,7 +36,7 @@ config.window_padding = {
   bottom = 8,
 }
 
-config.font = wezterm.font('ZedMono NFM', { stretch = 'Expanded', weight = 'Regular' })
+config.font = wezterm.font('Iosevka Nerd Font Mono', { weight = 'Regular' })
 config.font_size = 15
 
 config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 2000 }
