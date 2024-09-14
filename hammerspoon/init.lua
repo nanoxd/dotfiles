@@ -17,14 +17,14 @@ hs.alert.defaultStyle.fillColor = { white = 0, alpha = 0.95 }
 local osVersion = hs.host.operatingSystemVersionString()
 
 if string.find(osVersion, '10.16') then
-  hyperMode = hs.hotkey.modal.new({}, 'F17')
-  require 'hyper'
+    hyperMode = hs.hotkey.modal.new({}, 'F17')
+    require 'hyper'
 end
 
 -- Functions
 
 local function toggleAirpods(deviceName)
-  local s = [[
+    local s = [[
     activate application "SystemUIServer"
     tell application "System Events"
       tell process "SystemUIServer"
@@ -46,44 +46,44 @@ local function toggleAirpods(deviceName)
     end tell
   ]]
 
-  return hs.osascript.applescript(s)
+    return hs.osascript.applescript(s)
 end
 
 local function launchOrHide(bundleID)
-  local app = hs.application.find(bundleID)
+    local app = hs.application.find(bundleID)
 
-  if app and app:isFrontmost() then
-    app:hide()
-  else
-    hs.application.launchOrFocusByBundleID(bundleID)
-  end
+    if app and app:isFrontmost() then
+        app:hide()
+    else
+        hs.application.launchOrFocusByBundleID(bundleID)
+    end
 end
 
 local function bindHotkey(appName, key, height)
-  hs.hotkey.bind(utils.hyper, key, function()
-    local app = hs.application.find(appName)
+    hs.hotkey.bind(utils.hyper, key, function()
+        local app = hs.application.find(appName)
 
-    if app then
-      if app:isFrontmost() then
-        app:hide()
-      else
-        local nowspace = hs.spaces.focusedSpace()
-        local screen = hs.screen.mainScreen()
-        local app_window = app:mainWindow()
-        hs.spaces.moveWindowToSpace(app_window, nowspace)
-        local max = screen:fullFrame()
-        local f = app_window:frame()
-        f.x = max.x
-        f.y = max.y
-        f.w = max.w
-        f.h = max.h * height
-        hs.timer.doAfter(0.2, function() app_window:setFrame(f) end)
-        app_window:focus()
-      end
-    else
-      hs.application.launchOrFocusByBundleID(appName)
-    end
-  end)
+        if app then
+            if app:isFrontmost() then
+                app:hide()
+            else
+                local nowspace = hs.spaces.focusedSpace()
+                local screen = hs.screen.mainScreen()
+                local app_window = app:mainWindow()
+                hs.spaces.moveWindowToSpace(app_window, nowspace)
+                local max = screen:fullFrame()
+                local f = app_window:frame()
+                f.x = max.x
+                f.y = max.y
+                f.w = max.w
+                f.h = max.h * height
+                hs.timer.doAfter(0.2, function() app_window:setFrame(f) end)
+                app_window:focus()
+            end
+        else
+            hs.application.launchOrFocusByBundleID(appName)
+        end
+    end)
 end
 
 -- App Keybindings --
@@ -93,17 +93,17 @@ end
 -- hs.hotkey.bind(utils.hyper, 't', function() launchOrHide 'com.github.wez.wezterm' end)
 local weztermBundleID = 'com.github.wez.wezterm'
 bindHotkey(weztermBundleID, 't', 1) -- full screen
-bindHotkey(weztermBundleID, 'v', 0.55) -- Visor
+-- bindHotkey(weztermBundleID, 'v', 0.55) -- Visor
 
 -- Other Keybindings --
 
 -- Toggle AirPods
 hs.hotkey.bind(utils.hyper, 'x', function()
-  local ok, output = toggleAirpods 'Nano’s AirPods Pro'
+    local ok, output = toggleAirpods 'Nano’s AirPods Pro'
 
-  if ok then
-    hs.alert.show(output)
-  else
-    hs.alert.show "Couldn't connect to AirPods"
-  end
+    if ok then
+        hs.alert.show(output)
+    else
+        hs.alert.show "Couldn't connect to AirPods"
+    end
 end)
