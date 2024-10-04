@@ -4,6 +4,7 @@
 
 [push]
   default = upstream
+	autoSetupRemote = true
 
 [color]
   ui = auto
