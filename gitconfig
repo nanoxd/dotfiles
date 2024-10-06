@@ -126,7 +126,7 @@
 
 [diff]
   colorMoved = default
-  algorithm = patience
+  algorithm = histogram
   # Detect copies and renames
   renames = copies
 
