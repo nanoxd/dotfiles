@@ -187,3 +187,5 @@
 [diff "lockb"]
 	textconv = bun
 	binary = true
+[merge]
+	conflictstyle = zdiff3
