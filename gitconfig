@@ -170,6 +170,7 @@
 
 [fetch]
   prune = true
+  prunetags = true
 [init]
 	defaultBranch = main
 
