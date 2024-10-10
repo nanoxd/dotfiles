@@ -60,7 +60,7 @@
   f = files
 
   # Add fallback logic
-  fallback-to-base = "!if [ -n \"$1\" ]; then echo \"$1\"; else echo master; fi #"
+  fallback-to-base = "!if [ -n \"$1\" ]; then echo \"$1\"; else echo main; fi #"
 
   filelog = log -u
   files = "!git ls-files | grep -i"
@@ -76,12 +76,11 @@
   laf = fsck --lost-found
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   ls-ignored = ls-files --exclude-standard --ignored --others
-  m = checkout master
-  merge-branch = !git checkout master && git merge @{-1} --ff-only
+  m = checkout main
+  merge-branch = !git checkout main && git merge @{-1} --ff-only
   pf = push --force-with-lease
-  pn = push --set-upstream origin master
   pr = !hub pull-request
-  purge = !git branch -d $(git branch --merged master | grep -v -e '*' -e 'master')
+  purge = !git branch -d $(git branch --merged main | grep -v -e '*' -e 'main')
 
   # Display a diff of changes since branch-off point
   review = "!git diff $(git review-base \"$1\") #"
@@ -89,7 +88,7 @@
   # Determines the branch that started the current branch
   review-base = "!git merge-base `git current` $(git fallback-to-base \"$1\") #"
 
-  rebase-origin = !git fetch origin && git rebase origin/master
+  rebase-origin = !git fetch origin && git rebase origin/main
   releases = log --decorate --oneline --simplify-by-decoration --all
   reset-hard = reset --hard HEAD
   st = status --short --branch
