@@ -49,14 +49,14 @@ config.keys = {
     mods = 'NONE',
     action = act.ShowLauncherArgs { flags = 'FUZZY|WORKSPACES' },
   },
-  { key = 'F11', mods = 'NONE',        action = act.ToggleFullScreen },
-  { key = 'f',   mods = mod.SUPER,     action = act.Search { CaseInSensitiveString = '' } },
+  { key = 'F11', mods = 'NONE', action = act.ToggleFullScreen },
+  { key = 'f', mods = mod.SUPER, action = act.Search { CaseInSensitiveString = '' } },
 
   -- tabs: navigation
-  { key = '[',   mods = mod.SUPER,     action = act.ActivateTabRelative(-1) },
-  { key = ']',   mods = mod.SUPER,     action = act.ActivateTabRelative(1) },
-  { key = '[',   mods = mod.SUPER_REV, action = act.MoveTabRelative(-1) },
-  { key = ']',   mods = mod.SUPER_REV, action = act.MoveTabRelative(1) },
+  { key = '[', mods = mod.SUPER, action = act.ActivateTabRelative(-1) },
+  { key = ']', mods = mod.SUPER, action = act.ActivateTabRelative(1) },
+  { key = '[', mods = mod.SUPER_REV, action = act.MoveTabRelative(-1) },
+  { key = ']', mods = mod.SUPER_REV, action = act.MoveTabRelative(1) },
 
   -- panes --
   -- panes: split panes
@@ -146,7 +146,7 @@ config.keys = {
     action = act.SpawnCommandInNewTab {
       cwd = os.getenv 'WEZTERM_CONFIG_DIR',
       set_environment_variables = {
-        TERM = 'screen-256color',
+        TERM = 'wezterm',
       },
       args = {
         '/opt/homebrew/bin/nvim',
@@ -171,12 +171,12 @@ end
 
 config.key_tables = {
   resize_pane = {
-    { key = 'k',      action = act.AdjustPaneSize { 'Up', 1 } },
-    { key = 'j',      action = act.AdjustPaneSize { 'Down', 1 } },
-    { key = 'h',      action = act.AdjustPaneSize { 'Left', 1 } },
-    { key = 'l',      action = act.AdjustPaneSize { 'Right', 1 } },
+    { key = 'k', action = act.AdjustPaneSize { 'Up', 1 } },
+    { key = 'j', action = act.AdjustPaneSize { 'Down', 1 } },
+    { key = 'h', action = act.AdjustPaneSize { 'Left', 1 } },
+    { key = 'l', action = act.AdjustPaneSize { 'Right', 1 } },
     { key = 'Escape', action = 'PopKeyTable' },
-    { key = 'q',      action = 'PopKeyTable' },
+    { key = 'q', action = 'PopKeyTable' },
   },
 }
 
@@ -226,9 +226,7 @@ wezterm.on('update-right-status', function(window, _)
     { Text = SOLID_LEFT_ARROW },
   })
 
-  if name then
-    name = 'TABLE: ' .. name
-  end
+  if name then name = 'TABLE: ' .. name end
   window:set_right_status(wezterm.format {
     { Background = { Color = '#b7bdf8' } },
     { Text = name or '' },
