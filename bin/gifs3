@@ -1,9 +1,0 @@
-#!/usr/bin/env sh
-
-if ! command -v s3up >/dev/null; then 
-  echo "s3up is not installed"
-fi
-
-AWS_REGION="us-east-2" s3up --bucket gifs.pixelz.me --cache-control "public, max-age=31536000" $@
-
-echo "https://gifs.pixelz.me/$@"
