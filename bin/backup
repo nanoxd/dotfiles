@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+source ~/.restic-env
+
+restic backup ~/dev --exclude-file ~/dev/resticignore
+
