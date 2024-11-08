@@ -52,7 +52,6 @@ return {
     'norcalli/nvim-colorizer.lua',
     config = function() require('colorizer').setup() end,
   },
-  'b3nj5m1n/kommentary', -- Comment mapings
   'kevinhwang91/nvim-bqf', -- Make QuickFix better
   'p00f/nvim-ts-rainbow', -- Enable multiple parentheses
   'rhysd/committia.vim', -- More Pleasant Editing on Commit Message
