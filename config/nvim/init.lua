@@ -17,37 +17,3 @@ require 'settings'
 require 'formatting'
 require 'ls'
 require 'plugin_config.cmp'
-
-local ts = require 'nvim-treesitter.configs'
-ts.setup {
-  ensure_installed = { 'lua', 'rust', 'swift', 'c', 'javascript' },
-  highlight = { enable = true },
-  rainbow = {
-    enable = true,
-    extended_mode = true,
-    max_file_lines = 1000,
-  },
-  textobjects = {
-    select = {
-      enable = true,
-
-      -- Automatically jump forward to textobj, similar to targets.vim
-      lookahead = true,
-
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
-
-        -- Or you can define your own textobjects like this
-        --[[ ["iF"] = {
-          python = "(function_definition) @function",
-          cpp = "(function_definition) @function",
-          c = "(function_definition) @function",
-        }, ]]
-      },
-    },
-  },
-}

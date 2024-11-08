@@ -1,15 +1,6 @@
 return {
   'nathom/filetype.nvim',
 
-  -- Better syntax highlighting
-  {
-    'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
-    build = ':TSUpdate',
-  },
-
   -- LSP and completion
   {
     'folke/neodev.nvim',
