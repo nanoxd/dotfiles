@@ -6,6 +6,7 @@ return {
     'nvim-lua/popup.nvim',
     'nvim-lua/plenary.nvim',
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    'folke/todo-comments.nvim',
   },
   keys = {
     { '<C-p>', '<cmd>Telescope find_files<cr>', desc = 'Find files' },
@@ -13,6 +14,7 @@ return {
     { '\\', '<cmd>Telescope live_grep<cr>', desc = 'Grep in directory' },
     { '<leader>:', '<cmd>Telescope command_history<cr>', desc = 'Command History' },
     { '<leader>fc', '<cmd>Telescope grep_string<cr>', desc = 'Find string under cursor in cwd' },
+    { '<leader>ft', '<cmd>TodoTelescope<cr>', desc = 'Find TODOs' },
   },
   config = function()
     local telescope = require 'telescope'
