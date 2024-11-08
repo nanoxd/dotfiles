@@ -7,19 +7,6 @@ return {
     config = function() require('neodev').setup {} end,
   },
   'neovim/nvim-lspconfig',
-  {
-    'williamboman/mason.nvim',
-    dependencies = {
-      'williamboman/mason-lspconfig.nvim',
-      'neovim/nvim-lspconfig',
-    },
-    build = ':MasonUpdate', -- :MasonUpdate updates registry contents
-    config = function()
-      require('mason').setup()
-      require('mason-lspconfig').setup()
-    end,
-  },
-
   'simrat39/symbols-outline.nvim',
 
   -- UI
