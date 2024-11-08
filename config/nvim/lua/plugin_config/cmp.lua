@@ -1,4 +1,4 @@
-local cmp = require 'cmp'
+--[[ local cmp = require 'cmp'
 
 local lspkind = require 'lspkind'
 lspkind.init {
@@ -106,4 +106,4 @@ cmp.setup.cmdline(':', {
   }, {
     { name = 'cmdline' },
   }),
-})
+}) ]]

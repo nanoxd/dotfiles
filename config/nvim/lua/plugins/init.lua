@@ -22,11 +22,6 @@ return {
 
   'simrat39/symbols-outline.nvim',
 
-  -- Snippets
-  { 'hrsh7th/vim-vsnip', dependencies = { 'rafamadriz/friendly-snippets' } },
-  'hrsh7th/vim-vsnip-integ',
-  'hrsh7th/cmp-vsnip',
-
   -- UI
   'jacoborus/tender.vim',
   {
