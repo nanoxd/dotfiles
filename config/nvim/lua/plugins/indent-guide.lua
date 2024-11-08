@@ -3,6 +3,9 @@ return {
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
     event = { 'BufReadPost', 'BufNewFile' },
+    opts = {
+      indent = { char = '┊' },
+    },
   },
 
   -- active indent guide and indent text objects
