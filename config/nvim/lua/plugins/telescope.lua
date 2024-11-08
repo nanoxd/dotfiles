@@ -12,6 +12,7 @@ return {
     { '<leader>;', '<cmd>Telescope buffers<cr>', desc = 'Buffers' },
     { '\\', '<cmd>Telescope live_grep<cr>', desc = 'Grep in directory' },
     { '<leader>:', '<cmd>Telescope command_history<cr>', desc = 'Command History' },
+    { '<leader>fc', '<cmd>Telescope grep_string<cr>', desc = 'Find string under cursor in cwd' },
   },
   config = function()
     local telescope = require 'telescope'
