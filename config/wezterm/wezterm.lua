@@ -22,6 +22,7 @@ config.color_scheme = 'Tango (terminal.sexy)'
 
 config.hide_tab_bar_if_only_one_tab = false
 config.use_fancy_tab_bar = false
+config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 40
 config.tab_bar_at_bottom = true
 config.tab_and_split_indices_are_zero_based = false
@@ -38,6 +39,11 @@ config.window_padding = {
 
 config.font = wezterm.font 'Iosevka Nerd Font Mono'
 config.font_size = 15
+
+config.inactive_pane_hsb = {
+  saturation = 0.6,
+  brightness = 0.6
+}
 
 config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 2000 }
 config.keys = {
