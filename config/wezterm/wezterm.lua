@@ -36,7 +36,7 @@ config.window_padding = {
   bottom = 8,
 }
 
-config.font = wezterm.font('Iosevka Nerd Font Mono', { weight = 'Regular' })
+config.font = wezterm.font 'Iosevka Nerd Font Mono'
 config.font_size = 15
 
 config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 2000 }
@@ -49,14 +49,14 @@ config.keys = {
     mods = 'NONE',
     action = act.ShowLauncherArgs { flags = 'FUZZY|WORKSPACES' },
   },
-  { key = 'F11', mods = 'NONE', action = act.ToggleFullScreen },
-  { key = 'f', mods = mod.SUPER, action = act.Search { CaseInSensitiveString = '' } },
+  { key = 'F11', mods = 'NONE',        action = act.ToggleFullScreen },
+  { key = 'f',   mods = mod.SUPER,     action = act.Search { CaseInSensitiveString = '' } },
 
   -- tabs: navigation
-  { key = '[', mods = mod.SUPER, action = act.ActivateTabRelative(-1) },
-  { key = ']', mods = mod.SUPER, action = act.ActivateTabRelative(1) },
-  { key = '[', mods = mod.SUPER_REV, action = act.MoveTabRelative(-1) },
-  { key = ']', mods = mod.SUPER_REV, action = act.MoveTabRelative(1) },
+  { key = '[',   mods = mod.SUPER,     action = act.ActivateTabRelative(-1) },
+  { key = ']',   mods = mod.SUPER,     action = act.ActivateTabRelative(1) },
+  { key = '[',   mods = mod.SUPER_REV, action = act.MoveTabRelative(-1) },
+  { key = ']',   mods = mod.SUPER_REV, action = act.MoveTabRelative(1) },
 
   -- panes --
   -- panes: split panes
@@ -171,12 +171,12 @@ end
 
 config.key_tables = {
   resize_pane = {
-    { key = 'k', action = act.AdjustPaneSize { 'Up', 1 } },
-    { key = 'j', action = act.AdjustPaneSize { 'Down', 1 } },
-    { key = 'h', action = act.AdjustPaneSize { 'Left', 1 } },
-    { key = 'l', action = act.AdjustPaneSize { 'Right', 1 } },
+    { key = 'k',      action = act.AdjustPaneSize { 'Up', 1 } },
+    { key = 'j',      action = act.AdjustPaneSize { 'Down', 1 } },
+    { key = 'h',      action = act.AdjustPaneSize { 'Left', 1 } },
+    { key = 'l',      action = act.AdjustPaneSize { 'Right', 1 } },
     { key = 'Escape', action = 'PopKeyTable' },
-    { key = 'q', action = 'PopKeyTable' },
+    { key = 'q',      action = 'PopKeyTable' },
   },
 }
 
