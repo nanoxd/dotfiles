@@ -47,3 +47,4 @@ config/fish/conf.d/fzf.fish
 !config/fish/functions/ls.fish
 !config/fish/functions/lt.fish
 !config/fish/functions/mkc.fish
+config/zed/conversations
