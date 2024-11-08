@@ -19,19 +19,7 @@ return {
       require('mason-lspconfig').setup()
     end,
   },
-  {
-    'hrsh7th/nvim-cmp',
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      'ray-x/cmp-treesitter',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline',
-      'hrsh7th/cmp-vsnip',
-    },
-  },
 
-  'onsails/lspkind.nvim',
   'simrat39/symbols-outline.nvim',
 
   -- Snippets
