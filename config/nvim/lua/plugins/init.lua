@@ -2,11 +2,6 @@ return {
   'nathom/filetype.nvim',
 
   -- LSP and completion
-  {
-    'folke/neodev.nvim',
-    config = function() require('neodev').setup {} end,
-  },
-  'neovim/nvim-lspconfig',
   'simrat39/symbols-outline.nvim',
 
   -- UI
