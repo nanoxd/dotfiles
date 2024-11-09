@@ -47,4 +47,4 @@
 # end
 
 starship init fish | source
-~/.local/bin/mise activate fish | source
+mise activate fish | source
