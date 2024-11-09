@@ -49,3 +49,4 @@ config/fish/conf.d/fzf.fish
 !config/fish/functions/mkc.fish
 config/zed/conversations
 config/nvim/.luarc.json
+config/1Password/
