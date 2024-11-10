@@ -50,3 +50,4 @@ config/fish/conf.d/fzf.fish
 config/zed/conversations
 config/nvim/.luarc.json
 config/1Password/
+config/op/config
