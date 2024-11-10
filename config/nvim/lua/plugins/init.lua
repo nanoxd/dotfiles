@@ -72,12 +72,6 @@ return {
   },
 
   {
-    'folke/trouble.nvim',
-    dependencies = 'kyazdani42/nvim-web-devicons',
-    config = function() require('trouble').setup {} end,
-  },
-
-  {
     'AckslD/nvim-neoclip.lua',
     dependencies = { 'tami5/sqlite.lua', module = 'sqlite' },
     config = function() require('neoclip').setup() end,
