@@ -19,6 +19,7 @@ local config = wezterm.config_builder()
 config.default_cwd = wezterm.home_dir
 
 config.color_scheme = 'Tango (terminal.sexy)'
+config.max_fps = 120
 
 config.hide_tab_bar_if_only_one_tab = false
 config.use_fancy_tab_bar = false
@@ -42,7 +43,7 @@ config.font_size = 15
 
 config.inactive_pane_hsb = {
   saturation = 0.6,
-  brightness = 0.6
+  brightness = 0.6,
 }
 
 config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 2000 }
@@ -55,14 +56,14 @@ config.keys = {
     mods = 'NONE',
     action = act.ShowLauncherArgs { flags = 'FUZZY|WORKSPACES' },
   },
-  { key = 'F11', mods = 'NONE',        action = act.ToggleFullScreen },
-  { key = 'f',   mods = mod.SUPER,     action = act.Search { CaseInSensitiveString = '' } },
+  { key = 'F11', mods = 'NONE', action = act.ToggleFullScreen },
+  { key = 'f', mods = mod.SUPER, action = act.Search { CaseInSensitiveString = '' } },
 
   -- tabs: navigation
-  { key = '[',   mods = mod.SUPER,     action = act.ActivateTabRelative(-1) },
-  { key = ']',   mods = mod.SUPER,     action = act.ActivateTabRelative(1) },
-  { key = '[',   mods = mod.SUPER_REV, action = act.MoveTabRelative(-1) },
-  { key = ']',   mods = mod.SUPER_REV, action = act.MoveTabRelative(1) },
+  { key = '[', mods = mod.SUPER, action = act.ActivateTabRelative(-1) },
+  { key = ']', mods = mod.SUPER, action = act.ActivateTabRelative(1) },
+  { key = '[', mods = mod.SUPER_REV, action = act.MoveTabRelative(-1) },
+  { key = ']', mods = mod.SUPER_REV, action = act.MoveTabRelative(1) },
 
   -- panes --
   -- panes: split panes
@@ -177,12 +178,12 @@ end
 
 config.key_tables = {
   resize_pane = {
-    { key = 'k',      action = act.AdjustPaneSize { 'Up', 1 } },
-    { key = 'j',      action = act.AdjustPaneSize { 'Down', 1 } },
-    { key = 'h',      action = act.AdjustPaneSize { 'Left', 1 } },
-    { key = 'l',      action = act.AdjustPaneSize { 'Right', 1 } },
+    { key = 'k', action = act.AdjustPaneSize { 'Up', 1 } },
+    { key = 'j', action = act.AdjustPaneSize { 'Down', 1 } },
+    { key = 'h', action = act.AdjustPaneSize { 'Left', 1 } },
+    { key = 'l', action = act.AdjustPaneSize { 'Right', 1 } },
     { key = 'Escape', action = 'PopKeyTable' },
-    { key = 'q',      action = 'PopKeyTable' },
+    { key = 'q', action = 'PopKeyTable' },
   },
 }
 
