@@ -14,8 +14,6 @@ hs.alert.defaultStyle.fadeInDuration = 0.10
 hs.alert.defaultStyle.fadeOutDuration = 1
 hs.alert.defaultStyle.fillColor = { white = 0, alpha = 0.95 }
 
-local osVersion = hs.host.operatingSystemVersionString()
-
 -- Functions
 
 local function launchOrHide(bundleID)
@@ -57,11 +55,8 @@ end
 
 -- App Keybindings --
 
--- Wezterm
--- Normal
--- hs.hotkey.bind(utils.hyper, 't', function() launchOrHide 'com.github.wez.wezterm' end)
 local weztermBundleID = 'com.github.wez.wezterm'
-bindHotkey(weztermBundleID, 't', 1) -- full screen
+bindHotkey(weztermBundleID, 't', 1) -- full screen Wezterm
 hs.hotkey.bind(utils.hyper, 'b', function() launchOrHide 'company.thebrowser.Browser' end) -- Arc
 hs.hotkey.bind(utils.hyper, 'f', function() launchOrHide 'com.DanPristupov.Fork' end) -- Fork
 
