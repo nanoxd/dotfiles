@@ -51,3 +51,4 @@ config/zed/conversations
 config/nvim/.luarc.json
 config/1Password/
 config/op/config
+config/uv/uv-receipt.json
