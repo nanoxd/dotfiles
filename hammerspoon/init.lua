@@ -23,32 +23,6 @@ end
 
 -- Functions
 
-local function toggleAirpods(deviceName)
-  local s = [[
-    activate application "SystemUIServer"
-    tell application "System Events"
-      tell process "SystemUIServer"
-        set btMenu to (menu bar item 1 of menu bar 1 whose description contains "bluetooth")
-        tell btMenu
-          click
-  ]] .. 'tell (menu item "' .. deviceName .. '" of menu 1)\n' .. [[
-            click
-            if exists menu item "Connect" of menu 1 then
-              click menu item "Connect" of menu 1
-              return "Connecting AirPods..."
-            else
-              click menu item "Disconnect" of menu 1
-              return "Disconecting AirPods..."
-            end if
-          end tell
-        end tell
-      end tell
-    end tell
-  ]]
-
-  return hs.osascript.applescript(s)
-end
-
 local function launchOrHide(bundleID)
   local app = hs.application.find(bundleID)
 
@@ -97,14 +71,3 @@ hs.hotkey.bind(utils.hyper, 'b', function() launchOrHide 'company.thebrowser.Bro
 hs.hotkey.bind(utils.hyper, 'f', function() launchOrHide 'com.DanPristupov.Fork' end) -- Fork
 
 -- Other Keybindings --
-
--- Toggle AirPods
-hs.hotkey.bind(utils.hyper, 'x', function()
-  local ok, output = toggleAirpods 'Nano’s AirPods Pro'
-
-  if ok then
-    hs.alert.show(output)
-  else
-    hs.alert.show "Couldn't connect to AirPods"
-  end
-end)
