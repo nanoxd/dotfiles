@@ -1,5 +1,5 @@
 local utils = {}
 
-utils.hyper = { "⌘", "⌥", "⌃", "⇧" }
+utils.hyper = { '⌘', '⌥', '⌃', '⇧' }
 
 return utils

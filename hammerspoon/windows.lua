@@ -1,7 +1,7 @@
-local utils = require("utils")
+local utils = require 'utils'
 hs.window.animationDuration = 0
 
-local windowMT = hs.getObjectMetatable("hs.window")
+local windowMT = hs.getObjectMetatable 'hs.window'
 local window = hs.window
 
 -- +-----------------+
@@ -235,16 +235,12 @@ end
 --   right => send window to the monitor on the right (if there is one)
 --------------------------------------------------------------------------------
 
-windowLayoutMode = hs.hotkey.modal.new({}, "F16")
+windowLayoutMode = hs.hotkey.modal.new({}, 'F16')
 
-local message = require("status-message")
-windowLayoutMode.statusMessage = message.new("Window Layout Mode")
-windowLayoutMode.entered = function()
-  windowLayoutMode.statusMessage:show()
-end
-windowLayoutMode.exited = function()
-  windowLayoutMode.statusMessage:hide()
-end
+local message = require 'status-message'
+windowLayoutMode.statusMessage = message.new 'Window Layout Mode'
+windowLayoutMode.entered = function() windowLayoutMode.statusMessage:show() end
+windowLayoutMode.exited = function() windowLayoutMode.statusMessage:hide() end
 
 -- Bind the given key to call the given function and exit WindowLayout mode
 function windowLayoutMode.bindWithAutomaticExit(mode, key, fn)
@@ -262,65 +258,43 @@ function windowLayoutMode.bindWithAutomaticExitAndMods(mode, mods, key, fn)
   end)
 end
 
-windowLayoutMode:bindWithAutomaticExit("return", function()
-  hs.window.focusedWindow():maximize()
-end)
+windowLayoutMode:bindWithAutomaticExit('return', function() hs.window.focusedWindow():maximize() end)
 
-windowLayoutMode:bindWithAutomaticExit("space", function()
-  hs.window.focusedWindow():centerWithFullHeight()
-end)
+windowLayoutMode:bindWithAutomaticExit('space', function() hs.window.focusedWindow():centerWithFullHeight() end)
 
-windowLayoutMode:bindWithAutomaticExit("h", function()
-  window.focusedWindow():moveToUnit(hs.layout.left50)
-end)
+windowLayoutMode:bindWithAutomaticExit('h', function() window.focusedWindow():moveToUnit(hs.layout.left50) end)
 
-windowLayoutMode:bindWithAutomaticExit("j", function()
-  window.focusedWindow():moveToUnit("[0,50,100,100]")
-end)
+windowLayoutMode:bindWithAutomaticExit('j', function() window.focusedWindow():moveToUnit '[0,50,100,100]' end)
 
-windowLayoutMode:bindWithAutomaticExit("k", function()
-  window.focusedWindow():moveToUnit("[0,0,100,50]")
-end)
+windowLayoutMode:bindWithAutomaticExit('k', function() window.focusedWindow():moveToUnit '[0,0,100,50]' end)
 
-windowLayoutMode:bindWithAutomaticExit("l", function()
-  window.focusedWindow():moveToUnit(hs.layout.right50)
-end)
+windowLayoutMode:bindWithAutomaticExit('l', function() window.focusedWindow():moveToUnit(hs.layout.right50) end)
 
-windowLayoutMode:bindWithAutomaticExit("i", function()
-  window.focusedWindow():moveToUnit("[0,0,50,50]")
-end)
+windowLayoutMode:bindWithAutomaticExit('i', function() window.focusedWindow():moveToUnit '[0,0,50,50]' end)
 
-windowLayoutMode:bindWithAutomaticExit("o", function()
-  window.focusedWindow():moveToUnit("[50,0,100,50]")
-end)
+windowLayoutMode:bindWithAutomaticExit('o', function() window.focusedWindow():moveToUnit '[50,0,100,50]' end)
 
-windowLayoutMode:bindWithAutomaticExit(",", function()
-  window.focusedWindow():moveToUnit("[0,50,50,100]")
-end)
+windowLayoutMode:bindWithAutomaticExit(',', function() window.focusedWindow():moveToUnit '[0,50,50,100]' end)
 
-windowLayoutMode:bindWithAutomaticExit(".", function()
-  window.focusedWindow():moveToUnit("[50,50,100,100]")
-end)
+windowLayoutMode:bindWithAutomaticExit('.', function() window.focusedWindow():moveToUnit '[50,50,100,100]' end)
 
-windowLayoutMode:bindWithAutomaticExit("y", function()
-  hs.window.focusedWindow():threeQuarterLeft()
-end)
+windowLayoutMode:bindWithAutomaticExit('y', function() hs.window.focusedWindow():threeQuarterLeft() end)
 
-windowLayoutMode:bindWithAutomaticExitAndMods({ "shift" }, "y", function()
-  hs.window.focusedWindow():oneQuarterLeft()
-end)
+windowLayoutMode:bindWithAutomaticExitAndMods(
+  { 'shift' },
+  'y',
+  function() hs.window.focusedWindow():oneQuarterLeft() end
+)
 
-windowLayoutMode:bindWithAutomaticExit(";", function()
-  hs.window.focusedWindow():threeQuarterRight()
-end)
+windowLayoutMode:bindWithAutomaticExit(';', function() hs.window.focusedWindow():threeQuarterRight() end)
 
-windowLayoutMode:bindWithAutomaticExitAndMods({ "shift" }, ";", function()
-  hs.window.focusedWindow():oneQuarterRight()
-end)
+windowLayoutMode:bindWithAutomaticExitAndMods(
+  { 'shift' },
+  ';',
+  function() hs.window.focusedWindow():oneQuarterRight() end
+)
 
-windowLayoutMode:bindWithAutomaticExit("n", function()
-  hs.window.focusedWindow():nextScreen()
-end)
+windowLayoutMode:bindWithAutomaticExit('n', function() hs.window.focusedWindow():nextScreen() end)
 
 -- windowLayoutMode:bindWithAutomaticExit('right', function()
 --   hs.window.focusedWindow():moveOneScreenEast()
@@ -330,73 +304,39 @@ end)
 --   hs.window.focusedWindow():moveOneScreenWest()
 -- end)
 
-windowLayoutMode:bind({}, "up", function()
-  hs.window.focusedWindow():moveUp()
-end)
+windowLayoutMode:bind({}, 'up', function() hs.window.focusedWindow():moveUp() end)
 
-windowLayoutMode:bind({}, "down", function()
-  hs.window.focusedWindow():moveDown()
-end)
+windowLayoutMode:bind({}, 'down', function() hs.window.focusedWindow():moveDown() end)
 
-windowLayoutMode:bind({}, "left", function()
-  hs.window.focusedWindow():moveLeft()
-end)
+windowLayoutMode:bind({}, 'left', function() hs.window.focusedWindow():moveLeft() end)
 
-windowLayoutMode:bind({}, "right", function()
-  hs.window.focusedWindow():moveRight()
-end)
+windowLayoutMode:bind({}, 'right', function() hs.window.focusedWindow():moveRight() end)
 
-windowLayoutMode:bind({ "shift" }, "up", function()
-  hs.window.focusedWindow():enlargeUp()
-end)
+windowLayoutMode:bind({ 'shift' }, 'up', function() hs.window.focusedWindow():enlargeUp() end)
 
-windowLayoutMode:bind({ "shift" }, "down", function()
-  hs.window.focusedWindow():enlargeDown()
-end)
+windowLayoutMode:bind({ 'shift' }, 'down', function() hs.window.focusedWindow():enlargeDown() end)
 
-windowLayoutMode:bind({ "shift" }, "left", function()
-  hs.window.focusedWindow():enlargeLeft()
-end)
+windowLayoutMode:bind({ 'shift' }, 'left', function() hs.window.focusedWindow():enlargeLeft() end)
 
-windowLayoutMode:bind({ "shift" }, "right", function()
-  hs.window.focusedWindow():enlargeRight()
-end)
+windowLayoutMode:bind({ 'shift' }, 'right', function() hs.window.focusedWindow():enlargeRight() end)
 
-windowLayoutMode:bind({ "shift", "cmd" }, "up", function()
-  hs.window.focusedWindow():shrinkUp()
-end)
+windowLayoutMode:bind({ 'shift', 'cmd' }, 'up', function() hs.window.focusedWindow():shrinkUp() end)
 
-windowLayoutMode:bind({ "shift", "cmd" }, "down", function()
-  hs.window.focusedWindow():shrinkDown()
-end)
+windowLayoutMode:bind({ 'shift', 'cmd' }, 'down', function() hs.window.focusedWindow():shrinkDown() end)
 
-windowLayoutMode:bind({ "shift", "cmd" }, "left", function()
-  hs.window.focusedWindow():shrinkLeft()
-end)
+windowLayoutMode:bind({ 'shift', 'cmd' }, 'left', function() hs.window.focusedWindow():shrinkLeft() end)
 
-windowLayoutMode:bind({ "shift", "cmd" }, "right", function()
-  hs.window.focusedWindow():shrinkRight()
-end)
+windowLayoutMode:bind({ 'shift', 'cmd' }, 'right', function() hs.window.focusedWindow():shrinkRight() end)
 
 -- Show keyboard hints for all windows
-windowLayoutMode:bindWithAutomaticExit("/", function()
-  hs.hints.windowHints()
-end)
+windowLayoutMode:bindWithAutomaticExit('/', function() hs.hints.windowHints() end)
 
-windowLayoutMode:bindWithAutomaticExitAndMods({ "shift" }, "H", function()
-  window.switcher.nextWindow()
-end)
+windowLayoutMode:bindWithAutomaticExitAndMods({ 'shift' }, 'H', function() window.switcher.nextWindow() end)
 
 -- Keybindings
 
-hs.hotkey.bind(utils.hyper, "z", function()
-  windowLayoutMode:enter()
-end)
+hs.hotkey.bind(utils.hyper, 'z', function() windowLayoutMode:enter() end)
 
-windowLayoutMode:bind({}, "escape", function()
-  windowLayoutMode:exit()
-end)
+windowLayoutMode:bind({}, 'escape', function() windowLayoutMode:exit() end)
 
-windowLayoutMode:bind(utils.hyper, "z", function()
-  windowLayoutMode:exit()
-end)
+windowLayoutMode:bind(utils.hyper, 'z', function() windowLayoutMode:exit() end)

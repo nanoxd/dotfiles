@@ -1,5 +1,5 @@
-local utils = require("utils")
-hyperBindings = { "s", "w", "a", "g", "t", "SPACE" }
+local utils = require 'utils'
+hyperBindings = { 's', 'w', 'a', 'g', 't', 'SPACE' }
 
 for i, key in ipairs(hyperBindings) do
   hyperMode:bind({}, key, nil, function()
@@ -18,10 +18,8 @@ end
 --   send ESCAPE if no other keys are pressed.
 releasedF18 = function()
   hyperMode:exit()
-  if not hyperMode.triggered then
-    hs.eventtap.keyStroke({}, "ESCAPE")
-  end
+  if not hyperMode.triggered then hs.eventtap.keyStroke({}, 'ESCAPE') end
 end
 
 -- Bind the Hyper key
-f18 = hs.hotkey.bind({}, "F18", pressedF18, releasedF18)
+f18 = hs.hotkey.bind({}, 'F18', pressedF18, releasedF18)
