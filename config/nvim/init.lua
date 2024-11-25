@@ -5,7 +5,7 @@ utils = require 'utils'
 
 -- Map leader to space
 g.mapleader = ' '
-g.termguicolors = true -- Add 24 bit color support
+vim.opt.termguicolors = true -- Add 24 bit color support
 vim.opt.signcolumn = 'yes'
 g.did_load_filetypes = 1
 g.loaded_netrw = 1
