@@ -44,7 +44,6 @@ opt.undofile = true
 
 -- Display
 opt.background = 'dark'
-vim.g.colors_name = 'tender'
 opt.updatetime = 100 -- Faster completion
 
 opt.termguicolors = true -- Add 24 bit color support

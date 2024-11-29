@@ -7,7 +7,7 @@ return {
   },
   config = {
     options = {
-      theme = 'palenight',
+      theme = 'auto',
     },
   },
 }

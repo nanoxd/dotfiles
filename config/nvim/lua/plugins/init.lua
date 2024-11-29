@@ -13,14 +13,6 @@ return {
   },
 
   {
-    'Th3Whit3Wolf/onebuddy',
-    dependencies = {
-      'tjdevries/colorbuddy.vim',
-    },
-    config = function() require('colorbuddy').colorscheme 'onebuddy' end,
-  },
-
-  {
     'lewis6991/gitsigns.nvim', -- Adds Git highlighting
     dependencies = {
       'nvim-lua/plenary.nvim',
