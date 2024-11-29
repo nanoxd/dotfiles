@@ -47,11 +47,6 @@ return {
   },
 
   {
-    'folke/which-key.nvim',
-    event = 'VeryLazy',
-    opts = {},
-  },
-  {
     'windwp/nvim-spectre',
     dependencies = {
       'nvim-lua/plenary.nvim',
