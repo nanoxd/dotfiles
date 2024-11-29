@@ -22,10 +22,6 @@ return {
 
   -- Tools
   'ojroques/nvim-osc52', -- Copy to Clipboard using ANSI OCS52
-  {
-    'norcalli/nvim-colorizer.lua',
-    config = function() require('colorizer').setup() end,
-  },
   'kevinhwang91/nvim-bqf', -- Make QuickFix better
   'p00f/nvim-ts-rainbow', -- Enable multiple parentheses
   'rhysd/committia.vim', -- More Pleasant Editing on Commit Message
