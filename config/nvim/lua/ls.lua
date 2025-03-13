@@ -41,8 +41,8 @@ lspconfig.lua_ls.setup {
     },
   },
 }
-
-vim.cmd [[autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)]]
+--
+-- vim.cmd [[autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)]]
 
 lspconfig.gopls.setup {
   cmd = { 'gopls', 'serve' },

@@ -9,6 +9,8 @@ return {
         dimInactive = true,
         overrides = function(colors)
           local theme = colors.theme
+          local palette = colors.palette
+
           local makeDiagnosticColor = function(color)
             local c = require 'kanagawa.lib.color'
             return { fg = color, bg = c(color):blend(theme.ui.bg, 0.95):to_hex() }
@@ -45,6 +47,10 @@ return {
             DiagnosticVirtualTextInfo = makeDiagnosticColor(theme.diag.info),
             DiagnosticVirtualTextWarn = makeDiagnosticColor(theme.diag.warning),
             DiagnosticVirtualTextError = makeDiagnosticColor(theme.diag.error),
+
+            IndentBlanklineChar = { fg = palette.waveBlue2 },
+            CursorLineNr = { bg = theme.ui.bg_p2 },
+            Visual = { bg = palette.waveBlue2 },
           }
         end,
       }
