@@ -1,0 +1,190 @@
+#!/usr/bin/env python3
+# Requires Python 3.6+
+import os
+import re
+import zipfile
+import xml.etree.ElementTree as ET
+import xml.dom.minidom as minidom
+import argparse
+from pathlib import Path
+import sys
+
+
+def extract_chapter_number(filename):
+    """Extract chapter number from filename using regex."""
+    # Common chapter patterns like Ch.123, Chapter 123, #123, etc.
+    patterns = [
+        r'(?:ch|chapter)[.\s_-]*(\d+(?:\.\d+)?)',  # Ch.123, Chapter 123, ch 123, etc.
+        r'#(\d+(?:\.\d+)?)',                        # #123
+        r'(?<!\d)(\d+(?:\.\d+)?)(?!\d)',            # Just the number if it's standalone
+    ]
+    
+    # Convert filename to lowercase for case-insensitive matching
+    lower_filename = filename.lower()
+    
+    for pattern in patterns:
+        match = re.search(pattern, lower_filename)
+        if match:
+            return match.group(1)
+    
+    # If no chapter number found, return "1"
+    return "1"
+
+
+def create_comic_info(title, chapter):
+    """Create a ComicInfo.xml structure compatible with Komga."""
+    # Create the root element with Komga-compatible namespaces
+    # Using the ComicRack schema that Komga supports
+    comic_info = ET.Element("ComicInfo")
+    comic_info.set("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance")
+    comic_info.set("xmlns:xsd", "http://www.w3.org/2001/XMLSchema")
+    
+    # Add title element
+    title_elem = ET.SubElement(comic_info, "Title")
+    title_elem.text = title
+    
+    # Add chapter number
+    number_elem = ET.SubElement(comic_info, "Number")
+    number_elem.text = chapter
+    
+    # Add additional Komga-compatible fields
+    series_elem = ET.SubElement(comic_info, "Series")
+    series_elem.text = title
+    
+    # Add Manga field (commonly used by Komga)
+    manga_elem = ET.SubElement(comic_info, "Manga")
+    manga_elem.text = "Yes"
+    
+    # Add Format field (commonly used to identify chapter types)
+    format_elem = ET.SubElement(comic_info, "Format")
+    format_elem.text = "Chapter"
+    
+    # Add Language field 
+    language_elem = ET.SubElement(comic_info, "Language")
+    language_elem.text = "en"
+    
+    # Add AgeRating field (optional, set to Unknown)
+    age_rating_elem = ET.SubElement(comic_info, "AgeRating")
+    age_rating_elem.text = "Unknown"
+    
+    # Format the XML with proper indentation
+    xml_string = ET.tostring(comic_info, encoding='utf-8')
+    parsed_xml = minidom.parseString(xml_string)
+    pretty_xml = parsed_xml.toprettyxml(indent="  ")
+    
+    # Remove the XML declaration
+    pretty_xml = '\n'.join(pretty_xml.split('\n')[1:])
+    
+    return pretty_xml
+
+
+def process_cbz_file(cbz_path, parent_folder_name, overwrite=False, dry_run=False):
+    """Process a single CBZ file to add or update ComicInfo.xml."""
+    filename = os.path.basename(cbz_path)
+    chapter_number = extract_chapter_number(filename)
+    
+    # Check if ComicInfo.xml already exists in the CBZ
+    has_comic_info = False
+    with zipfile.ZipFile(cbz_path, 'r') as zip_ref:
+        file_list = zip_ref.namelist()
+        has_comic_info = 'ComicInfo.xml' in file_list
+    
+    if has_comic_info and not overwrite:
+        return False, f"ComicInfo.xml already exists in {filename}"
+    
+    # Create new ComicInfo.xml content
+    comic_info_content = create_comic_info(parent_folder_name, chapter_number)
+    
+    # In dry-run mode, just return the content that would be written
+    if dry_run:
+        return True, (f"Would update {filename} with new ComicInfo.xml "
+                     f"(Title: {parent_folder_name}, Chapter: {chapter_number})\n\n"
+                     f"Content:\n{comic_info_content}")
+    
+    # Create a temporary file
+    temp_cbz = cbz_path + '.temp'
+    
+    # Create a new ZIP file with the updated contents
+    with zipfile.ZipFile(cbz_path, 'r') as zip_read:
+        with zipfile.ZipFile(temp_cbz, 'w', compression=zipfile.ZIP_DEFLATED) as zip_write:
+            # Copy all files except existing ComicInfo.xml
+            for item in zip_read.infolist():
+                if item.filename != 'ComicInfo.xml':
+                    zip_write.writestr(item, zip_read.read(item.filename))
+            
+            # Add the new ComicInfo.xml
+            zip_write.writestr('ComicInfo.xml', comic_info_content)
+    
+    # Replace the original file with the new one
+    os.remove(cbz_path)
+    os.rename(temp_cbz, cbz_path)
+    
+    return True, f"Updated {filename} with new ComicInfo.xml (Title: {parent_folder_name}, Chapter: {chapter_number})"
+
+
+def process_directory(directory_path, overwrite=False, dry_run=False):
+    """Process all CBZ files in a directory."""
+    directory_path = os.path.abspath(directory_path)
+    parent_folder_name = os.path.basename(directory_path)
+    
+    # Find all CBZ files
+    cbz_files = [f for f in os.listdir(directory_path) if f.lower().endswith('.cbz')]
+    
+    if not cbz_files:
+        print(f"No CBZ files found in {directory_path}")
+        return
+    
+    print(f"Found {len(cbz_files)} CBZ files in {directory_path}")
+    print(f"Using '{parent_folder_name}' as the series title")
+    
+    if dry_run:
+        print("DRY RUN MODE: No files will be modified")
+    
+    # Process each file
+    needs_confirmation = []
+    for cbz_file in cbz_files:
+        cbz_path = os.path.join(directory_path, cbz_file)
+        success, message = process_cbz_file(cbz_path, parent_folder_name, overwrite=False, dry_run=dry_run)
+        
+        if not success and not dry_run:
+            needs_confirmation.append(cbz_path)
+            print(f"⚠️  {message}")
+        else:
+            if dry_run:
+                print(f"\n--- Dry run for {cbz_file} ---")
+                print(message)
+                print("-------------------\n")
+            else:
+                print(f"✓ {message}")
+    
+    # Ask for confirmation to overwrite existing ComicInfo.xml files (only if not in dry run mode)
+    if needs_confirmation and not overwrite and not dry_run:
+        confirm = input(f"\nOverwrite existing ComicInfo.xml in {len(needs_confirmation)} files? (y/n): ")
+        if confirm.lower() == 'y':
+            for cbz_path in needs_confirmation:
+                success, message = process_cbz_file(cbz_path, parent_folder_name, overwrite=True, dry_run=False)
+                print(f"✓ {message}")
+
+
+def main():
+    parser = argparse.ArgumentParser(description='Generate ComicInfo.xml files for CBZ files.')
+    parser.add_argument('directory', help='Directory containing CBZ files')
+    parser.add_argument('--overwrite', action='store_true', help='Overwrite existing ComicInfo.xml files without asking')
+    parser.add_argument('--dry-run', action='store_true', help='Show what would be written without making changes')
+    parser.add_argument('--version', action='version', version='%(prog)s 1.0.0 (Python 3.6+ required)')
+    
+    args = parser.parse_args()
+    
+    if not os.path.isdir(args.directory):
+        print(f"Error: {args.directory} is not a valid directory")
+        sys.exit(1)
+    
+    try:
+        process_directory(args.directory, args.overwrite, args.dry_run)
+    except Exception as e:
+        print(f"Error: {e}")
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
