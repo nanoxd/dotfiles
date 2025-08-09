@@ -6,6 +6,9 @@
   default = upstream
 	autoSetupRemote = true
 
+[branch]
+  sort = -committerdate
+
 [color]
   ui = auto
 
@@ -28,6 +31,9 @@
 [color "status"]
   untracked = cyan
 
+[column]
+  ui = auto
+
 [alias]
   a = add
   aa = add --all
@@ -38,13 +44,14 @@
   biggest = "!git rev-list --objects --all | grep `git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -1 | awk '{ print $1 }'`"
   branch = branch -vv
   branches = branch -a
-  browse = "!hub browse"
+  browse = "!gh repo view --web"
 
   ca = commit --amend
   ci = commit --verbose
   cl = clone --recursive
   co = checkout
   checkout-pr = !sh -c 'git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1' -
+  cleanup = !git branch --merged | grep -v '\\*\\|main\\|master' | xargs -n 1 git branch -d
 
   # Determines the branch we're on
   current = rev-parse --abbrev-ref HEAD
@@ -72,15 +79,18 @@
   ft = "!f() { git describe --always --contains $1; }; f"
 
   fza = "!git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o git add"
-  issues = !hub browse -- issues
+  graph = log --graph --pretty=format:'%C(auto)%h%d %s %C(black)%C(bold)%cr %C(blue)%an' --all
+  issues = !gh issue list --web
   laf = fsck --lost-found
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   ls-ignored = ls-files --exclude-standard --ignored --others
   m = checkout main
   merge-branch = !git checkout main && git merge @{-1} --ff-only
   pf = push --force-with-lease
-  pr = !hub pull-request
+  pr = !gh pr create
   purge = !git branch -d $(git branch --merged main | grep -v -e '*' -e 'main')
+  recent = for-each-ref --sort=-committerdate --format='%(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(color:blue)%(authorname)%(color:reset) (%(color:green)%(committerdate:relative)%(color:reset))' refs/heads/ --count=10
+  restore = restore
 
   # Display a diff of changes since branch-off point
   review = "!git diff $(git review-base \"$1\") #"
@@ -91,6 +101,8 @@
   rebase-origin = !git fetch origin && git rebase origin/main
   releases = log --decorate --oneline --simplify-by-decoration --all
   reset-hard = reset --hard HEAD
+  stats = shortlog -sn --all --no-merges
+  sw = switch
   st = status --short --branch
   tagage = !sh -c 'git for-each-ref --sort=taggerdate refs/tags --format=\"%(refname:short)\"'
   timespan = "!f() { one=$(git log -n 1 --format=%ai $1); two=$(git log -n 1 --format=%ai ${2:-HEAD}); ddiff -f ${3:-%mm%dd} \"$one\" \"$two\"; }; f"
@@ -108,6 +120,8 @@
   whitespace = fix
   untrackedCache = true
 	commitGraph = true
+  # fsmonitor = true  # Disabled - causes issues on macOS
+  # splitIndex = true  # Disabled - can cause index issues
 
 [credential]
   helper = osxkeychain
@@ -125,7 +139,9 @@
 
 [diff]
   colorMoved = default
+  colorMovedWS = allow-indentation-change
   algorithm = histogram
+  context = 5
   # Detect copies and renames
   renames = copies
 
@@ -134,7 +150,6 @@
 
 [pull]
   rebase = true
-  twohead = ort
 
 [include]
   path = ~/.gitconfig.local
@@ -167,6 +182,36 @@
 [gc]
   writeCommitGraph = true
 
+[index]
+  # version = 4  # Can cause compatibility issues
+  threads = true
+
+[pack]
+  useBitmaps = true
+  # writeReverseIndex = true  # May cause issues on some systems
+
+[feature]
+  # manyFiles = true  # Only enable if needed for large repos
+  # experimental = true  # Disabled - causes index corruption
+
+[maintenance]
+  auto = true
+  strategy = incremental
+
+[transfer]
+  fsckObjects = true
+
+[receive]
+  fsckObjects = true
+
+[advice]
+  detachedHead = false
+  statusHints = false
+  pushNonFastForward = false
+
+[log]
+  date = iso
+
 [fetch]
   prune = true
   prunetags = true
@@ -189,3 +234,5 @@
 	binary = true
 [merge]
 	conflictstyle = zdiff3
+  autoStash = true
+  twohead = ort
