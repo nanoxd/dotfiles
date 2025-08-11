@@ -2,14 +2,41 @@ return {
   'neovim/nvim-lspconfig',
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
     'hrsh7th/cmp-nvim-lsp',
     { 'antosha417/nvim-lsp-file-operations', config = true },
     { 'folke/neodev.nvim', opts = {} },
   },
   config = function()
+    -- Setup mason first
+    local mason = require 'mason'
+    mason.setup {
+      ui = {
+        icons = {
+          package_installed = '✓',
+          package_pending = '➜',
+          package_uninstalled = '✗',
+        },
+      },
+    }
+
     local lspconfig = require 'lspconfig'
     local mason_lspconfig = require 'mason-lspconfig'
     local cmp_nvim_lsp = require 'cmp_nvim_lsp'
+
+    -- Setup mason-lspconfig before using setup_handlers
+    mason_lspconfig.setup {
+      ensure_installed = {
+        'ts_ls',
+        'html',
+        'cssls',
+        'tailwindcss',
+        'lua_ls',
+        'rust_analyzer',
+        'denols',
+      },
+    }
 
     local keymap = vim.keymap
 
@@ -73,29 +100,29 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
     end
 
-    mason_lspconfig.setup_handlers {
-      -- default handler for installed servers
-      function(server_name)
-        lspconfig[server_name].setup {
-          capabilities = capabilities,
-        }
-      end,
-      ['lua_ls'] = function()
-        lspconfig['lua_ls'].setup {
-          capabilities = capabilities,
-          settings = {
-            Lua = {
-              -- make the language server recognize "vim" global
-              diagnostics = {
-                globals = { 'vim' },
-              },
-              completion = {
-                callSnippet = 'Replace',
-              },
-            },
+    -- Configure default capabilities for all servers
+    local servers = { 'ts_ls', 'html', 'cssls', 'tailwindcss', 'rust_analyzer', 'denols' }
+    
+    for _, server in ipairs(servers) do
+      lspconfig[server].setup {
+        capabilities = capabilities,
+      }
+    end
+
+    -- Special configuration for lua_ls
+    lspconfig.lua_ls.setup {
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          -- make the language server recognize "vim" global
+          diagnostics = {
+            globals = { 'vim' },
           },
-        }
-      end,
+          completion = {
+            callSnippet = 'Replace',
+          },
+        },
+      },
     }
   end,
 }
