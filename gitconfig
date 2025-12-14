@@ -75,6 +75,13 @@
   ft = "!f() { git describe --always --contains $1; }; f"
 
   fza = "!git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o git add"
+
+  # Interactive branch switching with preview
+  fbr = "!git branch --sort=-committerdate | fzf --preview 'git log --oneline --graph --date=short --color=always --pretty=\"format:%C(auto)%cd %h%d %s\" $(sed s/^..// <<< {} | cut -d\" \" -f1)' | sed 's/^..//' | cut -d' ' -f1 | xargs git checkout"
+
+  # Interactive stash browser
+  fstash = "!git stash list | fzf --preview 'echo {} | cut -d: -f1 | xargs git stash show -p --color=always' --preview-window=right:60% | cut -d: -f1"
+
   graph = log --graph --pretty=format:'%C(auto)%h%d %s %C(black)%C(bold)%cr %C(blue)%an' --all
   issues = !gh issue list --web
   laf = fsck --lost-found
@@ -105,6 +112,12 @@
   undo = "!f() { \\\n    git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; \\\n}; f"
   unpushed = log --oneline HEAD..."@{u}"
   wip = rebase -i "@{u}"
+
+  # Worktree management
+  wt = worktree list
+  wta = "!f() { git worktree add \"$@\"; }; f"
+  wtr = worktree remove
+  wtp = worktree prune
 
 [core]
   attributesfile = ~/.gitattributes
@@ -161,6 +174,7 @@
 
 [commit]
   verbose = true
+  gpgsign = true
 
 [diff "plist"]
   textconv = plutil -convert xml1 -o -
@@ -207,8 +221,21 @@
   prune = true
   prunetags = true
   fsckObjects = true
+  writeCommitGraph = true
 [init]
 	defaultBranch = main
+
+[commitGraph]
+  changedPaths = true
+
+[protocol]
+  version = 2
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  allowedSignersFile = ~/.ssh/allowed_signers
 
 [delta]
   side-by-side = true
