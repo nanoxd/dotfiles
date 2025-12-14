@@ -3,14 +3,13 @@
   email = nano@fdp.io
 
 [push]
-  default = upstream
-	autoSetupRemote = true
+  default = current
+  autoSetupRemote = true
+  followTags = true
 
 [branch]
   sort = -committerdate
-
-[color]
-  ui = auto
+  autoSetupMerge = simple
 
 [color "diffr"]
   oldNormal = red bold
@@ -30,9 +29,6 @@
 
 [color "status"]
   untracked = cyan
-
-[column]
-  ui = auto
 
 [alias]
   a = add
@@ -118,8 +114,6 @@
   show = delta
   pager = delta
   whitespace = fix
-  untrackedCache = true
-	commitGraph = true
   # fsmonitor = true  # Disabled - causes issues on macOS
   # splitIndex = true  # Disabled - can cause index issues
 
@@ -129,6 +123,8 @@
 [rebase]
   autostash = true
   autosquash = true
+  updateRefs = true
+  missingCommitsCheck = warn
   stat = true
 
 [stash]
@@ -141,6 +137,8 @@
   colorMoved = default
   colorMovedWS = allow-indentation-change
   algorithm = histogram
+  mnemonicPrefix = true
+  wsErrorHighlight = all
   context = 5
   # Detect copies and renames
   renames = copies
@@ -179,16 +177,9 @@
   required = true
   clean = git-lfs clean -- %f
 
-[gc]
-  writeCommitGraph = true
-
 [index]
   # version = 4  # Can cause compatibility issues
-  threads = true
-
-[pack]
-  useBitmaps = true
-  # writeReverseIndex = true  # May cause issues on some systems
+  threads = 0
 
 [feature]
   # manyFiles = true  # Only enable if needed for large repos
@@ -215,6 +206,7 @@
 [fetch]
   prune = true
   prunetags = true
+  fsckObjects = true
 [init]
 	defaultBranch = main
 
@@ -233,6 +225,5 @@
 	textconv = bun
 	binary = true
 [merge]
-	conflictstyle = zdiff3
+  conflictstyle = zdiff3
   autoStash = true
-  twohead = ort
