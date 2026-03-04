@@ -21,8 +21,6 @@ utils.map('n', 'J', 'mjJ`j') -- Join lines and restore cursor location
 utils.map('n', '0', "virtcol('.') - 1 <= indent('.') && col('.') > 1 ? '0' : '_'", { expr = true })
 
 utils.map('n', '<leader>p', '<cmd>lua require("telescope").extensions.neoclip.default()<cr>') -- Open Clipboard history
-vim.keymap.set('v', '<leader>y', require('osc52').copy_visual) -- Copy to clipboard
-vim.cmd [[autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | OSCYankReg + | endif]]
 
 -- Navigator Bindings
 utils.map('n', '<C-h>', '<cmd>lua require("Navigator").left()<cr>', { silent = true })
@@ -30,7 +28,6 @@ utils.map('n', '<C-j>', '<cmd>lua require("Navigator").down()<cr>', { silent = t
 utils.map('n', '<C-k>', '<cmd>lua require("Navigator").up()<cr>', { silent = true })
 utils.map('n', '<C-l>', '<cmd>lua require("Navigator").right()<cr>', { silent = true })
 
-utils.map('n', '<leader>s', '<cmd>SymbolsOutline<cr>', { silent = true }) -- Symbols Outline
 utils.map('n', '<leader>S', '<cmd>lua require("spectre").open()<cr>') -- Open Spectre
 
 utils.map('n', '<leader>t', '<cmd>Trouble<cr>', { silent = true }) -- Open Trouble

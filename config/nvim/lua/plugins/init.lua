@@ -1,8 +1,4 @@
 return {
-  'nathom/filetype.nvim',
-
-  -- LSP and completion
-  'simrat39/symbols-outline.nvim',
 
   -- UI
   'jacoborus/tender.vim',
@@ -21,9 +17,7 @@ return {
   },
 
   -- Tools
-  'ojroques/nvim-osc52', -- Copy to Clipboard using ANSI OCS52
   'kevinhwang91/nvim-bqf', -- Make QuickFix better
-  'p00f/nvim-ts-rainbow', -- Enable multiple parentheses
   'rhysd/committia.vim', -- More Pleasant Editing on Commit Message
   'tpope/vim-unimpaired', -- Add elegant mappings
   'lambdalisue/suda.vim', -- Sudo support in nvim
