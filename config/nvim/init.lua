@@ -5,7 +5,6 @@ utils = require 'utils'
 
 -- Map leader to space
 g.mapleader = ' '
-vim.opt.termguicolors = true -- Add 24 bit color support
 vim.opt.signcolumn = 'yes'
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
@@ -14,5 +13,3 @@ require 'config.lazy'
 require 'keys'
 require 'settings'
 require 'formatting'
-require 'ls'
-require 'plugin_config.cmp'

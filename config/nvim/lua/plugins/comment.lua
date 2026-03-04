@@ -1,17 +1,15 @@
 return {
-  'numToStr/Comment.nvim',
+  'JoosepAlviste/nvim-ts-context-commentstring',
   event = { 'BufReadPre', 'BufNewFile' },
-  dependencies = {
-    'JoosepAlviste/nvim-ts-context-commentstring',
+  opts = {
+    enable_autocmd = false,
   },
-  config = function()
-    local comment = require 'Comment'
-
-    local ts_context_commentstring = require 'ts_context_commentstring.integrations.comment_nvim'
-
-    comment.setup {
-      -- enable commenting on complex files like tsx/jsx/svelte/html
-      pre_hook = ts_context_commentstring.create_pre_hook(),
-    }
+  init = function()
+    local get_option = vim.filetype.get_option
+    ---@diagnostic disable-next-line: duplicate-set-field
+    vim.filetype.get_option = function(filetype, option)
+      return option == 'commentstring' and require('ts_context_commentstring.internal').calculate_commentstring()
+        or get_option(filetype, option)
+    end
   end,
 }

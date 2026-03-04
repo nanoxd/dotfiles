@@ -4,7 +4,7 @@ return {
   'jacoborus/tender.vim',
   {
     'akinsho/bufferline.nvim',
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function() require('bufferline').setup {} end,
   },
 
@@ -19,7 +19,6 @@ return {
   -- Tools
   'kevinhwang91/nvim-bqf', -- Make QuickFix better
   'rhysd/committia.vim', -- More Pleasant Editing on Commit Message
-  'tpope/vim-unimpaired', -- Add elegant mappings
   'lambdalisue/suda.vim', -- Sudo support in nvim
   'tpope/vim-fugitive', -- Git for Vim
   {
@@ -41,20 +40,19 @@ return {
   },
 
   {
-    'windwp/nvim-spectre',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-lua/popup.nvim',
+    'MagicDuck/grug-far.nvim',
+    opts = {},
+    keys = {
+      { '<leader>S', function() require('grug-far').open() end, desc = 'Search and Replace' },
     },
   },
 
   {
     'AckslD/nvim-neoclip.lua',
-    dependencies = { 'tami5/sqlite.lua', module = 'sqlite' },
+    dependencies = { 'kkharji/sqlite.lua', module = 'sqlite' },
     config = function() require('neoclip').setup() end,
   },
 
-  'mrjones2014/smart-splits.nvim',
   {
     'mrcjkb/rustaceanvim',
     version = '^5', -- Recommended
