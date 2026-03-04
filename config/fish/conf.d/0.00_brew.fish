@@ -1,3 +1,3 @@
-if test -f /opt/homebrew/bin/brew 
-    eval (/opt/homebrew/bin/brew shellenv)
+if test -f /opt/homebrew/bin/brew
+    /opt/homebrew/bin/brew shellenv | source
 end

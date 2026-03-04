@@ -1,3 +1,3 @@
 function e --wraps=nvim
-  eval "$EDITOR" $argv
+  $EDITOR $argv
 end
