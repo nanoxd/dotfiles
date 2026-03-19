@@ -1,72 +1,64 @@
-local drawing = require 'hs.drawing'
-local geometry = require 'hs.geometry'
+local canvas = require 'hs.canvas'
 local hsscreen = require 'hs.screen'
-local styledtext = require 'hs.styledtext'
 
 local statusmessage = {}
 statusmessage.new = function(messageText)
-  local buildParts = function(messageText)
-    local backgrounds = {}
-    local texts = {}
+  local buildCanvases = function(messageText)
+    local canvases = {}
     local screens = hsscreen.allScreens()
 
     for idx, screen in ipairs(screens) do
       local frame = screen:frame()
 
-      local styledTextAttributes = {
+      local textStyle = {
         font = { name = 'Helvetica Neue', size = 48 },
-        color = { white = 1.0, alpha = 1.0 },
+        color = { white = 1.0, alpha = 0.7 },
       }
-      local styledText = styledtext.new(messageText, styledTextAttributes)
-      local styledTextSize = drawing.getTextDrawingSize(styledText)
-      local textRect = {
-        x = frame.x + frame.w - styledTextSize.w - 40,
-        y = frame.y + frame.h - styledTextSize.h - 23,
-        w = styledTextSize.w + 40,
-        h = styledTextSize.h + 40,
-      }
-      local text = drawing.text(textRect, styledText):setAlpha(0.7)
+      local textSize = canvas.new({ x = 0, y = 0, w = 0, h = 0 }):appendElements({
+        type = 'text',
+        text = hs.styledtext.new(messageText, textStyle),
+      }):minimumTextSize(1, messageText)
 
-      local background = drawing.rectangle {
-        x = frame.x + frame.w - styledTextSize.w - 50,
-        y = frame.y + frame.h - styledTextSize.h - 23 - 3,
-        w = styledTextSize.w + 20,
-        h = styledTextSize.h + 6,
-      }
-      background:setRoundedRectRadii(10, 10)
-      background:setFillColor { red = 0, green = 0, blue = 0, alpha = 0.8 }
+      local w = textSize.w + 40
+      local h = textSize.h + 6
+      local x = frame.x + frame.w - w - 10
+      local y = frame.y + frame.h - h - 20
 
-      backgrounds[idx] = background
-      texts[idx] = text
+      local c = canvas.new { x = x, y = y, w = w, h = h }
+      c:appendElements(
+        {
+          type = 'rectangle',
+          roundedRectRadii = { xRadius = 10, yRadius = 10 },
+          fillColor = { red = 0, green = 0, blue = 0, alpha = 0.8 },
+        },
+        {
+          type = 'text',
+          text = hs.styledtext.new(messageText, textStyle),
+          frame = { x = '10%', y = '0%', w = '90%', h = '100%' },
+        }
+      )
+
+      canvases[idx] = c
     end
-    return backgrounds, texts
+    return canvases
   end
 
   return {
-    _buildParts = buildParts,
+    _buildCanvases = buildCanvases,
     show = function(self)
       self:hide()
 
-      self.backgrounds, self.texts = self._buildParts(messageText)
-      for idx, bg in ipairs(self.backgrounds) do
-        bg:show()
-      end
-      for idx, text in ipairs(self.texts) do
-        text:show()
+      self.canvases = self._buildCanvases(messageText)
+      for _, c in ipairs(self.canvases) do
+        c:show()
       end
     end,
     hide = function(self)
-      if self.backgrounds then
-        for idx, bg in ipairs(self.backgrounds) do
-          bg:delete()
+      if self.canvases then
+        for _, c in ipairs(self.canvases) do
+          c:delete()
         end
-        self.backgrounds = nil
-      end
-      if self.texts then
-        for idx, text in ipairs(self.texts) do
-          text:delete()
-        end
-        self.texts = nil
+        self.canvases = nil
       end
     end,
     notify = function(self, seconds)
