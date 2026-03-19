@@ -114,8 +114,8 @@ end
 function windowMT.nextScreen(win)
   local currentScreen = win:screen()
   local allScreens = hs.screen.allScreens()
-  currentScreenIndex = hs.fnutils.indexOf(allScreens, currentScreen)
-  nextScreenIndex = currentScreenIndex + 1
+  local currentScreenIndex = hs.fnutils.indexOf(allScreens, currentScreen)
+  local nextScreenIndex = currentScreenIndex + 1
 
   if allScreens[nextScreenIndex] then
     win:moveToScreen(allScreens[nextScreenIndex], true, true)
