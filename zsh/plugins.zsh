@@ -38,5 +38,4 @@ zinit light-mode for \
   caarlos0/zsh-mkc \
   djui/alias-tips \
   skywind3000/z.lua \
-  RobertAudi/tsm \
   zsh-users/zsh-history-substring-search

@@ -40,11 +40,11 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
-alias ls="eza"
+alias ls='eza'
 alias ll='ls -l'
-alias la="ls -al"
+alias la='ls -al'
 
-if which brew >/dev/null 2>&1; then
+if (( $+commands[brew] )); then
   function brew() {
     case "$1" in
       cleanup)
@@ -52,7 +52,7 @@ if which brew >/dev/null 2>&1; then
         ;;
       bump)
         command brew update
-        command brew upgrade --all
+        command brew upgrade
         brew cleanup
         ;;
       *)
@@ -64,26 +64,16 @@ if which brew >/dev/null 2>&1; then
   alias bi='brew install'
 fi
 
-if which yarn >/dev/null 2>&1; then
-  alias ya='yarn add'
-  alias yad='yarn add --dev'
-  alias yag='yarn global add'
-  alias yr='yarn run'
-  alias yu='yarn upgrade-interactive --latest'
-fi
-
 alias be='bundle exec'
 alias bu='bundle update'
 alias rm-mac-metadata='find . -name ".DS_Store" -or -name "._*" -delete'
 
 # Editors
 alias co='code'
-alias vim="nvim"
-alias vimdiff="nvim -d"
+alias vim='nvim'
+alias vimdiff='nvim -d'
 
-if [ "$(uname -s)" = "Darwin" ]; then
-  alias f='fork'
-fi
+[[ "$(uname -s)" == "Darwin" ]] && alias f='fork'
 
 alias sync='rsync -az --progress'
 
@@ -113,13 +103,13 @@ alias gco='git checkout'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gdw='git diff --word-diff'
-alias gin="git introduced"
+alias gin='git introduced'
 alias gp='git push'
 alias gpf='git push --force-with-lease'
-alias gpr='git pull-request --browse'
+alias gpr='gh pr view --web'
 alias gpu='git pull --rebase'
 alias gs='git status -sb'
 
 function gpc() {
-  git push --set-upstream origin $(git-branch-current 2> /dev/null)
+  git push --set-upstream origin "$(git branch --show-current)"
 }
