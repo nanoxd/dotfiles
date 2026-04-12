@@ -42,10 +42,6 @@ config/fish/conf.d/fzf.fish
 !config/fish/functions/_warn_no_command.fish
 !config/fish/functions/e.fish
 !config/fish/functions/gpc.fish
-!config/fish/functions/la.fish
-!config/fish/functions/ll.fish
-!config/fish/functions/ls.fish
-!config/fish/functions/lt.fish
 !config/fish/functions/mkc.fish
 config/zed/conversations
 config/nvim/.luarc.json
