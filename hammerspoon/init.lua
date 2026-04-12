@@ -56,7 +56,9 @@ end
 -- App Keybindings --
 
 local weztermBundleID = 'com.github.wez.wezterm'
-bindHotkey(weztermBundleID, 't', 1) -- full screen Wezterm
+local cmuxBundleID = 'com.cmuxterm.app'
+-- bindHotkey(weztermBundleID, 't', 1) -- full screen Wezterm
+bindHotkey(cmuxBundleID, 't', 1) -- full screen cmux
 hs.hotkey.bind(utils.hyper, 'b', function() launchOrHide 'company.thebrowser.Browser' end) -- Arc
 hs.hotkey.bind(utils.hyper, 'f', function() launchOrHide 'com.DanPristupov.Fork' end) -- Fork
 
