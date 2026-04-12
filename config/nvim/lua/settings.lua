@@ -49,6 +49,7 @@ cmd 'hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE'
 cmd 'highlight link EndOfBuffer Comment'
 
 opt.sidescrolloff = 3
+opt.pumborder = 'rounded'
 
 -- Search
 opt.ignorecase = true

@@ -53,15 +53,6 @@ return {
           },
         },
       },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = '<Leader>v',
-          node_incremental = '<Leader>v',
-          scope_incremental = false,
-          node_decremental = '<bs>',
-        },
-      },
     }
   end,
 }

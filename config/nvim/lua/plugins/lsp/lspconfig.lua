@@ -49,6 +49,8 @@ return {
 
     -- Diagnostic config with signs
     vim.diagnostic.config {
+      severity_sort = true,
+      float = { border = 'rounded', source = true },
       signs = {
         text = {
           [vim.diagnostic.severity.ERROR] = ' ',
@@ -79,13 +81,7 @@ return {
         keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts)
 
         opts.desc = 'Show LSP type definitions'
-        keymap.set('n', 'gt', '<cmd>Telescope lsp_type_definitions<CR>', opts)
-
-        opts.desc = 'See available code actions'
-        keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
-
-        opts.desc = 'Smart rename'
-        keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+        keymap.set('n', 'grt', '<cmd>Telescope lsp_type_definitions<CR>', opts)
 
         opts.desc = 'Show buffer diagnostics'
         keymap.set('n', '<leader>D', '<cmd>Telescope diagnostics bufnr=0<CR>', opts)
@@ -95,6 +91,8 @@ return {
 
         opts.desc = 'Restart LSP'
         keymap.set('n', '<leader>rs', ':LspRestart<CR>', opts)
+
+        vim.lsp.codelens.enable(true, { bufnr = ev.buf })
       end,
     })
   end,
