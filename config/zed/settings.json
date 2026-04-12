@@ -7,7 +7,7 @@
 // custom settings, run the `zed: Open Default Settings` command
 // from the command palette
 {
-  "helix_mode": true,
+  "helix_mode": false,
   "icon_theme": "Zed (Default)",
   "base_keymap": "VSCode",
   "vim_mode": true,
