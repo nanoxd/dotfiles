@@ -8,7 +8,6 @@ fi
 export PATH="$HOME/.bin:$HOME/.local/bin:$HOME/go/bin:$PATH"
 
 export FZF_DEFAULT_COMMAND='rg --files'
-[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
 # alias-tips
 export ZSH_PLUGINS_ALIAS_TIPS_EXPAND=0
@@ -31,3 +30,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 [[ -s "$BUN_INSTALL/_bun" ]] && source "$BUN_INSTALL/_bun"
 
 [[ -f "$HOME/.turso/env" ]] && source "$HOME/.turso/env"
+
+(( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
+(( $+commands[starship] )) && eval "$(starship init zsh)"

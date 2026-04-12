@@ -11,14 +11,6 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zdharma-continuum/zinit-annex-as-monitor \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust
-
 ### End of Zinit's installer chunk
 
 zinit wait lucid light-mode for \
@@ -29,13 +21,8 @@ zinit wait lucid light-mode for \
   blockf atpull'zinit creinstall -q .' \
       zsh-users/zsh-completions
 
-GEOMETRY_COLOR_DIR=152
-zinit ice wait"0" lucid atload"geometry::prompt"
-zinit light geometry-zsh/geometry
-
 zinit light-mode for \
   Aloxaf/fzf-tab \
   caarlos0/zsh-mkc \
   djui/alias-tips \
-  skywind3000/z.lua \
   zsh-users/zsh-history-substring-search

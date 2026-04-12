@@ -8,14 +8,6 @@ function mkdir() {
   command mkdir -p "$@"
 }
 
-function ip() {
-  ifconfig lo0 | grep 'inet '  | sed -e 's/:/ /' | awk '{print "lo0       : " $2}'
-  ifconfig en0 | grep 'inet '  | sed -e 's/:/ /' | awk '{print "en0 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
-  ifconfig en0 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en0 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
-  ifconfig en1 | grep 'inet '  | sed -e 's/:/ /' | awk '{print "en1 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
-  ifconfig en1 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en1 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
-}
-
 function p() {
   if [ -n "$1" ] && [ -f "$1" ]; then
     bat "$@"
@@ -64,8 +56,6 @@ if (( $+commands[brew] )); then
   alias bi='brew install'
 fi
 
-alias be='bundle exec'
-alias bu='bundle update'
 alias rm-mac-metadata='find . -name ".DS_Store" -or -name "._*" -delete'
 
 # Editors
@@ -77,12 +67,12 @@ alias vimdiff='nvim -d'
 
 alias sync='rsync -az --progress'
 
-# NPM
-alias ni='npm i'
-alias nis='npm i --save'
-alias nisd='npm i --save-dev'
-alias npmu='npm-check -u'
-alias nr='npm run'
+# Bun
+alias b='bun'
+alias ba='bun add'
+alias bad='bun add -d'
+alias by='bun install'
+alias br='bun run'
 
 # Rust
 alias c='cargo'
