@@ -1,3 +1,7 @@
+if not status is-interactive
+    exit
+end
+
 if command -q zoxide
     zoxide init fish | source
 else
