@@ -1,3 +1,3 @@
-function gpc -d "Git push and set branch to origin"
-  git push --set-upstream origin (git-branch-current 2> /dev/null)
+function gpc -d "Push current branch and set upstream to origin"
+    git push --set-upstream origin (git branch --show-current)
 end
