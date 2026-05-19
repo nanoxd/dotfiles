@@ -1,6 +1,7 @@
 status is-interactive; or exit
 
 abbr -a co code
+abbr -a cc claude
 
 abbr -a .. 'cd ..'
 abbr -a ... 'cd ../..'

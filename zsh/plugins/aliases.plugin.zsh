@@ -60,6 +60,7 @@ alias rm-mac-metadata='find . -name ".DS_Store" -or -name "._*" -delete'
 
 # Editors
 alias co='code'
+alias cc='claude'
 alias vim='nvim'
 alias vimdiff='nvim -d'
 
