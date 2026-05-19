@@ -49,5 +49,6 @@ config/1Password/
 config/op/config
 config/uv/uv-receipt.json
 CLAUDE.local.md
+AGENTS.local.md
 .claude/settings.local.json
 *.log
