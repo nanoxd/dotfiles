@@ -1,6 +1,7 @@
 [user]
   name = Fernando Paredes
   email = nano@fdp.io
+	signingkey = /Users/nano/.ssh/id_ed25519.pub
 
 [push]
   default = current
