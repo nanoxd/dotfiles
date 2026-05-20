@@ -52,3 +52,5 @@ CLAUDE.local.md
 AGENTS.local.md
 .claude/settings.local.json
 *.log
+config/herdr/release-notes.json
+config/herdr/session.json
