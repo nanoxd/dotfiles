@@ -2,6 +2,32 @@ local canvas = require 'hs.canvas'
 local hsscreen = require 'hs.screen'
 
 local statusmessage = {}
+
+-- Text appearance, shared between measurement and rendering so the box is
+-- always sized for exactly what gets drawn.
+local FONT = 'Helvetica Neue'
+local FONT_SIZE = 48
+local H_PADDING = 24
+local V_PADDING = 12
+
+-- Measure the text using the *same* font and size we render with. Measuring on
+-- a screen-sized canvas avoids any wrapping, and setting textFont/textSize on
+-- the element makes minimumTextSize use them instead of the canvas default
+-- (27pt) — otherwise the box is sized for 27pt text while 48pt text is drawn
+-- into it and gets clipped to "Wind…".
+local function measureText(messageText, screenFrame)
+  local c = canvas.new { x = 0, y = 0, w = screenFrame.w, h = screenFrame.h }
+  c:appendElements {
+    type = 'text',
+    text = messageText,
+    textFont = FONT,
+    textSize = FONT_SIZE,
+  }
+  local size = c:minimumTextSize(1, messageText)
+  c:delete()
+  return size
+end
+
 statusmessage.new = function(messageText)
   local buildCanvases = function(messageText)
     local canvases = {}
@@ -10,17 +36,10 @@ statusmessage.new = function(messageText)
     for idx, screen in ipairs(screens) do
       local frame = screen:frame()
 
-      local textStyle = {
-        font = { name = 'Helvetica Neue', size = 48 },
-        color = { white = 1.0, alpha = 0.7 },
-      }
-      local textSize = canvas.new({ x = 0, y = 0, w = 0, h = 0 }):appendElements({
-        type = 'text',
-        text = hs.styledtext.new(messageText, textStyle),
-      }):minimumTextSize(1, messageText)
+      local textSize = measureText(messageText, frame)
 
-      local w = textSize.w + 40
-      local h = textSize.h + 6
+      local w = textSize.w + H_PADDING * 2
+      local h = textSize.h + V_PADDING * 2
       local x = frame.x + frame.w - w - 10
       local y = frame.y + frame.h - h - 20
 
@@ -33,8 +52,12 @@ statusmessage.new = function(messageText)
         },
         {
           type = 'text',
-          text = hs.styledtext.new(messageText, textStyle),
-          frame = { x = '10%', y = '0%', w = '90%', h = '100%' },
+          text = messageText,
+          textFont = FONT,
+          textSize = FONT_SIZE,
+          textColor = { white = 1.0, alpha = 0.7 },
+          textAlignment = 'center',
+          frame = { x = 0, y = V_PADDING, w = w, h = textSize.h },
         }
       )
 
