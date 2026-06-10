@@ -3,9 +3,9 @@
 
 KEY="$@"
 
-if [ -z $KEY ]; then
+if [ -z "$KEY" ]; then
   KEY="id_ed25519"
 fi
 
-pbcopy < ~/.ssh/$KEY.pub
+pbcopy < ~/.ssh/"$KEY".pub
 
