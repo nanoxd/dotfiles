@@ -24,7 +24,10 @@ local COLOR_ICON_FILL = { white = 1.0, alpha = 0.80 }
 -- Typography -----------------------------------------------------------------
 local TITLE_FONT = 'Helvetica Neue'
 local TEXT_FONT = 'Helvetica Neue'
-local KEY_FONT = 'Menlo'
+-- Iosevka Nano is monospace with full coverage of the modifier/arrow glyphs
+-- (⇧ ⌘ ⏎ ␣ ← ↓ ↑ →), so the key column stays aligned. Menlo lacks several of
+-- these and would substitute a proportional fallback for them.
+local KEY_FONT = 'Iosevka Nano'
 local TITLE_SIZE = 20
 local HINT_SIZE = 13
 local HEADER_SIZE = 11
