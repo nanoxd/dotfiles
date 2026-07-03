@@ -7,6 +7,7 @@
 -- keyboard cheat sheet. Built on hs.canvas like status-message.lua.
 
 local canvas = require 'hs.canvas'
+local utils = require 'utils'
 
 local hints = {}
 
@@ -24,10 +25,12 @@ local COLOR_ICON_FILL = { white = 1.0, alpha = 0.80 }
 -- Typography -----------------------------------------------------------------
 local TITLE_FONT = 'Helvetica Neue'
 local TEXT_FONT = 'Helvetica Neue'
--- Iosevka Nano is monospace with full coverage of the modifier/arrow glyphs
--- (⇧ ⌘ ⏎ ␣ ← ↓ ↑ →), so the key column stays aligned. Menlo lacks several of
--- these and would substitute a proportional fallback for them.
-local KEY_FONT = 'Iosevka Nano'
+-- Shortcut keys need a monospace face so the key column stays aligned. Resolve
+-- the first installed family from utils.monospaceFonts so this degrades
+-- gracefully on machines without Iosevka; the preferred Iosevka builds also
+-- cover the modifier/arrow glyphs (⇧ ⌘ ⏎ ␣ ← ↓ ↑ →) that a font like Menlo
+-- would otherwise substitute from a proportional fallback.
+local KEY_FONT = utils.resolveFont(utils.monospaceFonts)
 local TITLE_SIZE = 20
 local HINT_SIZE = 13
 local HEADER_SIZE = 11

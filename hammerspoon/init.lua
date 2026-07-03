@@ -6,7 +6,7 @@ hs.loadSpoon 'ReloadConfiguration'
 spoon.ReloadConfiguration:start()
 
 -- Change alert style
-hs.alert.defaultStyle.textFont = 'Iosevka'
+hs.alert.defaultStyle.textFont = utils.resolveFont(utils.monospaceFonts)
 hs.alert.defaultStyle.textSize = 24
 hs.alert.defaultStyle.strokeWidth = 0
 hs.alert.defaultStyle.radius = 0
