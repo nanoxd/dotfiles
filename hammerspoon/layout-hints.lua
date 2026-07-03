@@ -229,16 +229,27 @@ end
 local columns = {
   {
     {
-      title = 'Halves',
+      title = 'Edges',
       rows = {
         { key = 'H', icon = 'leftHalf', desc = 'Left' },
-        { key = 'J', icon = 'bottomHalf', desc = 'Bottom' },
-        { key = 'K', icon = 'topHalf', desc = 'Top' },
         { key = 'L', icon = 'rightHalf', desc = 'Right' },
+        { key = 'K', icon = 'topHalf', desc = 'Top' },
+        { key = 'J', icon = 'bottomHalf', desc = 'Bottom' },
       },
     },
     {
-      title = 'Quarters',
+      title = '+ Size',
+      rows = {
+        { key = '⇧', icon = 'leftThird', desc = 'Third' },
+        { key = '⌥', icon = 'leftTwoThird', desc = 'Two-thirds' },
+        { key = '⌃', icon = 'oqLeft', desc = 'Quarter' },
+        { key = '⌘', icon = 'tqLeft', desc = 'Three-quarter' },
+      },
+    },
+  },
+  {
+    {
+      title = 'Corners',
       rows = {
         { key = 'I', icon = 'topLeft', desc = 'Top left' },
         { key = 'O', icon = 'topRight', desc = 'Top right' },
@@ -246,50 +257,29 @@ local columns = {
         { key = '.', icon = 'bottomRight', desc = 'Bottom right' },
       },
     },
-  },
-  {
     {
-      title = 'Thirds',
-      rows = {
-        { key = 'A', icon = 'leftThird', desc = 'Left ⅓' },
-        { key = 'S', icon = 'centerThird', desc = 'Center ⅓' },
-        { key = 'D', icon = 'rightThird', desc = 'Right ⅓' },
-        { key = '⇧A', icon = 'leftTwoThird', desc = 'Left ⅔' },
-        { key = '⇧D', icon = 'rightTwoThird', desc = 'Right ⅔' },
-      },
-    },
-    {
-      title = 'Fractions',
-      rows = {
-        { key = 'Y', icon = 'tqLeft', desc = '¾ left' },
-        { key = '⇧Y', icon = 'oqLeft', desc = '¼ left' },
-        { key = ';', icon = 'tqRight', desc = '¾ right' },
-        { key = '⇧;', icon = 'oqRight', desc = '¼ right' },
-      },
-    },
-  },
-  {
-    {
-      title = 'Size',
+      title = 'Focus',
       rows = {
         { key = '␣', icon = 'center', desc = 'Center' },
         { key = '⏎', icon = 'maximize', desc = 'Maximize' },
       },
     },
+  },
+  {
     {
-      title = 'Move & Resize',
+      title = 'Screen & Windows',
       rows = {
-        { key = '←↓↑→', icon = 'move', desc = 'Move' },
-        { key = '⇧ ←↓↑→', icon = 'enlarge', desc = 'Enlarge' },
-        { key = '⇧⌘ ←↓↑→', icon = 'shrink', desc = 'Shrink' },
+        { key = 'N', icon = 'nextMonitor', desc = 'Next monitor' },
+        { key = '⇥', icon = 'nextWindow', desc = 'Next window' },
+        { key = '/', icon = 'hints', desc = 'Show hints' },
       },
     },
     {
-      title = 'Windows & Display',
+      title = 'Nudge',
       rows = {
-        { key = '⇧H', icon = 'nextWindow', desc = 'Next window' },
-        { key = 'N', icon = 'nextMonitor', desc = 'Next monitor' },
-        { key = '/', icon = 'hints', desc = 'Show hints' },
+        { key = '←↓↑→', icon = 'move', desc = 'Move' },
+        { key = '⇧ ←↓↑→', icon = 'enlarge', desc = 'Grow' },
+        { key = '⇧⌘ ←↓↑→', icon = 'shrink', desc = 'Shrink' },
       },
     },
   },

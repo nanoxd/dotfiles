@@ -4,93 +4,27 @@ hs.window.animationDuration = 0
 local windowMT = hs.getObjectMetatable 'hs.window'
 local window = hs.window
 
--- +-----------------+
--- |           |     |
--- |    HERE   |     |
--- |           |     |
--- +-----------------+
-function windowMT.threeQuarterLeft(win)
+-- Place the window flush against one edge of the screen, sized to `fraction`
+-- of the screen along that edge's axis and spanning the full extent of the
+-- other axis. This backs the "direction picks the edge, modifier picks the
+-- fraction" bindings defined further down.
+function windowMT.placeEdge(win, edge, fraction)
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
 
-  f.x = max.x
-  f.y = max.y
-  f.h = max.h
-
-  if max.w > 1680 then
-    f.w = max.w * 0.75
-  else
-    f.w = max.w * 0.67
+  if edge == 'left' then
+    f.x, f.y, f.w, f.h = max.x, max.y, max.w * fraction, max.h
+  elseif edge == 'right' then
+    f.w, f.h = max.w * fraction, max.h
+    f.x, f.y = max.x + (max.w - f.w), max.y
+  elseif edge == 'top' then
+    f.x, f.y, f.w, f.h = max.x, max.y, max.w, max.h * fraction
+  elseif edge == 'bottom' then
+    f.w, f.h = max.w, max.h * fraction
+    f.x, f.y = max.x, max.y + (max.h - f.h)
   end
 
-  win:setFrame(f)
-end
-
--- +-----------------+
--- | H  |            |
--- | E  |            |
--- | RE |            |
--- +-----------------+
-function windowMT.oneQuarterLeft(win)
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  f.x = max.x
-  f.y = max.y
-  f.h = max.h
-
-  if max.w > 1680 then
-    f.w = max.w * 0.25
-  else
-    f.w = max.w * 0.33
-  end
-
-  win:setFrame(f)
-end
-
--- +-----------------+
--- |    |            |
--- |    |    HERE    |
--- |    |            |
--- +-----------------+
-function windowMT.threeQuarterRight(win)
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  if max.w > 1680 then
-    f.w = max.w * 0.75
-  else
-    f.w = max.w * 0.67
-  end
-
-  f.h = max.h
-  f.x = max.x + (max.w - f.w)
-  f.y = max.y
-  win:setFrame(f)
-end
-
--- +-----------------+
--- |           |  H  |
--- |           |  E  |
--- |           |  RE |
--- +-----------------+
-function windowMT.oneQuarterRight(win)
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  if max.w > 1680 then
-    f.w = max.w * 0.25
-  else
-    f.w = max.w * 0.33
-  end
-
-  f.h = max.h
-  f.x = max.x + (max.w - f.w)
-  f.y = max.y
   win:setFrame(f)
 end
 
@@ -108,96 +42,6 @@ function windowMT.centerWithFullHeight(win)
   f.w = max.w * 3 / 5
   f.y = max.y
   f.h = max.h
-  win:setFrame(f)
-end
-
--- +-----------------+
--- | H |      |      |
--- | E |      |      |
--- | RE|      |      |
--- +-----------------+
-function windowMT.leftThird(win)
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  f.x = max.x
-  f.y = max.y
-  f.w = max.w / 3
-  f.h = max.h
-
-  win:setFrame(f)
-end
-
--- +-----------------+
--- |    | HERE |     |
--- |    | HERE |     |
--- |    | HERE |     |
--- +-----------------+
-function windowMT.centerThird(win)
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  f.x = max.x + (max.w / 3)
-  f.y = max.y
-  f.w = max.w / 3
-  f.h = max.h
-
-  win:setFrame(f)
-end
-
--- +-----------------+
--- |      |      | H |
--- |      |      | E |
--- |      |      | RE|
--- +-----------------+
-function windowMT.rightThird(win)
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  f.x = max.x + (max.w * 2 / 3)
-  f.y = max.y
-  f.w = max.w / 3
-  f.h = max.h
-
-  win:setFrame(f)
-end
-
--- +-----------------+
--- | HERE     |      |
--- | HERE     |      |
--- | HERE     |      |
--- +-----------------+
-function windowMT.leftTwoThirds(win)
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  f.x = max.x
-  f.y = max.y
-  f.w = max.w * 2 / 3
-  f.h = max.h
-
-  win:setFrame(f)
-end
-
--- +-----------------+
--- |      |     HERE |
--- |      |     HERE |
--- |      |     HERE |
--- +-----------------+
-function windowMT.rightTwoThirds(win)
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  f.x = max.x + (max.w / 3)
-  f.y = max.y
-  f.w = max.w * 2 / 3
-  f.h = max.h
-
   win:setFrame(f)
 end
 
@@ -308,23 +152,31 @@ end
 --------------------------------------------------------------------------------
 -- Define WindowLayout Mode
 --
--- WindowLayout Mode allows you to manage window layout using keyboard shortcuts
--- that are on the home row, or very close to it. Use Control+s to turn
--- on WindowLayout mode. Then, use any shortcut below to perform a window layout
--- action. For example, to send the window left, press and release
--- Control+s, and then press h.
+-- WindowLayout Mode manages window layout with home-row keyboard shortcuts.
+-- Enter it with the hyper + z binding at the bottom of this file, then press a
+-- shortcut. For example, to send the window left, press hyper+z, then h.
 --
---   h/j/k/l => send window to the left/bottom/top/right half of the screen
---   i => send window to the upper left quarter of the screen
---   o => send window to the upper right quarter of the screen
---   , => send window to the lower left quarter of the screen
---   . => send window to the lower right quarter of the screen
---   a/s/d => send window to the left/center/right third of the screen
---   shift+a / shift+d => send window to the left/right two-thirds of the screen
---   return => make window full screen
---   n => send window to the next monitor
---   left => send window to the monitor on the left (if there is one)
---   right => send window to the monitor on the right (if there is one)
+-- Placement follows "direction picks the edge, modifier picks the fraction":
+--
+--   h / l / k / j       => left / right / top / bottom edge
+--   (no modifier) => 1/2   shift => 1/3   option => 2/3
+--   control => 1/4         command => 3/4
+--
+--   e.g. l = right half, shift+l = right third, command+h = left three-quarters,
+--   shift+k = top third.
+--
+-- Everything that isn't a single edge + fraction keeps its own key:
+--
+--   i / o / , / .  => upper-left / upper-right / lower-left / lower-right quarter
+--   space          => center (focus)
+--   return         => full screen
+--   n              => next monitor
+--   tab            => next window
+--   /              => keyboard hints for all windows
+--   arrows              => nudge the window
+--   shift + arrows      => grow the window
+--   shift + cmd + arrows => shrink the window
+--   escape         => leave the mode
 --------------------------------------------------------------------------------
 
 windowLayoutMode = hs.hotkey.modal.new({}, 'F16')
@@ -350,18 +202,37 @@ function windowLayoutMode.bindWithAutomaticExitAndMods(mode, mods, key, fn)
   end)
 end
 
+-- Placement: direction picks the edge, modifier picks the fraction.
+local edgeKeys = {
+  { key = 'h', edge = 'left' },
+  { key = 'l', edge = 'right' },
+  { key = 'k', edge = 'top' },
+  { key = 'j', edge = 'bottom' },
+}
+
+local fractionMods = {
+  { mods = {}, fraction = 1 / 2 },
+  { mods = { 'shift' }, fraction = 1 / 3 },
+  { mods = { 'alt' }, fraction = 2 / 3 },
+  { mods = { 'ctrl' }, fraction = 1 / 4 },
+  { mods = { 'cmd' }, fraction = 3 / 4 },
+}
+
+for _, e in ipairs(edgeKeys) do
+  for _, m in ipairs(fractionMods) do
+    windowLayoutMode:bindWithAutomaticExitAndMods(
+      m.mods,
+      e.key,
+      function() hs.window.focusedWindow():placeEdge(e.edge, m.fraction) end
+    )
+  end
+end
+
 windowLayoutMode:bindWithAutomaticExit('return', function() hs.window.focusedWindow():maximize() end)
 
 windowLayoutMode:bindWithAutomaticExit('space', function() hs.window.focusedWindow():centerWithFullHeight() end)
 
-windowLayoutMode:bindWithAutomaticExit('h', function() window.focusedWindow():moveToUnit(hs.layout.left50) end)
-
-windowLayoutMode:bindWithAutomaticExit('j', function() window.focusedWindow():moveToUnit '[0,50,100,100]' end)
-
-windowLayoutMode:bindWithAutomaticExit('k', function() window.focusedWindow():moveToUnit '[0,0,100,50]' end)
-
-windowLayoutMode:bindWithAutomaticExit('l', function() window.focusedWindow():moveToUnit(hs.layout.right50) end)
-
+-- Corner quarters: a 2-D split, so outside the edge + fraction model.
 windowLayoutMode:bindWithAutomaticExit('i', function() window.focusedWindow():moveToUnit '[0,0,50,50]' end)
 
 windowLayoutMode:bindWithAutomaticExit('o', function() window.focusedWindow():moveToUnit '[50,0,100,50]' end)
@@ -370,41 +241,9 @@ windowLayoutMode:bindWithAutomaticExit(',', function() window.focusedWindow():mo
 
 windowLayoutMode:bindWithAutomaticExit('.', function() window.focusedWindow():moveToUnit '[50,50,100,100]' end)
 
-windowLayoutMode:bindWithAutomaticExit('y', function() hs.window.focusedWindow():threeQuarterLeft() end)
-
-windowLayoutMode:bindWithAutomaticExitAndMods(
-  { 'shift' },
-  'y',
-  function() hs.window.focusedWindow():oneQuarterLeft() end
-)
-
-windowLayoutMode:bindWithAutomaticExit(';', function() hs.window.focusedWindow():threeQuarterRight() end)
-
-windowLayoutMode:bindWithAutomaticExitAndMods(
-  { 'shift' },
-  ';',
-  function() hs.window.focusedWindow():oneQuarterRight() end
-)
-
-windowLayoutMode:bindWithAutomaticExit('a', function() hs.window.focusedWindow():leftThird() end)
-
-windowLayoutMode:bindWithAutomaticExit('s', function() hs.window.focusedWindow():centerThird() end)
-
-windowLayoutMode:bindWithAutomaticExit('d', function() hs.window.focusedWindow():rightThird() end)
-
-windowLayoutMode:bindWithAutomaticExitAndMods({ 'shift' }, 'a', function() hs.window.focusedWindow():leftTwoThirds() end)
-
-windowLayoutMode:bindWithAutomaticExitAndMods({ 'shift' }, 'd', function() hs.window.focusedWindow():rightTwoThirds() end)
-
 windowLayoutMode:bindWithAutomaticExit('n', function() hs.window.focusedWindow():nextScreen() end)
 
--- windowLayoutMode:bindWithAutomaticExit('right', function()
---   hs.window.focusedWindow():moveOneScreenEast()
--- end)
---
--- windowLayoutMode:bindWithAutomaticExit('left', function()
---   hs.window.focusedWindow():moveOneScreenWest()
--- end)
+windowLayoutMode:bindWithAutomaticExit('tab', function() window.switcher.nextWindow() end)
 
 windowLayoutMode:bind({}, 'up', function() hs.window.focusedWindow():moveUp() end)
 
@@ -432,8 +271,6 @@ windowLayoutMode:bind({ 'shift', 'cmd' }, 'right', function() hs.window.focusedW
 
 -- Show keyboard hints for all windows
 windowLayoutMode:bindWithAutomaticExit('/', function() hs.hints.windowHints() end)
-
-windowLayoutMode:bindWithAutomaticExitAndMods({ 'shift' }, 'H', function() window.switcher.nextWindow() end)
 
 -- Keybindings
 
