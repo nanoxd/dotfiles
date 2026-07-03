@@ -111,6 +111,96 @@ function windowMT.centerWithFullHeight(win)
   win:setFrame(f)
 end
 
+-- +-----------------+
+-- | H |      |      |
+-- | E |      |      |
+-- | RE|      |      |
+-- +-----------------+
+function windowMT.leftThird(win)
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x
+  f.y = max.y
+  f.w = max.w / 3
+  f.h = max.h
+
+  win:setFrame(f)
+end
+
+-- +-----------------+
+-- |    | HERE |     |
+-- |    | HERE |     |
+-- |    | HERE |     |
+-- +-----------------+
+function windowMT.centerThird(win)
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x + (max.w / 3)
+  f.y = max.y
+  f.w = max.w / 3
+  f.h = max.h
+
+  win:setFrame(f)
+end
+
+-- +-----------------+
+-- |      |      | H |
+-- |      |      | E |
+-- |      |      | RE|
+-- +-----------------+
+function windowMT.rightThird(win)
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x + (max.w * 2 / 3)
+  f.y = max.y
+  f.w = max.w / 3
+  f.h = max.h
+
+  win:setFrame(f)
+end
+
+-- +-----------------+
+-- | HERE     |      |
+-- | HERE     |      |
+-- | HERE     |      |
+-- +-----------------+
+function windowMT.leftTwoThirds(win)
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x
+  f.y = max.y
+  f.w = max.w * 2 / 3
+  f.h = max.h
+
+  win:setFrame(f)
+end
+
+-- +-----------------+
+-- |      |     HERE |
+-- |      |     HERE |
+-- |      |     HERE |
+-- +-----------------+
+function windowMT.rightTwoThirds(win)
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x + (max.w / 3)
+  f.y = max.y
+  f.w = max.w * 2 / 3
+  f.h = max.h
+
+  win:setFrame(f)
+end
+
 function windowMT.nextScreen(win)
   local currentScreen = win:screen()
   local allScreens = hs.screen.allScreens()
@@ -229,6 +319,8 @@ end
 --   o => send window to the upper right quarter of the screen
 --   , => send window to the lower left quarter of the screen
 --   . => send window to the lower right quarter of the screen
+--   a/s/d => send window to the left/center/right third of the screen
+--   shift+a / shift+d => send window to the left/right two-thirds of the screen
 --   return => make window full screen
 --   n => send window to the next monitor
 --   left => send window to the monitor on the left (if there is one)
@@ -293,6 +385,16 @@ windowLayoutMode:bindWithAutomaticExitAndMods(
   ';',
   function() hs.window.focusedWindow():oneQuarterRight() end
 )
+
+windowLayoutMode:bindWithAutomaticExit('a', function() hs.window.focusedWindow():leftThird() end)
+
+windowLayoutMode:bindWithAutomaticExit('s', function() hs.window.focusedWindow():centerThird() end)
+
+windowLayoutMode:bindWithAutomaticExit('d', function() hs.window.focusedWindow():rightThird() end)
+
+windowLayoutMode:bindWithAutomaticExitAndMods({ 'shift' }, 'a', function() hs.window.focusedWindow():leftTwoThirds() end)
+
+windowLayoutMode:bindWithAutomaticExitAndMods({ 'shift' }, 'd', function() hs.window.focusedWindow():rightTwoThirds() end)
 
 windowLayoutMode:bindWithAutomaticExit('n', function() hs.window.focusedWindow():nextScreen() end)
 

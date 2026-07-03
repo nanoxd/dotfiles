@@ -72,6 +72,11 @@ local FRAMED = {
   oqRight = { 0.75, 0, 0.25, 1 },
   center = { 0.2, 0, 0.6, 1 },
   maximize = { 0, 0, 1, 1 },
+  leftThird = { 0, 0, 1 / 3, 1 },
+  centerThird = { 1 / 3, 0, 1 / 3, 1 },
+  rightThird = { 2 / 3, 0, 1 / 3, 1 },
+  leftTwoThird = { 0, 0, 2 / 3, 1 },
+  rightTwoThird = { 1 / 3, 0, 2 / 3, 1 },
 }
 
 local function screenOutline(x, y)
@@ -244,6 +249,16 @@ local columns = {
   },
   {
     {
+      title = 'Thirds',
+      rows = {
+        { key = 'A', icon = 'leftThird', desc = 'Left ⅓' },
+        { key = 'S', icon = 'centerThird', desc = 'Center ⅓' },
+        { key = 'D', icon = 'rightThird', desc = 'Right ⅓' },
+        { key = '⇧A', icon = 'leftTwoThird', desc = 'Left ⅔' },
+        { key = '⇧D', icon = 'rightTwoThird', desc = 'Right ⅔' },
+      },
+    },
+    {
       title = 'Fractions',
       rows = {
         { key = 'Y', icon = 'tqLeft', desc = '¾ left' },
@@ -252,6 +267,8 @@ local columns = {
         { key = '⇧;', icon = 'oqRight', desc = '¼ right' },
       },
     },
+  },
+  {
     {
       title = 'Size',
       rows = {
@@ -259,8 +276,6 @@ local columns = {
         { key = '⏎', icon = 'maximize', desc = 'Maximize' },
       },
     },
-  },
-  {
     {
       title = 'Move & Resize',
       rows = {
