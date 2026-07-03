@@ -237,10 +237,10 @@ end
 
 windowLayoutMode = hs.hotkey.modal.new({}, 'F16')
 
-local message = require 'status-message'
-windowLayoutMode.statusMessage = message.new 'Window Layout Mode'
-windowLayoutMode.entered = function() windowLayoutMode.statusMessage:show() end
-windowLayoutMode.exited = function() windowLayoutMode.statusMessage:hide() end
+local layoutHints = require 'layout-hints'
+windowLayoutMode.hints = layoutHints.new()
+windowLayoutMode.entered = function() windowLayoutMode.hints:show() end
+windowLayoutMode.exited = function() windowLayoutMode.hints:hide() end
 
 -- Bind the given key to call the given function and exit WindowLayout mode
 function windowLayoutMode.bindWithAutomaticExit(mode, key, fn)
