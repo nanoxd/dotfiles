@@ -45,6 +45,20 @@ function windowMT.centerWithFullHeight(win)
   win:setFrame(f)
 end
 
+-- Center a full-height column that is `fraction` of the screen wide. Extends the
+-- edge model's fractions to the center (focus) position via shift/option+space.
+function windowMT.centerFraction(win, fraction)
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.w = max.w * fraction
+  f.h = max.h
+  f.x = max.x + (max.w - f.w) / 2
+  f.y = max.y
+  win:setFrame(f)
+end
+
 function windowMT.nextScreen(win)
   local currentScreen = win:screen()
   local allScreens = hs.screen.allScreens()
@@ -168,7 +182,7 @@ end
 -- Everything that isn't a single edge + fraction keeps its own key:
 --
 --   i / o / , / .  => upper-left / upper-right / lower-left / lower-right quarter
---   space          => center (focus)
+--   space          => center (focus); shift / option + space => center 1/3 or 2/3
 --   return         => full screen
 --   n              => next monitor
 --   tab            => next window
@@ -231,6 +245,10 @@ end
 windowLayoutMode:bindWithAutomaticExit('return', function() hs.window.focusedWindow():maximize() end)
 
 windowLayoutMode:bindWithAutomaticExit('space', function() hs.window.focusedWindow():centerWithFullHeight() end)
+
+windowLayoutMode:bindWithAutomaticExitAndMods({ 'shift' }, 'space', function() hs.window.focusedWindow():centerFraction(1 / 3) end)
+
+windowLayoutMode:bindWithAutomaticExitAndMods({ 'alt' }, 'space', function() hs.window.focusedWindow():centerFraction(2 / 3) end)
 
 -- Corner quarters: a 2-D split, so outside the edge + fraction model.
 windowLayoutMode:bindWithAutomaticExit('i', function() window.focusedWindow():moveToUnit '[0,0,50,50]' end)

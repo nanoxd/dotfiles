@@ -77,6 +77,7 @@ local FRAMED = {
   rightThird = { 2 / 3, 0, 1 / 3, 1 },
   leftTwoThird = { 0, 0, 2 / 3, 1 },
   rightTwoThird = { 1 / 3, 0, 2 / 3, 1 },
+  centerTwoThird = { 1 / 6, 0, 2 / 3, 1 },
 }
 
 local function screenOutline(x, y)
@@ -261,6 +262,8 @@ local columns = {
       title = 'Focus',
       rows = {
         { key = '␣', icon = 'center', desc = 'Center' },
+        { key = '⇧␣', icon = 'centerThird', desc = 'Center ⅓' },
+        { key = '⌥␣', icon = 'centerTwoThird', desc = 'Center ⅔' },
         { key = '⏎', icon = 'maximize', desc = 'Maximize' },
       },
     },
