@@ -1,9 +1,6 @@
 local utils = require 'utils'
+require 'hs.ipc'
 require 'windows'
-
--- Load spoons
-hs.loadSpoon 'ReloadConfiguration'
-spoon.ReloadConfiguration:start()
 
 -- Change alert style
 hs.alert.defaultStyle.textFont = utils.resolveFont(utils.monospaceFonts)
@@ -13,6 +10,10 @@ hs.alert.defaultStyle.radius = 0
 hs.alert.defaultStyle.fadeInDuration = 0.10
 hs.alert.defaultStyle.fadeOutDuration = 1
 hs.alert.defaultStyle.fillColor = { white = 0, alpha = 0.95 }
+
+-- Load spoons
+hs.loadSpoon 'ReloadConfiguration'
+spoon.ReloadConfiguration:start()
 
 -- Functions
 
@@ -60,4 +61,4 @@ bindHotkey(cmuxBundleID, 't', 1) -- full screen cmux
 hs.hotkey.bind(utils.hyper, 'b', function() launchOrHide 'company.thebrowser.Browser' end) -- Arc
 hs.hotkey.bind(utils.hyper, 'f', function() launchOrHide 'com.DanPristupov.Fork' end) -- Fork
 
--- Other Keybindings --
+utils.notify 'Hammerspoon loaded'

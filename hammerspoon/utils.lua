@@ -34,4 +34,8 @@ function utils.resolveFont(candidates)
   return candidates[#candidates]
 end
 
+function utils.notify(message)
+  hs.alert.show(message)
+end
+
 return utils
