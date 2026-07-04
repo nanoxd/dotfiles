@@ -10,6 +10,54 @@ local function focusedWindowAction(fn)
   end
 end
 
+local windowUndoStack = {}
+local windowUndoStackLimit = 20
+
+local function copyFrame(frame)
+  return { x = frame.x, y = frame.y, w = frame.w, h = frame.h }
+end
+
+local function saveWindowLayout(win)
+  windowUndoStack[#windowUndoStack + 1] = {
+    window = win,
+    screen = win:screen(),
+    frame = copyFrame(win:frame()),
+  }
+
+  while #windowUndoStack > windowUndoStackLimit do
+    table.remove(windowUndoStack, 1)
+  end
+end
+
+local function windowLayoutAction(fn)
+  return focusedWindowAction(function(win)
+    saveWindowLayout(win)
+    fn(win)
+  end)
+end
+
+local function restoreWindowLayout()
+  while #windowUndoStack > 0 do
+    local state = table.remove(windowUndoStack)
+    local win = state.window
+    local ok = win and pcall(function()
+      if state.screen and hs.fnutils.indexOf(hs.screen.allScreens(), state.screen) then
+        win:moveToScreen(state.screen, true, true)
+      end
+
+      win:setFrame(state.frame)
+      win:focus()
+    end)
+
+    if ok then
+      return true
+    end
+  end
+
+  utils.notify 'No window layout to undo'
+  return false
+end
+
 -- Place the window flush against one edge of the screen, sized to `fraction`
 -- of the screen along that edge's axis and spanning the full extent of the
 -- other axis. This backs the "direction picks the edge, modifier picks the
@@ -196,6 +244,7 @@ end
 --   space          => center (focus); shift / option + space => center 1/3 or 2/3
 --   return         => full screen
 --   n              => next monitor
+--   u              => undo last layout
 --   tab            => next window
 --   /              => keyboard hints for all windows
 --   arrows              => nudge the window
@@ -250,63 +299,65 @@ for _, e in ipairs(edgeKeys) do
     windowLayoutMode:bindWithAutomaticExitAndMods(
       m.mods,
       e.key,
-      focusedWindowAction(function(win) win:placeEdge(edge, fraction) end)
+      windowLayoutAction(function(win) win:placeEdge(edge, fraction) end)
     )
   end
 end
 
-windowLayoutMode:bindWithAutomaticExit('return', focusedWindowAction(function(win) win:maximize() end))
+windowLayoutMode:bindWithAutomaticExit('return', windowLayoutAction(function(win) win:maximize() end))
 
-windowLayoutMode:bindWithAutomaticExit('space', focusedWindowAction(function(win) win:centerWithFullHeight() end))
+windowLayoutMode:bindWithAutomaticExit('space', windowLayoutAction(function(win) win:centerWithFullHeight() end))
 
 windowLayoutMode:bindWithAutomaticExitAndMods(
   { 'shift' },
   'space',
-  focusedWindowAction(function(win) win:centerFraction(1 / 3) end)
+  windowLayoutAction(function(win) win:centerFraction(1 / 3) end)
 )
 
 windowLayoutMode:bindWithAutomaticExitAndMods(
   { 'alt' },
   'space',
-  focusedWindowAction(function(win) win:centerFraction(2 / 3) end)
+  windowLayoutAction(function(win) win:centerFraction(2 / 3) end)
 )
 
 -- Corner quarters: a 2-D split, so outside the edge + fraction model.
-windowLayoutMode:bindWithAutomaticExit('i', focusedWindowAction(function(win) win:moveToUnit '[0,0,50,50]' end))
+windowLayoutMode:bindWithAutomaticExit('i', windowLayoutAction(function(win) win:moveToUnit '[0,0,50,50]' end))
 
-windowLayoutMode:bindWithAutomaticExit('o', focusedWindowAction(function(win) win:moveToUnit '[50,0,100,50]' end))
+windowLayoutMode:bindWithAutomaticExit('o', windowLayoutAction(function(win) win:moveToUnit '[50,0,100,50]' end))
 
-windowLayoutMode:bindWithAutomaticExit(',', focusedWindowAction(function(win) win:moveToUnit '[0,50,50,100]' end))
+windowLayoutMode:bindWithAutomaticExit(',', windowLayoutAction(function(win) win:moveToUnit '[0,50,50,100]' end))
 
-windowLayoutMode:bindWithAutomaticExit('.', focusedWindowAction(function(win) win:moveToUnit '[50,50,100,100]' end))
+windowLayoutMode:bindWithAutomaticExit('.', windowLayoutAction(function(win) win:moveToUnit '[50,50,100,100]' end))
 
-windowLayoutMode:bindWithAutomaticExit('n', focusedWindowAction(function(win) win:nextScreen() end))
+windowLayoutMode:bindWithAutomaticExit('n', windowLayoutAction(function(win) win:nextScreen() end))
+
+windowLayoutMode:bindWithAutomaticExit('u', restoreWindowLayout)
 
 windowLayoutMode:bindWithAutomaticExit('tab', function() window.switcher.nextWindow() end)
 
-windowLayoutMode:bind({}, 'up', focusedWindowAction(function(win) win:moveUp() end))
+windowLayoutMode:bind({}, 'up', windowLayoutAction(function(win) win:moveUp() end))
 
-windowLayoutMode:bind({}, 'down', focusedWindowAction(function(win) win:moveDown() end))
+windowLayoutMode:bind({}, 'down', windowLayoutAction(function(win) win:moveDown() end))
 
-windowLayoutMode:bind({}, 'left', focusedWindowAction(function(win) win:moveLeft() end))
+windowLayoutMode:bind({}, 'left', windowLayoutAction(function(win) win:moveLeft() end))
 
-windowLayoutMode:bind({}, 'right', focusedWindowAction(function(win) win:moveRight() end))
+windowLayoutMode:bind({}, 'right', windowLayoutAction(function(win) win:moveRight() end))
 
-windowLayoutMode:bind({ 'shift' }, 'up', focusedWindowAction(function(win) win:enlargeUp() end))
+windowLayoutMode:bind({ 'shift' }, 'up', windowLayoutAction(function(win) win:enlargeUp() end))
 
-windowLayoutMode:bind({ 'shift' }, 'down', focusedWindowAction(function(win) win:enlargeDown() end))
+windowLayoutMode:bind({ 'shift' }, 'down', windowLayoutAction(function(win) win:enlargeDown() end))
 
-windowLayoutMode:bind({ 'shift' }, 'left', focusedWindowAction(function(win) win:enlargeLeft() end))
+windowLayoutMode:bind({ 'shift' }, 'left', windowLayoutAction(function(win) win:enlargeLeft() end))
 
-windowLayoutMode:bind({ 'shift' }, 'right', focusedWindowAction(function(win) win:enlargeRight() end))
+windowLayoutMode:bind({ 'shift' }, 'right', windowLayoutAction(function(win) win:enlargeRight() end))
 
-windowLayoutMode:bind({ 'shift', 'cmd' }, 'up', focusedWindowAction(function(win) win:shrinkUp() end))
+windowLayoutMode:bind({ 'shift', 'cmd' }, 'up', windowLayoutAction(function(win) win:shrinkUp() end))
 
-windowLayoutMode:bind({ 'shift', 'cmd' }, 'down', focusedWindowAction(function(win) win:shrinkDown() end))
+windowLayoutMode:bind({ 'shift', 'cmd' }, 'down', windowLayoutAction(function(win) win:shrinkDown() end))
 
-windowLayoutMode:bind({ 'shift', 'cmd' }, 'left', focusedWindowAction(function(win) win:shrinkLeft() end))
+windowLayoutMode:bind({ 'shift', 'cmd' }, 'left', windowLayoutAction(function(win) win:shrinkLeft() end))
 
-windowLayoutMode:bind({ 'shift', 'cmd' }, 'right', focusedWindowAction(function(win) win:shrinkRight() end))
+windowLayoutMode:bind({ 'shift', 'cmd' }, 'right', windowLayoutAction(function(win) win:shrinkRight() end))
 
 -- Show keyboard hints for all windows
 windowLayoutMode:bindWithAutomaticExit('/', function() hs.hints.windowHints() end)

@@ -209,6 +209,25 @@ local function appendIcon(add, kind, x, y)
     return
   end
 
+  if kind == 'undo' then
+    -- Left-pointing restore arrow inside a screen.
+    add(screenOutline(x, y))
+    add {
+      type = 'segments',
+      action = 'stroke',
+      strokeColor = COLOR_ICON_FILL,
+      strokeWidth = 2,
+      coordinates = {
+        { x = x + W - 6, y = y + 5 },
+        { x = x + 8, y = y + 5 },
+        { x = x + 8, y = y + H - 5 },
+        { x = x + W - 7, y = y + H - 5 },
+      },
+    }
+    add(triangle({ x = x + 5, y = y + 5 }, { x = x + 10, y = y + 2 }, { x = x + 10, y = y + 8 }))
+    return
+  end
+
   if kind == 'hints' then
     -- Screen sprinkled with hint markers.
     add(screenOutline(x, y))
@@ -273,6 +292,7 @@ local columns = {
       title = 'Screen & Windows',
       rows = {
         { key = 'N', icon = 'nextMonitor', desc = 'Next monitor' },
+        { key = 'U', icon = 'undo', desc = 'Undo layout' },
         { key = '⇥', icon = 'nextWindow', desc = 'Next window' },
         { key = '/', icon = 'hints', desc = 'Show hints' },
       },
