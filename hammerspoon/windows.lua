@@ -4,6 +4,12 @@ hs.window.animationDuration = 0
 local windowMT = hs.getObjectMetatable 'hs.window'
 local window = hs.window
 
+local function focusedWindowAction(fn)
+  return function()
+    utils.withFocusedWindow(fn)
+  end
+end
+
 -- Place the window flush against one edge of the screen, sized to `fraction`
 -- of the screen along that edge's axis and spanning the full extent of the
 -- other axis. This backs the "direction picks the edge, modifier picks the
@@ -63,8 +69,13 @@ function windowMT.nextScreen(win)
   local currentScreen = win:screen()
   local allScreens = hs.screen.allScreens()
   local currentScreenIndex = hs.fnutils.indexOf(allScreens, currentScreen)
-  local nextScreenIndex = currentScreenIndex + 1
 
+  if not currentScreenIndex or #allScreens == 0 then
+    utils.notify 'No next screen available'
+    return
+  end
+
+  local nextScreenIndex = currentScreenIndex + 1
   if allScreens[nextScreenIndex] then
     win:moveToScreen(allScreens[nextScreenIndex], true, true)
   else
@@ -234,58 +245,68 @@ local fractionMods = {
 
 for _, e in ipairs(edgeKeys) do
   for _, m in ipairs(fractionMods) do
+    local edge = e.edge
+    local fraction = m.fraction
     windowLayoutMode:bindWithAutomaticExitAndMods(
       m.mods,
       e.key,
-      function() hs.window.focusedWindow():placeEdge(e.edge, m.fraction) end
+      focusedWindowAction(function(win) win:placeEdge(edge, fraction) end)
     )
   end
 end
 
-windowLayoutMode:bindWithAutomaticExit('return', function() hs.window.focusedWindow():maximize() end)
+windowLayoutMode:bindWithAutomaticExit('return', focusedWindowAction(function(win) win:maximize() end))
 
-windowLayoutMode:bindWithAutomaticExit('space', function() hs.window.focusedWindow():centerWithFullHeight() end)
+windowLayoutMode:bindWithAutomaticExit('space', focusedWindowAction(function(win) win:centerWithFullHeight() end))
 
-windowLayoutMode:bindWithAutomaticExitAndMods({ 'shift' }, 'space', function() hs.window.focusedWindow():centerFraction(1 / 3) end)
+windowLayoutMode:bindWithAutomaticExitAndMods(
+  { 'shift' },
+  'space',
+  focusedWindowAction(function(win) win:centerFraction(1 / 3) end)
+)
 
-windowLayoutMode:bindWithAutomaticExitAndMods({ 'alt' }, 'space', function() hs.window.focusedWindow():centerFraction(2 / 3) end)
+windowLayoutMode:bindWithAutomaticExitAndMods(
+  { 'alt' },
+  'space',
+  focusedWindowAction(function(win) win:centerFraction(2 / 3) end)
+)
 
 -- Corner quarters: a 2-D split, so outside the edge + fraction model.
-windowLayoutMode:bindWithAutomaticExit('i', function() window.focusedWindow():moveToUnit '[0,0,50,50]' end)
+windowLayoutMode:bindWithAutomaticExit('i', focusedWindowAction(function(win) win:moveToUnit '[0,0,50,50]' end))
 
-windowLayoutMode:bindWithAutomaticExit('o', function() window.focusedWindow():moveToUnit '[50,0,100,50]' end)
+windowLayoutMode:bindWithAutomaticExit('o', focusedWindowAction(function(win) win:moveToUnit '[50,0,100,50]' end))
 
-windowLayoutMode:bindWithAutomaticExit(',', function() window.focusedWindow():moveToUnit '[0,50,50,100]' end)
+windowLayoutMode:bindWithAutomaticExit(',', focusedWindowAction(function(win) win:moveToUnit '[0,50,50,100]' end))
 
-windowLayoutMode:bindWithAutomaticExit('.', function() window.focusedWindow():moveToUnit '[50,50,100,100]' end)
+windowLayoutMode:bindWithAutomaticExit('.', focusedWindowAction(function(win) win:moveToUnit '[50,50,100,100]' end))
 
-windowLayoutMode:bindWithAutomaticExit('n', function() hs.window.focusedWindow():nextScreen() end)
+windowLayoutMode:bindWithAutomaticExit('n', focusedWindowAction(function(win) win:nextScreen() end))
 
 windowLayoutMode:bindWithAutomaticExit('tab', function() window.switcher.nextWindow() end)
 
-windowLayoutMode:bind({}, 'up', function() hs.window.focusedWindow():moveUp() end)
+windowLayoutMode:bind({}, 'up', focusedWindowAction(function(win) win:moveUp() end))
 
-windowLayoutMode:bind({}, 'down', function() hs.window.focusedWindow():moveDown() end)
+windowLayoutMode:bind({}, 'down', focusedWindowAction(function(win) win:moveDown() end))
 
-windowLayoutMode:bind({}, 'left', function() hs.window.focusedWindow():moveLeft() end)
+windowLayoutMode:bind({}, 'left', focusedWindowAction(function(win) win:moveLeft() end))
 
-windowLayoutMode:bind({}, 'right', function() hs.window.focusedWindow():moveRight() end)
+windowLayoutMode:bind({}, 'right', focusedWindowAction(function(win) win:moveRight() end))
 
-windowLayoutMode:bind({ 'shift' }, 'up', function() hs.window.focusedWindow():enlargeUp() end)
+windowLayoutMode:bind({ 'shift' }, 'up', focusedWindowAction(function(win) win:enlargeUp() end))
 
-windowLayoutMode:bind({ 'shift' }, 'down', function() hs.window.focusedWindow():enlargeDown() end)
+windowLayoutMode:bind({ 'shift' }, 'down', focusedWindowAction(function(win) win:enlargeDown() end))
 
-windowLayoutMode:bind({ 'shift' }, 'left', function() hs.window.focusedWindow():enlargeLeft() end)
+windowLayoutMode:bind({ 'shift' }, 'left', focusedWindowAction(function(win) win:enlargeLeft() end))
 
-windowLayoutMode:bind({ 'shift' }, 'right', function() hs.window.focusedWindow():enlargeRight() end)
+windowLayoutMode:bind({ 'shift' }, 'right', focusedWindowAction(function(win) win:enlargeRight() end))
 
-windowLayoutMode:bind({ 'shift', 'cmd' }, 'up', function() hs.window.focusedWindow():shrinkUp() end)
+windowLayoutMode:bind({ 'shift', 'cmd' }, 'up', focusedWindowAction(function(win) win:shrinkUp() end))
 
-windowLayoutMode:bind({ 'shift', 'cmd' }, 'down', function() hs.window.focusedWindow():shrinkDown() end)
+windowLayoutMode:bind({ 'shift', 'cmd' }, 'down', focusedWindowAction(function(win) win:shrinkDown() end))
 
-windowLayoutMode:bind({ 'shift', 'cmd' }, 'left', function() hs.window.focusedWindow():shrinkLeft() end)
+windowLayoutMode:bind({ 'shift', 'cmd' }, 'left', focusedWindowAction(function(win) win:shrinkLeft() end))
 
-windowLayoutMode:bind({ 'shift', 'cmd' }, 'right', function() hs.window.focusedWindow():shrinkRight() end)
+windowLayoutMode:bind({ 'shift', 'cmd' }, 'right', focusedWindowAction(function(win) win:shrinkRight() end))
 
 -- Show keyboard hints for all windows
 windowLayoutMode:bindWithAutomaticExit('/', function() hs.hints.windowHints() end)

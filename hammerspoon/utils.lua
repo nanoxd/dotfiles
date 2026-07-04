@@ -38,4 +38,15 @@ function utils.notify(message)
   hs.alert.show(message)
 end
 
+function utils.withFocusedWindow(fn)
+  local win = hs.window.focusedWindow()
+  if not win then
+    utils.notify 'No focused window'
+    return false
+  end
+
+  fn(win)
+  return true
+end
+
 return utils
