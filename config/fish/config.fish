@@ -8,3 +8,6 @@ end
 if status is-interactive
     starship init fish | source
 end
+
+# Pi
+fish_add_path "/Users/nano/.local/share/mise/installs/node/25.2.1/bin"

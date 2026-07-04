@@ -1,0 +1,12 @@
+{
+  "theme": "dark",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5",
+  "defaultThinkingLevel": "xhigh",
+  "hideThinkingBlock": true,
+  "packages": [
+    "npm:pi-web-access",
+    "npm:@narumitw/pi-goal",
+    "npm:pi-agent-browser-native"
+  ]
+}
