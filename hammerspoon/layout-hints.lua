@@ -4,7 +4,7 @@
 -- available actions are explicit while the mode is active. Each row pairs the
 -- key(s) to press with a small pictogram of the resulting window layout — the
 -- pictograms are drawn with hs.canvas primitives, in the spirit of Moom's
--- keyboard cheat sheet. Built on hs.canvas like status-message.lua.
+-- keyboard cheat sheet. Built on hs.canvas.
 
 local canvas = require 'hs.canvas'
 local utils = require 'utils'
