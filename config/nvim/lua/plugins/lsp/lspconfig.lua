@@ -4,7 +4,6 @@ return {
   dependencies = {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
-    { 'antosha417/nvim-lsp-file-operations', config = true },
   },
   config = function()
     local mason = require 'mason'

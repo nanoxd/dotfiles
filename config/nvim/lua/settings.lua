@@ -1,5 +1,6 @@
 local cmd = vim.cmd
 local fn = vim.fn
+local g = vim.g
 local opt = vim.opt
 
 opt.iskeyword:append { '-' } -- Set Hyphen as part of a text object
@@ -54,3 +55,10 @@ opt.pumborder = 'rounded'
 -- Search
 opt.ignorecase = true
 opt.smartcase = true
+
+-- Netrw
+-- Keep the built-in file explorer quiet and tree-like.
+g.netrw_banner = 0
+g.netrw_list_hide = [[.*\.swp$,\.DS_Store]]
+g.netrw_liststyle = 3
+g.netrw_sort_options = 'i'

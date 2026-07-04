@@ -1,36 +1,45 @@
-local utils = require 'utils'
+local map = vim.keymap.set
 
 -- make `-` and `_` work like `o` and `O` without leaving you stuck in insert
-utils.map('n', '-', 'o<esc>')
-utils.map('n', '_', 'O<esc>')
+map('n', '-', 'o<esc>', { desc = 'Insert line below' })
+map('n', '_', 'O<esc>', { desc = 'Insert line above' })
 
 -- Expand %% into the directory of the current file
-cmd "cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'"
+vim.cmd [[cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%']]
 -- Save with sudo
-cmd 'cmap w!! %!sudo tee > /dev/null %'
+vim.cmd [[cmap w!! %!sudo tee > /dev/null %]]
 
-utils.map('n', 'gV', '`[v`]') -- Highlight last inserted text
-utils.map('n', 'vv', '<C-w>v', { silent = true }) -- Generate new vertical split
-utils.map('n', 'Q', '')
-utils.map('n', 'q:', '')
-utils.map('n', 'J', 'mjJ`j') -- Join lines and restore cursor location
+map('n', 'gV', '`[v`]', { desc = 'Highlight last inserted text' })
+map('n', 'vv', '<C-w>v', { desc = 'Vertical split', silent = true })
+map('n', 'Q', '<Nop>')
+map('n', 'q:', '<Nop>')
+map('n', 'J', 'mjJ`j', { desc = 'Join lines without moving cursor' })
 
 -- Smart `0`
 -- `0` goes to the beginning of the text on first press and to the beginning
---" of the line on second press. It alternates afterwards.
-utils.map('n', '0', "virtcol('.') - 1 <= indent('.') && col('.') > 1 ? '0' : '_'", { expr = true })
+-- of the line on second press. It alternates afterwards.
+map('n', '0', "virtcol('.') - 1 <= indent('.') && col('.') > 1 ? '0' : '_'", { expr = true, desc = 'Smart line start' })
 
-utils.map('n', '<leader>p', '<cmd>lua require("telescope").extensions.neoclip.default()<cr>') -- Open Clipboard history
+map('n', '<leader>e', '<cmd>Explore<cr>', { desc = 'Explore files' })
+map('n', '<leader>p', '<cmd>lua require("telescope").extensions.neoclip.default()<cr>', { desc = 'Clipboard history' })
 
 -- Navigator Bindings
-utils.map('n', '<C-h>', '<cmd>lua require("Navigator").left()<cr>', { silent = true })
-utils.map('n', '<C-j>', '<cmd>lua require("Navigator").down()<cr>', { silent = true })
-utils.map('n', '<C-k>', '<cmd>lua require("Navigator").up()<cr>', { silent = true })
-utils.map('n', '<C-l>', '<cmd>lua require("Navigator").right()<cr>', { silent = true })
+map('n', '<C-h>', function() require('Navigator').left() end, { desc = 'Move left', silent = true })
+map('n', '<C-j>', function() require('Navigator').down() end, { desc = 'Move down', silent = true })
+map('n', '<C-k>', function() require('Navigator').up() end, { desc = 'Move up', silent = true })
+map('n', '<C-l>', function() require('Navigator').right() end, { desc = 'Move right', silent = true })
 
-utils.map('n', '<leader>r', '<cmd>RustLsp runnables<cr>', { silent = true }) -- Rust runnables
+map('n', '<leader>r', '<cmd>RustLsp runnables<cr>', { desc = 'Rust runnables', silent = true })
+
+-- Native diagnostics / quickfix
+map('n', '<leader>xw', function() vim.diagnostic.setqflist { open = true } end, { desc = 'Workspace diagnostics' })
+map('n', '<leader>xd', function()
+  vim.fn.setqflist(vim.diagnostic.toqflist(vim.diagnostic.get(0)), 'r')
+  vim.cmd.copen()
+end, { desc = 'Document diagnostics' })
+map('n', '<leader>xq', '<cmd>copen<cr>', { desc = 'Open quickfix list' })
+map('n', '<leader>xl', function() vim.diagnostic.setloclist { open = true } end, { desc = 'Document diagnostics loclist' })
 
 -- Git
-
-utils.map('n', '<leader>tb', [[<cmd>lua require'gitsigns'.toggle_current_line_blame()<cr>]], { silent = true }) -- Toggle single line git commit context
-utils.map('n', '<leader>gb', [[:Git blame<cr>]], { silent = true })
+map('n', '<leader>tb', function() require('gitsigns').toggle_current_line_blame() end, { desc = 'Toggle line blame', silent = true })
+map('n', '<leader>gb', '<cmd>Git blame<cr>', { desc = 'Git blame', silent = true })
