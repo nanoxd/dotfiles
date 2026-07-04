@@ -3,7 +3,6 @@ return {
   cmd = 'Telescope',
   branch = '0.1.x',
   dependencies = {
-    'nvim-lua/popup.nvim',
     'nvim-lua/plenary.nvim',
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     'folke/todo-comments.nvim',
