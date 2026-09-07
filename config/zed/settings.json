@@ -7,6 +7,39 @@
 // custom settings, run the `zed: Open Default Settings` command
 // from the command palette
 {
+  "semantic_tokens": "combined",
+  "code_lens": "on",
+  "completion_menu_item_kind": "symbol",
+  "languages": {
+    "Rust": {
+      "colorize_brackets": true,
+      "inlay_hints": {
+        "show_background": false,
+        "enabled": true
+      },
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+        "coloring": "indent_aware"
+      }
+    },
+    "Swift": {
+      "colorize_brackets": true,
+      "inlay_hints": {
+        "show_background": false,
+        "enabled": true
+      },
+      "format_on_save": "on",
+      "indent_guides": {
+        "coloring": "indent_aware",
+        "background_coloring": "indent_aware"
+      }
+    }
+  },
+  "diagnostics": {
+    "inline": {
+      "enabled": true
+    }
+  },
   "cli_default_open_behavior": "new_window",
   "project_panel": {
     "dock": "left"
