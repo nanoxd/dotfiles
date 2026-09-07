@@ -42,3 +42,12 @@ pi/agent/trust.json
 pi/agent/sessions/
 pi/agent/npm/
 pi/agent/**/*.jsonl
+
+# App runtime state and credentials written into ~/.config (symlinked here)
+config/tome/config.json
+config/openlogi/*.lock
+config/openlogi/overlay.claim
+*.bak
+
+# Snapzy: not keeping this app long term
+config/snapzy/
