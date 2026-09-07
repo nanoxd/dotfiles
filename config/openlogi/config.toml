@@ -1,0 +1,55 @@
+schema_version = 4
+
+[devices."receiver:060f2d4c146812f1:slot:1".identity]
+display_name = "Lift"
+codename = "LIFT"
+kind = "mouse"
+
+[app_settings]
+launch_at_login = false
+check_for_updates = true
+auto_install_updates = false
+update_prompt_seen = true
+show_in_menu_bar = true
+capture_mouse_events = true
+auto_download_assets = true
+asset_source = "automatic"
+thumbwheel_sensitivity = 14
+appearance = "system"
+
+[devices."receiver:060f2d4c146812f1:slot:1".identity.model_info]
+entity_count = 3
+unit_id = [
+    0,
+    0,
+    0,
+    0,
+]
+model_ids = [
+    45105,
+    0,
+    0,
+]
+extended_model_id = 0
+
+[devices."receiver:060f2d4c146812f1:slot:1".identity.model_info.transports]
+usb = false
+equad = false
+btle = true
+bluetooth = false
+
+[devices."receiver:060f2d4c146812f1:slot:1".identity.capabilities]
+buttons = true
+pointer = true
+lighting = false
+scroll_inversion = false
+hires_wheel = false
+thumbwheel = false
+haptic_feedback = false
+haptic_panel = false
+
+[devices."receiver:060f2d4c146812f1:slot:1".bindings]
+Back = "BrowserBack"
+DpiToggle = "AppExpose"
+
+[keyboard]
