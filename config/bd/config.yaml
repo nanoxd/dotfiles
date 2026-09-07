@@ -1,0 +1,4 @@
+metrics:
+    disabled: true
+    endpoint: https://gastownhall-eventsapi.com/mp/collect
+    notice_shown: true
