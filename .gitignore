@@ -51,3 +51,7 @@ config/openlogi/overlay.claim
 
 # Snapzy: not keeping this app long term
 config/snapzy/
+
+# Orca writes hooks for Devin and Amp here; neither app is in use
+config/devin/
+config/amp/
