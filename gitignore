@@ -25,3 +25,5 @@ tags
 .simudid
 .vscode
 bazel-out
+
+**/.claude/settings.local.json
