@@ -55,3 +55,4 @@ config/snapzy/
 # Orca writes hooks for Devin and Amp here; neither app is in use
 config/devin/
 config/amp/
+config/mole/sudoers-version
