@@ -1,6 +1,6 @@
-schema_version = 4
+schema_version = 7
 
-[devices."receiver:060f2d4c146812f1:slot:1".identity]
+[devices."serial:2520lvtesmf8".identity]
 display_name = "Lift"
 codename = "LIFT"
 kind = "mouse"
@@ -16,8 +16,13 @@ auto_download_assets = true
 asset_source = "automatic"
 thumbwheel_sensitivity = 14
 appearance = "system"
+smooth_scroll = false
+vertical_scroll_sensitivity = 14
+app_icon = "openlogi"
+ui_scale = "normal"
+device_view_mode = "grid"
 
-[devices."receiver:060f2d4c146812f1:slot:1".identity.model_info]
+[devices."serial:2520lvtesmf8".identity.model_info]
 entity_count = 3
 unit_id = [
     0,
@@ -32,13 +37,13 @@ model_ids = [
 ]
 extended_model_id = 0
 
-[devices."receiver:060f2d4c146812f1:slot:1".identity.model_info.transports]
+[devices."serial:2520lvtesmf8".identity.model_info.transports]
 usb = false
 equad = false
 btle = true
 bluetooth = false
 
-[devices."receiver:060f2d4c146812f1:slot:1".identity.capabilities]
+[devices."serial:2520lvtesmf8".identity.capabilities]
 buttons = true
 pointer = true
 lighting = false
@@ -48,7 +53,17 @@ thumbwheel = false
 haptic_feedback = false
 haptic_panel = false
 
-[devices."receiver:060f2d4c146812f1:slot:1".bindings]
+[devices."serial:2520lvtesmf8".links."receiver:060f2d4c146812f1:slot:1".capabilities]
+buttons = true
+pointer = true
+lighting = false
+scroll_inversion = false
+hires_wheel = false
+thumbwheel = false
+haptic_feedback = false
+haptic_panel = false
+
+[devices."serial:2520lvtesmf8".bindings]
 Back = "BrowserBack"
 DpiToggle = "AppExpose"
 
