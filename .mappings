@@ -12,9 +12,6 @@ gitignore = "~/.gitignore"
 hammerspoon = "~/.hammerspoon"
 irbrc = "~/.irbrc"
 pi = "~/.pi"
-"ruby-version" = "~/.ruby-version"
-sheldon = "~/.sheldon"
-stack = "~/.stack"
 "tmux.conf" = "~/.tmux.conf"
 zsh = "~/.zsh"
 zshrc = "~/.zshrc"
@@ -24,7 +21,6 @@ zshrc = "~/.zshrc"
 [darwin]
 lldbinit = "~/.lldbinit"
 "swiftformat.yml" = "~/.swiftformat.yml"
-espanso = "~/Library/Preferences/espanso"
 
 [freebsd]
 
