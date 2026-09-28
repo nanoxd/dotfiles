@@ -62,6 +62,9 @@
   filelog = log -u
   files = "!git ls-files | grep -i"
 
+  # Append patterns to the repo's .gitignore, skipping ones already there
+  ignore = "!f() { for p; do grep -qxF -- \"$p\" .gitignore 2>/dev/null || echo \"$p\" >> .gitignore; done; }; f"
+
   # Remove tracked files
   forget = rm -r --cached
 
