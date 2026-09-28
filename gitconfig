@@ -1,7 +1,7 @@
 [user]
   name = Fernando Paredes
   email = nano@fdp.io
-	signingkey = /Users/nano/.ssh/id_ed25519.pub
+  signingkey = /Users/nano/.ssh/id_ed25519.pub
 
 [push]
   default = current
@@ -11,12 +11,6 @@
 [branch]
   sort = -committerdate
   autoSetupMerge = simple
-
-[color "diffr"]
-  oldNormal = red bold
-  oldHighlight = red bold 52
-  newNormal = green bold
-  newHighlight = green bold 22
 
 [color "diff"]
   commit = green
@@ -39,21 +33,21 @@
   ap = add --patch
 
   biggest = "!git rev-list --objects --all | grep `git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -1 | awk '{ print $1 }'`"
-  branch = branch -vv
   branches = branch -a
-  browse = "!gh repo view --web"
 
   ca = commit --amend
   ci = commit --verbose
   cl = clone --recursive
   co = checkout
-  checkout-pr = !sh -c 'git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1' -
-  cleanup = !git branch --merged | grep -v '\\*\\|main\\|master' | xargs -n 1 git branch -d
+  checkout-pr = !gh pr checkout
 
   # Determines the branch we're on
   current = rev-parse --abbrev-ref HEAD
 
   dc = diff --cached
+
+  # Default branch of origin (kept current by fetch.followRemoteHEAD), falling back to main
+  default-branch = "!b=$(git symbolic-ref -q --short refs/remotes/origin/HEAD) && echo \"${b#origin/}\" || echo main"
 
   # `git di $number` shows the diff between the state `$number` revisions ago and the current state
   di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
@@ -64,7 +58,7 @@
   f = files
 
   # Add fallback logic
-  fallback-to-base = "!if [ -n \"$1\" ]; then echo \"$1\"; else echo main; fi #"
+  fallback-to-base = "!if [ -n \"$1\" ]; then echo \"$1\"; else git default-branch; fi #"
 
   filelog = log -u
   files = "!git ls-files | grep -i"
@@ -88,13 +82,10 @@
   laf = fsck --lost-found
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   ls-ignored = ls-files --exclude-standard --ignored --others
-  m = checkout main
-  merge-branch = !git checkout main && git merge @{-1} --ff-only
+  m = "!git switch \"$(git default-branch)\""
+  merge-branch = "!git switch \"$(git default-branch)\" && git merge @{-1} --ff-only"
   pf = push --force-with-lease
-  pr = !gh pr create
-  purge = !git branch -d $(git branch --merged main | grep -v -e '*' -e 'main')
   recent = for-each-ref --sort=-committerdate --format='%(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(color:blue)%(authorname)%(color:reset) (%(color:green)%(committerdate:relative)%(color:reset))' refs/heads/ --count=10
-  restore = restore
 
   # Display a diff of changes since branch-off point
   review = "!git diff $(git review-base \"$1\") #"
@@ -102,21 +93,18 @@
   # Determines the branch that started the current branch
   review-base = "!git merge-base `git current` $(git fallback-to-base \"$1\") #"
 
-  rebase-origin = !git fetch origin && git rebase origin/main
+  rebase-origin = "!git fetch origin && git rebase origin/HEAD"
   releases = log --decorate --oneline --simplify-by-decoration --all
   reset-hard = reset --hard HEAD
   stats = shortlog -sn --all --no-merges
   sw = switch
   st = status --short --branch
-  tagage = !sh -c 'git for-each-ref --sort=taggerdate refs/tags --format=\"%(refname:short)\"'
-  timespan = "!f() { one=$(git log -n 1 --format=%ai $1); two=$(git log -n 1 --format=%ai ${2:-HEAD}); ddiff -f ${3:-%mm%dd} \"$one\" \"$two\"; }; f"
-  undo = "!f() { \\\n    git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; \\\n}; f"
-  unpushed = log --oneline HEAD..."@{u}"
-  wip = rebase -i "@{u}"
+  tagage = for-each-ref --sort=taggerdate --format=%(refname:short) refs/tags
+  unpushed = log --oneline @{u}..HEAD
 
   # Worktree management
   wt = worktree list
-  wta = "!f() { git worktree add \"$@\"; }; f"
+  wta = worktree add
   wtr = worktree remove
   wtp = worktree prune
 
@@ -124,10 +112,7 @@
   attributesfile = ~/.gitattributes
   excludesfile = ~/.gitignore
   editor = nvim
-  log = delta
-  show = delta
   pager = delta
-  whitespace = fix
   # fsmonitor = true  # Disabled - causes issues on macOS
   # splitIndex = true  # Disabled - can cause index issues
 
@@ -187,14 +172,14 @@
   # Use `hexdump` to diff binary files
   textconv = hexdump -v -C
 
+[diff "lockb"]
+  textconv = bun
+  binary = true
+
 [filter "lfs"]
   smudge = git-lfs smudge -- %f
   required = true
   clean = git-lfs clean -- %f
-
-[index]
-  # version = 4  # Can cause compatibility issues
-  threads = 0
 
 [feature]
   # manyFiles = true  # Only enable if needed for large repos
@@ -205,9 +190,7 @@
   strategy = incremental
 
 [transfer]
-  fsckObjects = true
-
-[receive]
+  # Also covers fetch.fsckObjects and receive.fsckObjects
   fsckObjects = true
 
 [advice]
@@ -221,16 +204,15 @@
 [fetch]
   prune = true
   prunetags = true
-  fsckObjects = true
   writeCommitGraph = true
+  # Keep origin/HEAD pointing at the remote's default branch (git 2.56+)
+  followRemoteHEAD = always
+
 [init]
-	defaultBranch = main
+  defaultBranch = main
 
 [commitGraph]
   changedPaths = true
-
-[protocol]
-  version = 2
 
 [gpg]
   format = ssh
@@ -243,15 +225,14 @@
   features = decorations
 
 [delta "decorations"]
-    commit-decoration-style = bold yellow box ul
-    file-style = bold yellow ul
-    file-decoration-style = none
-    hunk-header-decoration-style = yellow box
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
+  hunk-header-decoration-style = yellow box
+
 [checkout]
-	workers = 0
-[diff "lockb"]
-	textconv = bun
-	binary = true
+  workers = 0
+
 [merge]
   conflictstyle = zdiff3
   autoStash = true
