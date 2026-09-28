@@ -39,7 +39,6 @@
   ci = commit --verbose
   cl = clone --recursive
   co = checkout
-  checkout-pr = !gh pr checkout
 
   # Determines the branch we're on
   current = rev-parse --abbrev-ref HEAD
@@ -78,7 +77,6 @@
   fstash = "!git stash list | fzf --preview 'echo {} | cut -d: -f1 | xargs git stash show -p --color=always' --preview-window=right:60% | cut -d: -f1"
 
   graph = log --graph --pretty=format:'%C(auto)%h%d %s %C(black)%C(bold)%cr %C(blue)%an' --all
-  issues = !gh issue list --web
   laf = fsck --lost-found
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   ls-ignored = ls-files --exclude-standard --ignored --others
