@@ -51,8 +51,6 @@ This is a personal dotfiles repository containing configuration files for variou
 # Custom git utilities available in bin/
 git-branch-current    # Get current branch name
 git-conflicts         # Show merge conflicts
-git-delete-local-merged  # Clean up merged branches
-git-sweep            # Clean up branches
 git-undo             # Undo recent changes
 ```
 
