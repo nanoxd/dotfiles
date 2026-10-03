@@ -14,7 +14,7 @@ This is a personal dotfiles repository containing configuration files for variou
   - `nvim/` - Neovim configuration with Lua-based setup
   - `fish/` - Fish shell configuration (currently mostly commented out, using Starship prompt)
   - `ghostty/` - Terminal emulator configuration
-  - `mise/` - Tool version management (managing Zig, Node.js, Ruby)
+  - `mise/` - Tool version management (managing Zig and Node.js)
   - `raycast/` - Raycast extensions and configurations
 
 - **bin/** - Custom shell scripts and utilities collection including:
@@ -41,7 +41,6 @@ This is a personal dotfiles repository containing configuration files for variou
 
 **Version Management**: mise (formerly rtx) manages:
 - Node.js (latest)
-- Ruby (version 3)
 - Zig (latest)
 
 ## Common Commands
