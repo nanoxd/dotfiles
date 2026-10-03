@@ -1,39 +1,24 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env sh
+#/ Usage: git-large-files [count]
+#/ List the largest blobs anywhere in history with their paths (default: 10).
 
-require 'optparse'
+set -eu
 
-options = {}
-OptionParser.new do |opts|
-  opts.banner = "Usage: git-large-files [options]"
+case "${1:-}" in
+  -h|--help) grep '^#/' "$0" | cut -c4-; exit 0 ;;
+esac
 
-  opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
-    options[:verbose] = v
-  end
+count="${1:-10}"
 
-  opts.separator ""
-  opts.separator "Common options:"
-
-  opts.on_tail("-h", "--help", "Show this message") do
-    puts opts
-    exit
-  end
-end.parse!
-
-PACK = ARGV[0]
-
-def files_in_blob(blob)
-  `git rev-list --objects --all | grep #{blob}`
-end
-
-def find_large_blobs(pack)
-  blobs = `git verify-pack -v #{pack} | sort -k 3 -n | tail -10 | awk '{print $1}'`
-
-  blobs.split "\n"
-end
-
-large_blobs = find_large_blobs PACK
-
-large_blobs.each do |large_blob|
-  files = files_in_blob(large_blob)
-  puts files
-end
+git rev-list --objects --all |
+  git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' |
+  awk '$1 == "blob"' |
+  sort -k3 -n -r |
+  head -n "$count" |
+  awk '{
+    size = $3; unit = "B"
+    if (size >= 1048576) { size /= 1048576; unit = "MiB" }
+    else if (size >= 1024) { size /= 1024; unit = "KiB" }
+    path = $0; sub(/^[^ ]+ [^ ]+ [^ ]+ ?/, "", path)
+    printf "%s  %8.1f %-3s  %s\n", substr($2, 1, 12), size, unit, path
+  }'

@@ -41,8 +41,3 @@ if command -v cargo-install-update >/dev/null
   pretty_print "Updating Crates"
   cargo install-update -a
 end
-
-if command -v gem >/dev/null
-  pretty_print "Updating Gems"
-  gem update
-end

@@ -1,7 +1,6 @@
 # vim: set ft=toml ts=2 sw=2 et :
 
 [general]
-ackrc = "~/.ackrc"
 aws = "~/.aws"
 bin = "~/.bin"
 config = "~/.config"
