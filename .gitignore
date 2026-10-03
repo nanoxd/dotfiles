@@ -55,4 +55,7 @@ config/snapzy/
 # Orca writes hooks for Devin and Amp here; neither app is in use
 config/devin/
 config/amp/
+# Orca-installed OpenCode plugins
+config/opencode/plugins/orca-opencode-status.js
+config/opencode/plugins/orca-opencode-status-tui/
 config/mole/sudoers-version
