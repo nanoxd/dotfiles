@@ -2,7 +2,7 @@
 vim.g.mapleader = ' '
 vim.opt.signcolumn = 'yes'
 
-require 'config.lazy'
-require 'keys'
 require 'settings'
 require 'formatting'
+require 'config.lazy'
+require 'keys'

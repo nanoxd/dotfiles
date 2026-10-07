@@ -18,26 +18,11 @@ local mode_map = {
   ['VISUAL'] = 'V',
 }
 
--- Make a global table
-wordCount = {}
--- Now add a function to it for the job needed
-function wordCount.getWords()
-  if
-    vim.bo.filetype == 'md'
-    or vim.bo.filetype == 'txt'
-    or vim.bo.filetype == 'markdown'
-    or vim.bo.filetype == 'mdx'
-  then
-    if vim.fn.wordcount().visual_words == 1 then
-      return tostring(vim.fn.wordcount().visual_words) .. ' word'
-    elseif not (vim.fn.wordcount().visual_words == nil) then
-      return tostring(vim.fn.wordcount().visual_words) .. ' words'
-    else
-      return tostring(vim.fn.wordcount().words) .. ' words'
-    end
-  else
-    return 'Not a text file'
-  end
+local function word_count()
+  if not vim.tbl_contains({ 'text', 'markdown', 'mdx' }, vim.bo.filetype) then return '' end
+  local counts = vim.fn.wordcount()
+  local words = counts.visual_words or counts.words
+  return tostring(words) .. (words == 1 and ' word' or ' words')
 end
 
 local function place()
@@ -65,7 +50,6 @@ return {
   event = 'VeryLazy',
   dependencies = {
     'nvim-tree/nvim-web-devicons',
-    opt = true,
   },
   config = function()
     require('lualine').setup {
@@ -98,10 +82,10 @@ return {
             },
           },
           {
-            wordCount.getWords,
+            word_count,
             color = { fg = '#16161D', bg = '#DCD7BA' },
             separator = { left = '', right = '' },
-            cond = function() return wordCount.getWords() ~= 'Not a text file' end,
+            cond = function() return word_count() ~= '' end,
           },
           {
             'searchcount',
@@ -136,7 +120,6 @@ return {
         lualine_b = {
           {
             'diff',
-            source = diff_source,
             color_added = '#a7c080',
             color_modified = '#ffdf1b',
             color_removed = '#ff6666',

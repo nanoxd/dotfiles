@@ -1,9 +1,10 @@
 return {
   'nvim-telescope/telescope.nvim',
   cmd = 'Telescope',
-  branch = '0.1.x',
+  branch = 'master',
   dependencies = {
     'nvim-lua/plenary.nvim',
+    'AckslD/nvim-neoclip.lua',
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     'folke/todo-comments.nvim',
   },
@@ -33,5 +34,6 @@ return {
     }
 
     telescope.load_extension 'fzf'
+    telescope.load_extension 'neoclip'
   end,
 }

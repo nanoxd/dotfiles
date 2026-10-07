@@ -42,19 +42,23 @@ return {
     'MagicDuck/grug-far.nvim',
     opts = {},
     keys = {
-      { '<leader>S', function() require('grug-far').open() end, desc = 'Search and Replace' },
+      {
+        '<leader>S',
+        function() require('grug-far').open() end,
+        desc = 'Search and Replace',
+      },
     },
   },
 
   {
     'AckslD/nvim-neoclip.lua',
-    dependencies = { 'kkharji/sqlite.lua', module = 'sqlite' },
+    dependencies = { 'kkharji/sqlite.lua' },
     config = function() require('neoclip').setup() end,
   },
 
   {
     'mrcjkb/rustaceanvim',
-    version = '^5', -- Recommended
+    version = '^9', -- Neovim 0.12+
     lazy = false, -- This plugin is already lazy
   },
 
@@ -69,6 +73,12 @@ return {
         rust = { 'rustfmt', lsp_format = 'fallback' },
         -- Conform will run the first available formatter
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        typescript = { 'prettierd', 'prettier', stop_after_first = true },
+        typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        json = { 'prettierd', 'prettier', stop_after_first = true },
+        css = { 'prettierd', 'prettier', stop_after_first = true },
+        html = { 'prettierd', 'prettier', stop_after_first = true },
       },
       format_on_save = {
         -- These options will be passed to conform.format()

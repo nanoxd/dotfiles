@@ -2,21 +2,10 @@ return {
   'neovim/nvim-lspconfig',
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
+    'mason-org/mason.nvim',
+    'mason-org/mason-lspconfig.nvim',
   },
   config = function()
-    local mason = require 'mason'
-    mason.setup {
-      ui = {
-        icons = {
-          package_installed = '✓',
-          package_pending = '➜',
-          package_uninstalled = '✗',
-        },
-      },
-    }
-
     -- Set capabilities for all servers (blink.cmp handles this)
     vim.lsp.config('*', {
       capabilities = require('blink.cmp').get_lsp_capabilities(),
@@ -33,6 +22,30 @@ return {
       },
     })
 
+    -- Use one root decision so Deno and TypeScript never claim the same file.
+    -- Lockfiles distinguish nested Node packages from a surrounding Deno project.
+    local function javascript_root(bufnr)
+      local node_root = vim.fs.root(bufnr, {
+        'package-lock.json',
+        'yarn.lock',
+        'pnpm-lock.yaml',
+        'bun.lockb',
+        'bun.lock',
+      })
+      local deno_root = vim.fs.root(bufnr, { 'deno.json', 'deno.jsonc', 'deno.lock' })
+      if deno_root and (not node_root or #deno_root >= #node_root) then return 'denols', deno_root end
+      return 'ts_ls', node_root or vim.fs.root(bufnr, { '.git' }) or vim.fn.getcwd()
+    end
+
+    for _, server in ipairs { 'denols', 'ts_ls' } do
+      vim.lsp.config(server, {
+        root_dir = function(bufnr, on_dir)
+          local owner, root = javascript_root(bufnr)
+          if owner == server then on_dir(root) end
+        end,
+      })
+    end
+
     require('mason-lspconfig').setup {
       ensure_installed = {
         'ts_ls',
@@ -43,7 +56,8 @@ return {
         'rust_analyzer',
         'denols',
       },
-      automatic_enable = true,
+      -- rustaceanvim starts and configures its own Rust client.
+      automatic_enable = { exclude = { 'rust_analyzer' } },
     }
 
     -- Diagnostic config with signs

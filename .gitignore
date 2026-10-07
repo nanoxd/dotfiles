@@ -4,7 +4,6 @@ config/nvim/.netrwhist
 config/nvim/backups
 config/nvim/pack
 config/nvim/plugin
-config/nvim/lazy-lock.json
 config/nvim/.luarc.json
 zsh/plugins.lock
 zsh/repositories

@@ -1,4 +1,10 @@
-vim.api.nvim_create_autocmd({ 'FileType' }, {
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('UserIndentation', { clear = true }),
   pattern = 'rust',
-  command = 'set expandtab tabstop=4 softtabstop=4 shiftwidth=4',
+  callback = function()
+    vim.bo.expandtab = true
+    vim.bo.tabstop = 4
+    vim.bo.softtabstop = 4
+    vim.bo.shiftwidth = 4
+  end,
 })

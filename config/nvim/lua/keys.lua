@@ -7,7 +7,7 @@ map('n', '_', 'O<esc>', { desc = 'Insert line above' })
 -- Expand %% into the directory of the current file
 vim.cmd [[cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%']]
 -- Save with sudo
-vim.cmd [[cmap w!! %!sudo tee > /dev/null %]]
+vim.cmd [[cnoreabbrev <expr> w!! getcmdtype() == ':' && getcmdline() == 'w!!' ? 'SudaWrite' : 'w!!']]
 
 map('n', 'gV', '`[v`]', { desc = 'Highlight last inserted text' })
 map('n', 'vv', '<C-w>v', { desc = 'Vertical split', silent = true })
@@ -29,7 +29,13 @@ map('n', '<C-j>', function() require('Navigator').down() end, { desc = 'Move dow
 map('n', '<C-k>', function() require('Navigator').up() end, { desc = 'Move up', silent = true })
 map('n', '<C-l>', function() require('Navigator').right() end, { desc = 'Move right', silent = true })
 
-map('n', '<leader>r', '<cmd>RustLsp runnables<cr>', { desc = 'Rust runnables', silent = true })
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('UserRustKeys', { clear = true }),
+  pattern = 'rust',
+  callback = function(event)
+    map('n', '<leader>r', '<cmd>RustLsp runnables<cr>', { buffer = event.buf, desc = 'Rust runnables', silent = true })
+  end,
+})
 
 -- Native diagnostics / quickfix
 map('n', '<leader>xw', function() vim.diagnostic.setqflist { open = true } end, { desc = 'Workspace diagnostics' })
