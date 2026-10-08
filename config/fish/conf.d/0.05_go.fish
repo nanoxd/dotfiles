@@ -1,7 +1,8 @@
-set -gx GOPATH $HOME/go
-
-if test -d $GOPATH/bin
-    fish_add_path -amg $GOPATH/bin
-else
-    _warn_no_command go
+if not set -q GOPATH; or test -z "$GOPATH"
+    set -gx GOPATH "$HOME/go"
+end
+for go_path in (string split : -- "$GOPATH")
+    if test -n "$go_path"
+        fish_add_path --path --append "$go_path/bin"
+    end
 end

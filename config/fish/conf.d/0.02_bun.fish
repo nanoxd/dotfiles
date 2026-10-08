@@ -1,7 +1,4 @@
-set -gx BUN_INSTALL "$HOME/.bun"
-
-if test -d $BUN_INSTALL/bin
-    fish_add_path -amg "$BUN_INSTALL/bin"
-else
-    _warn_no_command bun
+if not set -q BUN_INSTALL; or test -z "$BUN_INSTALL"
+    set -gx BUN_INSTALL "$HOME/.bun"
 end
+fish_add_path --path --append "$BUN_INSTALL/bin"

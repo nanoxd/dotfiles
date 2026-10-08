@@ -30,16 +30,18 @@ bindkey -v
 bindkey '^r' history-incremental-search-backward
 
 zmodload zsh/terminfo
-if [[ "$(uname -s)" == "Darwin" ]]; then
-  bindkey "$terminfo[cuu1]" history-substring-search-up
-  bindkey "$terminfo[cud1]" history-substring-search-down
-else
-  bindkey "$terminfo[kcuu1]" history-substring-search-up
-  bindkey "$terminfo[kcud1]" history-substring-search-down
-fi
+if (( $+widgets[history-substring-search-up] && $+widgets[history-substring-search-down] )); then
+  if [[ "$(uname -s)" == "Darwin" ]]; then
+    [[ -n "$terminfo[cuu1]" ]] && bindkey "$terminfo[cuu1]" history-substring-search-up
+    [[ -n "$terminfo[cud1]" ]] && bindkey "$terminfo[cud1]" history-substring-search-down
+  else
+    [[ -n "$terminfo[kcuu1]" ]] && bindkey "$terminfo[kcuu1]" history-substring-search-up
+    [[ -n "$terminfo[kcud1]" ]] && bindkey "$terminfo[kcud1]" history-substring-search-down
+  fi
 
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
+  bindkey -M vicmd 'k' history-substring-search-up
+  bindkey -M vicmd 'j' history-substring-search-down
+fi
 
 # Directory Changing
 setopt autocd

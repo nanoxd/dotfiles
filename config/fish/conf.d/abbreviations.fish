@@ -1,4 +1,4 @@
-status is-interactive; or exit
+status is-interactive; or return
 
 abbr -a co code
 abbr -a cc claude
@@ -31,7 +31,7 @@ abbr -a gin git introduced
 abbr -a gp git push
 abbr -a gpf git push --force-with-lease
 abbr -a gpom git pull origin main --rebase
-abbr -a gpr git pull-request --browse
+abbr -a gpr gh pr view --web
 abbr -a gpu git pull --rebase
 abbr -a gs git status -sb
 

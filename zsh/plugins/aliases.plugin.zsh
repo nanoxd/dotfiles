@@ -18,21 +18,22 @@ function p() {
 
 # tm - creates new tmux session, or switch to existing one.
 function tm() {
+    local change session
     [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
-    if [ $1 ]; then
-      tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
+    if [[ -n "$1" ]]; then
+      tmux "$change" -t "$1" 2>/dev/null || (tmux new-session -d -s "$1" && tmux "$change" -t "$1"); return
     fi
     session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
 }
 
-alias rm='trash'
+(( $+commands[trash] )) && alias rm='trash'
 
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
-alias ls='eza'
+(( $+commands[eza] )) && alias ls='eza'
 alias ll='ls -l'
 alias la='ls -al'
 
@@ -40,7 +41,7 @@ if (( $+commands[brew] )); then
   function brew() {
     case "$1" in
       cleanup)
-        command brew cleanup --prune-prefix
+        command brew cleanup --prune-prefix "${@:2}"
         ;;
       bump)
         command brew update
@@ -56,7 +57,7 @@ if (( $+commands[brew] )); then
   alias bi='brew install'
 fi
 
-alias rm-mac-metadata='find . -name ".DS_Store" -or -name "._*" -delete'
+alias rm-mac-metadata='find . -type f \( -name ".DS_Store" -o -name "._*" \) -delete'
 
 # Editors
 alias co='code'

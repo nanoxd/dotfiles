@@ -1,7 +1,4 @@
-set -gx DENO_INSTALL $HOME/.deno
-
-if test -d $DENO_INSTALL/bin
-    fish_add_path -amg $DENO_INSTALL/bin
-else
-    _warn_no_command deno
+if not set -q DENO_INSTALL; or test -z "$DENO_INSTALL"
+    set -gx DENO_INSTALL "$HOME/.deno"
 end
+fish_add_path --path --append "$DENO_INSTALL/bin"
