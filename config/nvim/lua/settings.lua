@@ -1,6 +1,4 @@
 local cmd = vim.cmd
-local fn = vim.fn
-local g = vim.g
 local opt = vim.opt
 
 opt.iskeyword:append { '-' } -- Set Hyphen as part of a text object
@@ -15,7 +13,6 @@ opt.winminheight = 10
 -- Whitespace
 opt.list = true -- Show invisible characters
 opt.listchars = { tab = '>~', trail = '·', eol = '¬', nbsp = '_' }
-opt.smartindent = true
 opt.wrap = false
 
 -- Spacing
@@ -28,13 +25,7 @@ opt.expandtab = true
 opt.backup = false
 opt.writebackup = false
 opt.swapfile = false
--- Persistent Undo
-
-local undodir = fn.expand(fn.stdpath 'cache' .. '/undo')
-
-if fn.isdirectory(undodir) == 0 then fn.mkdir(undodir, 'p') end
-
-opt.undodir = undodir
+-- Persistent undo, stored in the default stdpath('state')/undo
 opt.undofile = true
 
 -- Display
@@ -43,11 +34,12 @@ opt.relativenumber = true
 opt.number = true
 opt.lazyredraw = true
 opt.cursorline = true
+opt.signcolumn = 'yes'
 
--- Allow Transparency
-cmd 'hi! Normal ctermbg=NONE guibg=NONE'
-cmd 'hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE'
-cmd 'highlight link EndOfBuffer Comment'
+-- Folding: Treesitter or LSP sets foldexpr per buffer; start with everything open.
+opt.foldmethod = 'expr'
+opt.foldlevelstart = 99
+opt.foldtext = ''
 
 opt.sidescrolloff = 3
 opt.pumborder = 'rounded'
@@ -62,10 +54,3 @@ cmd.packadd 'nvim.undotree'
 -- Search
 opt.ignorecase = true
 opt.smartcase = true
-
--- Netrw
--- Keep the built-in file explorer quiet and tree-like.
-g.netrw_banner = 0
-g.netrw_list_hide = [[.*\.swp$,\.DS_Store]]
-g.netrw_liststyle = 3
-g.netrw_sort_options = 'i'

@@ -65,6 +65,21 @@ return {
       end,
     })
 
+    -- Swift's server ships with Xcode rather than Mason. Leave C and C++ to clangd.
+    vim.lsp.config('sourcekit', { filetypes = { 'swift', 'objc', 'objcpp' } })
+    vim.lsp.enable 'sourcekit'
+
+    -- Upstream oxlint attaches without a root when no config is found. Only lint projects
+    -- that opt in, so it never doubles up with ESLint.
+    local oxlint_root = vim.lsp.config.oxlint.root_dir
+    vim.lsp.config('oxlint', {
+      root_dir = function(bufnr, on_dir)
+        oxlint_root(bufnr, function(root)
+          if root then on_dir(root) end
+        end)
+      end,
+    })
+
     require('mason-lspconfig').setup {
       ensure_installed = {
         'tsc',
@@ -74,6 +89,10 @@ return {
         'tailwindcss',
         'emmylua_ls',
         'rust_analyzer',
+        'ruff',
+        'ty',
+        'eslint',
+        'oxlint',
         'denols',
       },
       -- rustaceanvim starts and configures its own Rust client.
@@ -127,10 +146,30 @@ return {
         opts.desc = 'Show line diagnostics'
         keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts)
 
+        opts.desc = 'Toggle inlay hints'
+        keymap.set(
+          'n',
+          '<leader>th',
+          function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = ev.buf }, { bufnr = ev.buf }) end,
+          opts
+        )
+
         opts.desc = 'Restart LSP'
         keymap.set('n', '<leader>rs', '<cmd>lsp restart<CR>', opts)
 
         vim.lsp.codelens.enable(true, { bufnr = ev.buf })
+
+        -- nvim-highlight-colors already draws swatches in every filetype.
+        vim.lsp.document_color.enable(false, { bufnr = ev.buf })
+
+        local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
+        if client:supports_method('textDocument/inlayHint', ev.buf) then
+          vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
+        end
+        if client:supports_method('textDocument/foldingRange', ev.buf) then
+          local win = vim.api.nvim_get_current_win()
+          if vim.api.nvim_win_get_buf(win) == ev.buf then vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()' end
+        end
       end,
     })
   end,

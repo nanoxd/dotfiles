@@ -27,4 +27,10 @@ require('lazy').setup {
   change_detection = {
     notify = false,
   },
+  performance = {
+    rtp = {
+      -- Oil replaces netrw, and blink.pairs highlights matching pairs.
+      disabled_plugins = { 'gzip', 'matchparen', 'netrwPlugin', 'tarPlugin', 'tutor', 'zipPlugin' },
+    },
+  },
 }

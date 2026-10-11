@@ -37,6 +37,9 @@ return {
         -- Keep ordinary filetype behavior for buffers without an installed parser.
         if not language or not pcall(vim.treesitter.language.add, language) then return end
         if vim.treesitter.query.get(language, 'highlights') then vim.treesitter.start(event.buf, language) end
+        if vim.treesitter.query.get(language, 'folds') then
+          vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        end
         if vim.treesitter.query.get(language, 'indents') then
           vim.bo[event.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
         end

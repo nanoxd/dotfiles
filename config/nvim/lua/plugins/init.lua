@@ -11,7 +11,24 @@ return {
   {
     'lewis6991/gitsigns.nvim', -- Adds Git highlighting
     event = { 'BufReadPre', 'BufNewFile' },
-    opts = {},
+    opts = {
+      on_attach = function(bufnr)
+        local gitsigns = require 'gitsigns'
+        local function map(mode, lhs, rhs, desc) vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc }) end
+
+        map('n', ']h', function() gitsigns.nav_hunk 'next' end, 'Next hunk')
+        map('n', '[h', function() gitsigns.nav_hunk 'prev' end, 'Previous hunk')
+        map('n', '<leader>hs', gitsigns.stage_hunk, 'Stage hunk')
+        map('n', '<leader>hr', gitsigns.reset_hunk, 'Reset hunk')
+        map('x', '<leader>hs', function() gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' } end, 'Stage selection')
+        map('x', '<leader>hr', function() gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' } end, 'Reset selection')
+        map('n', '<leader>hS', gitsigns.stage_buffer, 'Stage buffer')
+        map('n', '<leader>hp', gitsigns.preview_hunk_inline, 'Preview hunk')
+        map('n', '<leader>hd', gitsigns.diffthis, 'Diff against index')
+        map('n', '<leader>tb', gitsigns.toggle_current_line_blame, 'Toggle line blame')
+        map({ 'o', 'x' }, 'ih', gitsigns.select_hunk, 'Select hunk')
+      end,
+    },
   },
 
   -- Tools
@@ -42,7 +59,8 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform will run multiple formatters sequentially
-        python = { 'isort', 'black' },
+        python = { 'ruff_organize_imports', 'ruff_format' },
+        swift = { 'swiftformat' },
         -- You can customize some of the format options for the filetype (:help conform.format)
         rust = { 'rustfmt', lsp_format = 'fallback' },
         -- Conform will run the first available formatter

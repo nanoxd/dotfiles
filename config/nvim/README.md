@@ -13,7 +13,7 @@ xcode-select --install # only if the Command Line Tools are missing
 
 Rust editing also needs a Rust toolchain with `cargo`, `rustc`, and `rustfmt`. The dotfiles deployment maps this directory to `~/.config/nvim`.
 
-Open `nvim` and allow the initial plugin, parser, language-server, and formatter downloads to finish. Mason installs StyLua, Black, isort, and prettierd. Rustaceanvim owns the Rust language server, and emmylua_ls handles Lua. JavaScript and TypeScript buffers get one server based on the nearest project markers: denols for Deno projects, the native TypeScript 7 server (`tsc --lsp`) when the project has no local TypeScript or a 7.x one, and ts_ls for projects pinned to older TypeScript.
+Open `nvim` and allow the initial plugin, parser, language-server, and formatter downloads to finish. Mason installs StyLua, prettierd, and the language servers. Swift uses the `sourcekit-lsp` that ships with Xcode and formats with `swiftformat` (`brew install swiftformat`). Rustaceanvim owns the Rust language server, and emmylua_ls handles Lua (settings in `.emmyrc.json`). Python uses ty for types and Ruff for linting, import sorting, and formatting. ESLint and oxlint attach only in projects that configure them. JavaScript and TypeScript buffers get one server based on the nearest project markers: denols for Deno projects, the native TypeScript 7 server (`tsc --lsp`) when the project has no local TypeScript or a 7.x one, and ts_ls for projects pinned to older TypeScript.
 
 ## Maintenance
 
@@ -31,10 +31,13 @@ The leader is Space.
 | --- | --- |
 | Ctrl-P | Find files |
 | `\\` | Search file contents |
-| Space-e | File explorer |
+| Space-e | File explorer (oil; edit the buffer and `:w` to rename, move, or delete) |
 | Space-p | Yank history (`[y`/`]y` cycle after a put) |
 | Space-u | Undo tree |
 | Space-fm | Marks |
+| `]h` / `[h` | Next / previous Git hunk |
+| Space-hs, Space-hr, Space-hp | Stage, reset, preview hunk |
+| Space-th | Toggle inlay hints |
 | Enter / Backspace | Grow / shrink the selection by syntax node |
 | Ctrl-h/j/k/l | Move between windows, then tmux panes |
 | Space-fr | Resume last picker |
@@ -45,4 +48,4 @@ The leader is Space.
 | Space-r | Rust runnables, in Rust buffers |
 | `af`, `if`, `ac`, `ic` | Function and class text objects |
 
-Diagnostics show as signs, with the full message under the cursor line. Formatting runs on save. Use `:ConformInfo` to inspect the formatter selected for the current buffer. `:w!!` expands to `:SudaWrite` for a privileged save.
+Folds come from the language server or Treesitter and start open. Diagnostics show as signs, with the full message under the cursor line. Formatting runs on save. Use `:ConformInfo` to inspect the formatter selected for the current buffer. `:w!!` expands to `:SudaWrite` for a privileged save.

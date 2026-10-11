@@ -9,7 +9,7 @@ return {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     dependencies = { 'mason-org/mason.nvim' },
     opts = {
-      ensure_installed = { 'stylua', 'black', 'isort', 'prettierd' },
+      ensure_installed = { 'stylua', 'prettierd' },
       auto_update = false,
       integrations = { ['mason-lspconfig'] = false, ['mason-null-ls'] = false, ['mason-nvim-dap'] = false },
     },

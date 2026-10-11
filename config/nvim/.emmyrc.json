@@ -1,0 +1,6 @@
+{
+  "$schema": "https://raw.githubusercontent.com/EmmyLuaLs/emmylua-analyzer-rust/main/crates/emmylua_code_analysis/resources/schema.json",
+  "completion": {
+    "callSnippet": true
+  }
+}

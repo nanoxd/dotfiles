@@ -20,7 +20,6 @@ map('n', 'J', 'mjJ`j', { desc = 'Join lines without moving cursor' })
 -- of the line on second press. It alternates afterwards.
 map('n', '0', "virtcol('.') - 1 <= indent('.') && col('.') > 1 ? '0' : '_'", { expr = true, desc = 'Smart line start' })
 
-map('n', '<leader>e', '<cmd>Explore<cr>', { desc = 'Explore files' })
 map('n', '<leader>u', '<cmd>Undotree<cr>', { desc = 'Undo tree' })
 map('n', '<leader>fm', '<cmd>FzfLua marks<cr>', { desc = 'Marks' })
 
@@ -64,5 +63,4 @@ map('n', '<leader>xq', '<cmd>copen<cr>', { desc = 'Open quickfix list' })
 map('n', '<leader>xl', function() vim.diagnostic.setloclist { open = true } end, { desc = 'Document diagnostics loclist' })
 
 -- Git
-map('n', '<leader>tb', function() require('gitsigns').toggle_current_line_blame() end, { desc = 'Toggle line blame', silent = true })
 map('n', '<leader>gb', '<cmd>Git blame<cr>', { desc = 'Git blame', silent = true })
