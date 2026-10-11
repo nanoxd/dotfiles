@@ -18,7 +18,7 @@ return {
   -- Tools
   'kevinhwang91/nvim-bqf', -- Make QuickFix better
   'rhysd/committia.vim', -- More Pleasant Editing on Commit Message
-  'lambdalisue/suda.vim', -- Sudo support in nvim
+  'lambdalisue/vim-suda', -- Sudo support in nvim
   'tpope/vim-fugitive', -- Git for Vim
   {
     'chentoast/marks.nvim', -- Improve marks
@@ -48,12 +48,6 @@ return {
         desc = 'Search and Replace',
       },
     },
-  },
-
-  {
-    'AckslD/nvim-neoclip.lua',
-    dependencies = { 'kkharji/sqlite.lua' },
-    config = function() require('neoclip').setup() end,
   },
 
   {

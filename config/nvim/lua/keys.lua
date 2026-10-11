@@ -21,7 +21,7 @@ map('n', 'J', 'mjJ`j', { desc = 'Join lines without moving cursor' })
 map('n', '0', "virtcol('.') - 1 <= indent('.') && col('.') > 1 ? '0' : '_'", { expr = true, desc = 'Smart line start' })
 
 map('n', '<leader>e', '<cmd>Explore<cr>', { desc = 'Explore files' })
-map('n', '<leader>p', '<cmd>lua require("telescope").extensions.neoclip.default()<cr>', { desc = 'Clipboard history' })
+map('n', '<leader>u', '<cmd>Undotree<cr>', { desc = 'Undo tree' })
 
 -- Navigator Bindings
 map('n', '<C-h>', function() require('Navigator').left() end, { desc = 'Move left', silent = true })

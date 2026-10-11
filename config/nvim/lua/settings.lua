@@ -51,6 +51,13 @@ cmd 'highlight link EndOfBuffer Comment'
 
 opt.sidescrolloff = 3
 opt.pumborder = 'rounded'
+opt.winborder = 'rounded' -- Default border for hover, signature help, and other floats
+
+-- Experimental 0.12 message and cmdline UI: highlighted cmdline, no hit-enter prompts.
+require('vim._core.ui2').enable()
+
+-- Built-in :Undotree
+cmd.packadd 'nvim.undotree'
 
 -- Search
 opt.ignorecase = true

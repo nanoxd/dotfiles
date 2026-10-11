@@ -1,13 +1,13 @@
 # Neovim
 
-This configuration targets Neovim 0.12 or newer. It uses Lazy for plugins, Mason for language servers and formatters, and Neovim's native Treesitter highlighting. Plugin revisions are recorded in `lazy-lock.json`.
+This configuration targets Neovim 0.12 or newer. It uses Lazy for plugins, Mason for language servers and formatters, and Neovim's native Treesitter highlighting. Pickers use fzf-lua, which needs `fzf` on `PATH`. Plugin revisions are recorded in `lazy-lock.json`.
 
 ## Setup
 
 On macOS, install the command-line dependencies and Xcode Command Line Tools before opening Neovim.
 
 ```sh
-brew install neovim tree-sitter-cli ripgrep node
+brew install neovim tree-sitter-cli ripgrep fd fzf node
 xcode-select --install # only if the Command Line Tools are missing
 ```
 
@@ -21,7 +21,7 @@ Use `:Lazy restore` to return plugins to the committed revisions. Use `:Lazy upd
 
 Use `:MasonToolsInstall` to install missing formatters, `:MasonToolsUpdate` to update them, and `:Mason` to manage language servers. The plugin lockfile does not pin those external tools or parser binaries.
 
-Run `:checkhealth nvim-treesitter rustaceanvim telescope conform lazy` after upgrades. Conform may report that the optional `prettier` fallback is missing when `prettierd` is available. Full `:checkhealth` also checks optional language providers and runtimes that this configuration does not require.
+Run `:checkhealth nvim-treesitter rustaceanvim conform lazy vim.lsp` after upgrades. Conform may report that the optional `prettier` fallback is missing when `prettierd` is available. Full `:checkhealth` also checks optional language providers and runtimes that this configuration does not require.
 
 ## Common keys
 
@@ -32,9 +32,12 @@ The leader is Space.
 | Ctrl-P | Find files |
 | `\\` | Search file contents |
 | Space-e | File explorer |
-| Space-p | Clipboard history |
+| Space-p | Yank history (`[y`/`]y` cycle after a put) |
+| Space-u | Undo tree |
+| Space-fr | Resume last picker |
 | Space-S | Search and replace |
-| `gd`, `gR`, `grt` | Definition, references, type definitions |
+| `gd`, `gR`, `gi` | Definition, references, implementations (fzf-lua) |
+| `grn`, `gra`, `grt`, `gO`, `K` | Neovim defaults: rename, code action, type definition, symbols, hover |
 | Space-d | Line diagnostics |
 | Space-r | Rust runnables, in Rust buffers |
 | `af`, `if`, `ac`, `ic` | Function and class text objects |

@@ -81,29 +81,31 @@ return {
       callback = function(ev)
         local opts = { buffer = ev.buf, silent = true }
 
+        -- Neovim's defaults cover the rest: grn rename, gra code action, grr references,
+        -- gri implementation, grt type definition, gO symbols, K hover, [d ]d diagnostics.
         opts.desc = 'Show LSP references'
-        keymap.set('n', 'gR', '<cmd>Telescope lsp_references<CR>', opts)
+        keymap.set('n', 'gR', '<cmd>FzfLua lsp_references<CR>', opts)
 
         opts.desc = 'Go to declaration'
         keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
 
         opts.desc = 'Show LSP definitions'
-        keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts)
+        keymap.set('n', 'gd', '<cmd>FzfLua lsp_definitions<CR>', opts)
 
         opts.desc = 'Show LSP implementations'
-        keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts)
+        keymap.set('n', 'gi', '<cmd>FzfLua lsp_implementations<CR>', opts)
 
-        opts.desc = 'Show LSP type definitions'
-        keymap.set('n', 'grt', '<cmd>Telescope lsp_type_definitions<CR>', opts)
+        opts.desc = 'Show workspace symbols'
+        keymap.set('n', '<leader>fs', '<cmd>FzfLua lsp_live_workspace_symbols<CR>', opts)
 
         opts.desc = 'Show buffer diagnostics'
-        keymap.set('n', '<leader>D', '<cmd>Telescope diagnostics bufnr=0<CR>', opts)
+        keymap.set('n', '<leader>D', '<cmd>FzfLua diagnostics_document<CR>', opts)
 
         opts.desc = 'Show line diagnostics'
         keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts)
 
         opts.desc = 'Restart LSP'
-        keymap.set('n', '<leader>rs', ':LspRestart<CR>', opts)
+        keymap.set('n', '<leader>rs', '<cmd>lsp restart<CR>', opts)
 
         vim.lsp.codelens.enable(true, { bufnr = ev.buf })
       end,
