@@ -10,7 +10,7 @@ return {
 
   -- active indent guide and indent text objects
   {
-    'echasnovski/mini.indentscope',
+    'nvim-mini/mini.indentscope',
     event = { 'BufReadPre', 'BufNewFile' },
     opts = {
       -- symbol = "▏",

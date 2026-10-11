@@ -22,12 +22,29 @@ map('n', '0', "virtcol('.') - 1 <= indent('.') && col('.') > 1 ? '0' : '_'", { e
 
 map('n', '<leader>e', '<cmd>Explore<cr>', { desc = 'Explore files' })
 map('n', '<leader>u', '<cmd>Undotree<cr>', { desc = 'Undo tree' })
+map('n', '<leader>fm', '<cmd>FzfLua marks<cr>', { desc = 'Marks' })
 
--- Navigator Bindings
-map('n', '<C-h>', function() require('Navigator').left() end, { desc = 'Move left', silent = true })
-map('n', '<C-j>', function() require('Navigator').down() end, { desc = 'Move down', silent = true })
-map('n', '<C-k>', function() require('Navigator').up() end, { desc = 'Move up', silent = true })
-map('n', '<C-l>', function() require('Navigator').right() end, { desc = 'Move right', silent = true })
+-- Move between Neovim windows, then hand off to tmux at the edge (see is_vim in tmux.conf).
+local tmux_directions = { h = 'L', j = 'D', k = 'U', l = 'R' }
+local function navigate(direction)
+  local window = vim.api.nvim_get_current_win()
+  vim.cmd.wincmd(direction)
+  if vim.api.nvim_get_current_win() ~= window or not vim.env.TMUX then return end
+  -- Leave a zoomed tmux pane alone, as Navigator.nvim's disable_on_zoom did.
+  local zoomed = vim.system({ 'tmux', 'display-message', '-p', '#{window_zoomed_flag}' }, { text = true }):wait()
+  if vim.trim(zoomed.stdout or '') == '1' then return end
+  vim.system { 'tmux', 'select-pane', '-' .. tmux_directions[direction] }
+end
+map('n', '<C-h>', function() navigate 'h' end, { desc = 'Move left', silent = true })
+map('n', '<C-j>', function() navigate 'j' end, { desc = 'Move down', silent = true })
+map('n', '<C-k>', function() navigate 'k' end, { desc = 'Move up', silent = true })
+map('n', '<C-l>', function() navigate 'l' end, { desc = 'Move right', silent = true })
+
+-- Grow and shrink a selection by syntax node with the built-in `an` / `in`.
+-- Normal-mode <CR> stays untouched in special buffers such as quickfix.
+map('n', '<CR>', function() return vim.bo.buftype == '' and 'van' or '<CR>' end, { expr = true, remap = true, desc = 'Select node' })
+map('x', '<CR>', 'an', { remap = true, desc = 'Expand selection to parent node' })
+map('x', '<BS>', 'in', { remap = true, desc = 'Shrink selection to child node' })
 
 vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('UserRustKeys', { clear = true }),

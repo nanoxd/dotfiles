@@ -13,7 +13,7 @@ xcode-select --install # only if the Command Line Tools are missing
 
 Rust editing also needs a Rust toolchain with `cargo`, `rustc`, and `rustfmt`. The dotfiles deployment maps this directory to `~/.config/nvim`.
 
-Open `nvim` and allow the initial plugin, parser, language-server, and formatter downloads to finish. Mason installs StyLua, Black, isort, and prettierd. Rustaceanvim owns the Rust language server. TypeScript and Deno choose one server based on the nearest project markers.
+Open `nvim` and allow the initial plugin, parser, language-server, and formatter downloads to finish. Mason installs StyLua, Black, isort, and prettierd. Rustaceanvim owns the Rust language server, and emmylua_ls handles Lua. JavaScript and TypeScript buffers get one server based on the nearest project markers: denols for Deno projects, the native TypeScript 7 server (`tsc --lsp`) when the project has no local TypeScript or a 7.x one, and ts_ls for projects pinned to older TypeScript.
 
 ## Maintenance
 
@@ -34,6 +34,9 @@ The leader is Space.
 | Space-e | File explorer |
 | Space-p | Yank history (`[y`/`]y` cycle after a put) |
 | Space-u | Undo tree |
+| Space-fm | Marks |
+| Enter / Backspace | Grow / shrink the selection by syntax node |
+| Ctrl-h/j/k/l | Move between windows, then tmux panes |
 | Space-fr | Resume last picker |
 | Space-S | Search and replace |
 | `gd`, `gR`, `gi` | Definition, references, implementations (fzf-lua) |
@@ -42,4 +45,4 @@ The leader is Space.
 | Space-r | Rust runnables, in Rust buffers |
 | `af`, `if`, `ac`, `ic` | Function and class text objects |
 
-Formatting runs on save. Use `:ConformInfo` to inspect the formatter selected for the current buffer. `:w!!` expands to `:SudaWrite` for a privileged save.
+Diagnostics show as signs, with the full message under the cursor line. Formatting runs on save. Use `:ConformInfo` to inspect the formatter selected for the current buffer. `:w!!` expands to `:SudaWrite` for a privileged save.

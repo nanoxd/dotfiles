@@ -2,42 +2,22 @@ return {
 
   -- UI
   {
-    'akinsho/bufferline.nvim',
+    'nvim-mini/mini.tabline', -- Buffer list in the tabline
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function() require('bufferline').setup {} end,
+    event = 'VeryLazy',
+    opts = {},
   },
 
   {
     'lewis6991/gitsigns.nvim', -- Adds Git highlighting
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
-    config = function() require('gitsigns').setup() end,
+    event = { 'BufReadPre', 'BufNewFile' },
+    opts = {},
   },
 
   -- Tools
   'kevinhwang91/nvim-bqf', -- Make QuickFix better
-  'rhysd/committia.vim', -- More Pleasant Editing on Commit Message
   'lambdalisue/vim-suda', -- Sudo support in nvim
   'tpope/vim-fugitive', -- Git for Vim
-  {
-    'chentoast/marks.nvim', -- Improve marks
-    config = function()
-      require('marks').setup {
-        default_mappings = true,
-      }
-    end,
-  },
-
-  {
-    'numToStr/Navigator.nvim',
-    config = function()
-      require('Navigator').setup {
-        disable_on_zoom = true,
-      }
-    end,
-  },
-
   {
     'MagicDuck/grug-far.nvim',
     opts = {},
