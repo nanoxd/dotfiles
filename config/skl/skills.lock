@@ -84,15 +84,6 @@ source = "android/skills"
 commit = "5bda39f154fb859a08d45e2392f3568e049f83fb"
 subdir = "device-ai/appfunctions"
 
-[skills.apple-hig]
-source = "justinwetch/HIGAgentSkills"
-commit = "2206ff935b4affa9ad249a5399a3e8e29f5f6edd"
-
-[skills.cloudkit]
-source = "dpearson2699/swift-ios-skills"
-commit = "8d90fd121a263355a4fb44fd082af1416a5c1c2a"
-subdir = "skills/cloudkit"
-
 [skills.codex-cli-runtime]
 source = "openai/codex-plugin-cc"
 commit = "db52e28f4d9ded852ab3942cea316258ae4ef346"
@@ -167,16 +158,6 @@ subdir = "ios-perceived-performance"
 source = "Livsy90/iOS-Performance-Agent-Skills"
 commit = "c259885045dd50f3a27b4df0eeab537b58799777"
 subdir = "ios-performance-profiling"
-
-[skills.migrate-xml-views-to-jetpack-compose]
-source = "android/skills"
-commit = "5bda39f154fb859a08d45e2392f3568e049f83fb"
-subdir = "jetpack-compose/migration/migrate-xml-views-to-jetpack-compose"
-
-[skills.migrating-to-tuist-generated-projects]
-source = "tuist/agent-skills"
-commit = "9a6ec783fef5f351f42f326c7ca32ec8da21b9ad"
-subdir = "skills/migrate"
 
 [skills.navigation-3]
 source = "android/skills"

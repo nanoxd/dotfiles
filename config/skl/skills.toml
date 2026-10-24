@@ -13,7 +13,6 @@ skills = [
   "android-intent-security",
   "appfunctions",
   "edge-to-edge",
-  "migrate-xml-views-to-jetpack-compose",
   "navigation-3",
   "r8-analyzer",
   "styles",
@@ -41,7 +40,6 @@ source = "tuist/agent-skills"
 skills = [
   "debug-generated-project",
   "fix-flaky-tests",
-  "migrating-to-tuist-generated-projects",
   "using-tuist-generated-projects",
 ]
 
@@ -55,8 +53,6 @@ skills = "*"
 
 # Single-skill repos.
 [skills]
-apple-hig = "justinwetch/HIGAgentSkills"
-cloudkit = "dpearson2699/swift-ios-skills"
 find-skills = "vercel-labs/skills"
 frontend-design = "anthropics/skills"
 hinge = "artemnovichkov/hinge"
