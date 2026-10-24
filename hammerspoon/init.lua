@@ -100,8 +100,8 @@ end
 
 -- App Keybindings --
 
-local cmuxBundleID = 'com.cmuxterm.app'
-bindHotkey(cmuxBundleID, 't', 1) -- full screen cmux
+local rexBundleID = 'com.superlogical.rex'
+bindHotkey(rexBundleID, 't', 1) -- full screen Rex
 hs.hotkey.bind(utils.hyper, 'b', function() launchOrHide 'company.thebrowser.Browser' end) -- Arc
 hs.hotkey.bind(utils.hyper, 'f', function() launchOrHide 'com.DanPristupov.Fork' end) -- Fork
 
