@@ -1,27 +1,11 @@
 return {
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    main = 'ibl',
-    event = { 'BufReadPost', 'BufNewFile' },
-    opts = {
-      indent = { char = '┊' },
-    },
-  },
-
-  -- active indent guide and indent text objects
-  {
-    'nvim-mini/mini.indentscope',
-    event = { 'BufReadPre', 'BufNewFile' },
-    opts = {
-      -- symbol = "▏",
-      symbol = '│',
-      options = { try_as_border = true },
-    },
-    init = function()
-      vim.api.nvim_create_autocmd('FileType', {
-        pattern = { 'help', 'lazy', 'mason' },
-        callback = function() vim.b.miniindentscope_disable = true end,
-      })
-    end,
+  'lukas-reineke/indent-blankline.nvim',
+  main = 'ibl',
+  event = { 'BufReadPost', 'BufNewFile' },
+  opts = {
+    indent = { char = '┊' },
+    -- Highlight the current Treesitter scope with a solid guide
+    scope = { char = '│', show_start = false, show_end = false },
+    exclude = { filetypes = { 'lazy', 'mason' } },
   },
 }
