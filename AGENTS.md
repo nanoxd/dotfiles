@@ -1,70 +1,67 @@
 # AGENTS.md
 
-This file provides guidance to coding agents (Claude Code, Codex, etc.) when working with code in this repository.
+Guidance for coding agents (Claude Code, Codex, etc.) working in this repository.
 
-## Repository Overview
+## Overview
 
-This is a personal dotfiles repository containing configuration files for various development tools and utilities. The configurations are carefully curated to streamline workflow and improve productivity.
+Personal macOS dotfiles. There is no build system. Each tool's config lives
+here and is symlinked into place.
 
-## Architecture & Structure
+## Deployment
 
-### Core Configuration Areas
+`.mappings` (TOML) lists the symlinks, applied with
+[`dot`](https://github.com/ubnt-intrepid/dot) (`cargo install dot`). Entries
+under `[general]` apply everywhere and `[darwin]` only on macOS. When adding a
+file that lives at a new home-directory path, add it to `.mappings`.
 
-- **config/** - Main configuration directory containing settings for various tools:
-  - `nvim/` - Neovim configuration with Lua-based setup
-  - `fish/` - Fish shell configuration (currently mostly commented out, using Starship prompt)
-  - `ghostty/` - Terminal emulator configuration
-  - `mise/` - Tool version management (managing Zig and Node.js)
-  - `raycast/` - Raycast extensions and configurations
+`config/` is linked as the whole of `~/.config`, so every app on the machine
+writes into this repo. `.gitignore` ignores `config/*` and opts tracked tools
+back in with `!config/<tool>/`. To track a new tool, add its allowlist line and
+ignore any runtime state, logs, or credentials it writes beside its config.
+Never commit secrets such as `config/gh/hosts.yml` or `aws/credentials`.
 
-- **bin/** - Custom shell scripts and utilities collection including:
-  - Git workflow scripts (git-*, e.g., git-branch-current, git-conflicts)
-  - Development utilities (cargo-watch-docs, fix-xcode, xcode-switch)
-  - File manipulation tools (change-extension, organize-photos, extract)
-  - System utilities (backup, lsports, ip)
+## Layout
 
-- **Git Configuration** - Extensive git setup with:
-  - Custom aliases for common workflows
-  - Delta configured as diff/pager tool
-  - Merge conflict style set to zdiff3
-  - Auto-stashing and auto-squashing for rebases
-  - LFS support configured
+- `config/fish/` – primary shell. `zshrc` and `zsh/` are kept working as a
+  second shell. `SHELLS.md` documents how both set up PATH and mise.
+- `config/nvim/` – Neovim 0.12+ with Lazy, Mason and fzf-lua. See its README.
+- `config/tmux/` – tmux config (XDG path) with TPM plugins in `~/.tmux/plugins`.
+  `C-h/j/k/l` hand off between Neovim splits and tmux panes through `is_vim`
+  here and `lua/keys.lua` in Neovim.
+- `config/rex/init.lua` – Rex terminal config. Ghostty (`config/ghostty/`) is
+  still used on some machines.
+- `hammerspoon/` – window management and Hyper-key app launching.
+- `config/karabiner/karabiner.json` – Caps Lock to Hyper/Escape and key
+  layers. Edited directly (no Goku).
+- `config/skl/` – agent skills manifest. Edit `skills.toml`, run `skl sync`,
+  commit both it and `skills.lock`.
+- `config/mise/` – tool versions (Node, Zig).
+- `pi/agent/` – Pi agent settings and extensions.
+- Smaller configs: `bat`, `bd`, `gh`, `herdr`, `starship.toml`, `stylua`, `zed`,
+  plus `gitconfig`, `gitignore` (global), `gitattributes`, and `lldbinit`.
+- `bin/` – personal scripts on PATH as `~/.bin`. Git helpers (`git-conflicts`,
+  `git-cut-branch`, `git-edit-new`, `git-fco`, `git-large-files`,
+  `git-search`, `git-undo`, `run-command-on-git-revisions`) and utilities
+  (`e`, `o`, `pbedit`, `cpssh`, `each_folder`, `change-extension`,
+  `clean-even-numbered-files`, `webm-to-mp4`, `fish-profile`, `zupg`).
 
-### Key Configurations
+## Git configuration
 
-**Editor**: Neovim (nvim) is the primary editor with:
-- Leader key mapped to space
-- Lazy.nvim as plugin manager
-- Custom configuration split across multiple Lua modules
+Delta is the pager, conflicts use zdiff3, rebases autostash and autosquash,
+commits are SSH-signed, and `fetch.followRemoteHEAD` keeps `git default-branch`
+current. Aliases live in `gitconfig`.
 
-**Shell**: Fish shell with Starship prompt configured
+## Validating changes
 
-**Version Management**: mise (formerly rtx) manages:
-- Node.js (latest)
-- Zig (latest)
+Check the tool you touched before committing:
 
-## Common Commands
+- Fish: `fish -n <file>`. Zsh: `zsh -n zshrc`.
+- tmux: `tmux -L check -f /dev/null start-server \; source-file -n ~/.config/tmux/tmux.conf`
+- Rex: `rex config check`
+- Neovim: `nvim --headless +qa` and `stylua --check config/nvim`
+- Shell scripts: run them against a scratch directory, never real data.
 
-### Git Operations
-```bash
-# Custom git utilities available in bin/
-git-branch-current    # Get current branch name
-git-conflicts         # Show merge conflicts
-git-undo             # Undo recent changes
-```
+## Commits
 
-### Development Utilities
-```bash
-e [file]             # Quick edit file
-search [pattern]     # Search in files
-fix-xcode           # Fix common Xcode issues
-xcode-switch        # Switch Xcode versions
-```
-
-## Development Notes
-
-- The repository uses symlinks for configuration deployment
-- Git is configured with extensive aliases for productivity
-- Custom scripts in `bin/` extend command-line capabilities
-- Fish shell config is largely commented out, indicating transition or testing phase
-- No formal build/test system - this is a configuration repository
+Prefix subjects with the area in brackets, for example `[tmux] ...`,
+`[Neovim] ...`, `[bin] ...`, or `[Cleanup] ...`.
