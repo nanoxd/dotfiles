@@ -1,7 +1,17 @@
 # Nano's Dotfiles
 
-Welcome to my world! You'll find a collection of config files for various tools and programs that I use on a daily basis. I've carefully curated and customized these tools to streamline my workflow and improve my productivity. Avoid copying these wholesale. Instead, consider what type of functionality you need to help improve your own workflow.
+Config for the tools I use every day on macOS: Fish, Neovim, tmux, Rex,
+Hammerspoon, Karabiner, and Git. Borrow ideas rather than copying it wholesale.
 
-![](https://media0.giphy.com/media/kdYX8PkHzHziw/giphy.gif?cid=348844935bf1dd8b744d456e6f5782bd)
+## Setup
 
-I 💖 tools
+```sh
+git clone git@github.com:nanoxd/dotfiles.git ~/.dotfiles
+cargo install dot
+cd ~/.dotfiles && dot link
+mise install
+```
+
+`.mappings` lists every symlink. `config/` becomes `~/.config`, and
+`.gitignore` opts in the tools that are tracked there. `SHELLS.md` covers shell
+setup and `config/nvim/README.md` covers Neovim.
