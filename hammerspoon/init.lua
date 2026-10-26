@@ -17,15 +17,21 @@ spoon.ReloadConfiguration:start()
 
 -- Functions
 
+-- Hide the app if it is frontmost, otherwise launch or focus it. Returns true
+-- when the app was brought forward.
 local function launchOrHide(bundleID)
   local app = hs.application.find(bundleID)
 
   if app and app:isFrontmost() then
     app:hide()
-    return
+    return false
   end
 
-  if not hs.application.launchOrFocusByBundleID(bundleID) then utils.notify('Unable to launch ' .. bundleID) end
+  if not hs.application.launchOrFocusByBundleID(bundleID) then
+    utils.notify('Unable to launch ' .. bundleID)
+    return false
+  end
+  return true
 end
 
 local function moveWindowToCurrentSpace(win, height)
@@ -74,18 +80,7 @@ end
 
 local function bindHotkey(bundleID, key, height)
   hs.hotkey.bind(utils.hyper, key, function()
-    local app = hs.application.find(bundleID)
-
-    if app and app:isFrontmost() then
-      app:hide()
-      return
-    end
-
-    if not hs.application.launchOrFocusByBundleID(bundleID) then
-      utils.notify('Unable to launch ' .. bundleID)
-      return
-    end
-
+    if not launchOrHide(bundleID) then return end
     withAppMainWindow(bundleID, 10, function(win) moveWindowToCurrentSpace(win, height) end)
   end)
 end

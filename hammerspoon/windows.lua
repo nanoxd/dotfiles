@@ -82,18 +82,6 @@ end
 -- |  |  HERE  |  |
 -- |  |        |  |
 -- +---------------+
-function windowMT.centerWithFullHeight(win)
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:fullFrame()
-
-  f.x = max.x + (max.w / 5)
-  f.w = max.w * 3 / 5
-  f.y = max.y
-  f.h = max.h
-  win:setFrame(f)
-end
-
 -- Center a full-height column that is `fraction` of the screen wide. Extends the
 -- edge model's fractions to the center (focus) position via shift/option+space.
 function windowMT.centerFraction(win, fraction)
@@ -248,7 +236,7 @@ end
 --   escape         => leave the mode
 --------------------------------------------------------------------------------
 
-windowLayoutMode = hs.hotkey.modal.new({}, 'F16')
+windowLayoutMode = hs.hotkey.modal.new()
 
 local layoutHints = require 'layout-hints'
 windowLayoutMode.hints = layoutHints.new()
@@ -301,7 +289,7 @@ end
 
 windowLayoutMode:bindWithAutomaticExit('return', windowLayoutAction(function(win) win:maximize() end))
 
-windowLayoutMode:bindWithAutomaticExit('space', windowLayoutAction(function(win) win:centerWithFullHeight() end))
+windowLayoutMode:bindWithAutomaticExit('space', windowLayoutAction(function(win) win:centerFraction(3 / 5) end))
 
 windowLayoutMode:bindWithAutomaticExitAndMods(
   { 'shift' },

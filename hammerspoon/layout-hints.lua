@@ -68,15 +68,11 @@ local FRAMED = {
   bottomRight = { 0.5, 0.5, 0.5, 0.5 },
   tqLeft = { 0, 0, 0.75, 1 },
   oqLeft = { 0, 0, 0.25, 1 },
-  tqRight = { 0.25, 0, 0.75, 1 },
-  oqRight = { 0.75, 0, 0.25, 1 },
   center = { 0.2, 0, 0.6, 1 },
   maximize = { 0, 0, 1, 1 },
   leftThird = { 0, 0, 1 / 3, 1 },
   centerThird = { 1 / 3, 0, 1 / 3, 1 },
-  rightThird = { 2 / 3, 0, 1 / 3, 1 },
   leftTwoThird = { 0, 0, 2 / 3, 1 },
-  rightTwoThird = { 1 / 3, 0, 2 / 3, 1 },
   centerTwoThird = { 1 / 6, 0, 2 / 3, 1 },
 }
 
