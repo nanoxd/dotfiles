@@ -41,7 +41,12 @@ map('n', '<C-l>', function() navigate 'l' end, { desc = 'Move right', silent = t
 
 -- Grow and shrink a selection by syntax node with the built-in `an` / `in`.
 -- Normal-mode <CR> stays untouched in special buffers such as quickfix.
-map('n', '<CR>', function() return vim.bo.buftype == '' and 'van' or '<CR>' end, { expr = true, remap = true, desc = 'Select node' })
+map(
+  'n',
+  '<CR>',
+  function() return vim.bo.buftype == '' and 'van' or '<CR>' end,
+  { expr = true, remap = true, desc = 'Select node' }
+)
 map('x', '<CR>', 'an', { remap = true, desc = 'Expand selection to parent node' })
 map('x', '<BS>', 'in', { remap = true, desc = 'Shrink selection to child node' })
 
@@ -60,7 +65,12 @@ map('n', '<leader>xd', function()
   vim.cmd.copen()
 end, { desc = 'Document diagnostics' })
 map('n', '<leader>xq', '<cmd>copen<cr>', { desc = 'Open quickfix list' })
-map('n', '<leader>xl', function() vim.diagnostic.setloclist { open = true } end, { desc = 'Document diagnostics loclist' })
+map(
+  'n',
+  '<leader>xl',
+  function() vim.diagnostic.setloclist { open = true } end,
+  { desc = 'Document diagnostics loclist' }
+)
 
 -- Git
 map('n', '<leader>gb', '<cmd>Git blame<cr>', { desc = 'Git blame', silent = true })

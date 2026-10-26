@@ -25,16 +25,12 @@ local function launchOrHide(bundleID)
     return
   end
 
-  if not hs.application.launchOrFocusByBundleID(bundleID) then
-    utils.notify('Unable to launch ' .. bundleID)
-  end
+  if not hs.application.launchOrFocusByBundleID(bundleID) then utils.notify('Unable to launch ' .. bundleID) end
 end
 
 local function moveWindowToCurrentSpace(win, height)
   local ok, nowspace = pcall(hs.spaces.focusedSpace)
-  if ok and nowspace then
-    pcall(hs.spaces.moveWindowToSpace, win, nowspace)
-  end
+  if ok and nowspace then pcall(hs.spaces.moveWindowToSpace, win, nowspace) end
 
   local screen = hs.screen.mainScreen() or win:screen()
   if not screen then
@@ -72,9 +68,7 @@ local function withAppMainWindow(bundleID, attemptsRemaining, fn)
     return false
   end
 
-  hs.timer.doAfter(0.2, function()
-    withAppMainWindow(bundleID, attemptsRemaining - 1, fn)
-  end)
+  hs.timer.doAfter(0.2, function() withAppMainWindow(bundleID, attemptsRemaining - 1, fn) end)
   return false
 end
 
@@ -92,9 +86,7 @@ local function bindHotkey(bundleID, key, height)
       return
     end
 
-    withAppMainWindow(bundleID, 10, function(win)
-      moveWindowToCurrentSpace(win, height)
-    end)
+    withAppMainWindow(bundleID, 10, function(win) moveWindowToCurrentSpace(win, height) end)
   end)
 end
 

@@ -5,17 +5,13 @@ local windowMT = hs.getObjectMetatable 'hs.window'
 local window = hs.window
 
 local function focusedWindowAction(fn)
-  return function()
-    utils.withFocusedWindow(fn)
-  end
+  return function() utils.withFocusedWindow(fn) end
 end
 
 local windowUndoStack = {}
 local windowUndoStackLimit = 20
 
-local function copyFrame(frame)
-  return { x = frame.x, y = frame.y, w = frame.w, h = frame.h }
-end
+local function copyFrame(frame) return { x = frame.x, y = frame.y, w = frame.w, h = frame.h } end
 
 local function saveWindowLayout(win)
   windowUndoStack[#windowUndoStack + 1] = {
@@ -40,18 +36,17 @@ local function restoreWindowLayout()
   while #windowUndoStack > 0 do
     local state = table.remove(windowUndoStack)
     local win = state.window
-    local ok = win and pcall(function()
-      if state.screen and hs.fnutils.indexOf(hs.screen.allScreens(), state.screen) then
-        win:moveToScreen(state.screen, true, true)
-      end
+    local ok = win
+      and pcall(function()
+        if state.screen and hs.fnutils.indexOf(hs.screen.allScreens(), state.screen) then
+          win:moveToScreen(state.screen, true, true)
+        end
 
-      win:setFrame(state.frame)
-      win:focus()
-    end)
+        win:setFrame(state.frame)
+        win:focus()
+      end)
 
-    if ok then
-      return true
-    end
+    if ok then return true end
   end
 
   utils.notify 'No window layout to undo'

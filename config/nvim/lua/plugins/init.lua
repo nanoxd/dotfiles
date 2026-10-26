@@ -20,8 +20,18 @@ return {
         map('n', '[h', function() gitsigns.nav_hunk 'prev' end, 'Previous hunk')
         map('n', '<leader>hs', gitsigns.stage_hunk, 'Stage hunk')
         map('n', '<leader>hr', gitsigns.reset_hunk, 'Reset hunk')
-        map('x', '<leader>hs', function() gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' } end, 'Stage selection')
-        map('x', '<leader>hr', function() gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' } end, 'Reset selection')
+        map(
+          'x',
+          '<leader>hs',
+          function() gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' } end,
+          'Stage selection'
+        )
+        map(
+          'x',
+          '<leader>hr',
+          function() gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' } end,
+          'Reset selection'
+        )
         map('n', '<leader>hS', gitsigns.stage_buffer, 'Stage buffer')
         map('n', '<leader>hp', gitsigns.preview_hunk_inline, 'Preview hunk')
         map('n', '<leader>hd', gitsigns.diffthis, 'Diff against index')

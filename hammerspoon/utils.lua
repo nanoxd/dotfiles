@@ -27,16 +27,12 @@ function utils.resolveFont(candidates)
     families[name] = true
   end
   for _, name in ipairs(candidates) do
-    if families[name] then
-      return name
-    end
+    if families[name] then return name end
   end
   return candidates[#candidates]
 end
 
-function utils.notify(message)
-  hs.alert.show(message)
-end
+function utils.notify(message) hs.alert.show(message) end
 
 function utils.withFocusedWindow(fn)
   local win = hs.window.focusedWindow()

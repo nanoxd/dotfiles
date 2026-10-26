@@ -13,7 +13,7 @@ config/*
 !config/rex/
 !config/skl/
 !config/starship.toml
-!config/stylua/
+!config/stylua.toml
 !config/tmux/
 !config/zed/
 

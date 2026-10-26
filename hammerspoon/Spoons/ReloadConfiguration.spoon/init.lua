@@ -35,17 +35,13 @@ function obj:reloadNow()
     self.reload_timer = nil
   end
 
-  if self.show_reload_alert then
-    hs.alert.show 'Reloading Hammerspoon…'
-  end
+  if self.show_reload_alert then hs.alert.show 'Reloading Hammerspoon…' end
 
   hs.reload()
 end
 
 function obj:scheduleReload()
-  if self.reload_timer then
-    self.reload_timer:stop()
-  end
+  if self.reload_timer then self.reload_timer:stop() end
 
   self.reload_timer = hs.timer.doAfter(self.reload_delay, function()
     self.reload_timer = nil
@@ -94,9 +90,7 @@ function obj:start()
   self.watchers = {}
 
   for _, dir in pairs(self.watch_paths) do
-    self.watchers[dir] = hs.pathwatcher.new(dir, function()
-      self:scheduleReload()
-    end):start()
+    self.watchers[dir] = hs.pathwatcher.new(dir, function() self:scheduleReload() end):start()
   end
 
   return self

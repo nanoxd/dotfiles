@@ -132,9 +132,21 @@ local function appendIcon(add, kind, x, y)
       frame = { x = cx - 2.5, y = cy - 2.5, w = 5, h = 5 },
     }
     add(triangle({ x = cx, y = y + 0.5 }, { x = cx - a, y = y + 0.5 + len }, { x = cx + a, y = y + 0.5 + len }))
-    add(triangle({ x = cx, y = y + H - 0.5 }, { x = cx - a, y = y + H - 0.5 - len }, { x = cx + a, y = y + H - 0.5 - len }))
+    add(
+      triangle(
+        { x = cx, y = y + H - 0.5 },
+        { x = cx - a, y = y + H - 0.5 - len },
+        { x = cx + a, y = y + H - 0.5 - len }
+      )
+    )
     add(triangle({ x = x + 0.5, y = cy }, { x = x + 0.5 + len, y = cy - a }, { x = x + 0.5 + len, y = cy + a }))
-    add(triangle({ x = x + W - 0.5, y = cy }, { x = x + W - 0.5 - len, y = cy - a }, { x = x + W - 0.5 - len, y = cy + a }))
+    add(
+      triangle(
+        { x = x + W - 0.5, y = cy },
+        { x = x + W - 0.5 - len, y = cy - a },
+        { x = x + W - 0.5 - len, y = cy + a }
+      )
+    )
     return
   end
 
@@ -309,17 +321,13 @@ local columns = {
 }
 
 -- Geometry -------------------------------------------------------------------
-local function sectionHeight(section)
-  return HEADER_H + #section.rows * ROW_H
-end
+local function sectionHeight(section) return HEADER_H + #section.rows * ROW_H end
 
 local function columnHeight(sections)
   local h = 0
   for i, section in ipairs(sections) do
     h = h + sectionHeight(section)
-    if i < #sections then
-      h = h + SECTION_GAP
-    end
+    if i < #sections then h = h + SECTION_GAP end
   end
   return h
 end
@@ -334,16 +342,12 @@ end
 
 local PANEL_W = PANEL_PADDING * 2 + #columns * COL_W + (#columns - 1) * COL_GAP
 
-local function panelHeight()
-  return PANEL_PADDING * 2 + TITLE_H + contentHeight()
-end
+local function panelHeight() return PANEL_PADDING * 2 + TITLE_H + contentHeight() end
 
 -- Rendering ------------------------------------------------------------------
 local function targetScreen()
   local win = hs.window.focusedWindow()
-  if win and win:screen() then
-    return win:screen()
-  end
+  if win and win:screen() then return win:screen() end
   return hs.screen.mainScreen()
 end
 
@@ -357,9 +361,7 @@ local function buildCanvas()
 
   local c = canvas.new { x = x, y = y, w = w, h = h }
   local els = {}
-  local function add(el)
-    els[#els + 1] = el
-  end
+  local function add(el) els[#els + 1] = el end
 
   -- Panel background and border.
   add {
