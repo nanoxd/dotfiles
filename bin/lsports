@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-lsof -i -n -P | fzf

@@ -1,9 +1,0 @@
-#!/usr/bin/env sh
-
-if [ $# = "0" ]; then
-  printf 'usage: gignore <template_name>\n'
-  exit 1
-fi
-
-params=$(echo $* | tr ' ' ',')
-curl -s "https://www.gitignore.io/api/$params";

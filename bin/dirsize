@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-du -sHh "$1" | awk '{print $1}'
