@@ -1,8 +1,2 @@
 *.mobileprovision diff=provision
 *.plist diff=plist
-
-# Xcode project file
-*.pbxproj diff merge
-
-# Legacy binary Bun lockfile (Bun 1.2+ writes text bun.lock)
-*.lockb binary

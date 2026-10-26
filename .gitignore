@@ -42,11 +42,15 @@ config/zed/conversations
 
 zsh/plugins.lock
 zsh/repositories
-aws/credentials
+
+# ~/.aws is linked here too. Track only the shared config.
+aws/*
+!aws/config
 
 # Pi runtime/private data. Track only explicit config files under pi/agent/.
 pi/agent/auth.json
 pi/agent/trust.json
+pi/agent/models-store.json
 pi/agent/sessions/
 pi/agent/npm/
 pi/agent/**/*.jsonl
