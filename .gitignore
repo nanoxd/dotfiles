@@ -1,22 +1,25 @@
+# ~/.config is symlinked here and apps write runtime state and credentials
+# into it. Ignore everything and opt tracked tools back in.
+config/*
+!config/bat/
+!config/bd/
+!config/fish/
+!config/gh/
+!config/ghostty/
+!config/herdr/
+!config/karabiner/
+!config/mise/
+!config/nvim/
+!config/rex/
+!config/skl/
+!config/starship.toml
+!config/stylua/
+!config/tmux/
+!config/zed/
+
+# Runtime state inside tracked tools
 config/fish/fish_variables
 config/fish/fisher
-config/nvim/.netrwhist
-config/nvim/backups
-config/nvim/pack
-config/nvim/plugin
-config/nvim/.luarc.json
-zsh/plugins.lock
-zsh/repositories
-aws/credentials
-node_modules
-.netrwhist
-config/gh/hosts.yml
-config/raycast
-config/zed/embeddings
-config/zed/prompts
-config/zed/conversations
-config/fish/old_*
-
 config/fish/functions/*
 config/fish/completions/*
 config/fish/conf.d/fzf.fish
@@ -24,16 +27,22 @@ config/fish/conf.d/fzf.fish
 !config/fish/functions/e.fish
 !config/fish/functions/gpc.fish
 !config/fish/functions/mkc.fish
-config/1Password/
-config/op/config
-config/op/op-daemon.sock
-config/uv/uv-receipt.json
-CLAUDE.local.md
-AGENTS.local.md
-.claude/settings.local.json
-*.log
+config/gh/hosts.yml
 config/herdr/release-notes.json
 config/herdr/session.json
+config/nvim/.netrwhist
+config/nvim/backups
+config/nvim/pack
+config/nvim/plugin
+config/nvim/.luarc.json
+config/tmux/plugins/
+config/zed/embeddings
+config/zed/prompts
+config/zed/conversations
+
+zsh/plugins.lock
+zsh/repositories
+aws/credentials
 
 # Pi runtime/private data. Track only explicit config files under pi/agent/.
 pi/agent/auth.json
@@ -42,19 +51,12 @@ pi/agent/sessions/
 pi/agent/npm/
 pi/agent/**/*.jsonl
 
-# App runtime state and credentials written into ~/.config (symlinked here)
-config/tome/config.json
-config/openlogi/*.lock
-config/openlogi/overlay.claim
+# Local agent instructions
+CLAUDE.local.md
+AGENTS.local.md
+.claude/settings.local.json
+
+node_modules
+.netrwhist
+*.log
 *.bak
-
-# Snapzy: not keeping this app long term
-config/snapzy/
-
-# Orca writes hooks for Devin and Amp here; neither app is in use
-config/devin/
-config/amp/
-# Orca-installed OpenCode plugins
-config/opencode/plugins/orca-opencode-status.js
-config/opencode/plugins/orca-opencode-status-tui/
-config/mole/sudoers-version
