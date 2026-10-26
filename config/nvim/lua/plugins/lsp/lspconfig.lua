@@ -105,7 +105,7 @@ return {
       severity_sort = true,
       -- Full messages under the cursor line only, signs everywhere else.
       virtual_lines = { current_line = true },
-      float = { border = 'rounded', source = true },
+      float = { source = true },
       signs = {
         text = {
           [vim.diagnostic.severity.ERROR] = ' ',

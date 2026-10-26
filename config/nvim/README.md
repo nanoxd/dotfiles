@@ -30,7 +30,7 @@ The leader is Space.
 | Key | Action |
 | --- | --- |
 | Ctrl-P | Find files |
-| `\\` | Search file contents |
+| `\` | Search file contents |
 | Space-e | File explorer (oil; edit the buffer and `:w` to rename, move, or delete) |
 | Space-p | Yank history (`[y`/`]y` cycle after a put) |
 | Space-u | Undo tree |

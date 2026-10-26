@@ -40,7 +40,7 @@ return {
             DiagnosticVirtualTextWarn = makeDiagnosticColor(theme.diag.warning),
             DiagnosticVirtualTextError = makeDiagnosticColor(theme.diag.error),
 
-            IndentBlanklineChar = { fg = palette.waveBlue2 },
+            IblIndent = { fg = palette.waveBlue2 },
             EndOfBuffer = { link = 'Comment' },
             CursorLineNr = { bg = theme.ui.bg_p2 },
             Visual = { bg = palette.waveBlue2 },

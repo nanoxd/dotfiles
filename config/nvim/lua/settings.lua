@@ -22,7 +22,6 @@ opt.softtabstop = 2
 opt.expandtab = true
 
 -- Turn off swap files
-opt.backup = false
 opt.writebackup = false
 opt.swapfile = false
 -- Persistent undo, stored in the default stdpath('state')/undo
@@ -32,7 +31,6 @@ opt.undofile = true
 opt.showmode = false
 opt.relativenumber = true
 opt.number = true
-opt.lazyredraw = true
 opt.cursorline = true
 opt.signcolumn = 'yes'
 

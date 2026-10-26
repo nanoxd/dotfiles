@@ -110,7 +110,7 @@ return {
             },
           },
         },
-        lualine_y = { nil },
+        lualine_y = {},
         lualine_z = {
           { place, padding = { left = 1, right = 1 } },
         },
@@ -120,9 +120,11 @@ return {
         lualine_b = {
           {
             'diff',
-            color_added = '#a7c080',
-            color_modified = '#ffdf1b',
-            color_removed = '#ff6666',
+            diff_color = {
+              added = { fg = '#a7c080' },
+              modified = { fg = '#ffdf1b' },
+              removed = { fg = '#ff6666' },
+            },
           },
         },
         lualine_c = {

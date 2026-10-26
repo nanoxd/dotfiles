@@ -23,13 +23,15 @@ return {
       'lua',
       'markdown',
       'markdown_inline',
+      'python',
       'rust',
       'swift',
+      'toml',
       'tsx',
       'typescript',
     }
 
-    vim.api.nvim_create_autocmd({ 'FileType', 'BufEnter' }, {
+    vim.api.nvim_create_autocmd('FileType', {
       group = vim.api.nvim_create_augroup('UserTreesitter', { clear = true }),
       callback = function(event)
         local filetype = vim.bo[event.buf].filetype
