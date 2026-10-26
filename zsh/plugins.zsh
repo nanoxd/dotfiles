@@ -33,5 +33,5 @@ zinit wait lucid light-mode for \
       zsh-users/zsh-autosuggestions
 
 zinit light-mode for \
-  djui/alias-tips \
+  MichaelAquilina/zsh-you-should-use \
   zsh-users/zsh-history-substring-search

@@ -22,10 +22,6 @@ path=("$HOME/.bin" "$HOME/.local/bin" $path)
 
 export FZF_DEFAULT_COMMAND='rg --files'
 
-# alias-tips
-export ZSH_PLUGINS_ALIAS_TIPS_EXPAND=0
-export ZSH_PLUGINS_ALIAS_TIPS_REVEAL=1 # Display raw command like in Fish
-
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
 export DENO_INSTALL="${DENO_INSTALL:-$HOME/.deno}"
