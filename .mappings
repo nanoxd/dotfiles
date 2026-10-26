@@ -17,7 +17,6 @@ zshrc = "~/.zshrc"
 
 [darwin]
 lldbinit = "~/.lldbinit"
-"swiftformat.yml" = "~/.swiftformat.yml"
 
 [freebsd]
 
