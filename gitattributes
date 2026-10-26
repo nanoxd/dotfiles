@@ -4,5 +4,5 @@
 # Xcode project file
 *.pbxproj diff merge
 
-# Bun lock files
-*.lockb binary diff=lockb
+# Legacy binary Bun lockfile (Bun 1.2+ writes text bun.lock)
+*.lockb binary

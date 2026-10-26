@@ -1,7 +1,6 @@
 export ZSH="$HOME/.zsh"
 
 typeset -U path PATH
-path=("$HOME/.bin" "$HOME/.local/bin" $path)
 
 if (( $+commands[brew] )); then
     eval "$(command brew shellenv zsh)"
@@ -18,6 +17,7 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
     export VISUAL='nvim'
 fi
 
+# Prepend after brew shellenv so user commands win over Homebrew.
 path=("$HOME/.bin" "$HOME/.local/bin" $path)
 
 export FZF_DEFAULT_COMMAND='rg --files'

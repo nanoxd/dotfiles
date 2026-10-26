@@ -32,7 +32,6 @@
   amend = commit --amend
   ap = add --patch
 
-  biggest = "!git rev-list --objects --all | grep `git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -1 | awk '{ print $1 }'`"
   branches = branch -a
 
   ca = commit --amend
@@ -68,8 +67,8 @@
   # Remove tracked files
   forget = rm -r --cached
 
-  # Find tags containing commit
-  ft = "!f() { git describe --always --contains $1; }; f"
+  # First tag that contains a commit
+  introduced = describe --always --contains
 
   fza = "!git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o git add"
 
@@ -168,14 +167,6 @@
 
 [diff "provision"]
   textconv = openssl smime -inform der -verify -in
-
-[diff "bin"]
-  # Use `hexdump` to diff binary files
-  textconv = hexdump -v -C
-
-[diff "lockb"]
-  textconv = bun
-  binary = true
 
 [filter "lfs"]
   smudge = git-lfs smudge -- %f

@@ -1,30 +1,24 @@
-build/
-*.pbxuser
-!default.pbxuser
-*.mode1v3
-!default.mode1v3
-*.mode2v3
-!default.mode2v3
-*.perspectivev3
-!default.perspectivev3
-xcuserdata
-*.xccheckout
-*.moved-aside
-DerivedData
-*.hmap
-*.ipa
-*.xcuserstate
+# macOS
 .DS_Store
+._*
 
-.idea/
-*.bts
-tags
-.tags
-*.swp
-.tern-project
-.simudid
-.vscode
+# Build output
+build/
 bazel-out
 
+# Xcode
+*.ipa
+xcuserdata/
+DerivedData/
+*.xcuserstate
+
+# Editors
+.idea/
+.vscode/
+*.swp
+tags
+.tags
+
+# Agents
 **/.claude/settings.local.json
 **/CLAUDE.local.md
