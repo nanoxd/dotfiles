@@ -9,7 +9,6 @@ gitconfig = "~/.gitconfig"
 gitignore = "~/.gitignore"
 hammerspoon = "~/.hammerspoon"
 pi = "~/.pi"
-"tmux.conf" = "~/.tmux.conf"
 zsh = "~/.zsh"
 zshrc = "~/.zshrc"
 
