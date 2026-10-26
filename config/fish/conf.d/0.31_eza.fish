@@ -26,7 +26,7 @@ else
     end
 
     function la
-        command ls -hlt $argv
+        command ls -Ahlt $argv
     end
 
     function ll

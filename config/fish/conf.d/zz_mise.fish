@@ -1,6 +1,3 @@
-# Keep user commands ahead of Homebrew, then let mise select project tools.
-fish_add_path --path --move "$HOME/.bin" "$HOME/.local/bin"
-
 # Activate after other PATH entries so project tool versions take precedence.
 if command -q mise
     if status is-interactive

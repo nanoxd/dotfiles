@@ -6,7 +6,7 @@ User commands in `~/.bin` and `~/.local/bin` take precedence over Homebrew. Carg
 
 Install `mise` in `~/.local/bin` or through Homebrew. Run `mise install` to install the versions configured in `config/mise/config.toml`. The shells do not pin Node to a particular installation directory.
 
-Starship, zoxide, eza, and trash are optional. Fish reports missing interactive tools on stderr and stays quiet for scripts. Create `~/.config/fish/.allow_missing_command` to suppress those notices.
+Starship, zoxide, eza, and trash are optional. In interactive sessions Fish reports a missing zoxide, eza, or mise on stderr and stays quiet for scripts. Create `~/.config/fish/.allow_missing_command` to suppress those notices.
 
 Zsh bootstraps Zinit on first interactive startup and continues without managed plugins if installation fails. Fish plugin names live in `config/fish/fish_plugins`. Use `fisher update` after installing Fisher to restore them.
 
