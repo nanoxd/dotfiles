@@ -1,3 +1,4 @@
---theme="TwoDark"
-# Show line numbers, Git modifications and file header (but no grid)
+# Use the terminal's palette so bat matches Ghostty and Rex themes
+--theme="ansi"
+# Code only: no line numbers, Git markers, header, or grid
 --style="plain"
