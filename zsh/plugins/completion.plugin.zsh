@@ -1,16 +1,12 @@
 #!/bin/zsh
-# Force rehash when command not found
-function _force_rehash() {
-  (( CURRENT == 1 )) && rehash
-  return 1
-}
-
-# forces zsh to realize new commands
-zstyle ':completion:*' completer _oldlist _expand _force_rehash _complete _match _ignored _approximate
+# Pick up newly installed commands without a manual rehash
+zstyle ':completion:*' rehash true
+zstyle ':completion:*' completer _oldlist _expand _complete _match _ignored _approximate
 
 # pasting with tabs doesn't perform completion
 zstyle ':completion:*' insert-tab pending
-zstyle ':completion:*' menu select
+# fzf-tab replaces the completion menu
+zstyle ':completion:*' menu no
 
 ### fuzzy completion
 # lifted from http://superuser.com/a/815317/555734
@@ -28,7 +24,6 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 
 setopt auto_menu
 setopt autolist
-setopt menu_complete
 setopt always_to_end
 
 ### fzf-tab
@@ -38,9 +33,6 @@ zstyle ':completion:*:git-checkout:*' sort false
 
 # set descriptions format to enable group support
 zstyle ':completion:*:descriptions' format '[%d]'
-
-# set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # preview directory's content with eza when completing cd
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'

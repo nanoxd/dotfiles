@@ -42,17 +42,7 @@ unset dotfiles_tool_bin dotfiles_go_root
 
 [[ -f "$HOME/.turso/env" ]] && source "$HOME/.turso/env"
 
-if (( $+commands[mise] )); then
-    if [[ -o interactive ]]; then
-        eval "$(mise activate zsh)"
-    else
-        eval "$(mise activate zsh --shims)"
-        # Activation can leave inherited shims behind Homebrew in PATH.
-        path=("${MISE_DATA_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/mise}/shims" $path)
-    fi
-fi
-
-[[ -o interactive ]] || return 0
+(( $+commands[mise] )) && eval "$(mise activate zsh)"
 
 [[ -r "$ZSH/plugins.zsh" ]] && source "$ZSH/plugins.zsh"
 for file in "$ZSH"/plugins/*(N); do
@@ -60,7 +50,6 @@ for file in "$ZSH"/plugins/*(N); do
 done
 
 [[ -n "$TTY" ]] && export GPG_TTY="$TTY"
-[[ -s "$BUN_INSTALL/_bun" ]] && source "$BUN_INSTALL/_bun"
 
 (( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
 (( $+commands[starship] )) && eval "$(starship init zsh)"

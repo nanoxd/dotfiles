@@ -8,6 +8,11 @@ function mkdir() {
   command mkdir -p "$@"
 }
 
+# Make a directory (with parents) and cd into it
+function mkc() {
+  command mkdir -p -- "${@[-1]}" && cd -- "${@[-1]}"
+}
+
 function p() {
   if [ -n "$1" ] && [ -f "$1" ]; then
     bat "$@"
@@ -40,13 +45,10 @@ alias la='ls -al'
 if (( $+commands[brew] )); then
   function brew() {
     case "$1" in
-      cleanup)
-        command brew cleanup --prune-prefix "${@:2}"
-        ;;
       bump)
         command brew update
         command brew upgrade
-        brew cleanup
+        command brew cleanup
         ;;
       *)
         command brew "$@"

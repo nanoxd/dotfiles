@@ -1,6 +1,4 @@
 ### Added by Zinit's installer
-[[ -o interactive ]] || return 0
-
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     if (( ! $+commands[git] )); then
         print -u2 'Zinit installation requires git.'
@@ -24,16 +22,16 @@ autoload -Uz _zinit
 
 ### End of Zinit's installer chunk
 
+# fzf-tab must load after compinit and before plugins that wrap widgets.
 zinit wait lucid light-mode for \
-  atinit"zicompinit; zicdreplay" \
-      zdharma-continuum/fast-syntax-highlighting \
-  atload"_zsh_autosuggest_start" \
-      zsh-users/zsh-autosuggestions \
   blockf atpull'zinit creinstall -q .' \
-      zsh-users/zsh-completions
+      zsh-users/zsh-completions \
+  atinit"zicompinit; zicdreplay" \
+      Aloxaf/fzf-tab \
+  zdharma-continuum/fast-syntax-highlighting \
+  atload"_zsh_autosuggest_start" \
+      zsh-users/zsh-autosuggestions
 
 zinit light-mode for \
-  Aloxaf/fzf-tab \
-  caarlos0/zsh-mkc \
   djui/alias-tips \
   zsh-users/zsh-history-substring-search
