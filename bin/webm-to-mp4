@@ -1,24 +1,46 @@
 #!/usr/bin/env bash
-
-# file="$1"
-# base=`basename "$1"`
-
-# echo "Transcoding $file to $base .mp4"
-# ffmpeg -fflags +genpts -i "$file" -c copy "$base".mp4
-
-#!/bin/bash
 #
-# This script requires HandBrakeCLI. On macOS, at least, you need to download
-# and install it separately from Handbrake.
+# Usage: webm-to-mp4 [dir]
 #
-# See: https://handbrake.fr/downloads2.php
+# Transcodes every .webm under dir (default: .) to an H.265 .mp4 beside it,
+# keeping the source's resolution and frame rate, then deletes the source once
+# its encode succeeds. Requires HandBrakeCLI (brew install handbrake).
 
-if [ -z "$1" ] ; then
-    TRANSCODEDIR="."
-else
-    TRANSCODEDIR="$1"
+set -euo pipefail
+
+dir="${1:-.}"
+preset='HQ 2160p60 4K HEVC Surround'
+
+if ! command -v HandBrakeCLI >/dev/null; then
+  echo "webm-to-mp4: HandBrakeCLI not found" >&2
+  exit 1
 fi
 
-# Change the preset if you like (see options: "HandBrakeCLI --preset-list")
-# If you want to transcode ALL movie files, remove the -name option.
-find "$TRANSCODEDIR"/* -type f -name "*.webm" -exec bash -c 'HandBrakeCLI -i "$1" -o "${1%\.*}".mp4 --preset="General/Fast 2160p60 4K HEVC" && rm "$1"' __ {} \;
+log="$(mktemp -t webm-to-mp4)"
+trap 'rm -f -- "$log"' EXIT
+
+failed=0
+while IFS= read -r -d '' src; do
+  out="${src%.*}.mp4"
+  if [[ -e $out ]]; then
+    echo "skip: $out already exists" >&2
+    continue
+  fi
+
+  echo "encoding: $src"
+  # The preset caps output at 2160p60. Lift the caps and skip auto-crop so the
+  # full source frame survives. HandBrake never upscales, so smaller sources
+  # keep their size.
+  if HandBrakeCLI --preset "$preset" --input "$src" --output "$out" \
+    --maxWidth 8192 --maxHeight 8192 --crop-mode none --vfr \
+    </dev/null >/dev/null 2>"$log"; then
+    rm -- "$src"
+  else
+    echo "failed: $src (source kept)" >&2
+    tail -n 20 "$log" >&2
+    rm -f -- "$out"
+    failed=1
+  fi
+done < <(find "$dir" -type f -iname '*.webm' -print0)
+
+exit "$failed"
